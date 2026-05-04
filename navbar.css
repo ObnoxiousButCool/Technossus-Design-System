@@ -1,0 +1,130 @@
+/**
+ * Technossus Design System
+ * Navigation Bar Component
+ * Version 1.0.0
+ */
+
+/* ========================================
+   NAVBAR
+   Usage: Main site navigation
+   ======================================== */
+
+/**
+ * Main Navigation Bar
+ * DO: Keep navigation items concise (5-7 items max)
+ * DON'T: Use more than one active state at a time
+ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  width: 1440px;
+  height: var(--space-80);
+  background: var(--color-white);
+  border-bottom: var(--border-width-thin) solid var(--color-grey-100);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-40);
+  height: var(--space-80);
+  padding: 0 var(--space-96) 1px var(--space-96);
+}
+
+/* ========================================
+   LOGO
+   ======================================== */
+
+/**
+ * Logo Container
+ * DO: Maintain aspect ratio
+ * DON'T: Resize logo beyond recommended dimensions
+ */
+.navbar__logo {
+  width: 193px;
+  height: 47px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.navbar__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* ========================================
+   NAVIGATION LINKS
+   ======================================== */
+
+/**
+ * Navigation Container
+ * DO: Center align navigation items
+ * DON'T: Let navigation overflow on smaller screens
+ */
+.navbar__nav {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-32);
+  min-width: 0;
+}
+
+/**
+ * Navigation Links
+ * DO: Use active state to indicate current page
+ * DON'T: Use active state for hover effects
+ */
+.navbar__link {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-grey-500);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.navbar__link:hover {
+  color: var(--color-red);
+}
+
+.navbar__link--active {
+  font-weight: 600;
+  color: var(--color-red);
+}
+
+/* ========================================
+   RESPONSIVE BEHAVIOR
+   ======================================== */
+
+@media (max-width: 1440px) {
+  .navbar {
+    width: 100%;
+  }
+  
+  .navbar__inner {
+    padding: 0 var(--space-48);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__inner {
+    padding: 0 var(--space-24);
+    gap: var(--space-24);
+  }
+  
+  .navbar__nav {
+    gap: var(--space-16);
+  }
+  
+  .navbar__logo {
+    width: 150px;
+    height: 36px;
+  }
+}

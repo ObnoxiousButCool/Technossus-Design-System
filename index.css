@@ -1,0 +1,156 @@
+/**
+ * Technossus Design System
+ * Main Entry Point
+ * Version 1.0.0
+ * 
+ * Import this file to use the complete design system
+ */
+
+/* ========================================
+   FOUNDATION
+   Import base styles and design tokens
+   ======================================== */
+
+@import url('./variables.css');
+@import url('./typography.css');
+
+/* ========================================
+   COMPONENTS
+   Import all component styles
+   ======================================== */
+
+@import url('./components/buttons.css');
+@import url('./components/cards.css');
+@import url('./components/navbar.css');
+@import url('./components/footer.css');
+@import url('./components/headers.css');
+
+/* ========================================
+   GLOBAL RESET
+   Basic reset for consistency
+   ======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-grey-600);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   Common helper classes
+   ======================================== */
+
+/* Spacing utilities */
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--space-4); }
+.mt-2 { margin-top: var(--space-8); }
+.mt-3 { margin-top: var(--space-12); }
+.mt-4 { margin-top: var(--space-16); }
+.mt-5 { margin-top: var(--space-20); }
+.mt-6 { margin-top: var(--space-24); }
+.mt-8 { margin-top: var(--space-32); }
+.mt-12 { margin-top: var(--space-48); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--space-4); }
+.mb-2 { margin-bottom: var(--space-8); }
+.mb-3 { margin-bottom: var(--space-12); }
+.mb-4 { margin-bottom: var(--space-16); }
+.mb-5 { margin-bottom: var(--space-20); }
+.mb-6 { margin-bottom: var(--space-24); }
+.mb-8 { margin-bottom: var(--space-32); }
+.mb-12 { margin-bottom: var(--space-48); }
+
+.p-0 { padding: 0; }
+.p-2 { padding: var(--space-8); }
+.p-3 { padding: var(--space-12); }
+.p-4 { padding: var(--space-16); }
+.p-6 { padding: var(--space-24); }
+.p-8 { padding: var(--space-32); }
+
+/* Layout utilities */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-96);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    padding: 0 var(--space-48);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-24);
+  }
+}
+
+.section {
+  padding: var(--space-80) 0;
+}
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--space-8); }
+.gap-3 { gap: var(--space-12); }
+.gap-4 { gap: var(--space-16); }
+.gap-6 { gap: var(--space-24); }
+.gap-8 { gap: var(--space-32); }
+
+/* Grid utilities */
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* Text utilities */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.text-white { color: var(--color-white); }
+.text-red { color: var(--color-red); }
+.text-grey-600 { color: var(--color-grey-600); }
+.text-grey-500 { color: var(--color-grey-500); }
+.text-grey-300 { color: var(--color-grey-300); }
+
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+
+/* Background utilities */
+.bg-white { background-color: var(--color-white); }
+.bg-surface { background-color: var(--color-surface-grey); }
+.bg-dark { background-color: var(--color-ink-800); }
+.bg-red { background-color: var(--color-red); }
+
+/* Display utilities */
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+
+/* Position utilities */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }

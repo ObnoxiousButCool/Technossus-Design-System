@@ -1,0 +1,378 @@
+/**
+ * Technossus Design System
+ * Header & Hero Components
+ * Version 1.0.0
+ */
+
+/* ========================================
+   HERO SECTION
+   Usage: Main landing section with headline and CTA
+   ======================================== */
+
+/**
+ * Hero Container
+ * DO: Use for primary landing sections
+ * DON'T: Include more than 2 CTAs
+ */
+.hero {
+  width: 1398px;
+  background: var(--color-white);
+  padding: 6px var(--space-48);
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  width: 100%;
+  height: 579px;
+}
+
+/* ========================================
+   HERO TEXT CONTENT
+   ======================================== */
+
+/**
+ * Hero Text Container
+ * DO: Keep copy focused and scannable
+ * DON'T: Exceed 70 characters per line
+ */
+.hero__text {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 731px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-60);
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.hero__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/**
+ * Hero Title
+ * DO: Use mixed font weights for emphasis
+ * DON'T: Make the title longer than 2 lines
+ */
+.hero__title {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1.36;
+  color: var(--color-grey-600);
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
+.hero__title-medium {
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
+.hero__title-emphasis {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--color-red);
+}
+
+.hero__title-regular {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--color-grey-600);
+}
+
+/**
+ * Hero Subtitle
+ * DO: Provide clear value proposition
+ * DON'T: Duplicate title information
+ */
+.hero__sub {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--color-ink-500);
+}
+
+/**
+ * Hero CTAs
+ * DO: Primary + Secondary button pairing
+ * DON'T: Use more than 2 buttons
+ */
+.hero__ctas {
+  display: flex;
+  gap: var(--space-24);
+  align-items: flex-start;
+}
+
+/* ========================================
+   HERO IMAGE
+   ======================================== */
+
+/**
+ * Hero Image
+ * DO: Use high-quality, relevant imagery
+ * DON'T: Let images distract from the message
+ */
+.hero__image {
+  position: absolute;
+  top: 0;
+  left: 711px;
+  width: 579px;
+  height: 579px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.hero__image img {
+  width: 559px;
+  height: 559px;
+  object-fit: cover;
+}
+
+/* ========================================
+   EYEBROW COMPONENT
+   Usage: Section labels and tags
+   ======================================== */
+
+/**
+ * Eyebrow Label
+ * DO: Use for section categorization
+ * DON'T: Make text longer than 20 characters
+ */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.eyebrow__bracket {
+  display: block;
+  width: 4.83px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.eyebrow__bracket--right {
+  transform: rotate(180deg);
+}
+
+.eyebrow__text {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* ========================================
+   CLIENTS SECTION
+   Usage: Trust indicators, logo strips
+   ======================================== */
+
+/**
+ * Clients Strip
+ * DO: Show 3-5 recognizable brands
+ * DON'T: Include too many logos (creates clutter)
+ */
+.clients {
+  width: 1440px;
+  background: var(--color-surface-grey);
+  padding: 23px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clients__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-71);
+  font-family: var(--font-sans);
+  color: var(--color-grey-600);
+  font-size: 20px;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+.clients__trust {
+  font-weight: 400;
+}
+
+.clients__name {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   CTA SECTION
+   Usage: Call-to-action sections with emphasis
+   ======================================== */
+
+/**
+ * CTA Section
+ * DO: Create visual hierarchy with background
+ * DON'T: Hide important information behind images
+ */
+.cta {
+  position: relative;
+  width: 1248px;
+  background: var(--color-ink-800);
+  padding: var(--space-91) 0 0 var(--space-102);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-26);
+  align-items: flex-start;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.cta__vector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1248px;
+  height: 112px;
+  display: block;
+  z-index: var(--z-base);
+}
+
+.cta__row {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.cta__copy {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-26);
+  align-items: flex-start;
+}
+
+.cta__eyebrow {
+  width: 100%;
+  height: 21px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+.cta__main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  align-items: flex-start;
+}
+
+.cta__head {
+  width: 100%;
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  align-items: flex-start;
+  color: var(--color-white);
+}
+
+.cta__title {
+  margin: 0;
+  width: 559px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 41.521px;
+  color: var(--color-white);
+  font-variation-settings: 'GRAD' 0, 'wdth' 100;
+}
+
+.cta__title-em {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-red);
+}
+
+.cta__sub {
+  margin: 0;
+  width: 626px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 15.817px;
+  line-height: 26px;
+  color: var(--color-white);
+}
+
+.cta__btns {
+  display: flex;
+  gap: var(--space-16);
+  align-items: flex-start;
+}
+
+.cta__quote {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 15.817px;
+  line-height: 23.726px;
+  color: var(--color-white);
+}
+
+.cta__image {
+  width: 433px;
+  height: 378px;
+  flex-shrink: 0;
+}
+
+.cta__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========================================
+   RESPONSIVE BEHAVIOR
+   ======================================== */
+
+@media (max-width: 1440px) {
+  .hero,
+  .clients,
+  .cta {
+    width: 100%;
+  }
+  
+  .hero__inner {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .hero__text,
+  .hero__image {
+    position: static;
+    width: 100%;
+  }
+}
