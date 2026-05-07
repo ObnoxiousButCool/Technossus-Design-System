@@ -1,0 +1,32 @@
+{
+  "brand": {
+    "primary": { "value": "#ED2939", "comment": "Technossus red – CTA, links, accents" },
+    "black":   { "value": "#1E1E1E", "comment": "Near-black for strong foreground use" },
+    "gray":    { "value": "#616365", "comment": "Mid-tone brand gray" },
+    "lightGray": { "value": "#EEEEEE", "comment": "Light brand gray – borders, dividers" }
+  },
+  "background": {
+    "black":     { "value": "#010101" },
+    "darkGray1": { "value": "#1B1B1B" },
+    "darkGray2": { "value": "#232323" },
+    "darkGray3": { "value": "#343434" },
+    "gray4":     { "value": "#F9F9F9" }
+  },
+  "text": {
+    "gray100": { "value": "#FFFFFF" },
+    "gray200": { "value": "#F5F5F5" },
+    "gray300": { "value": "#E1E0E0" },
+    "gray400": { "value": "#C6C6C7" },
+    "gray500": { "value": "#ADADAD" },
+    "gray600": { "value": "#949494" },
+    "gray700": { "value": "#5C5C5C" },
+    "gray800": { "value": "#383838" },
+    "gray900": { "value": "#1E1E1E" }
+  },
+  "surfaces": {
+    "card": { "value": "#F8F9FB" }
+  },
+  "neutral": {
+    "600": { "value": "#7A7A7A" }
+  }
+}
