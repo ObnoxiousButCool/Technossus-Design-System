@@ -31,6 +31,20 @@ interface CardDarkLargeProps {
   className?: string;
 }
 
+// ─── Dark / Medium ───────────────────────────────────────────────────────────
+
+interface CardDarkMediumProps {
+  mode: 'dark';
+  variant: 'medium';
+  image?: string;
+  category?: string;
+  title: string;
+  description: string;
+  ctaLabel?: string;
+  onCta?: () => void;
+  className?: string;
+}
+
 // ─── Dark / Insights ─────────────────────────────────────────────────────────
 
 interface CardDarkInsightsProps {
@@ -73,6 +87,7 @@ interface CardLightDeliverProps {
 
 export type CardProps =
   | CardDarkSmallProps
+  | CardDarkMediumProps
   | CardDarkLargeProps
   | CardDarkInsightsProps
   | CardLightInsightsProps
@@ -135,6 +150,101 @@ export function Card(props: CardProps) {
         >
           {props.description}
         </p>
+      </div>
+    );
+  }
+
+  if (props.mode === 'dark' && props.variant === 'medium') {
+    return (
+      <div
+        className={props.className}
+        style={{
+          ...baseCardStyle,
+          background: '#1E1E1E',
+          width: '394px',
+        }}
+      >
+        {props.image && (
+          <div style={{ height: '220px', flexShrink: 0, position: 'relative' }}>
+            <img
+              src={props.image}
+              alt=""
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </div>
+        )}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', flex: 1 }}>
+          {props.category && (
+            <span
+              style={{
+                background: '#ED2939',
+                borderRadius: '37px',
+                padding: '4px 12px',
+                fontFamily: fontSans,
+                fontWeight: 600,
+                fontSize: '14px',
+                lineHeight: '20px',
+                color: '#FFFFFF',
+                display: 'inline-flex',
+                alignSelf: 'flex-start',
+              }}
+            >
+              {props.category}
+            </span>
+          )}
+          <h3
+            style={{
+              fontFamily: fontSans,
+              fontWeight: 600,
+              fontSize: '24px',
+              lineHeight: '32px',
+              color: '#FFFFFF',
+              margin: 0,
+            }}
+          >
+            {props.title}
+          </h3>
+          <p
+            style={{
+              fontFamily: fontSans,
+              fontWeight: 500,
+              fontSize: '16px',
+              lineHeight: '24px',
+              color: '#E1E0E0',
+              margin: 0,
+              flex: 1,
+            }}
+          >
+            {props.description}
+          </p>
+          {(props.ctaLabel || props.onCta) && (
+            <button
+              onClick={props.onCta}
+              style={{
+                border: '1px solid #ED2939',
+                background: 'transparent',
+                height: '48px',
+                padding: '12px 20px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                alignSelf: 'flex-start',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: fontSans,
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  lineHeight: '20px',
+                  color: '#ED2939',
+                }}
+              >
+                {props.ctaLabel ?? 'Learn More'}
+              </span>
+            </button>
+          )}
+        </div>
       </div>
     );
   }
