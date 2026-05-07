@@ -1,0 +1,122 @@
+/* Technossus Design System – CSS Custom Properties
+ * Auto-generated from Figma file: Ck1TA25mMoYJMnI6ag9Xmh
+ * Do not edit manually. */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,300..900;1,8..144,300..900&display=swap');
+
+:root {
+  /* ─── Brand ─────────────────────────────────────────── */
+  --color-brand-primary:    #ED2939;
+  --color-brand-black:      #1E1E1E;
+  --color-brand-gray:       #616365;
+  --color-brand-light-gray: #EEEEEE;
+
+  /* ─── Background ────────────────────────────────────── */
+  --color-bg-black:      #010101;
+  --color-bg-dark-1:     #1B1B1B;
+  --color-bg-dark-2:     #232323;
+  --color-bg-dark-3:     #343434;
+  --color-bg-gray-4:     #F9F9F9;
+
+  /* ─── Text / Grays ──────────────────────────────────── */
+  --color-text-100: #FFFFFF;
+  --color-text-200: #F5F5F5;
+  --color-text-300: #E1E0E0;
+  --color-text-400: #C6C6C7;
+  --color-text-500: #ADADAD;
+  --color-text-600: #949494;
+  --color-text-700: #5C5C5C;
+  --color-text-800: #383838;
+  --color-text-900: #1E1E1E;
+
+  /* ─── Surfaces ──────────────────────────────────────── */
+  --color-surface-card: #F8F9FB;
+
+  /* ─── Neutral ───────────────────────────────────────── */
+  --color-neutral-600: #7A7A7A;
+
+  /* ─── Font Families ─────────────────────────────────── */
+  --font-serif: "Roboto Serif", Georgia, serif;
+  --font-sans:  "General Sans", system-ui, -apple-system, sans-serif;
+
+  /* ─── Typography Scale ──────────────────────────────── */
+  /* Display */
+  --text-d1-size:    48px;
+  --text-d1-lh:      52px;
+  --text-d1-weight:  500;
+  --text-d1-ls:      -0.02em;
+
+  --text-d2-size:    40px;
+  --text-d2-lh:      48px;
+  --text-d2-weight:  600;
+  --text-d2-ls:      -0.025em;
+
+  /* Heading */
+  --text-h1-size:    36px;
+  --text-h1-lh:      40px;
+  --text-h1-weight:  500;
+
+  --text-h2-size:    32px;
+  --text-h2-lh:      36px;
+  --text-h2-weight:  600;
+
+  --text-h3-size:    24px;
+  --text-h3-lh:      32px;
+  --text-h3-weight:  600;
+
+  --text-h4-size:    20px;
+  --text-h4-lh:      28px;
+  --text-h4-weight:  600;
+
+  /* Body */
+  --text-b1-size:    18px;
+  --text-b1-lh:      24px;
+  --text-b1-weight:  500;
+
+  --text-b2-size:    16px;
+  --text-b2-lh:      24px;
+  --text-b2-weight:  500;
+
+  --text-b3-size:    14px;
+  --text-b3-lh:      20px;
+  --text-b3-weight:  500;
+
+  /* Label */
+  --text-l1-size:    16px;
+  --text-l1-lh:      28px;
+  --text-l1-weight:  600;
+
+  --text-l2-size:    14px;
+  --text-l2-lh:      20px;
+  --text-l2-weight:  600;
+
+  /* ─── Spacing ────────────────────────────────────────── */
+  --space-0:   0px;
+  --space-1:   1px;
+  --space-2:   2px;
+  --space-4:   4px;
+  --space-8:   8px;
+  --space-12:  12px;
+  --space-16:  16px;
+  --space-20:  20px;
+  --space-24:  24px;
+  --space-28:  28px;
+  --space-32:  32px;
+  --space-36:  36px;
+  --space-40:  40px;
+  --space-44:  44px;
+  --space-48:  48px;
+  --space-52:  52px;
+  --space-56:  56px;
+  --space-60:  60px;
+  --space-64:  64px;
+  --space-68:  68px;
+  --space-72:  72px;
+  --space-76:  76px;
+  --space-80:  80px;
+  --space-84:  84px;
+  --space-88:  88px;
+  --space-92:  92px;
+  --space-96:  96px;
+  --space-100: 100px;
+}
