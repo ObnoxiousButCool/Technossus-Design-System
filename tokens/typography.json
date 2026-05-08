@@ -1,0 +1,93 @@
+{
+  "fontFamilies": {
+    "serif": "\"Roboto Serif\", Georgia, serif",
+    "sans": "\"General Sans\", system-ui, -apple-system, sans-serif"
+  },
+  "display": {
+    "d1": {
+      "fontFamily": "Roboto Serif",
+      "fontWeight": 500,
+      "fontSize": 48,
+      "lineHeight": 52,
+      "letterSpacing": -2,
+      "comment": "Display 1 – largest hero text"
+    },
+    "d2": {
+      "fontFamily": "Roboto Serif",
+      "fontWeight": 600,
+      "fontSize": 40,
+      "lineHeight": 48,
+      "letterSpacing": -1,
+      "comment": "Display 2 – secondary hero"
+    }
+  },
+  "heading": {
+    "h1": {
+      "fontFamily": "Roboto Serif",
+      "fontWeight": 500,
+      "fontSize": 36,
+      "lineHeight": 40,
+      "letterSpacing": 0
+    },
+    "h2": {
+      "fontFamily": "Roboto Serif",
+      "fontWeight": 600,
+      "fontSize": 32,
+      "lineHeight": 36,
+      "letterSpacing": 0
+    },
+    "h3": {
+      "fontFamily": "General Sans",
+      "fontWeight": 600,
+      "fontSize": 24,
+      "lineHeight": 32,
+      "letterSpacing": 0
+    },
+    "h4": {
+      "fontFamily": "General Sans",
+      "fontWeight": 600,
+      "fontSize": 20,
+      "lineHeight": 28,
+      "letterSpacing": 0
+    }
+  },
+  "body": {
+    "b1": {
+      "fontFamily": "General Sans",
+      "fontWeight": 500,
+      "fontSize": 18,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    },
+    "b2": {
+      "fontFamily": "General Sans",
+      "fontWeight": 500,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    },
+    "b3": {
+      "fontFamily": "General Sans",
+      "fontWeight": 500,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0
+    }
+  },
+  "label": {
+    "l1": {
+      "fontFamily": "General Sans",
+      "fontWeight": 600,
+      "fontSize": 16,
+      "lineHeight": 28,
+      "letterSpacing": 0
+    },
+    "l2": {
+      "fontFamily": "General Sans",
+      "fontWeight": 600,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0
+    }
+  }
+}

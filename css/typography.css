@@ -1,0 +1,81 @@
+/* Technossus Design System – Typography Classes */
+@import './variables.css';
+
+.text-d1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-d1-size);
+  line-height: var(--text-d1-lh);
+  font-weight: var(--text-d1-weight);
+  letter-spacing: var(--text-d1-ls);
+}
+
+.text-d2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-d2-size);
+  line-height: var(--text-d2-lh);
+  font-weight: var(--text-d2-weight);
+  letter-spacing: var(--text-d2-ls);
+}
+
+.text-h1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1-size);
+  line-height: var(--text-h1-lh);
+  font-weight: var(--text-h1-weight);
+}
+
+.text-h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h2-size);
+  line-height: var(--text-h2-lh);
+  font-weight: var(--text-h2-weight);
+}
+
+.text-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h3-size);
+  line-height: var(--text-h3-lh);
+  font-weight: var(--text-h3-weight);
+}
+
+.text-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h4-size);
+  line-height: var(--text-h4-lh);
+  font-weight: var(--text-h4-weight);
+}
+
+.text-b1 {
+  font-family: var(--font-sans);
+  font-size: var(--text-b1-size);
+  line-height: var(--text-b1-lh);
+  font-weight: var(--text-b1-weight);
+}
+
+.text-b2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-b2-size);
+  line-height: var(--text-b2-lh);
+  font-weight: var(--text-b2-weight);
+}
+
+.text-b3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-b3-size);
+  line-height: var(--text-b3-lh);
+  font-weight: var(--text-b3-weight);
+}
+
+.text-l1 {
+  font-family: var(--font-sans);
+  font-size: var(--text-l1-size);
+  line-height: var(--text-l1-lh);
+  font-weight: var(--text-l1-weight);
+}
+
+.text-l2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-l2-size);
+  line-height: var(--text-l2-lh);
+  font-weight: var(--text-l2-weight);
+}

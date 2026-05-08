@@ -1,0 +1,48 @@
+{
+  "name": "@technossus/design-system",
+  "version": "1.0.0",
+  "description": "Technossus Design System — tokens, CSS variables, Tailwind preset, and React components sourced from Figma",
+  "author": "Technossus <pranav.manchanda@technossus.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pranavmanchanda/trying-this.git"
+  },
+  "homepage": "https://github.com/pranavmanchanda/trying-this#readme",
+  "keywords": ["design-system", "technossus", "tokens", "react", "tailwind", "css"],
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./tokens": "./tokens/index.json",
+    "./tokens/colors": "./tokens/colors.json",
+    "./tokens/typography": "./tokens/typography.json",
+    "./tokens/spacing": "./tokens/spacing.json",
+    "./css": "./css/index.css",
+    "./css/variables": "./css/variables.css",
+    "./css/typography": "./css/typography.css",
+    "./tailwind": "./tailwind/preset.js",
+    "./components": "./components/index.ts"
+  },
+  "files": [
+    "index.ts",
+    "tokens/",
+    "css/",
+    "js/",
+    "ts/",
+    "tailwind/",
+    "components/",
+    "docs/"
+  ],
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "docs": "open docs/index.html"
+  }
+}
