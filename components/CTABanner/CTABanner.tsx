@@ -1,174 +1,104 @@
 import React from 'react';
 
-type CTABannerSize = 'large' | 'small';
+export type CTABannerSize = 'large' | 'small';
 
-interface CTABannerProps {
+export interface CTABannerProps {
   size?: CTABannerSize;
+  label?: string;
   heading: string;
-  subheading?: string;
+  body?: string;
+  primaryCta?: string;
+  secondaryCta?: string;
+  onPrimary?: () => void;
+  onSecondary?: () => void;
+  /** @deprecated use primaryCta + onPrimary */
   ctaLabel?: string;
+  /** @deprecated */
   onCta?: () => void;
   className?: string;
 }
 
-const fontSans = '"General Sans", system-ui, -apple-system, sans-serif';
-const fontSerif = '"Roboto Serif", Georgia, serif';
-
-const ArrowIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
+const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
+const serif = '"Roboto Serif", Georgia, serif';
+const red   = '#ED2939';
+const dark  = '#1B1B1B';
 
 export function CTABanner({
   size = 'large',
+  label,
   heading,
-  subheading,
-  ctaLabel = 'Explore Solutions',
+  body,
+  primaryCta,
+  secondaryCta,
+  onPrimary,
+  onSecondary,
+  ctaLabel,
   onCta,
   className = '',
 }: CTABannerProps) {
+
+  const resolvedPrimary  = primaryCta ?? ctaLabel ?? 'Get Started →';
+  const resolvedCallback = onPrimary  ?? onCta;
+
+  /* ── Large: dark banner with red top border, left content + right image ── */
   if (size === 'large') {
     return (
-      <div
-        className={className}
-        style={{
-          background: '#ED2939',
-          padding: '80px 48px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '40px',
-          textAlign: 'center',
-          width: '100%',
-          boxSizing: 'border-box',
-        }}
-      >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '720px' }}>
-          <h2
-            style={{
-              fontFamily: fontSerif,
-              fontWeight: 600,
-              fontSize: '40px',
-              lineHeight: '48px',
-              letterSpacing: '-1px',
-              color: '#FFFFFF',
-              margin: 0,
-            }}
-          >
-            {heading}
-          </h2>
-          {subheading && (
-            <p
-              style={{
-                fontFamily: fontSans,
-                fontWeight: 500,
-                fontSize: '18px',
-                lineHeight: '24px',
-                color: 'rgba(255,255,255,0.85)',
-                margin: 0,
-              }}
-            >
-              {subheading}
-            </p>
-          )}
+      <div className={className} style={{ padding: '0 96px' }}>
+        <div style={{ background: dark, position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: red }} />
+          <div style={{ padding: 80, display: 'flex', alignItems: 'center', gap: 64 }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 20 }}>
+              {label && (
+                <p style={{ fontFamily: sans, fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: '#9B9B9B', margin: 0 }}>
+                  {label}
+                </p>
+              )}
+              <h2 style={{ fontFamily: serif, fontSize: 40, lineHeight: '48px', fontWeight: 600, letterSpacing: '-1px', color: '#fff', margin: 0 }}>
+                {heading}
+              </h2>
+              {body && (
+                <p style={{ fontFamily: sans, fontSize: 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 500, margin: 0 }}>
+                  {body}
+                </p>
+              )}
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 8 }}>
+                <button onClick={resolvedCallback}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: red, color: '#fff', fontFamily: sans, fontWeight: 700, fontSize: 14, height: 56, padding: '0 28px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                  {resolvedPrimary}
+                </button>
+                {secondaryCta && (
+                  <button onClick={onSecondary}
+                    style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 28px', border: '2px solid #fff', color: '#fff', fontFamily: sans, fontWeight: 700, fontSize: 14, background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                    {secondaryCta}
+                  </button>
+                )}
+              </div>
+            </div>
+            <div style={{ flex: '0 0 420px', height: 320, background: '#2A2A2A' }} />
+          </div>
         </div>
-        <button
-          onClick={onCta}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: '#FFFFFF',
-            color: '#ED2939',
-            border: 'none',
-            height: '56px',
-            padding: '16px 24px',
-            borderRadius: '8px',
-            fontFamily: fontSans,
-            fontWeight: 600,
-            fontSize: '16px',
-            lineHeight: '28px',
-            cursor: 'pointer',
-          }}
-        >
-          {ctaLabel}
-          <ArrowIcon />
-        </button>
       </div>
     );
   }
 
+  /* ── Small: dark banner with red radial glow ── */
   return (
-    <div
-      className={className}
-      style={{
-        background: '#1E1E1E',
-        padding: '40px 48px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: '32px',
-        width: '100%',
-        boxSizing: 'border-box',
-        flexWrap: 'wrap',
-      }}
-    >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
-        <h3
-          style={{
-            fontFamily: fontSans,
-            fontWeight: 600,
-            fontSize: '24px',
-            lineHeight: '32px',
-            color: '#FFFFFF',
-            margin: 0,
-          }}
-        >
+    <div className={className}
+      style={{ background: dark, border: '1px solid #2E2E2E', padding: '36px 40px', display: 'flex', alignItems: 'center', gap: 32, backgroundImage: 'radial-gradient(circle at right,#3A1416 0%,#1B1B1B 60%)' }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <h3 style={{ fontFamily: serif, fontWeight: 600, fontSize: 24, lineHeight: 1.3, color: '#fff', margin: 0 }}>
           {heading}
         </h3>
-        {subheading && (
-          <p
-            style={{
-              fontFamily: fontSans,
-              fontWeight: 500,
-              fontSize: '16px',
-              lineHeight: '24px',
-              color: '#ADADAD',
-              margin: 0,
-            }}
-          >
-            {subheading}
-          </p>
+        {body && (
+          <p style={{ fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: '#B5B5B5', margin: 0 }}>{body}</p>
         )}
       </div>
-      <button
-        onClick={onCta}
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          background: '#ED2939',
-          color: '#FFFFFF',
-          border: 'none',
-          height: '56px',
-          padding: '16px 24px',
-          borderRadius: '8px',
-          fontFamily: fontSans,
-          fontWeight: 600,
-          fontSize: '16px',
-          lineHeight: '28px',
-          cursor: 'pointer',
-          whiteSpace: 'nowrap',
-          flexShrink: 0,
-        }}
-      >
-        {ctaLabel}
-        <ArrowIcon />
+      <button onClick={resolvedCallback}
+        style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: red, color: '#fff', fontFamily: sans, fontWeight: 700, fontSize: 14, height: 48, padding: '0 20px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}>
+        {resolvedPrimary}
       </button>
     </div>
   );
 }
 
-export type { CTABannerProps, CTABannerSize };
 export default CTABanner;
