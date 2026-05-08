@@ -1,7 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 const preset = {
   theme: {
+    screens: {
+      'xs':   '320px',
+      'sm':   '375px',
+      'md':   '430px',
+      'lg':   '768px',
+      'xl':   '1024px',
+      '2xl':  '1280px',
+      '3xl':  '1440px',
+      '4xl':  '1728px',
+      '5xl':  '1920px',
+    },
     extend: {
+      maxWidth: {
+        'desktop':       '1440px',
+        'large-desktop': '1728px',
+      },
       colors: {
         brand: {
           primary:   '#ED2939',

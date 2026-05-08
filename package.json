@@ -18,11 +18,15 @@
     "./tokens/colors": "./tokens/colors.json",
     "./tokens/typography": "./tokens/typography.json",
     "./tokens/spacing": "./tokens/spacing.json",
+    "./tokens/breakpoints": "./tokens/breakpoints.json",
     "./css": "./css/index.css",
     "./css/variables": "./css/variables.css",
     "./css/typography": "./css/typography.css",
+    "./css/grid": "./css/grid.css",
+    "./css/responsive": "./css/responsive.css",
     "./tailwind": "./tailwind/preset.js",
-    "./components": "./components/index.ts"
+    "./components": "./components/index.ts",
+    "./breakpoints": "./ts/breakpoints.ts"
   },
   "files": [
     "index.ts",

@@ -62,6 +62,23 @@
       "l2": { "fontFamily": "General Sans", "fontWeight": 600, "fontSize": 14, "lineHeight": 20, "letterSpacing": 0 }
     }
   },
+  "breakpoints": {
+    "xs":  { "value": 320,  "unit": "px", "description": "Mobile small" },
+    "sm":  { "value": 375,  "unit": "px", "description": "Mobile base" },
+    "md":  { "value": 430,  "unit": "px", "description": "Mobile large" },
+    "lg":  { "value": 768,  "unit": "px", "description": "Tablet portrait" },
+    "xl":  { "value": 1024, "unit": "px", "description": "Tablet landscape / small laptop" },
+    "2xl": { "value": 1280, "unit": "px", "description": "Desktop standard" },
+    "3xl": { "value": 1440, "unit": "px", "description": "Desktop wide" },
+    "4xl": { "value": 1728, "unit": "px", "description": "Large desktop" },
+    "5xl": { "value": 1920, "unit": "px", "description": "Ultra wide" }
+  },
+  "grid": {
+    "mobile":       { "columns": 4,  "margin": 16, "gutter": 16 },
+    "tablet":       { "columns": 8,  "margin": 32, "gutter": 24 },
+    "desktop":      { "columns": 12, "margin": 80, "gutter": 24, "maxWidth": 1440 },
+    "largeDesktop": { "columns": 12, "margin": 80, "gutter": 24, "maxWidth": 1728 }
+  },
   "spacing": {
     "0":   0,  "1":  1,  "2":  2,  "4":  4,  "8":  8,
     "12": 12, "16": 16, "20": 20, "24": 24, "28": 28,

@@ -6,6 +6,7 @@ import { Accordion }  from '../components/Accordion';
 import { Card }       from '../components/Card';
 import { CTABanner }  from '../components/CTABanner';
 import { colors, typography, spacing } from '../ts/tokens';
+import { useBreakpoint } from '../ts/breakpoints';
 
 // ─── Asset URLs (from Figma MCP localhost server) ────────────────────────────
 const imgHero        = 'http://localhost:3845/assets/f68775186969128d3be25b0026c80030ba4ab81f.png';
@@ -100,6 +101,7 @@ function PainPointBox({ heading, body }: { heading: string; body: string }) {
 
 function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isDesktop } = useBreakpoint();
 
   const navItems = ['AI Studio', 'Services', 'Industries', 'Resources', 'About Us', 'Careers'];
 
@@ -119,16 +121,16 @@ function SiteHeader() {
         style={{
           maxWidth: 1440,
           margin: '0 auto',
-          padding: '0 96px',
-          height: 80,
+          padding: isDesktop ? '0 96px' : '0 20px',
+          height: 72,
           display: 'flex',
           alignItems: 'center',
-          gap: 40,
+          gap: 32,
         }}
       >
         {/* Logo */}
         <a href="/" style={{ flexShrink: 0, display: 'flex', textDecoration: 'none' }}>
-          <svg width="193" height="32" viewBox="0 0 220 40" fill="none">
+          <svg width="160" height="30" viewBox="0 0 220 40" fill="none">
             <text x="0" y="29" fontFamily={fontSans} fontWeight="700" fontSize="22" fill={nearBlack} letterSpacing="-0.5">
               technossus
             </text>
@@ -137,37 +139,106 @@ function SiteHeader() {
         </a>
 
         {/* Desktop Nav */}
-        <nav style={{ flex: 1, display: 'flex', gap: 32, alignItems: 'center', justifyContent: 'center' }}>
+        {isDesktop && (
+          <nav style={{ flex: 1, display: 'flex', gap: 24, alignItems: 'center', justifyContent: 'center' }}>
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                style={{
+                  fontFamily: fontSans,
+                  fontWeight: 500,
+                  fontSize: 14,
+                  lineHeight: '20px',
+                  color: nearBlack,
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {item}
+                {(item === 'Services' || item === 'Industries') && (
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M4 6l4 4 4-4" stroke={nearBlack} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
+              </a>
+            ))}
+          </nav>
+        )}
+
+        {/* Desktop CTA */}
+        {isDesktop && <Button variant="cta" label="Contact us" />}
+
+        {/* Mobile hamburger */}
+        {!isDesktop && (
+          <button
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            style={{
+              marginLeft: 'auto',
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '4px',
+              color: nearBlack,
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            {mobileOpen ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            )}
+          </button>
+        )}
+      </div>
+
+      {/* Mobile menu drawer */}
+      {!isDesktop && mobileOpen && (
+        <nav
+          aria-label="Mobile navigation"
+          style={{
+            background: '#FFFFFF',
+            borderTop: `1px solid ${colors.brand.lightGray}`,
+            padding: '16px 20px 24px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 0,
+          }}
+        >
           {navItems.map((item) => (
             <a
               key={item}
               href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+              onClick={() => setMobileOpen(false)}
               style={{
                 fontFamily: fontSans,
                 fontWeight: 500,
-                fontSize: 14,
+                fontSize: 16,
                 lineHeight: '20px',
                 color: nearBlack,
                 textDecoration: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 4,
-                whiteSpace: 'nowrap',
+                padding: '14px 0',
+                borderBottom: `1px solid ${colors.brand.lightGray}`,
               }}
             >
               {item}
-              {(item === 'Services' || item === 'Industries') && (
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M4 6l4 4 4-4" stroke={nearBlack} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              )}
             </a>
           ))}
+          <div style={{ paddingTop: 20 }}>
+            <Button variant="cta" label="Contact us" />
+          </div>
         </nav>
-
-        {/* CTA */}
-        <Button variant="cta" label="Contact us" />
-      </div>
+      )}
     </header>
   );
 }
@@ -175,6 +246,8 @@ function SiteHeader() {
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
 function SiteFooter() {
+  const { isMobile } = useBreakpoint();
+  const footerPad = isMobile ? '20px' : '96px';
   const offerings = [
     'AI Led Business Transformation',
     'Product Engineering',
@@ -202,7 +275,7 @@ function SiteFooter() {
         style={{
           maxWidth: 1440,
           margin: '0 auto',
-          padding: '52px 96px 80px',
+          padding: `${isMobile ? 40 : 52}px ${footerPad} ${isMobile ? 48 : 80}px`,
           display: 'flex',
           gap: 48,
           flexWrap: 'wrap',
@@ -262,12 +335,12 @@ function SiteFooter() {
       </div>
 
       {/* Bottom bar */}
-      <div style={{ height: 1, background: colors.background.dark3, margin: '0 96px' }} />
+      <div style={{ height: 1, background: colors.background.dark3, margin: `0 ${footerPad}` }} />
       <div
         style={{
           maxWidth: 1440,
           margin: '0 auto',
-          padding: '24px 96px',
+          padding: `24px ${footerPad}`,
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -293,6 +366,7 @@ function SiteFooter() {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export function ServicesPage() {
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
   const accordionItems = [
     {
       question: 'Continuous Quality & QA Ops Engineering',
@@ -338,11 +412,13 @@ export function ServicesPage() {
     },
   ];
 
+  const hPad = isMobile ? '20px' : isTablet ? '40px' : '96px';
+
   const sectionPad: React.CSSProperties = {
     maxWidth: 1440,
     width: '100%',
     margin: '0 auto',
-    padding: `0 96px`,
+    padding: `0 ${hPad}`,
     boxSizing: 'border-box',
   };
 
@@ -368,21 +444,31 @@ export function ServicesPage() {
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
-            gap: 80,
-            minHeight: 540,
+            flexDirection: isMobile ? 'column' : 'row',
+            alignItems: isMobile ? 'flex-start' : 'center',
+            gap: isMobile ? 32 : 80,
+            minHeight: isMobile ? 'auto' : 540,
             overflow: 'hidden',
+            paddingTop: isMobile ? 24 : 0,
+            paddingBottom: isMobile ? 32 : 0,
           }}
         >
           {/* Left */}
-          <div style={{ flex: '0 0 820px', display: 'flex', flexDirection: 'column', gap: 60 }}>
+          <div
+            style={{
+              flex: isDesktop ? '0 0 820px' : 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: isMobile ? 32 : 60,
+            }}
+          >
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <h1
                 style={{
                   fontFamily: fontSerif,
                   fontWeight: 500,
-                  fontSize: 48,
-                  lineHeight: '56px',
+                  fontSize: isMobile ? 32 : isTablet ? 40 : 48,
+                  lineHeight: isMobile ? '38px' : isTablet ? '46px' : '56px',
                   letterSpacing: '-0.96px',
                   margin: 0,
                 }}
@@ -394,7 +480,7 @@ export function ServicesPage() {
                 style={{
                   fontFamily: fontSans,
                   fontWeight: 500,
-                  fontSize: 18,
+                  fontSize: isMobile ? 16 : 18,
                   lineHeight: '24px',
                   color: colors.text[700],
                   margin: 0,
@@ -403,52 +489,63 @@ export function ServicesPage() {
                 Most quality programs are built to catch what already went wrong. We work with your team to build the kind of intelligence that finds problems before your users do and the kind of automation that holds up long after we're gone.
               </p>
             </div>
-            <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
               <Button variant="primary" label="Show us the problem" />
               <Button variant="secondary" label="See How We Work" />
             </div>
           </div>
 
-          {/* Right – hero image */}
-          <div style={{ flex: '0 0 540px', height: 540, overflow: 'hidden', position: 'relative' }}>
-            <img
-              src={imgHero}
-              alt="Business professional"
-              style={{ position: 'absolute', inset: 0, width: '120%', height: '100%', objectFit: 'cover', left: '-10%' }}
-            />
-          </div>
+          {/* Right – hero image (hidden on small mobile) */}
+          {!isMobile && (
+            <div
+              style={{
+                flex: isDesktop ? '0 0 540px' : '0 0 340px',
+                height: isDesktop ? 540 : 360,
+                overflow: 'hidden',
+                position: 'relative',
+                borderRadius: 8,
+              }}
+            >
+              <img
+                src={imgHero}
+                alt="Business professional"
+                style={{ position: 'absolute', inset: 0, width: '120%', height: '100%', objectFit: 'cover', left: '-10%' }}
+              />
+            </div>
+          )}
         </div>
       </section>
 
       {/* ── Trusted By ── */}
-      <section style={{ ...sectionPad, paddingTop: 40, paddingBottom: 48, borderTop: `1px solid ${colors.brand.lightGray}` }}>
+      <section style={{ ...sectionPad, paddingTop: 32, paddingBottom: 40, borderTop: `1px solid ${colors.brand.lightGray}` }}>
         <p
           style={{
-            fontFamily: fontSans, fontWeight: 500, fontSize: 16,
+            fontFamily: fontSans, fontWeight: 500, fontSize: 14,
             lineHeight: '24px', color: colors.neutral[600],
-            textAlign: 'center', margin: '0 0 24px',
+            textAlign: 'center', margin: '0 0 24px', letterSpacing: '0.06em',
           }}
         >
           TRUSTED BY
         </p>
-        <div style={{ display: 'flex', gap: 96, alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <img src={imgLogo1} alt="Client" style={{ height: 42, objectFit: 'contain' }} />
-          <img src={imgLogo2} alt="Client" style={{ height: 42, objectFit: 'contain' }} />
-          <img src={imgLogo3} alt="Client" style={{ height: 35, objectFit: 'contain' }} />
-          <img src={imgLogo4} alt="Client" style={{ height: 61, objectFit: 'contain' }} />
+        <div style={{ display: 'flex', gap: isMobile ? 32 : 96, alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <img src={imgLogo1} alt="Client" style={{ height: isMobile ? 32 : 42, objectFit: 'contain' }} />
+          <img src={imgLogo2} alt="Client" style={{ height: isMobile ? 32 : 42, objectFit: 'contain' }} />
+          <img src={imgLogo3} alt="Client" style={{ height: isMobile ? 28 : 35, objectFit: 'contain' }} />
+          <img src={imgLogo4} alt="Client" style={{ height: isMobile ? 46 : 61, objectFit: 'contain' }} />
         </div>
       </section>
 
       {/* ── The Shift ── */}
-      <section style={{ width: '100%', boxSizing: 'border-box', padding: '0 96px' }}>
+      <section style={{ width: '100%', boxSizing: 'border-box', padding: `0 ${hPad}` }}>
         <SectionTag label="THE SHIFT" />
         <div
           style={{
             background: dark1,
             display: 'flex',
-            gap: 36,
-            alignItems: 'center',
-            padding: 56,
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: isMobile ? 32 : 36,
+            alignItems: isMobile ? 'stretch' : 'center',
+            padding: isMobile ? 24 : 56,
             marginTop: 16,
             position: 'relative',
             overflow: 'hidden',
@@ -459,11 +556,13 @@ export function ServicesPage() {
           <img src={imgSubtractBR} alt="" style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none', transform: 'scaleY(-1)' }} />
 
           {/* Left text */}
-          <div style={{ flex: '0 0 485px', display: 'flex', flexDirection: 'column', gap: 36 }}>
+          <div style={{ flex: isDesktop ? '0 0 485px' : 1, display: 'flex', flexDirection: 'column', gap: 24 }}>
             <h2
               style={{
-                fontFamily: fontSerif, fontWeight: 500, fontSize: 36,
-                lineHeight: '40px', margin: 0,
+                fontFamily: fontSerif, fontWeight: 500,
+                fontSize: isMobile ? 24 : 36,
+                lineHeight: isMobile ? '30px' : '40px',
+                margin: 0,
               }}
             >
               <span style={{ color: '#FFFFFF' }}>Quality doesn't start at the end of the build. That's just where </span>
@@ -479,13 +578,13 @@ export function ServicesPage() {
             </div>
           </div>
 
-          {/* Right – 2×2 stat bento */}
+          {/* Right – 2×2 stat bento (1 col on mobile) */}
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <div style={{ display: 'flex', gap: 20 }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 20 }}>
               <StatBox stat={bentoStats[0].stat} description={bentoStats[0].description} source={bentoStats[0].source} />
               <StatBox stat={bentoStats[1].stat} description={bentoStats[1].description} source={bentoStats[1].source} />
             </div>
-            <div style={{ display: 'flex', gap: 20 }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 20 }}>
               <StatBox stat={bentoStats[2].stat} description={bentoStats[2].description} source={bentoStats[2].source} />
               <StatBox stat={bentoStats[3].stat} description={bentoStats[3].description} source={bentoStats[3].source} />
             </div>
@@ -494,7 +593,7 @@ export function ServicesPage() {
       </section>
 
       {/* ── Service Offerings (Accordion) ── */}
-      <section style={{ ...sectionPad, paddingTop: 80, paddingBottom: 80 }}>
+      <section style={{ ...sectionPad, paddingTop: isMobile ? 48 : 80, paddingBottom: isMobile ? 48 : 80 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <SectionTag label="SERVICE OFFERINGS" />
@@ -513,15 +612,17 @@ export function ServicesPage() {
       </section>
 
       {/* ── Capability Transfer ── */}
-      <section style={{ ...sectionPad, paddingTop: 80, paddingBottom: 80 }}>
-        <div style={{ display: 'flex', gap: 32, alignItems: 'flex-start' }}>
+      <section style={{ ...sectionPad, paddingTop: isMobile ? 48 : 80, paddingBottom: isMobile ? 48 : 80 }}>
+        <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 32 : 32, alignItems: 'flex-start' }}>
           {/* Left text */}
-          <div style={{ flex: '0 0 726px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ flex: isDesktop ? '0 0 726px' : 1, display: 'flex', flexDirection: 'column', gap: 24 }}>
             <SectionTag label="CAPABILITY TRANSFER" />
             <h2
               style={{
-                fontFamily: fontSerif, fontWeight: 500, fontSize: 36,
-                lineHeight: '40px', color: nearBlack, margin: 0,
+                fontFamily: fontSerif, fontWeight: 500,
+                fontSize: isMobile ? 24 : 36,
+                lineHeight: isMobile ? '30px' : '40px',
+                color: nearBlack, margin: 0,
               }}
             >
               We don't build a testing practice your team can't maintain.
@@ -536,7 +637,7 @@ export function ServicesPage() {
 
           {/* Right – 2×2 service cards */}
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 24 }}>
-            <div style={{ display: 'flex', gap: 24 }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 24 }}>
               <Card
                 mode="dark" variant="small"
                 title="Automate document workflows"
@@ -548,7 +649,7 @@ export function ServicesPage() {
                 description="Generate intelligent test cases from requirements and user stories. Let AI identify edge cases your team might miss."
               />
             </div>
-            <div style={{ display: 'flex', gap: 24 }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 24 }}>
               <Card
                 mode="dark" variant="small"
                 title="Continuous compliance monitoring"
@@ -569,7 +670,7 @@ export function ServicesPage() {
         style={{
           width: '100%', boxSizing: 'border-box',
           background: colors.background.gray4,
-          padding: '80px 96px',
+          padding: `${isMobile ? 48 : 80}px ${hPad}`,
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -577,9 +678,9 @@ export function ServicesPage() {
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
             <SectionTag label="CASE STUDIES" />
-            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <h2 style={{ fontFamily: fontSerif, fontWeight: 500, fontSize: 36, lineHeight: '40px', color: nearBlack, margin: 0 }}>
+                <h2 style={{ fontFamily: fontSerif, fontWeight: 500, fontSize: isMobile ? 24 : 36, lineHeight: isMobile ? '30px' : '40px', color: nearBlack, margin: 0 }}>
                   Success stories.
                 </h2>
                 <p style={{ fontFamily: fontSans, fontWeight: 500, fontSize: 16, lineHeight: '24px', color: colors.text[700], margin: 0 }}>
@@ -589,7 +690,7 @@ export function ServicesPage() {
               <Button variant="text-link" label="View All" />
             </div>
 
-            <div style={{ display: 'flex', gap: 20 }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 20, flexWrap: isTablet ? 'wrap' : 'nowrap' }}>
               <Card
                 mode="light" variant="insights"
                 image={imgCaseStudy1}
@@ -606,26 +707,28 @@ export function ServicesPage() {
                 excerpt="We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40% using event-driven microservices."
                 ctaLabel="See How We Work"
               />
-              <Card
-                mode="light" variant="insights"
-                image={imgCaseStudy1}
-                tags="HITECH · AI QUALITY"
-                title="Building AI Evaluation Pipelines for a Global SaaS Platform"
-                excerpt="Designed and deployed model validation infrastructure to detect behavioral drift, bias, and safety regressions across production LLM deployments."
-                ctaLabel="See How We Work"
-              />
+              {!isMobile && (
+                <Card
+                  mode="light" variant="insights"
+                  image={imgCaseStudy1}
+                  tags="HITECH · AI QUALITY"
+                  title="Building AI Evaluation Pipelines for a Global SaaS Platform"
+                  excerpt="Designed and deployed model validation infrastructure to detect behavioral drift, bias, and safety regressions across production LLM deployments."
+                  ctaLabel="See How We Work"
+                />
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Pain Points ── */}
-      <section style={{ ...sectionPad, paddingTop: 80, paddingBottom: 80 }}>
+      <section style={{ ...sectionPad, paddingTop: isMobile ? 48 : 80, paddingBottom: isMobile ? 48 : 80 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <SectionTag label="COMMON CHALLENGES" />
             <div>
-              <h2 style={{ fontFamily: fontSerif, fontWeight: 500, fontSize: 36, lineHeight: '40px', color: nearBlack, margin: '0 0 8px' }}>
+              <h2 style={{ fontFamily: fontSerif, fontWeight: 500, fontSize: isMobile ? 24 : 36, lineHeight: isMobile ? '30px' : '40px', color: nearBlack, margin: '0 0 8px' }}>
                 If any of these sound like your last project retrospective, we should talk.
               </h2>
               <p style={{ fontFamily: fontSans, fontWeight: 500, fontSize: 16, lineHeight: '24px', color: colors.text[700], margin: 0 }}>
@@ -635,14 +738,14 @@ export function ServicesPage() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-            <div style={{ display: 'flex', borderTop: `1px solid ${colors.background.dark3}` }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', borderTop: `1px solid ${colors.background.dark3}` }}>
               <PainPointBox heading={painPoints[0].heading} body={painPoints[0].body} />
-              <div style={{ width: 1, background: colors.background.dark3, flexShrink: 0 }} />
+              {!isMobile && <div style={{ width: 1, background: colors.background.dark3, flexShrink: 0 }} />}
               <PainPointBox heading={painPoints[1].heading} body={painPoints[1].body} />
             </div>
-            <div style={{ display: 'flex', borderTop: `1px solid ${colors.background.dark3}`, borderBottom: `1px solid ${colors.background.dark3}` }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', borderTop: `1px solid ${colors.background.dark3}`, borderBottom: `1px solid ${colors.background.dark3}` }}>
               <PainPointBox heading={painPoints[2].heading} body={painPoints[2].body} />
-              <div style={{ width: 1, background: colors.background.dark3, flexShrink: 0 }} />
+              {!isMobile && <div style={{ width: 1, background: colors.background.dark3, flexShrink: 0 }} />}
               <PainPointBox heading={painPoints[3].heading} body={painPoints[3].body} />
             </div>
           </div>
@@ -650,7 +753,7 @@ export function ServicesPage() {
       </section>
 
       {/* ── CTA Banner ── */}
-      <section style={{ width: '100%', padding: '0 96px', boxSizing: 'border-box', paddingBottom: 80 }}>
+      <section style={{ width: '100%', padding: `0 ${hPad}`, boxSizing: 'border-box', paddingBottom: isMobile ? 48 : 80 }}>
         <CTABanner
           size="large"
           heading="Ready to accelerate your digital & AI journey?"

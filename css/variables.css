@@ -90,6 +90,33 @@
   --text-l2-lh:      20px;
   --text-l2-weight:  600;
 
+  /* ─── Breakpoints ───────────────────────────────────────── */
+  --bp-xs:   320px;
+  --bp-sm:   375px;
+  --bp-md:   430px;
+  --bp-lg:   768px;
+  --bp-xl:   1024px;
+  --bp-2xl:  1280px;
+  --bp-3xl:  1440px;
+  --bp-4xl:  1728px;
+  --bp-5xl:  1920px;
+
+  /* ─── Grid ───────────────────────────────────────────────── */
+  --grid-cols-mobile:  4;
+  --grid-cols-tablet:  8;
+  --grid-cols-desktop: 12;
+
+  --grid-margin-mobile:  16px;
+  --grid-margin-tablet:  32px;
+  --grid-margin-desktop: 80px;
+
+  --grid-gutter-mobile:  16px;
+  --grid-gutter-tablet:  24px;
+  --grid-gutter-desktop: 24px;
+
+  --grid-max-desktop:       1440px;
+  --grid-max-large-desktop: 1728px;
+
   /* ─── Spacing ────────────────────────────────────────── */
   --space-0:   0px;
   --space-1:   1px;

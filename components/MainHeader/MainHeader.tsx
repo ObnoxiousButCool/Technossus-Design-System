@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useBreakpoint } from '../../ts/breakpoints';
 
 interface NavItem {
   label: string;
@@ -41,10 +42,10 @@ const ArrowIcon = () => (
 );
 
 const defaultNavItems: NavItem[] = [
-  { label: 'Services', href: '/services' },
+  { label: 'Services',   href: '/services' },
   { label: 'Industries', href: '/industries' },
-  { label: 'Insights', href: '/insights' },
-  { label: 'About', href: '/about' },
+  { label: 'Insights',   href: '/insights' },
+  { label: 'About',      href: '/about' },
 ];
 
 export function MainHeader({
@@ -54,44 +55,66 @@ export function MainHeader({
   onCta,
   className = '',
 }: MainHeaderProps) {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen]     = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
-
-  const headerStyle: React.CSSProperties = {
-    background: '#010101',
-    width: '100%',
-    boxSizing: 'border-box',
-    position: 'relative',
-    zIndex: 100,
-  };
+  const { isDesktop } = useBreakpoint();
 
   const navLinkStyle: React.CSSProperties = {
     fontFamily: fontSans,
     fontWeight: 600,
-    fontSize: '16px',
+    fontSize:   '16px',
     lineHeight: '28px',
-    color: '#FFFFFF',
+    color:      '#FFFFFF',
     textDecoration: 'none',
     background: 'transparent',
-    border: 'none',
-    cursor: 'pointer',
-    padding: '0',
-    display: 'flex',
+    border:     'none',
+    cursor:     'pointer',
+    padding:    '0',
+    display:    'flex',
     alignItems: 'center',
-    gap: '4px',
+    gap:        '4px',
+  };
+
+  const ctaButtonStyle: React.CSSProperties = {
+    display:     'inline-flex',
+    alignItems:  'center',
+    gap:         '8px',
+    background:  '#ED2939',
+    color:       '#FFFFFF',
+    border:      'none',
+    height:      '48px',
+    padding:     '12px 20px',
+    borderRadius: '8px',
+    fontFamily:  fontSans,
+    fontWeight:  600,
+    fontSize:    '14px',
+    lineHeight:  '20px',
+    cursor:      'pointer',
+    whiteSpace:  'nowrap',
+    flexShrink:  0,
   };
 
   return (
-    <header className={className} style={headerStyle}>
-      {/* Desktop / tablet top bar */}
+    <header
+      className={className}
+      style={{
+        background:   '#010101',
+        width:        '100%',
+        boxSizing:    'border-box',
+        position:     'sticky',
+        top:          0,
+        zIndex:       100,
+      }}
+    >
+      {/* Top bar */}
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
+          display:        'flex',
+          alignItems:     'center',
           justifyContent: 'space-between',
-          padding: '0 48px',
-          height: '80px',
-          gap: '40px',
+          padding:        isDesktop ? '0 48px' : '0 20px',
+          height:         '72px',
+          gap:            '32px',
         }}
       >
         {/* Logo */}
@@ -107,114 +130,102 @@ export function MainHeader({
         </a>
 
         {/* Desktop nav */}
-        <nav
-          aria-label="Main navigation"
-          style={{ display: 'flex', gap: '32px', alignItems: 'center', flex: 1 }}
-        >
-          {navItems.map((item) => (
-            <div key={item.label} style={{ position: 'relative' }}>
-              {item.children ? (
-                <>
-                  <button
-                    style={navLinkStyle}
-                    onClick={() => setExpandedItem(expandedItem === item.label ? null : item.label)}
-                    aria-expanded={expandedItem === item.label}
-                  >
-                    {item.label}
-                    <ChevronDownIcon />
-                  </button>
-                  {expandedItem === item.label && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '100%',
-                        left: 0,
-                        background: '#1B1B1B',
-                        minWidth: '200px',
-                        padding: '8px 0',
-                        zIndex: 200,
-                      }}
+        {isDesktop && (
+          <nav aria-label="Main navigation" style={{ display: 'flex', gap: '32px', alignItems: 'center', flex: 1 }}>
+            {navItems.map((item) => (
+              <div key={item.label} style={{ position: 'relative' }}>
+                {item.children ? (
+                  <>
+                    <button
+                      style={navLinkStyle}
+                      onClick={() => setExpandedItem(expandedItem === item.label ? null : item.label)}
+                      aria-expanded={expandedItem === item.label}
                     >
-                      {item.children.map((child) => (
-                        <a
-                          key={child.label}
-                          href={child.href}
-                          style={{
-                            ...navLinkStyle,
-                            padding: '10px 20px',
-                            display: 'block',
-                            fontWeight: 500,
-                          }}
-                        >
-                          {child.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </>
-              ) : (
-                <a href={item.href} style={navLinkStyle}>
-                  {item.label}
-                </a>
-              )}
-            </div>
-          ))}
-        </nav>
+                      {item.label}
+                      <ChevronDownIcon />
+                    </button>
+                    {expandedItem === item.label && (
+                      <div
+                        style={{
+                          position:  'absolute',
+                          top:       'calc(100% + 8px)',
+                          left:      0,
+                          background: '#1B1B1B',
+                          minWidth:  '200px',
+                          padding:   '8px 0',
+                          borderRadius: '8px',
+                          zIndex:    200,
+                          boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                        }}
+                      >
+                        {item.children.map((child) => (
+                          <a
+                            key={child.label}
+                            href={child.href}
+                            style={{
+                              ...navLinkStyle,
+                              padding: '10px 20px',
+                              display: 'block',
+                              fontWeight: 500,
+                            }}
+                          >
+                            {child.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <a href={item.href} style={navLinkStyle}>
+                    {item.label}
+                  </a>
+                )}
+              </div>
+            ))}
+          </nav>
+        )}
 
-        {/* CTA button */}
-        <button
-          onClick={onCta}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: '#ED2939',
-            color: '#FFFFFF',
-            border: 'none',
-            height: '48px',
-            padding: '12px 20px',
-            borderRadius: '8px',
-            fontFamily: fontSans,
-            fontWeight: 600,
-            fontSize: '14px',
-            lineHeight: '20px',
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-          }}
-        >
-          {ctaLabel}
-          <ArrowIcon />
-        </button>
+        {/* Desktop CTA */}
+        {isDesktop && (
+          <button onClick={onCta} style={ctaButtonStyle}>
+            {ctaLabel}
+            <ArrowIcon />
+          </button>
+        )}
 
         {/* Mobile hamburger */}
-        <button
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen(!mobileOpen)}
-          style={{
-            background: 'transparent',
-            border: 'none',
-            color: '#FFFFFF',
-            cursor: 'pointer',
-            padding: '4px',
-            display: 'none',
-          }}
-        >
-          {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
+        {!isDesktop && (
+          <button
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            style={{
+              background: 'transparent',
+              border:     'none',
+              color:      '#FFFFFF',
+              cursor:     'pointer',
+              padding:    '4px',
+              display:    'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        )}
       </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
+      {/* Mobile drawer */}
+      {!isDesktop && mobileOpen && (
         <nav
           aria-label="Mobile navigation"
           style={{
-            background: '#1B1B1B',
-            padding: '24px 24px 32px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0',
+            background:     '#1B1B1B',
+            padding:        '24px 20px 32px',
+            display:        'flex',
+            flexDirection:  'column',
+            gap:            0,
+            borderTop:      '1px solid #343434',
           }}
         >
           {navItems.map((item) => (
@@ -234,24 +245,7 @@ export function MainHeader({
           ))}
           <button
             onClick={() => { onCta?.(); setMobileOpen(false); }}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: '#ED2939',
-              color: '#FFFFFF',
-              border: 'none',
-              height: '48px',
-              padding: '12px 20px',
-              borderRadius: '8px',
-              fontFamily: fontSans,
-              fontWeight: 600,
-              fontSize: '14px',
-              lineHeight: '20px',
-              cursor: 'pointer',
-              marginTop: '24px',
-              alignSelf: 'flex-start',
-            }}
+            style={{ ...ctaButtonStyle, marginTop: '24px', alignSelf: 'flex-start' }}
           >
             {ctaLabel}
             <ArrowIcon />
