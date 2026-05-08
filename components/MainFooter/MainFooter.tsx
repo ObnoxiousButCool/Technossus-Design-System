@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useBreakpoint } from '../../ts/breakpoints';
 
 // Figma asset URLs (node 2224:14122)
 const imgBgGlow     = 'http://localhost:3845/assets/e656c8753bae72822861dd6f6ef7424990db2349.png';
@@ -100,6 +101,8 @@ function SocialIcon({ src, alt, boxed = false }: { src: string; alt: string; box
 }
 
 export function MainFooter({ linkGroups = defaultGroups, className = '', style }: MainFooterProps) {
+  const { isMobile, isTablet } = useBreakpoint();
+
   return (
     <footer
       className={className}
@@ -107,13 +110,13 @@ export function MainFooter({ linkGroups = defaultGroups, className = '', style }
         backgroundColor: '#0B0B0B',
         display: 'flex',
         flexDirection: 'column',
-        gap: 48,
+        gap: isMobile ? 32 : 48,
         alignItems: 'flex-start',
         overflow: 'hidden',
-        paddingBottom: 80,
-        paddingTop: 52,
-        paddingLeft: 96,
-        paddingRight: 96,
+        paddingBottom: isMobile ? 48 : 80,
+        paddingTop: isMobile ? 40 : 52,
+        paddingLeft: isMobile ? 16 : isTablet ? 32 : 96,
+        paddingRight: isMobile ? 16 : isTablet ? 32 : 96,
         position: 'relative',
         width: '100%',
         boxSizing: 'border-box',
@@ -142,10 +145,10 @@ export function MainFooter({ linkGroups = defaultGroups, className = '', style }
       </div>
 
       {/* ── Top row ── */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%', position: 'relative' }}>
+      <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%', position: 'relative', gap: isMobile ? 32 : 0 }}>
 
         {/* Brand column */}
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: 275, alignSelf: 'stretch', flexShrink: 0 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: isMobile ? '100%' : 275, alignSelf: 'stretch', flexShrink: 0 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'flex-start' }}>
             {/* Logo */}
             <div style={{ height: 32.5, position: 'relative', overflow: 'hidden', flexShrink: 0, width: 195.7 }}>
@@ -176,7 +179,7 @@ export function MainFooter({ linkGroups = defaultGroups, className = '', style }
         </div>
 
         {/* Link columns */}
-        <div style={{ display: 'flex', gap: 48, alignItems: 'flex-start' }}>
+        <div style={{ display: 'flex', flexWrap: isMobile ? 'wrap' : 'nowrap', gap: isMobile ? 32 : 48, alignItems: 'flex-start', width: isMobile ? '100%' : undefined }}>
           {linkGroups.map((group) => (
             <div key={group.heading} style={{ display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'flex-start', flexShrink: 0 }}>
               <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 14, lineHeight: '20px', color: gray200, margin: 0, whiteSpace: 'nowrap' }}>
@@ -191,7 +194,7 @@ export function MainFooter({ linkGroups = defaultGroups, className = '', style }
           ))}
 
           {/* GET IN TOUCH */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'flex-start', flexShrink: 0, width: 273 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'flex-start', flexShrink: 0, width: isMobile ? '100%' : 273 }}>
             <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 14, lineHeight: '20px', color: gray200, margin: 0 }}>
               GET IN TOUCH
             </p>
@@ -232,11 +235,11 @@ export function MainFooter({ linkGroups = defaultGroups, className = '', style }
       </div>
 
       {/* ── Bottom bar ── */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', position: 'relative' }}>
+      <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', justifyContent: 'space-between', width: '100%', position: 'relative', gap: isMobile ? 16 : 0 }}>
         <span style={{ fontFamily: sans, fontWeight: 500, fontSize: 14, lineHeight: '20px', color: gray500, whiteSpace: 'nowrap' }}>
           © {new Date().getFullYear()} Technossus. All rights reserved.
         </span>
-        <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: isMobile ? 16 : 32, alignItems: 'center', flexWrap: 'wrap' }}>
           {[
             { label: 'Privacy Policy',   href: '/privacy' },
             { label: 'Terms of Service', href: '/terms' },

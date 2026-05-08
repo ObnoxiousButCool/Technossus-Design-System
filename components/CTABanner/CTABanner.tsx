@@ -1,9 +1,10 @@
 import React from 'react';
+import { useBreakpoint } from '../../ts/breakpoints';
 
 // Asset URLs from Figma
-const imgVector3    = 'http://localhost:3845/assets/1a6054aabb553cb83405edfefb392e579bcc4d72.svg';
+const imgVector3      = 'http://localhost:3845/assets/1a6054aabb553cb83405edfefb392e579bcc4d72.svg';
 const imgArrowForward = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
-const imgImage108   = 'http://localhost:3845/assets/d54db829342bc10c2665f6d43218ad53a4d590e5.png';
+const imgImage108     = 'http://localhost:3845/assets/d54db829342bc10c2665f6d43218ad53a4d590e5.png';
 
 // Design tokens
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -14,7 +15,6 @@ export type CTABannerSize = 'large' | 'small';
 
 export interface CTABannerProps {
   size?: CTABannerSize;
-  /** Eyebrow label (large variant) */
   label?: string;
   heading: string;
   body?: string;
@@ -44,10 +44,11 @@ export function CTABanner({
   className = '',
   style,
 }: CTABannerProps) {
-  const resolvedPrimary   = primaryCta  ?? ctaLabel ?? 'Schedule a Strategy Session';
-  const resolvedCallback  = onPrimary   ?? onCta;
+  const { isMobile, isTablet } = useBreakpoint();
+  const resolvedPrimary  = primaryCta ?? ctaLabel ?? 'Schedule a Strategy Session';
+  const resolvedCallback = onPrimary  ?? onCta;
 
-  /* ── Large variant ─────────────────────────────────────────────────────────── */
+  /* ── Large variant ────────────────────────────────────────────────────────── */
   if (size === 'large') {
     return (
       <div
@@ -60,9 +61,10 @@ export function CTABanner({
           overflow: 'hidden',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          padding: 80,
-          width: 1248,
+          padding: isMobile ? '48px 20px' : isTablet ? '64px 40px' : 80,
+          width: '100%',
           position: 'relative',
+          boxSizing: 'border-box',
           ...style,
         }}
       >
@@ -75,8 +77,10 @@ export function CTABanner({
             justifyContent: 'center',
             left: -2.41,
             top: -1.74,
-            width: 1251.717,
-            height: 159.569,
+            width: '100%',
+            height: 160,
+            overflow: 'hidden',
+            pointerEvents: 'none',
           }}
         >
           <div style={{ transform: 'rotate(-90deg) scaleY(-1)', flexShrink: 0 }}>
@@ -88,17 +92,25 @@ export function CTABanner({
           </div>
         </div>
 
-        {/* Hero image */}
-        <div
-          data-node-id="31:1258"
-          style={{ position: 'absolute', height: 456.269, left: 578.32, top: 8, width: 670.984 }}
-        >
-          <img
-            alt=""
-            src={imgImage108}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
+        {/* Hero image — hidden on mobile */}
+        {!isMobile && (
+          <div
+            style={{
+              position: 'absolute',
+              height: isTablet ? 320 : 456,
+              right: 0,
+              top: 8,
+              width: isTablet ? '40%' : '53%',
+              pointerEvents: 'none',
+            }}
+          >
+            <img
+              alt=""
+              src={imgImage108}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </div>
+        )}
 
         {/* Content */}
         <div
@@ -108,8 +120,8 @@ export function CTABanner({
             gap: 32,
             alignItems: 'flex-start',
             position: 'relative',
-            flexShrink: 0,
-            width: '100%',
+            width: isMobile ? '100%' : isTablet ? '60%' : '50%',
+            maxWidth: 640,
           }}
         >
           {/* Eyebrow */}
@@ -117,39 +129,24 @@ export function CTABanner({
             style={{
               fontFamily: sans,
               fontWeight: 600,
-              fontSize: 16,
+              fontSize: 14,
               lineHeight: '28px',
               color: '#FFFFFF',
-              height: 21,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              minWidth: '100%',
-              width: 'min-content',
             }}
           >
             {label ?? "LET'S WORK ON IT TOGETHER"}
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 16,
-              alignItems: 'flex-start',
-              width: '100%',
-              flexShrink: 0,
-            }}
-          >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start', width: '100%' }}>
             <h2
               style={{
                 fontFamily: serif,
                 fontWeight: 600,
-                fontSize: 32,
-                lineHeight: '36px',
+                fontSize: isMobile ? 24 : isTablet ? 28 : 32,
+                lineHeight: isMobile ? '32px' : '36px',
                 color: '#FFFFFF',
                 margin: 0,
-                width: 517.771,
+                width: '100%',
               }}
             >
               {heading}
@@ -159,11 +156,11 @@ export function CTABanner({
                 style={{
                   fontFamily: sans,
                   fontWeight: 500,
-                  fontSize: 18,
+                  fontSize: isMobile ? 15 : 18,
                   lineHeight: '24px',
                   color: '#F5F5F5',
                   margin: 0,
-                  width: 619.649,
+                  width: '100%',
                 }}
               >
                 {body}
@@ -175,70 +172,63 @@ export function CTABanner({
           <div
             style={{
               display: 'flex',
+              flexWrap: 'wrap',
+              gap: 12,
               alignItems: 'flex-start',
-              justifyContent: 'center',
-              width: 471,
-              flexShrink: 0,
             }}
           >
-            <div style={{ display: 'flex', flex: '1 0 0', gap: 16, alignItems: 'flex-start', minWidth: 0 }}>
-              {/* Primary */}
+            <button
+              onClick={resolvedCallback}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: 56,
+                padding: '16px 24px',
+                backgroundColor: red,
+                color: '#FFFFFF',
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 16,
+                lineHeight: '28px',
+                border: 'none',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {resolvedPrimary}
+            </button>
+
+            {secondaryCta && (
               <button
-                onClick={resolvedCallback}
+                onClick={onSecondary}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   height: 56,
                   padding: '16px 24px',
-                  backgroundColor: red,
-                  color: '#FFFFFF',
+                  backgroundColor: 'transparent',
+                  color: red,
                   fontFamily: sans,
                   fontWeight: 600,
                   fontSize: 16,
                   lineHeight: '28px',
-                  border: 'none',
+                  border: `1px solid ${red}`,
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
-                  flexShrink: 0,
                 }}
               >
-                {resolvedPrimary}
+                {secondaryCta}
               </button>
-
-              {/* Secondary */}
-              {secondaryCta && (
-                <button
-                  onClick={onSecondary}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: 56,
-                    padding: '16px 24px',
-                    backgroundColor: 'transparent',
-                    color: red,
-                    fontFamily: sans,
-                    fontWeight: 600,
-                    fontSize: 16,
-                    lineHeight: '28px',
-                    border: `1px solid ${red}`,
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0,
-                  }}
-                >
-                  {secondaryCta}
-                </button>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </div>
     );
   }
 
-  /* ── Small variant ─────────────────────────────────────────────────────────── */
+  /* ── Small variant ────────────────────────────────────────────────────────── */
   return (
     <div
       className={className}
@@ -247,69 +237,57 @@ export function CTABanner({
         backgroundColor: '#171717',
         border: '1px solid rgba(255,255,255,0.1)',
         display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
         justifyContent: 'center',
         overflow: 'hidden',
-        gap: 24,
-        alignItems: 'center',
-        padding: 49,
-        width: 1184,
+        gap: isMobile ? 20 : 24,
+        alignItems: isMobile ? 'flex-start' : 'center',
+        padding: isMobile ? '32px 20px' : isTablet ? '40px 32px' : 49,
+        width: '100%',
         position: 'relative',
+        boxSizing: 'border-box',
         ...style,
       }}
     >
-      {/* Decorative red glow bottom-right */}
+      {/* Red glow */}
       <div
-        data-node-id="31:974"
         style={{
           position: 'absolute',
           backgroundColor: 'rgba(227,27,35,0.1)',
           filter: 'blur(50px)',
-          bottom: -79.8,
+          bottom: -80,
           right: -80,
           borderRadius: 9999,
           width: 320,
           height: 320,
+          pointerEvents: 'none',
         }}
       />
 
       {/* Text content */}
       <div style={{ flex: '1 0 0', position: 'relative', minWidth: 0 }}>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-            width: '100%',
-            height: '100%',
-          }}
-        >
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 8 }}>
           <h2
-            data-node-id="31:976"
             style={{
               fontFamily: serif,
               fontWeight: 600,
-              fontSize: 32,
-              lineHeight: '36px',
+              fontSize: isMobile ? 22 : isTablet ? 26 : 32,
+              lineHeight: isMobile ? '30px' : '36px',
               color: '#FFFFFF',
               margin: 0,
-              height: 48,
-              width: 769.89,
             }}
           >
             {heading}
           </h2>
           {body && (
             <p
-              data-node-id="31:977"
               style={{
                 fontFamily: sans,
                 fontWeight: 500,
-                fontSize: 18,
+                fontSize: isMobile ? 14 : 18,
                 lineHeight: '24px',
                 color: '#F5F5F5',
                 margin: 0,
-                whiteSpace: 'nowrap',
               }}
             >
               {body}
@@ -320,13 +298,12 @@ export function CTABanner({
 
       {/* Primary button */}
       <div
-        data-node-id="31:978"
         style={{
           backgroundColor: red,
           height: 56,
           position: 'relative',
           flexShrink: 0,
-          width: 215,
+          width: isMobile ? '100%' : 215,
         }}
       >
         <button
@@ -352,17 +329,12 @@ export function CTABanner({
               lineHeight: '28px',
               color: '#FFFFFF',
               whiteSpace: 'nowrap',
-              textAlign: 'center',
             }}
           >
             {resolvedPrimary}
           </span>
           <div style={{ width: 24, height: 24, position: 'relative', flexShrink: 0 }}>
-            <img
-              alt=""
-              src={imgArrowForward}
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
-            />
+            <img alt="" src={imgArrowForward} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
           </div>
         </button>
       </div>

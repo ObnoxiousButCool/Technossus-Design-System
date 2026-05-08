@@ -7,13 +7,16 @@ const imgBracketRight = 'http://localhost:3845/assets/c1e94a65e8e3a307886bea2c5f
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';
 
+export type TagVariant = 'dark' | 'light';
+
 export interface TagProps {
   label?: string;
+  variant?: TagVariant;
   className?: string;
   style?: React.CSSProperties;
 }
 
-export function Tag({ label = 'INTEGRATED CAPABILITIES', className, style }: TagProps) {
+export function Tag({ label = 'INTEGRATED CAPABILITIES', variant = 'dark', className, style }: TagProps) {
   const containerStyle: React.CSSProperties = {
     display: 'inline-flex',
     alignItems: 'center',
@@ -32,7 +35,7 @@ export function Tag({ label = 'INTEGRATED CAPABILITIES', className, style }: Tag
     fontSize: 14,
     lineHeight: '20px',
     letterSpacing: 0,
-    color: '#1E1E1E',
+    color: variant === 'light' ? '#FFFFFF' : '#1E1E1E',
     whiteSpace: 'nowrap',
     flexShrink: 0,
   };

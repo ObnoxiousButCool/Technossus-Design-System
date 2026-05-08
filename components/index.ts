@@ -1,4 +1,5 @@
-export { Tag }         from './Tag';
+export { Tag }               from './Tag';
+export type { TagVariant }   from './Tag';
 export { Stats }       from './Stats';
 export { SearchBar }   from './SearchBar';
 export { Card }        from './Card';

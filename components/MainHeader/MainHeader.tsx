@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // Asset URLs from Figma
@@ -42,13 +43,12 @@ const defaultNavItems: NavItem[] = [
   {
     label: 'Services',
     href: '/services',
-    active: true,
     children: [
       { label: 'AI Led Business Transformation',  href: '/services/ai-business-transformation', description: 'Engineering the new operating model.' },
-      { label: 'Product Engineering',             href: '/services/product-engineering',        description: 'Ship full-stack at startup speed.' },
       { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence',          description: 'Turn into a decision engine.' },
-      { label: 'Quality Engineering & Automation', href: '/services/quality-engineering',       description: 'Test, observe, accelerate releases.' },
       { label: 'Digital Experience Design',       href: '/services/digital-experience',         description: 'Reimagine product, UX and brand.' },
+      { label: 'Product Engineering',             href: '/services/product-engineering',        description: 'Ship full-stack at startup speed.' },
+      { label: 'Quality Engineering & Automation', href: '/services/quality-engineering',       description: 'Test, observe, accelerate releases.' },
       { label: 'Cloud & Product Modernization',   href: '/services/cloud-modernization',        description: 'Lift, refactor, and run smarter.' },
     ],
   },
@@ -74,6 +74,29 @@ const defaultNavItems: NavItem[] = [
   { label: 'Careers',   href: '/careers' },
 ];
 
+// ── Mega menu link with hover animation ─────────────────────────────────────
+function MegaMenuLink({ child, onClose }: { child: { label: string; href: string; description?: string }; onClose: () => void }) {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <a
+      href={child.href}
+      onClick={onClose}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{ display: 'flex', flexDirection: 'column', gap: 8, textDecoration: 'none', whiteSpace: 'nowrap' }}
+    >
+      <span style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: isHovered ? red : dark, transition: 'color 0.15s ease' }}>
+        {child.label}
+      </span>
+      {child.description && (
+        <span style={{ fontFamily: sans, fontWeight: 500, fontSize: 16, lineHeight: '24px', color: isHovered ? '#ED2939' : '#949494', transition: 'color 0.15s ease' }}>
+          {child.description}
+        </span>
+      )}
+    </a>
+  );
+}
+
 export function MainHeader({
   navItems = defaultNavItems,
   ctaLabel = 'Contact us',
@@ -82,10 +105,22 @@ export function MainHeader({
   style,
 }: MainHeaderProps) {
   const { isMobile } = useBreakpoint();
+  const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [hoveredNav,   setHoveredNav]   = useState<string | null>(null);
   const [mobileOpen,   setMobileOpen]   = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>('Service Offerings');
+  const [mobilePressed, setMobilePressed] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+
+  const isItemActive = (item: NavItem): boolean => {
+    const path = location.pathname;
+    if (item.children) {
+      return item.children.some(c => path.startsWith(c.href)) || path === item.href;
+    }
+    if (item.href === '/') return path === '/';
+    return path === item.href || path.startsWith(item.href + '/');
+  };
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -178,8 +213,10 @@ export function MainHeader({
           >
             <div style={{ display: 'flex', gap: 32, alignItems: 'center', justifyContent: 'center', width: '100%' }}>
               {navItems.map((item) => {
-                const isActive = item.active;
+                const isActive = isItemActive(item);
                 const isOpen = openDropdown === item.label;
+                const isHovered = hoveredNav === item.label;
+                const highlight = isActive || isOpen || isHovered;
 
                 if (item.children) {
                   return (
@@ -187,6 +224,8 @@ export function MainHeader({
                       <button
                         aria-expanded={isOpen}
                         onClick={() => setOpenDropdown(isOpen ? null : item.label)}
+                        onMouseEnter={() => setHoveredNav(item.label)}
+                        onMouseLeave={() => setHoveredNav(null)}
                         style={{
                           display: 'flex',
                           gap: 4,
@@ -196,18 +235,19 @@ export function MainHeader({
                           cursor: 'pointer',
                           padding: 0,
                           fontFamily: sans,
-                          fontWeight: isActive ? 600 : 500,
+                          fontWeight: highlight ? 600 : 500,
                           fontSize: 14,
                           lineHeight: '20px',
-                          color: isActive ? red : dark,
+                          color: highlight ? red : dark,
                           whiteSpace: 'nowrap',
+                          transition: 'color 0.15s ease, font-weight 0.15s ease',
                         }}
                       >
                         {item.label}
                         <div style={{ width: 16, height: 16, position: 'relative', flexShrink: 0 }}>
                           <img
                             alt=""
-                            src={isActive ? imgChevronDownRed : imgChevronDown}
+                            src={highlight ? imgChevronDownRed : imgChevronDown}
                             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
                           />
                         </div>
@@ -220,14 +260,17 @@ export function MainHeader({
                   <a
                     key={item.label}
                     href={item.href}
+                    onMouseEnter={() => setHoveredNav(item.label)}
+                    onMouseLeave={() => setHoveredNav(null)}
                     style={{
                       fontFamily: sans,
-                      fontWeight: 500,
+                      fontWeight: highlight ? 600 : 500,
                       fontSize: 14,
                       lineHeight: '20px',
-                      color: dark,
+                      color: highlight ? red : dark,
                       textDecoration: 'none',
                       whiteSpace: 'nowrap',
+                      transition: 'color 0.15s ease',
                     }}
                   >
                     {item.label}
@@ -241,7 +284,7 @@ export function MainHeader({
           <a
             href={ctaHref}
             style={{
-              backgroundColor: '#1E1E1E',
+              backgroundColor: location.pathname === ctaHref ? red : '#1E1E1E',
               color: '#FFFFFF',
               fontFamily: sans,
               fontWeight: 600,
@@ -265,10 +308,17 @@ export function MainHeader({
         </div>
       )}
 
-      {/* ── Desktop mega menu ── */}
+      {/* ── Desktop mega menu (ActiveExpanded-3: 3 items per row, gap 120px) ── */}
       {!isMobile && openDropdown && (() => {
         const active = navItems.find(i => i.label === openDropdown);
         if (!active?.children) return null;
+
+        // Chunk children into rows of 3 (matches Figma ActiveExpanded-3 layout)
+        const rows: typeof active.children[] = [];
+        for (let i = 0; i < active.children.length; i += 3) {
+          rows.push(active.children.slice(i, i + 3));
+        }
+
         return (
           <div
             style={{
@@ -278,32 +328,18 @@ export function MainHeader({
               backgroundColor: '#FFFFFF',
               borderBottom: '1px solid #EEEEEE',
               display: 'flex',
-              gap: 120,
+              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
               paddingTop: 48,
               paddingBottom: 63,
+              gap: 48,
             }}
           >
-            {/* Group items in columns of 2 */}
-            {Array.from({ length: Math.ceil(active.children.length / 2) }, (_, colIdx) => (
-              <div key={colIdx} style={{ display: 'flex', flexDirection: 'column', gap: 48, alignItems: 'flex-start', justifyContent: 'center' }}>
-                {active.children!.slice(colIdx * 2, colIdx * 2 + 2).map((child) => (
-                  <a
-                    key={child.label}
-                    href={child.href}
-                    onClick={() => setOpenDropdown(null)}
-                    style={{ display: 'flex', flexDirection: 'column', gap: 8, textDecoration: 'none', whiteSpace: 'nowrap' }}
-                  >
-                    <span style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: dark }}>
-                      {child.label}
-                    </span>
-                    {child.description && (
-                      <span style={{ fontFamily: sans, fontWeight: 500, fontSize: 16, lineHeight: '24px', color: '#949494' }}>
-                        {child.description}
-                      </span>
-                    )}
-                  </a>
+            {rows.map((row, rowIdx) => (
+              <div key={rowIdx} style={{ display: 'flex', gap: 120, alignItems: 'center', justifyContent: 'center' }}>
+                {row.map((child) => (
+                  <MegaMenuLink key={child.label} child={child} onClose={() => setOpenDropdown(null)} />
                 ))}
               </div>
             ))}
@@ -438,6 +474,10 @@ export function MainHeader({
                             key={child.label}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
+                            onMouseDown={() => setMobilePressed(child.label)}
+                            onMouseUp={() => setMobilePressed(null)}
+                            onTouchStart={() => setMobilePressed(child.label)}
+                            onTouchEnd={() => setMobilePressed(null)}
                             style={{
                               display: 'flex',
                               alignItems: 'center',
@@ -446,9 +486,11 @@ export function MainHeader({
                               fontWeight: 500,
                               fontSize: 18,
                               lineHeight: '24px',
-                              color: dark,
+                              color: mobilePressed === child.label ? red : dark,
                               textDecoration: 'none',
                               whiteSpace: 'nowrap',
+                              backgroundColor: mobilePressed === child.label ? '#F5F5F5' : 'transparent',
+                              transition: 'color 0.1s ease, background-color 0.1s ease',
                             }}
                           >
                             {child.label}
@@ -468,6 +510,10 @@ export function MainHeader({
                   <a
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
+                    onMouseDown={() => setMobilePressed(item.label)}
+                    onMouseUp={() => setMobilePressed(null)}
+                    onTouchStart={() => setMobilePressed(item.label)}
+                    onTouchEnd={() => setMobilePressed(null)}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -475,6 +521,8 @@ export function MainHeader({
                       paddingTop: 24,
                       paddingBottom: 24,
                       width: '100%',
+                      backgroundColor: mobilePressed === item.label ? '#F5F5F5' : 'transparent',
+                      transition: 'background-color 0.1s ease',
                     }}
                   >
                     <span
@@ -484,8 +532,9 @@ export function MainHeader({
                         fontWeight: 600,
                         fontSize: 20,
                         lineHeight: '28px',
-                        color: dark,
+                        color: mobilePressed === item.label ? red : dark,
                         textDecoration: 'none',
+                        transition: 'color 0.1s ease',
                       }}
                     >
                       {item.label}
