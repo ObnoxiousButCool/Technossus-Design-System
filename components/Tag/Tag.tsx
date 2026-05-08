@@ -1,47 +1,67 @@
 import React from 'react';
 
-interface TagProps {
-  label: string;
+// Asset URLs from Figma
+const imgBracketLeft  = 'http://localhost:3845/assets/a503f8db2ff38d97c46dcf929d8bac29e3db7723.svg';
+const imgBracketRight = 'http://localhost:3845/assets/c1e94a65e8e3a307886bea2c5f20cbbca8d072df.svg';
+
+// Design tokens
+const sans = '"General Sans", system-ui, -apple-system, sans-serif';
+
+export interface TagProps {
+  label?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function Tag({ label, className }: TagProps) {
+export function Tag({ label = 'INTEGRATED CAPABILITIES', className, style }: TagProps) {
+  const containerStyle: React.CSSProperties = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 4,
+    paddingRight: 8,
+    paddingTop: 5,
+    paddingBottom: 5,
+    position: 'relative',
+    borderRadius: 37,
+    ...style,
+  };
+
+  const textStyle: React.CSSProperties = {
+    fontFamily: sans,
+    fontWeight: 600,
+    fontSize: 14,
+    lineHeight: '20px',
+    letterSpacing: 0,
+    color: '#1E1E1E',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
+  };
+
   return (
-    <div
-      className={className}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '4px',
-        paddingRight: '8px',
-        paddingTop: '5px',
-        paddingBottom: '5px',
-        borderRadius: '37px',
-        position: 'relative',
-      }}
-    >
-      {/* Opening bracket decoration */}
-      <svg width="5" height="16" viewBox="0 0 5 16" fill="none" aria-hidden="true">
-        <path d="M4.5 1L1 8L4.5 15" stroke="#ED2939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+    <div className={className} style={containerStyle} data-node-id="8:630">
+      {/* Opening bracket */}
+      <div style={{ width: 4.83, height: 16, position: 'relative', flexShrink: 0 }}>
+        <img
+          alt=""
+          src={imgBracketLeft}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+        />
+      </div>
 
-      <span
-        style={{
-          fontFamily: '"General Sans", system-ui, sans-serif',
-          fontWeight: 600,
-          fontSize: '14px',
-          lineHeight: '20px',
-          color: '#1E1E1E',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        {label}
-      </span>
+      <div style={textStyle}>{label}</div>
 
-      {/* Closing bracket decoration */}
-      <svg width="5" height="16" viewBox="0 0 5 16" fill="none" aria-hidden="true" style={{ transform: 'rotate(180deg)' }}>
-        <path d="M4.5 1L1 8L4.5 15" stroke="#ED2939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      {/* Closing bracket (rotated 180°) */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <div style={{ transform: 'rotate(180deg)' }}>
+          <div style={{ width: 4.83, height: 16, position: 'relative' }}>
+            <img
+              alt=""
+              src={imgBracketRight}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,9 +1,20 @@
 import React from 'react';
 
+// Asset URLs from Figma
+const imgVector3    = 'http://localhost:3845/assets/1a6054aabb553cb83405edfefb392e579bcc4d72.svg';
+const imgArrowForward = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
+const imgImage108   = 'http://localhost:3845/assets/d54db829342bc10c2665f6d43218ad53a4d590e5.png';
+
+// Design tokens
+const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
+const serif = '"Roboto Serif", Georgia, serif';
+const red   = '#ED2939';
+
 export type CTABannerSize = 'large' | 'small';
 
 export interface CTABannerProps {
   size?: CTABannerSize;
+  /** Eyebrow label (large variant) */
   label?: string;
   heading: string;
   body?: string;
@@ -16,12 +27,8 @@ export interface CTABannerProps {
   /** @deprecated */
   onCta?: () => void;
   className?: string;
+  style?: React.CSSProperties;
 }
-
-const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
-const serif = '"Roboto Serif", Georgia, serif';
-const red   = '#ED2939';
-const dark  = '#1B1B1B';
 
 export function CTABanner({
   size = 'large',
@@ -35,68 +42,330 @@ export function CTABanner({
   ctaLabel,
   onCta,
   className = '',
+  style,
 }: CTABannerProps) {
+  const resolvedPrimary   = primaryCta  ?? ctaLabel ?? 'Schedule a Strategy Session';
+  const resolvedCallback  = onPrimary   ?? onCta;
 
-  const resolvedPrimary  = primaryCta ?? ctaLabel ?? 'Get Started →';
-  const resolvedCallback = onPrimary  ?? onCta;
-
-  /* ── Large: dark banner with red top border, left content + right image ── */
+  /* ── Large variant ─────────────────────────────────────────────────────────── */
   if (size === 'large') {
     return (
-      <div className={className} style={{ padding: '0 96px' }}>
-        <div style={{ background: dark, position: 'relative' }}>
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: red }} />
-          <div style={{ padding: 80, display: 'flex', alignItems: 'center', gap: 64 }}>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 20 }}>
-              {label && (
-                <p style={{ fontFamily: sans, fontSize: 11, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: '#9B9B9B', margin: 0 }}>
-                  {label}
-                </p>
-              )}
-              <h2 style={{ fontFamily: serif, fontSize: 40, lineHeight: '48px', fontWeight: 600, letterSpacing: '-1px', color: '#fff', margin: 0 }}>
-                {heading}
-              </h2>
-              {body && (
-                <p style={{ fontFamily: sans, fontSize: 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 500, margin: 0 }}>
-                  {body}
-                </p>
-              )}
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 8 }}>
-                <button onClick={resolvedCallback}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: red, color: '#fff', fontFamily: sans, fontWeight: 700, fontSize: 14, height: 56, padding: '0 28px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
-                  {resolvedPrimary}
-                </button>
-                {secondaryCta && (
-                  <button onClick={onSecondary}
-                    style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 28px', border: '2px solid #fff', color: '#fff', fontFamily: sans, fontWeight: 700, fontSize: 14, background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap' }}>
-                    {secondaryCta}
-                  </button>
-                )}
+      <div
+        className={className}
+        data-node-id="8:90"
+        style={{
+          backgroundColor: '#050510',
+          display: 'flex',
+          justifyContent: 'center',
+          overflow: 'hidden',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          padding: 80,
+          width: 1248,
+          position: 'relative',
+          ...style,
+        }}
+      >
+        {/* Background wave pattern */}
+        <div
+          style={{
+            position: 'absolute',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            left: -2.41,
+            top: -1.74,
+            width: 1251.717,
+            height: 159.569,
+          }}
+        >
+          <div style={{ transform: 'rotate(-90deg) scaleY(-1)', flexShrink: 0 }}>
+            <div style={{ height: 1251.717, position: 'relative', width: 159.569 }}>
+              <div style={{ position: 'absolute', top: 0, right: '0.31%', bottom: 0, left: 0 }}>
+                <img alt="" src={imgVector3} style={{ display: 'block', width: '100%', height: '100%' }} />
               </div>
             </div>
-            <div style={{ flex: '0 0 420px', height: 320, background: '#2A2A2A' }} />
+          </div>
+        </div>
+
+        {/* Hero image */}
+        <div
+          data-node-id="31:1258"
+          style={{ position: 'absolute', height: 456.269, left: 578.32, top: 8, width: 670.984 }}
+        >
+          <img
+            alt=""
+            src={imgImage108}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </div>
+
+        {/* Content */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 32,
+            alignItems: 'flex-start',
+            position: 'relative',
+            flexShrink: 0,
+            width: '100%',
+          }}
+        >
+          {/* Eyebrow */}
+          <div
+            style={{
+              fontFamily: sans,
+              fontWeight: 600,
+              fontSize: 16,
+              lineHeight: '28px',
+              color: '#FFFFFF',
+              height: 21,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              minWidth: '100%',
+              width: 'min-content',
+            }}
+          >
+            {label ?? "LET'S WORK ON IT TOGETHER"}
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 16,
+              alignItems: 'flex-start',
+              width: '100%',
+              flexShrink: 0,
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: serif,
+                fontWeight: 600,
+                fontSize: 32,
+                lineHeight: '36px',
+                color: '#FFFFFF',
+                margin: 0,
+                width: 517.771,
+              }}
+            >
+              {heading}
+            </h2>
+            {body && (
+              <p
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 500,
+                  fontSize: 18,
+                  lineHeight: '24px',
+                  color: '#F5F5F5',
+                  margin: 0,
+                  width: 619.649,
+                }}
+              >
+                {body}
+              </p>
+            )}
+          </div>
+
+          {/* CTA buttons */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              justifyContent: 'center',
+              width: 471,
+              flexShrink: 0,
+            }}
+          >
+            <div style={{ display: 'flex', flex: '1 0 0', gap: 16, alignItems: 'flex-start', minWidth: 0 }}>
+              {/* Primary */}
+              <button
+                onClick={resolvedCallback}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: 56,
+                  padding: '16px 24px',
+                  backgroundColor: red,
+                  color: '#FFFFFF',
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 16,
+                  lineHeight: '28px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
+              >
+                {resolvedPrimary}
+              </button>
+
+              {/* Secondary */}
+              {secondaryCta && (
+                <button
+                  onClick={onSecondary}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: 56,
+                    padding: '16px 24px',
+                    backgroundColor: 'transparent',
+                    color: red,
+                    fontFamily: sans,
+                    fontWeight: 600,
+                    fontSize: 16,
+                    lineHeight: '28px',
+                    border: `1px solid ${red}`,
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                  }}
+                >
+                  {secondaryCta}
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
-  /* ── Small: dark banner with red radial glow ── */
+  /* ── Small variant ─────────────────────────────────────────────────────────── */
   return (
-    <div className={className}
-      style={{ background: dark, border: '1px solid #2E2E2E', padding: '36px 40px', display: 'flex', alignItems: 'center', gap: 32, backgroundImage: 'radial-gradient(circle at right,#3A1416 0%,#1B1B1B 60%)' }}>
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <h3 style={{ fontFamily: serif, fontWeight: 600, fontSize: 24, lineHeight: 1.3, color: '#fff', margin: 0 }}>
-          {heading}
-        </h3>
-        {body && (
-          <p style={{ fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: '#B5B5B5', margin: 0 }}>{body}</p>
-        )}
+    <div
+      className={className}
+      data-node-id="31:1262"
+      style={{
+        backgroundColor: '#171717',
+        border: '1px solid rgba(255,255,255,0.1)',
+        display: 'flex',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        gap: 24,
+        alignItems: 'center',
+        padding: 49,
+        width: 1184,
+        position: 'relative',
+        ...style,
+      }}
+    >
+      {/* Decorative red glow bottom-right */}
+      <div
+        data-node-id="31:974"
+        style={{
+          position: 'absolute',
+          backgroundColor: 'rgba(227,27,35,0.1)',
+          filter: 'blur(50px)',
+          bottom: -79.8,
+          right: -80,
+          borderRadius: 9999,
+          width: 320,
+          height: 320,
+        }}
+      />
+
+      {/* Text content */}
+      <div style={{ flex: '1 0 0', position: 'relative', minWidth: 0 }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <h2
+            data-node-id="31:976"
+            style={{
+              fontFamily: serif,
+              fontWeight: 600,
+              fontSize: 32,
+              lineHeight: '36px',
+              color: '#FFFFFF',
+              margin: 0,
+              height: 48,
+              width: 769.89,
+            }}
+          >
+            {heading}
+          </h2>
+          {body && (
+            <p
+              data-node-id="31:977"
+              style={{
+                fontFamily: sans,
+                fontWeight: 500,
+                fontSize: 18,
+                lineHeight: '24px',
+                color: '#F5F5F5',
+                margin: 0,
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {body}
+            </p>
+          )}
+        </div>
       </div>
-      <button onClick={resolvedCallback}
-        style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: red, color: '#fff', fontFamily: sans, fontWeight: 700, fontSize: 14, height: 48, padding: '0 20px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}>
-        {resolvedPrimary}
-      </button>
+
+      {/* Primary button */}
+      <div
+        data-node-id="31:978"
+        style={{
+          backgroundColor: red,
+          height: 56,
+          position: 'relative',
+          flexShrink: 0,
+          width: 215,
+        }}
+      >
+        <button
+          onClick={resolvedCallback}
+          style={{
+            display: 'flex',
+            gap: 8,
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '16px 24px',
+            width: '100%',
+            height: '100%',
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          <span
+            style={{
+              fontFamily: sans,
+              fontWeight: 600,
+              fontSize: 16,
+              lineHeight: '28px',
+              color: '#FFFFFF',
+              whiteSpace: 'nowrap',
+              textAlign: 'center',
+            }}
+          >
+            {resolvedPrimary}
+          </span>
+          <div style={{ width: 24, height: 24, position: 'relative', flexShrink: 0 }}>
+            <img
+              alt=""
+              src={imgArrowForward}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+            />
+          </div>
+        </button>
+      </div>
     </div>
   );
 }

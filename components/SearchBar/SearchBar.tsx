@@ -1,17 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-interface SearchBarProps {
+// Asset URLs from Figma
+const imgStarIcon = 'http://localhost:3845/assets/48d3f461d4f1fb6e204239f98530920c972d5b67.svg';
+const imgSendIcon = 'http://localhost:3845/assets/2580e4c1a8b8f63b73573a7293d6016283d423ca.svg';
+
+// Design tokens
+const sans = '"General Sans", system-ui, -apple-system, sans-serif';
+
+export interface SearchBarProps {
   placeholder?: string;
+  value?: string;
+  onChange?: (value: string) => void;
   onSubmit?: (value: string) => void;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export function SearchBar({
   placeholder = 'Ask about services, industries, solutions, or case studies',
+  value: controlledValue,
+  onChange,
   onSubmit,
   className,
+  style,
 }: SearchBarProps) {
-  const [value, setValue] = React.useState('');
+  const [internalValue, setInternalValue] = useState('');
+  const value = controlledValue !== undefined ? controlledValue : internalValue;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const v = e.target.value;
+    setInternalValue(v);
+    onChange?.(v);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,70 +42,82 @@ export function SearchBar({
     <form
       onSubmit={handleSubmit}
       className={className}
+      data-node-id="31:857"
       style={{
-        background: '#FFFFFF',
+        backgroundColor: '#FFFFFF',
         border: '1px solid #F5F5F5',
-        borderRadius: '9999px',
+        borderRadius: 9999,
         boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.05)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '65px',
-        paddingLeft: '25px',
-        paddingRight: '17px',
-        paddingTop: '21px',
-        paddingBottom: '21px',
+        height: 65,
+        paddingLeft: 25,
+        paddingRight: 17,
+        paddingTop: 21,
+        paddingBottom: 21,
         width: '100%',
-        maxWidth: '1152px',
+        maxWidth: 1152,
         overflow: 'hidden',
+        boxSizing: 'border-box',
+        ...style,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1 }}>
-        {/* AI star icon */}
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-          <path d="M10 2L11.8 7.2L17 9L11.8 10.8L10 16L8.2 10.8L3 9L8.2 7.2L10 2Z" fill="#ED2939" />
-          <path d="M16 1L16.9 3.1L19 4L16.9 4.9L16 7L15.1 4.9L13 4L15.1 3.1L16 1Z" fill="#ED2939" />
-          <path d="M4 14L4.6 15.4L6 16L4.6 16.6L4 18L3.4 16.6L2 16L3.4 15.4L4 14Z" fill="#ED2939" />
-        </svg>
+      {/* Left: star icon + input */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, position: 'relative', flexShrink: 0 }}>
+        {/* Figma-provided AI star icon */}
+        <div style={{ width: 20, height: 20, position: 'relative', flexShrink: 0 }}>
+          <img
+            alt=""
+            src={imgStarIcon}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+          />
+        </div>
+
         <input
           type="text"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleChange}
           placeholder={placeholder}
+          aria-label="AI search"
           style={{
             border: 'none',
             outline: 'none',
             background: 'transparent',
-            fontFamily: '"General Sans", system-ui, sans-serif',
+            fontFamily: sans,
             fontWeight: 500,
-            fontSize: '16px',
+            fontSize: 16,
             lineHeight: '24px',
             color: '#949494',
-            width: '100%',
+            width: 'auto',
+            minWidth: 200,
           }}
         />
       </div>
 
-      {/* Send button */}
+      {/* Right: send button */}
       <button
         type="submit"
+        aria-label="Submit search"
         style={{
-          background: '#1E1E1E',
-          borderRadius: '22px',
+          backgroundColor: '#1E1E1E',
+          borderRadius: 22,
           border: 'none',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          padding: '8px',
+          overflow: 'hidden',
+          padding: 8,
           flexShrink: 0,
         }}
-        aria-label="Submit search"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M22 2L11 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <div style={{ width: 24, height: 24, position: 'relative' }}>
+          <img
+            alt=""
+            src={imgSendIcon}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+          />
+        </div>
       </button>
     </form>
   );

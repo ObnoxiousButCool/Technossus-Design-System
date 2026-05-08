@@ -1,88 +1,109 @@
 import React from 'react';
 
-// ─── Shared sub-types ────────────────────────────────────────────────────────
+// Asset URLs from Figma
+const imgHeroPhoto      = 'http://localhost:3845/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
+const imgPhoto2Dark     = 'http://localhost:3845/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
+const imgPhoto2Light    = 'http://localhost:3845/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
+const imgContainerSvg   = 'http://localhost:3845/assets/f6fd2f419935273b9e66a4b9c11731de18271c48.svg';
+const imgIconSvg        = 'http://localhost:3845/assets/da42ce3d86cd28e1121776ec014cdcdbe6f8208e.svg';
+const imgContainerSvg1  = 'http://localhost:3845/assets/487c967a36fb2b5113f573275756c62f0ec9a2fb.svg';
+const imgArrowForward   = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
+
+// Design tokens
+const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
+const serif = '"Roboto Serif", Georgia, serif';
+
+// ─── Prop types ───────────────────────────────────────────────────────────────
 
 interface StatItem {
   value: string;
   label: string;
 }
 
-// ─── Dark / Small ────────────────────────────────────────────────────────────
-
 interface CardDarkSmallProps {
   mode: 'dark';
-  variant: 'small';
+  type: 'small';
   icon?: React.ReactNode;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
-
-// ─── Dark / Large ────────────────────────────────────────────────────────────
-
-interface CardDarkLargeProps {
-  mode: 'dark';
-  variant: 'large';
-  category: string;
-  heading: string;
-  body: string;
-  stats: StatItem[];
-  image?: string;
-  className?: string;
-}
-
-// ─── Dark / Medium ───────────────────────────────────────────────────────────
 
 interface CardDarkMediumProps {
   mode: 'dark';
-  variant: 'medium';
-  image?: string;
+  type: 'medium';
+  icon?: string;
   category?: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   ctaLabel?: string;
   onCta?: () => void;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-// ─── Dark / Insights ─────────────────────────────────────────────────────────
+interface CardDarkLargeProps {
+  mode: 'dark';
+  type: 'large';
+  category?: string;
+  heading?: string;
+  body?: string;
+  stats?: StatItem[];
+  image?: string;
+  onPrimary?: () => void;
+  onSecondary?: () => void;
+  primaryLabel?: string;
+  secondaryLabel?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
 
 interface CardDarkInsightsProps {
   mode: 'dark';
-  variant: 'insights';
-  image: string;
-  tags: string;
-  title: string;
-  excerpt: string;
+  type: 'insights';
+  image?: string;
+  tags?: string;
+  title?: string;
+  excerpt?: string;
   ctaLabel?: string;
   onCta?: () => void;
   className?: string;
+  style?: React.CSSProperties;
 }
-
-// ─── Light / Insights ────────────────────────────────────────────────────────
 
 interface CardLightInsightsProps {
   mode: 'light';
-  variant: 'insights';
-  image: string;
-  tags: string;
-  title: string;
-  excerpt: string;
+  type: 'insights';
+  image?: string;
+  tags?: string;
+  title?: string;
+  excerpt?: string;
   ctaLabel?: string;
   onCta?: () => void;
   className?: string;
+  style?: React.CSSProperties;
 }
-
-// ─── Light / Deliver ─────────────────────────────────────────────────────────
 
 interface CardLightDeliverProps {
   mode: 'light';
-  variant: 'deliver';
-  image: string;
-  title: string;
-  description: string;
+  type: 'deliver';
+  image?: string;
+  title?: string;
+  description?: string;
   onArrow?: () => void;
   className?: string;
+  style?: React.CSSProperties;
+}
+
+interface CardLightLargeProps {
+  mode: 'light';
+  type: 'large';
+  heading?: string;
+  body?: string[];
+  image?: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export type CardProps =
@@ -91,239 +112,313 @@ export type CardProps =
   | CardDarkLargeProps
   | CardDarkInsightsProps
   | CardLightInsightsProps
-  | CardLightDeliverProps;
+  | CardLightDeliverProps
+  | CardLightLargeProps;
 
-// ─── Styles ──────────────────────────────────────────────────────────────────
-
-const baseCardStyle: React.CSSProperties = {
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  overflow: 'hidden',
-};
-
-const fontSans = '"General Sans", system-ui, -apple-system, sans-serif';
-const fontSerif = '"Roboto Serif", Georgia, serif';
-
-// ─── Component ───────────────────────────────────────────────────────────────
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Card(props: CardProps) {
-  if (props.mode === 'dark' && props.variant === 'small') {
+  // ── Dark / Small ─────────────────────────────────────────────────────────────
+  if (props.mode === 'dark' && props.type === 'small') {
     return (
       <div
         className={props.className}
+        data-node-id="8:605"
         style={{
-          ...baseCardStyle,
-          background: '#1E1E1E',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+          alignItems: 'flex-start',
+          backgroundColor: '#1E1E1E',
           border: '1px solid #5C5C5C',
-          gap: '16px',
-          padding: '33px',
-          width: '336px',
+          padding: 33,
+          width: 1616,
+          ...props.style,
         }}
       >
-        {props.icon && (
-          <div style={{ height: '28px', flexShrink: 0 }}>
-            {props.icon}
-          </div>
-        )}
+        {/* Icon */}
+        <div style={{ height: 27.633, position: 'relative', flexShrink: 0, width: '100%' }}>
+          {props.icon ? (
+            <>{props.icon}</>
+          ) : (
+            <div style={{ position: 'absolute', top: 0, right: '98.22%', bottom: 0, left: 0 }}>
+              <img alt="" src={imgIconSvg} style={{ display: 'block', width: '100%', height: '100%' }} />
+            </div>
+          )}
+        </div>
+
         <h3
           style={{
-            fontFamily: fontSans,
+            fontFamily: sans,
             fontWeight: 600,
-            fontSize: '24px',
+            fontSize: 24,
             lineHeight: '32px',
             color: '#FFFFFF',
             margin: 0,
+            width: '100%',
+            flexShrink: 0,
           }}
         >
-          {props.title}
+          {props.title ?? 'Outcome Driven'}
         </h3>
+
         <p
           style={{
-            fontFamily: fontSans,
+            fontFamily: sans,
             fontWeight: 500,
-            fontSize: '16px',
+            fontSize: 16,
             lineHeight: '24px',
             color: '#E1E0E0',
             margin: 0,
+            width: '100%',
+            flexShrink: 0,
           }}
         >
-          {props.description}
+          {props.description ?? 'Our systems are meticulously designed to scale operations and unlock new growth opportunities, ensuring measurable impact on your bottom line.'}
         </p>
       </div>
     );
   }
 
-  if (props.mode === 'dark' && props.variant === 'medium') {
+  // ── Dark / Medium ─────────────────────────────────────────────────────────────
+  if (props.mode === 'dark' && props.type === 'medium') {
     return (
       <div
         className={props.className}
+        data-node-id="8:603"
         style={{
-          ...baseCardStyle,
-          background: '#1E1E1E',
-          width: '394px',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 32,
+          alignItems: 'flex-start',
+          backgroundColor: '#1E1E1E',
+          border: '1px solid #5C5C5C',
+          backdropFilter: 'blur(10px)',
+          padding: 33,
+          width: 394.667,
+          ...props.style,
         }}
       >
-        {props.image && (
-          <div style={{ height: '220px', flexShrink: 0, position: 'relative' }}>
-            <img
-              src={props.image}
-              alt=""
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-            />
+        {/* Icon box */}
+        <div
+          style={{
+            backgroundColor: '#262626',
+            width: 64,
+            height: 64,
+            position: 'relative',
+            flexShrink: 0,
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%',
+              position: 'relative',
+            }}
+          >
+            {props.icon ? (
+              <img alt="" src={props.icon} style={{ width: 24, height: 30, objectFit: 'contain' }} />
+            ) : (
+              <div style={{ height: 30, position: 'relative', width: 24 }}>
+                <img
+                  alt=""
+                  src={imgContainerSvg1}
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+                />
+              </div>
+            )}
           </div>
-        )}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', flex: 1 }}>
-          {props.category && (
-            <span
+        </div>
+
+        {/* Text content */}
+        <div style={{ position: 'relative', flexShrink: 0, width: '100%' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 12,
+              alignItems: 'flex-start',
+            }}
+          >
+            <p
               style={{
-                background: '#ED2939',
-                borderRadius: '37px',
-                padding: '4px 12px',
-                fontFamily: fontSans,
+                fontFamily: sans,
                 fontWeight: 600,
-                fontSize: '14px',
+                fontSize: 14,
                 lineHeight: '20px',
-                color: '#FFFFFF',
-                display: 'inline-flex',
-                alignSelf: 'flex-start',
+                color: '#ED2939',
+                margin: 0,
+                width: '100%',
               }}
             >
-              {props.category}
-            </span>
-          )}
-          <h3
-            style={{
-              fontFamily: fontSans,
-              fontWeight: 600,
-              fontSize: '24px',
-              lineHeight: '32px',
-              color: '#FFFFFF',
-              margin: 0,
-            }}
-          >
-            {props.title}
-          </h3>
-          <p
-            style={{
-              fontFamily: fontSans,
-              fontWeight: 500,
-              fontSize: '16px',
-              lineHeight: '24px',
-              color: '#E1E0E0',
-              margin: 0,
-              flex: 1,
-            }}
-          >
-            {props.description}
-          </p>
-          {(props.ctaLabel || props.onCta) && (
+              {props.category ?? 'FASTER PROCESSING'}
+            </p>
+            <h3
+              style={{
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 24,
+                lineHeight: '32px',
+                color: '#FFFFFF',
+                margin: 0,
+                width: '100%',
+              }}
+            >
+              {props.title ?? 'Automate document workflows'}
+            </h3>
+            <p
+              style={{
+                fontFamily: sans,
+                fontWeight: 500,
+                fontSize: 16,
+                lineHeight: '24px',
+                color: '#E1E0E0',
+                margin: 0,
+                width: '100%',
+              }}
+            >
+              {props.description ?? 'Use advanced machine learning to automatically extract and categorize data from complex documents.'}
+            </p>
+          </div>
+        </div>
+
+        {/* CTA link */}
+        <div style={{ position: 'relative', flexShrink: 0, width: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <button
               onClick={props.onCta}
               style={{
-                border: '1px solid #ED2939',
-                background: 'transparent',
-                height: '48px',
-                padding: '12px 20px',
-                display: 'inline-flex',
-                alignItems: 'center',
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 16,
+                lineHeight: '28px',
+                color: '#ED2939',
+                textDecoration: 'underline',
+                textDecorationStyle: 'solid',
+                background: 'none',
+                border: 'none',
                 cursor: 'pointer',
-                alignSelf: 'flex-start',
+                padding: 0,
+                whiteSpace: 'nowrap',
               }}
             >
-              <span
-                style={{
-                  fontFamily: fontSans,
-                  fontWeight: 600,
-                  fontSize: '14px',
-                  lineHeight: '20px',
-                  color: '#ED2939',
-                }}
-              >
-                {props.ctaLabel ?? 'Learn More'}
-              </span>
+              {props.ctaLabel ?? 'Try in AI Studio'}
             </button>
-          )}
+          </div>
         </div>
       </div>
     );
   }
 
-  if (props.mode === 'dark' && props.variant === 'large') {
+  // ── Dark / Large ──────────────────────────────────────────────────────────────
+  if (props.mode === 'dark' && props.type === 'large') {
+    const stats = props.stats ?? [
+      { value: '$50M+', label: 'TOTAL COST SAVING' },
+      { value: '20,000+', label: 'ORDERS PLACED SUCCESSFULLY' },
+    ];
     return (
       <div
         className={props.className}
+        data-node-id="8:602"
         style={{
-          ...baseCardStyle,
+          position: 'relative',
+          display: 'flex',
           flexDirection: 'row',
-          background: '#1E1E1E',
-          gap: '61px',
+          gap: 61,
           alignItems: 'center',
-          padding: '52px 48px',
-          width: '1162px',
+          backgroundColor: '#1E1E1E',
           overflow: 'hidden',
+          padding: '52px 48px',
+          width: 1162,
+          ...props.style,
         }}
       >
-        {/* Left – content */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '58px', flex: 1, minWidth: 0 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {/* Left: content */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            flex: '1 0 0',
+            gap: 58,
+            alignItems: 'flex-start',
+            minWidth: 0,
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start', width: '100%', flexShrink: 0 }}>
             {/* Category pill */}
-            <span
+            <div
+              data-node-id="8:494"
               style={{
-                background: '#ED2939',
-                borderRadius: '37px',
+                backgroundColor: '#ED2939',
+                display: 'flex',
+                alignItems: 'center',
                 padding: '4px 12px',
-                fontFamily: fontSans,
-                fontWeight: 600,
-                fontSize: '14px',
-                lineHeight: '20px',
-                color: '#FFFFFF',
-                display: 'inline-flex',
-                alignSelf: 'flex-start',
+                borderRadius: 37,
+                flexShrink: 0,
               }}
             >
-              {props.category}
-            </span>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <span
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 14,
+                  lineHeight: '20px',
+                  color: '#FFFFFF',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {props.category ?? 'HEALTHCARE'}
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start', width: '100%', flexShrink: 0 }}>
               <h2
                 style={{
-                  fontFamily: fontSerif,
+                  fontFamily: serif,
                   fontWeight: 600,
-                  fontSize: '32px',
+                  fontSize: 32,
                   lineHeight: '36px',
                   color: '#FFFFFF',
                   margin: 0,
+                  width: '100%',
                 }}
               >
-                {props.heading}
+                {props.heading ?? 'Automating Home Care Operations for Unprecedented Efficiency.'}
               </h2>
               <p
                 style={{
-                  fontFamily: fontSans,
+                  fontFamily: sans,
                   fontWeight: 500,
-                  fontSize: '16px',
+                  fontSize: 16,
                   lineHeight: '24px',
                   color: '#E1E0E0',
                   margin: 0,
+                  width: '100%',
                 }}
               >
-                {props.body}
+                {props.body ?? 'Transformed high-volume operational workflows with RPA and Smart Rules, eliminating manual bottlenecks.'}
               </p>
             </div>
           </div>
+
           {/* Stats row */}
-          <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-            {props.stats.map((stat, i) => (
+          <div style={{ display: 'flex', gap: 32, alignItems: 'center', flexShrink: 0, width: '100%' }}>
+            {stats.map((stat, i) => (
               <React.Fragment key={i}>
                 {i > 0 && (
-                  <div style={{ width: '1px', height: '79px', background: '#7C7C7C', flexShrink: 0 }} />
+                  <div style={{ width: 1, height: 78.721, backgroundColor: '#7C7C7C', flexShrink: 0 }} />
                 )}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', whiteSpace: 'nowrap' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-start', flexShrink: 0, whiteSpace: 'nowrap' }}>
                   <span
                     style={{
-                      fontFamily: fontSerif,
+                      fontFamily: serif,
                       fontWeight: 600,
-                      fontSize: '32px',
+                      fontSize: 32,
                       lineHeight: '36px',
                       color: '#ED2939',
                     }}
@@ -332,9 +427,9 @@ export function Card(props: CardProps) {
                   </span>
                   <span
                     style={{
-                      fontFamily: fontSans,
+                      fontFamily: sans,
                       fontWeight: 500,
-                      fontSize: '16px',
+                      fontSize: 16,
                       lineHeight: '24px',
                       color: '#E1E0E0',
                     }}
@@ -345,96 +440,188 @@ export function Card(props: CardProps) {
               </React.Fragment>
             ))}
           </div>
+
+          {/* Buttons row */}
+          <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start', flexShrink: 0 }}>
+            {/* Primary */}
+            <button
+              onClick={props.onPrimary}
+              style={{
+                display: 'flex',
+                gap: 8,
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: 56,
+                padding: '16px 24px',
+                backgroundColor: '#ED2939',
+                border: 'none',
+                cursor: 'pointer',
+                flexShrink: 0,
+                width: 215,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 16,
+                  lineHeight: '28px',
+                  color: '#FFFFFF',
+                  whiteSpace: 'nowrap',
+                  textAlign: 'center',
+                }}
+              >
+                {props.primaryLabel ?? 'View All Case Study'}
+              </span>
+              <div style={{ width: 24, height: 24, position: 'relative', flexShrink: 0 }}>
+                <img alt="" src={imgArrowForward} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+              </div>
+            </button>
+
+            {/* Secondary */}
+            <button
+              onClick={props.onSecondary}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: 56,
+                padding: '16px 24px',
+                backgroundColor: 'transparent',
+                border: '1px solid #ED2939',
+                cursor: 'pointer',
+                flexShrink: 0,
+                width: 180,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 16,
+                  lineHeight: '28px',
+                  color: '#ED2939',
+                  whiteSpace: 'nowrap',
+                  textAlign: 'center',
+                }}
+              >
+                {props.secondaryLabel ?? 'View All'}
+              </span>
+            </button>
+          </div>
         </div>
-        {/* Right – image */}
-        {props.image && (
-          <div style={{ flexShrink: 0, width: '460px', height: '420px', overflow: 'hidden' }}>
+
+        {/* Right: image */}
+        <div
+          data-node-id="8:515"
+          style={{ height: 478.881, position: 'relative', flexShrink: 0, width: 479.433 }}
+        >
+          <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
             <img
-              src={props.image}
               alt=""
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              src={props.image ?? imgPhoto2Dark}
+              style={{ position: 'absolute', height: '100%', left: '-36.19%', top: 0, width: '177.52%', maxWidth: 'none' }}
             />
           </div>
-        )}
+        </div>
       </div>
     );
   }
 
-  if (props.variant === 'insights') {
-    const isDark = props.mode === 'dark';
+  // ── Dark / Insights ───────────────────────────────────────────────────────────
+  if (props.mode === 'dark' && props.type === 'insights') {
     return (
       <div
         className={props.className}
+        data-node-id="31:1469"
         style={{
-          ...baseCardStyle,
-          background: isDark ? '#1E1E1E' : '#FFFFFF',
-          width: '400px',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          backgroundColor: '#1E1E1E',
+          width: 400,
+          ...props.style,
         }}
       >
-        <div style={{ height: '260px', flexShrink: 0, position: 'relative' }}>
+        {/* Image */}
+        <div style={{ height: 260, position: 'relative', flexShrink: 0, width: '100%' }}>
           <img
-            src={props.image}
             alt=""
+            src={props.image ?? imgHeroPhoto}
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <span
-              style={{
-                fontFamily: fontSans,
-                fontWeight: 600,
-                fontSize: '14px',
-                lineHeight: '20px',
-                color: isDark ? '#ADADAD' : '#949494',
-              }}
-            >
-              {props.tags}
-            </span>
-            <h4
-              style={{
-                fontFamily: fontSans,
-                fontWeight: 600,
-                fontSize: '20px',
-                lineHeight: '28px',
-                color: isDark ? '#FFFFFF' : '#383838',
-                margin: 0,
-              }}
-            >
-              {props.title}
-            </h4>
+
+        {/* Body */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 24, flexShrink: 0, width: '100%', boxSizing: 'border-box' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', flexShrink: 0 }}>
+            {/* Tags + title block */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'flex-start', width: '100%', flexShrink: 0 }}>
+              <p
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 14,
+                  lineHeight: '20px',
+                  color: '#ADADAD',
+                  margin: 0,
+                  width: '100%',
+                }}
+              >
+                {props.tags ?? 'FINTECH • PLATFORM MODERNIZATION'}
+              </p>
+              <p
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 20,
+                  lineHeight: '28px',
+                  color: '#FFFFFF',
+                  margin: 0,
+                  width: '100%',
+                }}
+              >
+                {props.title ?? 'Architecting a High-Frequency Trading Engine for Global Markets'}
+              </p>
+            </div>
+
             <p
               style={{
-                fontFamily: fontSans,
+                fontFamily: sans,
                 fontWeight: 500,
-                fontSize: '16px',
+                fontSize: 16,
                 lineHeight: '26px',
-                color: isDark ? '#E1E0E0' : '#5C5C5C',
+                color: '#E1E0E0',
                 margin: 0,
+                width: '100%',
               }}
             >
-              {props.excerpt}
+              {props.excerpt ?? 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40%…'}
             </p>
           </div>
+
+          {/* CTA */}
           <button
             onClick={props.onCta}
             style={{
-              border: '1px solid #ED2939',
-              background: 'transparent',
-              height: '56px',
-              width: '180px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: 'pointer',
+              height: 56,
+              width: 180,
               padding: '16px 24px',
+              backgroundColor: 'transparent',
+              border: '1px solid #ED2939',
+              cursor: 'pointer',
+              flexShrink: 0,
             }}
           >
             <span
               style={{
-                fontFamily: fontSans,
+                fontFamily: sans,
                 fontWeight: 600,
-                fontSize: '16px',
+                fontSize: 16,
                 lineHeight: '28px',
                 color: '#ED2939',
                 whiteSpace: 'nowrap',
@@ -448,72 +635,286 @@ export function Card(props: CardProps) {
     );
   }
 
-  if (props.mode === 'light' && props.variant === 'deliver') {
+  // ── Light / Insights ──────────────────────────────────────────────────────────
+  if (props.mode === 'light' && props.type === 'insights') {
     return (
       <div
         className={props.className}
+        data-node-id="8:606"
         style={{
-          ...baseCardStyle,
-          background: '#FFFFFF',
-          width: '400px',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          backgroundColor: '#FFFFFF',
+          width: 400,
+          ...props.style,
         }}
       >
-        <div style={{ height: '260px', flexShrink: 0, position: 'relative' }}>
+        {/* Image */}
+        <div style={{ height: 260, position: 'relative', flexShrink: 0, width: '100%' }}>
           <img
-            src={props.image}
             alt=""
+            src={props.image ?? imgHeroPhoto}
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '24px', height: '256px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
-            <h4
+
+        {/* Body */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 24, flexShrink: 0, width: '100%', boxSizing: 'border-box' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', flexShrink: 0 }}>
+            <p
               style={{
-                fontFamily: fontSans,
+                fontFamily: sans,
                 fontWeight: 600,
-                fontSize: '20px',
+                fontSize: 14,
+                lineHeight: '20px',
+                color: '#949494',
+                margin: 0,
+                width: '100%',
+              }}
+            >
+              {props.tags ?? 'FINTECH • PLATFORM MODERNIZATION'}
+            </p>
+            <p
+              style={{
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 20,
                 lineHeight: '28px',
                 color: '#383838',
                 margin: 0,
+                width: '100%',
               }}
             >
-              {props.title}
+              {props.title ?? 'Architecting a High-Frequency Trading Engine for Global Markets'}
+            </p>
+            <p
+              style={{
+                fontFamily: sans,
+                fontWeight: 500,
+                fontSize: 16,
+                lineHeight: '26px',
+                color: '#5C5C5C',
+                margin: 0,
+                width: '100%',
+              }}
+            >
+              {props.excerpt ?? 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40%…'}
+            </p>
+          </div>
+
+          <button
+            onClick={props.onCta}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 56,
+              width: 180,
+              padding: '16px 24px',
+              backgroundColor: 'transparent',
+              border: '1px solid #ED2939',
+              cursor: 'pointer',
+              flexShrink: 0,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 16,
+                lineHeight: '28px',
+                color: '#ED2939',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {props.ctaLabel ?? 'See How We Work'}
+            </span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Light / Deliver ───────────────────────────────────────────────────────────
+  if (props.mode === 'light' && props.type === 'deliver') {
+    return (
+      <div
+        className={props.className}
+        data-node-id="8:604"
+        style={{
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          backgroundColor: '#FFFFFF',
+          width: 400,
+          ...props.style,
+        }}
+      >
+        {/* Image */}
+        <div style={{ height: 260, position: 'relative', flexShrink: 0, width: '100%' }}>
+          <img
+            alt=""
+            src={props.image ?? imgHeroPhoto}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </div>
+
+        {/* Body */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 24,
+            padding: 24,
+            height: 256,
+            flexShrink: 0,
+            width: '100%',
+            boxSizing: 'border-box',
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, flex: '1 0 0', minHeight: 0 }}>
+            <h4
+              style={{
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 20,
+                lineHeight: '28px',
+                color: '#383838',
+                margin: 0,
+                width: '100%',
+              }}
+            >
+              {props.title ?? 'AI Led Transformation'}
             </h4>
             <p
               style={{
-                fontFamily: fontSans,
+                fontFamily: sans,
                 fontWeight: 500,
-                fontSize: '16px',
+                fontSize: 16,
                 lineHeight: '24px',
                 color: '#5C5C5C',
                 margin: 0,
+                width: '100%',
               }}
             >
-              {props.description}
+              {props.description ?? 'Revolutionizing enterprise workflows through custom LLM integration.'}
             </p>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+
+          {/* Arrow button */}
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end', flexShrink: 0, width: '100%' }}>
             <button
               onClick={props.onArrow}
+              aria-label="View more"
               style={{
                 border: '1px solid #ED2939',
-                borderRadius: '9999px',
-                background: 'transparent',
-                width: '48px',
-                height: '48px',
+                borderRadius: 9999,
+                backgroundColor: 'transparent',
+                width: 48,
+                height: 48,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                padding: '1px',
+                padding: 1,
+                flexShrink: 0,
               }}
-              aria-label="View more"
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="#ED2939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <div style={{ width: 16, height: 16, position: 'relative' }}>
+                <img
+                  alt=""
+                  src={imgContainerSvg}
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+                />
+              </div>
             </button>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Light / Large ─────────────────────────────────────────────────────────────
+  if (props.mode === 'light' && props.type === 'large') {
+    const bodyParagraphs = props.body ?? [
+      'No problem is too complex, and no idea is too early, we listen first, then collaborate to shape the right path forward.',
+      'We see partnership as the foundation of progress. That means being transparent, responsive, and focused on outcomes that create lasting value.',
+    ];
+
+    return (
+      <div
+        className={props.className}
+        data-node-id="2203:11753"
+        style={{
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 61,
+          alignItems: 'center',
+          backgroundColor: '#F5F5F5',
+          overflow: 'hidden',
+          padding: '52px 48px',
+          width: 1162,
+          ...props.style,
+        }}
+      >
+        {/* Left: content */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 16,
+            alignItems: 'flex-start',
+            flexShrink: 0,
+            width: 525.567,
+          }}
+        >
+          <h2
+            style={{
+              fontFamily: sans,
+              fontWeight: 600,
+              fontSize: 24,
+              lineHeight: '32px',
+              color: '#1E1E1E',
+              margin: 0,
+              width: '100%',
+            }}
+          >
+            {props.heading ?? 'We approach every inquiry with curiosity, clarity, and a commitment to understanding the real challenge behind it.'}
+          </h2>
+
+          {bodyParagraphs.map((para, i) => (
+            <p
+              key={i}
+              style={{
+                fontFamily: sans,
+                fontWeight: 500,
+                fontSize: 16,
+                lineHeight: '24px',
+                color: '#5C5C5C',
+                margin: 0,
+                marginBottom: i < bodyParagraphs.length - 1 ? 10 : 0,
+                width: '100%',
+              }}
+            >
+              {para}
+            </p>
+          ))}
+        </div>
+
+        {/* Right: image */}
+        <div
+          data-node-id="2203:11750"
+          style={{ height: 478.881, position: 'relative', flexShrink: 0, width: 479.433 }}
+        >
+          <img
+            alt=""
+            src={props.image ?? imgPhoto2Light}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         </div>
       </div>
     );

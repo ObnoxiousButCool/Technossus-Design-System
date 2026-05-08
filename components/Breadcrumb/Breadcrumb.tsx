@@ -1,32 +1,28 @@
 import React from 'react';
 
-interface BreadcrumbItem {
+// Design tokens
+const sans = '"General Sans", system-ui, -apple-system, sans-serif';
+
+export interface BreadcrumbItem {
   label: string;
   href?: string;
   active?: boolean;
 }
 
-interface BreadcrumbProps {
+export interface BreadcrumbProps {
   items: BreadcrumbItem[];
   className?: string;
+  style?: React.CSSProperties;
 }
 
-const fontSans = '"General Sans", system-ui, -apple-system, sans-serif';
-
-const ChevronIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M6 4L10 8L6 12" stroke="#949494" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-export function Breadcrumb({ items, className = '' }: BreadcrumbProps) {
+export function Breadcrumb({ items, className = '', style }: BreadcrumbProps) {
   return (
-    <nav aria-label="Breadcrumb" className={className}>
+    <nav aria-label="Breadcrumb" className={className} style={style}>
       <ol
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '4px',
+          gap: 4,
           listStyle: 'none',
           margin: 0,
           padding: 0,
@@ -34,44 +30,86 @@ export function Breadcrumb({ items, className = '' }: BreadcrumbProps) {
         }}
       >
         {items.map((item, i) => {
-          const isLast = i === items.length - 1;
+          const isLast   = i === items.length - 1;
           const isActive = item.active ?? isLast;
 
           return (
             <React.Fragment key={i}>
               <li style={{ display: 'flex', alignItems: 'center' }}>
-                {item.href && !isActive ? (
-                  <a
-                    href={item.href}
+                {isActive ? (
+                  /* Active state — Figma node 38:434: General Sans Semibold 14px #383838 */
+                  <span
+                    aria-current="page"
+                    data-node-id="38:434"
                     style={{
-                      fontFamily: fontSans,
-                      fontWeight: 500,
-                      fontSize: '14px',
+                      fontFamily: sans,
+                      fontWeight: 600,
+                      fontSize: 14,
                       lineHeight: '20px',
-                      color: '#949494',
-                      textDecoration: 'none',
+                      color: '#383838',
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     {item.label}
-                  </a>
+                  </span>
+                ) : item.href ? (
+                  /* Default state — Figma node 38:454: General Sans Medium 14px #5C5C5C underline */
+                  <div
+                    data-node-id="38:449"
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
+                  >
+                    <a
+                      href={item.href}
+                      data-node-id="38:450"
+                      style={{
+                        fontFamily: sans,
+                        fontWeight: 500,
+                        fontSize: 14,
+                        lineHeight: '20px',
+                        color: '#5C5C5C',
+                        textDecoration: 'underline',
+                        textDecorationStyle: 'solid',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  </div>
                 ) : (
                   <span
-                    aria-current={isActive ? 'page' : undefined}
                     style={{
-                      fontFamily: fontSans,
-                      fontWeight: isActive ? 600 : 500,
-                      fontSize: '14px',
+                      fontFamily: sans,
+                      fontWeight: 500,
+                      fontSize: 14,
                       lineHeight: '20px',
-                      color: isActive ? '#ED2939' : '#949494',
+                      color: '#5C5C5C',
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     {item.label}
                   </span>
                 )}
               </li>
+
+              {/* Separator — Figma: "/" in General Sans Medium 14px #5C5C5C */}
               {!isLast && (
-                <li aria-hidden="true" style={{ display: 'flex', alignItems: 'center' }}>
-                  <ChevronIcon />
+                <li
+                  aria-hidden="true"
+                  data-node-id="38:451"
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
+                >
+                  <span
+                    data-node-id="38:452"
+                    style={{
+                      fontFamily: sans,
+                      fontWeight: 500,
+                      fontSize: 14,
+                      lineHeight: '20px',
+                      color: '#5C5C5C',
+                    }}
+                  >
+                    /
+                  </span>
                 </li>
               )}
             </React.Fragment>
@@ -82,5 +120,4 @@ export function Breadcrumb({ items, className = '' }: BreadcrumbProps) {
   );
 }
 
-export type { BreadcrumbProps, BreadcrumbItem };
 export default Breadcrumb;
