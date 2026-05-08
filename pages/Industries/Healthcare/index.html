@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare – Technossus Industries</title>
+
+<!-- Fonts: Roboto Serif + General Sans -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,300..900;1,8..144,300..900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+<!-- Design System: tokens + typography -->
+<link rel="stylesheet" href="../../../css/variables.css">
+<link rel="stylesheet" href="../../../css/typography.css">
+
+<style>
+/* ── Reset ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{display:block}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+
+/* ── Alias design-system variables ── */
+:root{
+  --red:   var(--color-brand-primary);
+  --dark:  var(--color-bg-dark-1);
+  --light: var(--color-brand-light-gray);
+  --max:   var(--grid-max-desktop);
+}
+
+body{
+  font-family:var(--font-sans);
+  color:var(--color-text-900);
+  background:#fff;
+  overflow-x:hidden;
+}
+
+/* Material Symbols */
+.material-symbols-outlined{
+  font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;
+  font-size:20px;line-height:1;vertical-align:middle;
+  display:inline-flex;align-items:center;user-select:none;
+}
+
+/* ── TAG component ── */
+.ds-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--font-sans);font-weight:700;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--color-text-900);
+}
+.ds-tag::before{content:'[';color:var(--red);}
+.ds-tag::after{content:']';color:var(--red);}
+.ds-tag--light{color:var(--color-text-100);}
+
+/* ── Buttons ── */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--red);color:#fff;
+  font-family:var(--font-sans);font-weight:700;font-size:14px;line-height:1;
+  height:56px;padding:0 28px;border:none;cursor:pointer;white-space:nowrap;
+}
+.btn-primary:hover{opacity:.9;}
+.btn-secondary{
+  display:inline-flex;align-items:center;
+  background:transparent;color:var(--red);
+  font-family:var(--font-sans);font-weight:700;font-size:14px;line-height:1;
+  height:56px;padding:0 28px;
+  border:2px solid var(--red);cursor:pointer;white-space:nowrap;
+}
+.btn-secondary:hover{background:rgba(237,41,57,.05);}
+.btn-secondary--onDark{color:#fff;border-color:#fff;}
+.btn-secondary--onDark:hover{background:rgba(255,255,255,.06);}
+.btn-cta{
+  display:inline-flex;align-items:center;
+  background:var(--color-bg-dark-1);color:#fff;
+  font-family:var(--font-sans);font-weight:700;font-size:14px;line-height:1;
+  height:48px;padding:0 20px;border:none;cursor:pointer;white-space:nowrap;
+}
+
+/* ── Layout container ── */
+.container{max-width:var(--max);margin:0 auto;padding:0 var(--grid-margin-desktop);}
+
+/* ── Image placeholder ── */
+.img-ph{display:block;width:100%;height:100%;background:#D4D4D4;}
+.hero-img{background:#D4D4D4;}
+.dhe-img-wrap{background:#D4D4D4;}
+.proof-card-img{background:#2E2E2E;}
+.cta-right{background:#2A2A2A;}
+
+/* ── Corner decorations ── */
+.section-cornered{position:relative;overflow:hidden;}
+.corner-tl{position:absolute;top:0;left:0;width:118px;height:118px;pointer-events:none;z-index:2;}
+.corner-br{position:absolute;bottom:0;right:0;width:118px;height:118px;pointer-events:none;z-index:2;}
+
+/* ═══════ HEADER ═══════ */
+.header{
+  background:#fff;border-bottom:1px solid #E8E8E8;
+  position:sticky;top:0;z-index:100;width:100%;
+}
+.header-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:0 var(--grid-margin-desktop);
+  height:80px;display:flex;align-items:center;gap:48px;
+}
+.logo-link{display:inline-flex;line-height:0;flex-shrink:0;}
+.nav{flex:1;display:flex;gap:32px;align-items:center;justify-content:center;}
+.nav a{
+  font-family:var(--font-sans);font-size:14px;font-weight:500;
+  color:var(--color-text-900);display:inline-flex;align-items:center;gap:2px;white-space:nowrap;
+}
+.nav a:hover{color:var(--red);}
+.hamburger{
+  display:none;background:none;border:none;cursor:pointer;
+  padding:4px;margin-left:auto;color:var(--color-text-900);
+}
+.mobile-nav{
+  display:none;flex-direction:column;
+  background:#fff;border-top:1px solid #E8E8E8;padding:12px 24px 20px;
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{
+  padding:14px 0;font-family:var(--font-sans);font-size:16px;font-weight:500;
+  color:var(--color-text-900);border-bottom:1px solid #E8E8E8;
+}
+.mob-cta{padding-top:16px;}
+
+/* ═══════ BREADCRUMB ═══════ */
+.breadcrumb{
+  display:flex;align-items:center;gap:6px;padding:18px 0 0;
+  font-family:var(--font-sans);font-size:13px;font-weight:500;
+}
+.breadcrumb a{color:var(--color-text-700);}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb .sep{color:var(--color-text-500);}
+.breadcrumb .cur{color:var(--red);}
+
+/* ═══════ HERO ═══════ */
+.hero-section{background:#fff;}
+.hero-layout{
+  display:flex;align-items:center;gap:60px;
+  padding-top:56px;padding-bottom:60px;min-height:540px;
+}
+.hero-left{flex:0 0 820px;display:flex;flex-direction:column;gap:32px;}
+.hero-h1{color:var(--color-text-900);}
+.hero-h1 .accent{color:var(--red);}
+.hero-body{
+  font-family:var(--font-sans);font-size:16px;font-weight:400;
+  line-height:1.7;color:var(--color-text-700);max-width:680px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+.hero-right{flex:1;display:flex;align-items:center;justify-content:center;min-height:460px;}
+.hero-img{width:100%;max-width:540px;height:480px;overflow:hidden;}
+
+/* ═══════ TRUSTED BY ═══════ */
+.trusted-section{background:#fff;border-top:1px solid #E8E8E8;min-height:111px;}
+.trusted-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:22px var(--grid-margin-desktop);
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+}
+.trusted-label{
+  font-family:var(--font-sans);font-size:11px;font-weight:600;
+  letter-spacing:.12em;color:var(--color-text-500);text-transform:uppercase;
+}
+.trusted-logos{display:flex;align-items:center;justify-content:center;gap:72px;flex-wrap:wrap;}
+.logo-pill{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--font-sans);font-size:13px;font-weight:700;
+  color:#888;letter-spacing:.02em;white-space:nowrap;
+  filter:grayscale(100%);opacity:.65;
+}
+
+/* ═══════ SECTION GAPS ═══════ */
+.gap-80{height:80px;}
+
+/* ═══════ THE SHIFT (dark) ═══════ */
+.shift-section{background:var(--color-bg-dark-1);}
+.shift-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+}
+.shift-tag-row{margin-bottom:40px;}
+.shift-layout{display:flex;gap:56px;align-items:flex-start;}
+.shift-left{flex:0 0 485px;display:flex;flex-direction:column;gap:28px;}
+.shift-heading{color:var(--color-text-100);}
+.shift-heading .accent{color:var(--red);}
+.shift-paras{display:flex;flex-direction:column;gap:16px;}
+.shift-body{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  line-height:1.8;color:var(--color-text-600);
+}
+
+/* Dark 2-row card grid */
+.shift-cards-col{flex:1;}
+.shift-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.shift-row--narrow{grid-template-columns:37% 63%;}
+.dark-card{
+  background:#242424;padding:28px 24px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.dark-card-title{
+  font-family:var(--font-sans);font-size:16px;font-weight:700;
+  line-height:1.4;color:#fff;
+}
+.dark-card-body{
+  font-family:var(--font-sans);font-size:13px;font-weight:400;
+  line-height:1.6;color:var(--color-text-600);
+}
+
+/* Stats bar */
+.stats-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #2A2A2A;margin-top:28px;
+}
+.stats-item{padding:28px 24px;}
+.stats-num{
+  font-family:var(--font-serif);
+  font-size:var(--text-d1-size);line-height:var(--text-d1-lh);
+  font-weight:600;color:var(--red);
+}
+.stats-desc{
+  font-family:var(--font-sans);font-size:13px;font-weight:400;
+  line-height:1.6;color:#fff;margin-top:10px;
+}
+
+/* ═══════ DHE SECTION ═══════ */
+.dhe-section{background:#fff;}
+.dhe-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop) 0;
+}
+.dhe-tag-row{margin-bottom:12px;}
+.dhe-heading{color:var(--color-text-900);}
+.dhe-heading .accent{color:var(--red);}
+.dhe-sub{
+  font-family:var(--font-sans);font-size:16px;font-weight:400;
+  line-height:1.6;color:var(--color-text-700);margin-top:8px;
+}
+.dhe-img-wrap{
+  width:100%;height:765px;overflow:hidden;margin-top:48px;
+}
+
+/* ═══════ FEATURED CASE STUDIES (dark) ═══════ */
+.featured-section{background:var(--color-bg-dark-1);min-height:828px;}
+.featured-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+}
+.featured-tag-row{margin-bottom:32px;}
+.featured-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:48px;gap:32px;
+}
+.featured-heading{color:#fff;}
+.featured-subtitle{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;
+  color:var(--color-neutral-600);margin-top:10px;line-height:1.6;
+}
+.featured-viewall{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  color:var(--red);text-decoration:underline;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;flex-shrink:0;align-self:flex-end;
+}
+.proof-cards{display:flex;gap:24px;}
+.proof-card{
+  flex:1;background:#242424;
+  display:flex;flex-direction:column;overflow:hidden;min-height:566px;
+}
+.proof-card-img{width:100%;height:220px;overflow:hidden;flex-shrink:0;}
+.proof-card-body{padding:28px 24px;display:flex;flex-direction:column;gap:12px;flex:1;}
+.proof-card-tags{
+  font-family:var(--font-sans);font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-600);
+}
+.proof-card-title{
+  font-family:var(--font-serif);font-weight:700;font-size:20px;
+  line-height:1.4;color:#fff;
+}
+.proof-card-excerpt{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  line-height:1.6;color:var(--color-neutral-600);flex:1;
+}
+.proof-card-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  border:2px solid var(--red);color:var(--red);
+  font-family:var(--font-sans);font-weight:700;font-size:14px;
+  height:48px;padding:0 20px;margin-top:8px;align-self:flex-start;white-space:nowrap;
+}
+.proof-card-btn:hover{background:rgba(237,41,57,.08);}
+
+/* ═══════ SUCCESS STORIES (dark) ═══════ */
+.success-section{background:var(--color-bg-dark-1);min-height:828px;}
+.success-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+}
+.success-tag-row{margin-bottom:32px;}
+.success-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:48px;gap:32px;
+}
+.success-heading{color:#fff;}
+.success-heading .accent{color:var(--red);}
+.success-subtitle{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;
+  color:var(--color-neutral-600);margin-top:10px;line-height:1.6;
+}
+.success-viewall{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  color:var(--red);text-decoration:underline;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;flex-shrink:0;align-self:flex-end;
+}
+
+/* ═══════ SOLUTION ACCORDION ═══════ */
+.solution-section{background:#fff;min-height:722px;}
+.solution-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+}
+.solution-heading{color:var(--color-text-900);margin-top:20px;max-width:860px;}
+.solution-heading .accent{color:var(--red);}
+.acc-layout{display:flex;margin-top:48px;border:1px solid #E8E8E8;}
+.acc-list{flex:0 0 440px;border-right:1px solid #E8E8E8;}
+.acc-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:20px 24px;border-left:4px solid transparent;
+  border-bottom:1px solid #E8E8E8;cursor:pointer;background:#fff;transition:background .15s;
+}
+.acc-item:last-child{border-bottom:none;}
+.acc-item:hover{background:#FAFAFA;}
+.acc-item.active{background:#FAFAFA;border-left-color:var(--red);}
+.acc-dot{
+  width:10px;height:10px;border-radius:50%;border:2px solid #ccc;
+  flex-shrink:0;margin-top:5px;
+}
+.acc-item.active .acc-dot{background:var(--red);border-color:var(--red);}
+.acc-item-title{
+  font-family:var(--font-sans);font-size:15px;font-weight:700;
+  color:var(--color-text-900);line-height:1.4;
+}
+.acc-item-sub{
+  font-family:var(--font-sans);font-size:13px;font-weight:400;
+  color:var(--color-neutral-600);margin-top:4px;line-height:1.5;
+}
+.acc-panel{
+  flex:1;padding:40px;background:#FAFAFA;
+  display:none;flex-direction:column;gap:20px;
+}
+.acc-panel.active{display:flex;}
+
+/* Spec panel styles */
+.spec-block{display:flex;flex-direction:column;gap:28px;}
+.spec-section-label{
+  font-family:var(--font-sans);font-weight:700;font-size:11px;
+  line-height:16px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--red);margin:0 0 12px;
+}
+.impact-list{display:flex;flex-direction:column;gap:12px;}
+.impact-item{display:flex;gap:12px;align-items:flex-start;}
+.impact-num{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  background:#E4E4E4;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-sans);font-weight:600;font-size:11px;color:#5C5C5C;margin-top:1px;
+}
+.impact-text{font-family:var(--font-sans);font-size:14px;line-height:22px;color:var(--color-text-900);}
+.tags-row{display:flex;flex-wrap:wrap;gap:8px;}
+.tag-pill{
+  font-family:var(--font-sans);font-size:13px;line-height:20px;
+  color:var(--color-text-900);border:1px solid #D4D4D4;
+  border-radius:40px;padding:5px 14px;background:#fff;
+}
+
+/* Detail panel styles */
+.panel-label{
+  font-family:var(--font-sans);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-600);
+}
+.panel-heading{color:var(--red);}
+.panel-body{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  line-height:1.7;color:var(--color-text-700);
+  display:flex;flex-direction:column;gap:12px;
+}
+
+/* ═══════ CTA BANNER ═══════ */
+.cta-outer{background:#fff;padding:0 96px;}
+.cta-section{background:var(--color-bg-dark-1);min-height:437px;}
+.cta-inner{
+  padding:var(--space-80);
+  display:flex;align-items:center;gap:64px;position:relative;
+}
+.cta-inner::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:4px;background:var(--red);
+}
+.cta-left{flex:1;display:flex;flex-direction:column;gap:20px;}
+.cta-label{
+  font-family:var(--font-sans);font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--color-neutral-600);
+}
+.cta-heading{color:#fff;}
+.cta-body{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;
+  line-height:1.7;color:var(--color-text-600);max-width:500px;
+}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+.cta-right{flex:0 0 420px;height:320px;overflow:hidden;}
+
+/* ═══════ FOOTER ═══════ */
+.footer-section{background:#111;}
+.footer-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:64px var(--grid-margin-desktop) 0;
+  display:flex;gap:64px;flex-wrap:wrap;
+}
+.footer-brand{flex:0 0 260px;display:flex;flex-direction:column;gap:18px;}
+.footer-logo-link{display:inline-flex;line-height:0;}
+.footer-tagline{
+  font-family:var(--font-sans);font-size:13px;font-weight:400;
+  line-height:1.7;color:var(--color-text-600);
+}
+.footer-socials{display:flex;gap:10px;margin-top:4px;}
+.social-icon{
+  width:36px;height:36px;border:1px solid #2E2E2E;
+  display:flex;align-items:center;justify-content:center;color:var(--color-text-600);
+}
+.social-icon:hover{border-color:var(--red);color:var(--red);}
+.social-icon svg{width:16px;height:16px;}
+.footer-cols{flex:1;display:flex;gap:48px;flex-wrap:wrap;justify-content:flex-end;}
+.footer-col{display:flex;flex-direction:column;gap:16px;min-width:130px;}
+.footer-col-head{
+  font-family:var(--font-sans);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;
+}
+.footer-col ul{display:flex;flex-direction:column;gap:10px;}
+.footer-col a{font-family:var(--font-sans);font-size:13px;font-weight:400;color:var(--color-neutral-600);line-height:1.5;}
+.footer-col a:hover{color:#fff;}
+.contact-row{display:flex;align-items:flex-start;gap:10px;}
+.contact-row .material-symbols-outlined{font-size:16px !important;flex-shrink:0;margin-top:1px;color:var(--color-neutral-600);}
+.contact-text{font-family:var(--font-sans);font-size:13px;color:var(--color-neutral-600);line-height:1.5;}
+.footer-bottom{
+  max-width:var(--max);margin:48px auto 0;
+  padding:24px var(--grid-margin-desktop);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:12px;border-top:1px solid #222;
+}
+.footer-copy{font-family:var(--font-sans);font-size:13px;color:#5C5C5C;}
+.footer-legal{display:flex;gap:24px;}
+.footer-legal a{font-family:var(--font-sans);font-size:13px;color:#5C5C5C;}
+.footer-legal a:hover{color:#fff;}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:1200px){
+  .hero-left{flex:0 0 auto;}
+  .shift-left{flex:0 0 380px;}
+}
+@media(max-width:1023px){
+  .header-inner,.shift-inner,.solution-inner,
+  .featured-inner,.success-inner,.footer-inner,.footer-bottom,.trusted-inner,.dhe-inner{
+    padding-left:40px;padding-right:40px;
+  }
+  .hero-layout{padding-left:40px;padding-right:40px;}
+  .cta-outer{padding:0 40px;}
+  .cta-inner{padding:60px 40px;}
+  .nav{display:none;}
+  .hamburger{display:flex !important;}
+  .shift-layout{flex-direction:column;}
+  .shift-left{flex:auto;}
+  .stats-bar{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:767px){
+  .header-inner,.shift-inner,.solution-inner,
+  .featured-inner,.success-inner,.footer-inner,.footer-bottom,.trusted-inner,.dhe-inner{
+    padding-left:20px;padding-right:20px;
+  }
+  .hero-layout{flex-direction:column;padding:28px 20px;}
+  .hero-right{display:none;}
+  .hero-left{flex:auto;}
+  .shift-row{grid-template-columns:1fr;}
+  .shift-row--narrow{grid-template-columns:1fr;}
+  .stats-bar{grid-template-columns:1fr 1fr;}
+  .acc-layout{flex-direction:column;}
+  .acc-list{flex:auto;border-right:none;border-bottom:1px solid #E8E8E8;}
+  .proof-cards{flex-direction:column;}
+  .cta-outer{padding:0;}
+  .cta-inner{flex-direction:column;padding:40px 20px;}
+  .cta-right{display:none;}
+  .footer-inner{flex-direction:column;gap:40px;}
+  .footer-cols{justify-content:flex-start;}
+  .trusted-logos{gap:32px;}
+  .dhe-img-wrap{height:320px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo-link" aria-label="Technossus home">
+      <img src="../../../assets/logos/logo-dark.svg" alt="Technossus" height="32">
+    </a>
+    <nav class="nav">
+      <a href="#">AI Studio</a>
+      <a href="#">Services <span class="material-symbols-outlined" style="font-size:16px">expand_more</span></a>
+      <a href="#">Industries <span class="material-symbols-outlined" style="font-size:16px">expand_more</span></a>
+      <a href="#">Resources</a>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+    </nav>
+    <a href="#" class="btn-cta" style="flex-shrink:0">Contact us</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span class="material-symbols-outlined" style="font-size:24px">menu</span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#">AI Studio</a>
+    <a href="#">Services</a>
+    <a href="#">Industries</a>
+    <a href="#">Resources</a>
+    <a href="#">About Us</a>
+    <a href="#">Careers</a>
+    <div class="mob-cta"><a href="#" class="btn-cta">Contact us</a></div>
+  </nav>
+</header>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero-section">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/pages/Industries/">Industries</a>
+      <span class="sep">/</span>
+      <span class="cur">Healthcare</span>
+    </nav>
+    <div class="hero-layout">
+      <div class="hero-left">
+        <h1 class="text-d1 hero-h1">
+          We care for those who care for others. <span class="accent">Driving change across healthcare.</span>
+        </h1>
+        <p class="hero-body">Healthcare friction doesn't start in the exam room. It starts in the gaps between systems. Disconnected tools, manual workflows, delayed insights. A patient journey that shouldn't be this hard. Technossus connects the systems behind care, simplifies the work around it. Because better operations are where better care begins.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn-primary">Talk to Our Team →</a>
+          <a href="#" class="btn-secondary">Explain Our Work</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-img"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ TRUSTED BY ════════════════════ -->
+<section class="trusted-section">
+  <div class="trusted-inner">
+    <p class="trusted-label">Trusted By</p>
+    <div class="trusted-logos">
+      <div class="logo-pill">
+        <span style="font-size:12px;font-weight:700;line-height:1.3">TOYOTA<br><span style="font-size:9px;font-weight:500;letter-spacing:.04em">FINANCIAL SERVICES</span></span>
+      </div>
+      <div class="logo-pill">
+        <span style="font-size:14px;font-weight:800;letter-spacing:-.5px">GE <span style="font-size:11px;font-weight:500">HealthCare</span></span>
+      </div>
+      <div class="logo-pill">
+        <span style="font-size:13px;font-weight:800;letter-spacing:-.3px;line-height:1.3">CHOICE<br><span style="font-size:9px;font-weight:500;letter-spacing:.06em">ADMINISTRATORS</span></span>
+      </div>
+      <div class="logo-pill">
+        <span style="font-size:12px;font-weight:700;line-height:1.3">BIO<br><span style="font-size:9px;font-weight:500;letter-spacing:.06em">THERANOSTICS</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ THE SHIFT (dark) ════════════════════ -->
+<section class="shift-section section-cornered">
+  <img class="corner-tl" src="../../../assets/icons/corner-topleft.svg" alt="">
+  <img class="corner-br" src="../../../assets/icons/corner-bottomright.svg" alt="">
+  <div class="shift-inner">
+    <div class="shift-tag-row">
+      <span class="ds-tag ds-tag--light">THE SHIFT</span>
+    </div>
+    <div class="shift-layout">
+      <!-- Left text -->
+      <div class="shift-left">
+        <h2 class="text-d2 shift-heading">Healthcare is facing a seismic shift. There is speed, but operational readiness remains uneven.</h2>
+        <div class="shift-paras">
+          <p class="shift-body">Patients are more digitally aware, less tolerant of friction, and quicker to switch when experiences fall short. Expectations around convenience, speed, and transparency are rising across the care journey, while systems and workflows struggle to keep pace.</p>
+          <p class="shift-body">At the same time, administrative burden and operational complexity continue to strain care teams, contributing to inefficiencies and burnout. Interoperability remains an ongoing challenge, limiting how effectively systems connect and how smoothly care is delivered.</p>
+        </div>
+      </div>
+      <!-- Right 2-row card grid -->
+      <div class="shift-cards-col">
+        <!-- Row 1: 2 equal cards -->
+        <div class="shift-row">
+          <div class="dark-card">
+            <div class="dark-card-title">Real-time care depends on real-time systems</div>
+            <div class="dark-card-body">Clinical workflows are shifting from retrospective analysis to real-time decisioning. Systems must process patient data instantly without latency or inconsistency.</div>
+          </div>
+          <div class="dark-card">
+            <div class="dark-card-title">Distributed care demands connected systems</div>
+            <div class="dark-card-body">Healthcare is no longer centralized. Hospitals, remote monitoring devices, telehealth platforms, and third-party systems must work together seamlessly, but interoperability remain complex.</div>
+          </div>
+        </div>
+        <!-- Row 2: narrow + wide -->
+        <div class="shift-row shift-row--narrow">
+          <div class="dark-card">
+            <div class="dark-card-title">Reliable AI in clinical workflows</div>
+            <div class="dark-card-body">AI solutions are moving from pilots into diagnostics, triage, and care recommendations. Ensuring accuracy, and consistency in real clinical environments is now a critical challenge.</div>
+          </div>
+          <div class="dark-card">
+            <div class="dark-card-title">Cybersecurity is a patient safety issue</div>
+            <div class="dark-card-body">Healthcare systems are often high-value targets. As systems become more connected, protecting patient data, ensuring uptime, and maintaining system integrity directly impact care delivery.</div>
+          </div>
+        </div>
+        <!-- Stats bar -->
+        <div class="stats-bar">
+          <div class="stats-item">
+            <div class="stats-num">85%</div>
+            <div class="stats-desc">of healthcare leaders say administrative burden is limiting clinical capacity</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-num">Nearly 2 in 3</div>
+            <div class="stats-desc">sought care elsewhere when the wait felt too long.</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-num">41.9%</div>
+            <div class="stats-desc">of physicians reported at least one symptom of burnout in 2025.</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-num">60%</div>
+            <div class="stats-desc">of AI initiatives in healthcare fail to scale beyond pilot environments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ DHE ════════════════════ -->
+<section class="dhe-section">
+  <div class="dhe-inner">
+    <div class="dhe-tag-row">
+      <span class="ds-tag">WHAT WE BUILD WITH YOU</span>
+    </div>
+    <h2 class="text-d2 dhe-heading">Digital health engineering <span class="accent">(DHE)</span></h2>
+    <p class="dhe-sub">Connect care, better outcomes, scalable systems</p>
+  </div>
+  <div class="dhe-img-wrap"></div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ FEATURED CASE STUDIES (dark) ════════════════════ -->
+<section class="featured-section section-cornered">
+  <img class="corner-tl" src="../../../assets/icons/corner-topleft.svg" alt="">
+  <img class="corner-br" src="../../../assets/icons/corner-bottomright.svg" alt="">
+  <div class="featured-inner">
+    <div class="featured-tag-row">
+      <span class="ds-tag ds-tag--light">PROOF</span>
+    </div>
+    <div class="featured-header">
+      <div>
+        <h2 class="text-d1 featured-heading">Featured case studies</h2>
+        <p class="featured-subtitle">If any of these describe where your team is right now, we should talk.</p>
+      </div>
+      <a href="#" class="featured-viewall">View All</a>
+    </div>
+    <div class="proof-cards">
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">HEALTHCARE • INTEROPERABILITY</div>
+          <div class="proof-card-title">Unifying Patient Records Across a 12-Hospital System</div>
+          <div class="proof-card-excerpt">A regional health network was operating on six different EHR platforms with no shared data layer. We built the integration architecture that connected them...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">HEALTHCARE • AI ENGINEERING</div>
+          <div class="proof-card-title">Streaming Analytics for Real-Time Clinical Decision Support</div>
+          <div class="proof-card-excerpt">A diagnostics company needed visibility into patient data as it was generated, not hours later. We built a streaming pipeline that feeds their clinical dashboards...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">HEALTHCARE • REVENUE CYCLE</div>
+          <div class="proof-card-title">Reducing Claim Denials by 38% with Intelligent Automation</div>
+          <div class="proof-card-excerpt">A payer organization was losing significant revenue to avoidable claim denials. We implemented an AI-driven pre-submission validation layer that catches errors...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ SUCCESS STORIES (dark) ════════════════════ -->
+<section class="success-section section-cornered">
+  <img class="corner-tl" src="../../../assets/icons/corner-topleft.svg" alt="">
+  <img class="corner-br" src="../../../assets/icons/corner-bottomright.svg" alt="">
+  <div class="success-inner">
+    <div class="success-tag-row">
+      <span class="ds-tag ds-tag--light">PROOF</span>
+    </div>
+    <div class="success-header">
+      <div>
+        <h2 class="text-d1 success-heading">Success <span class="accent">stories.</span></h2>
+        <p class="success-subtitle">If any of these describe where your team is right now, we should talk.</p>
+      </div>
+      <a href="#" class="success-viewall">View All</a>
+    </div>
+    <div class="proof-cards">
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">TELEHEALTH • PLATFORM ENGINEERING</div>
+          <div class="proof-card-title">Scaling a Telehealth Platform to 2M Monthly Active Users</div>
+          <div class="proof-card-excerpt">A telehealth provider was hitting infrastructure limits during peak demand. We redesigned their platform architecture to handle 10x load without downtime...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">LIFE SCIENCES • DIGITAL THERAPEUTICS</div>
+          <div class="proof-card-title">FDA-Cleared Digital Therapeutic for Chronic Condition Management</div>
+          <div class="proof-card-excerpt">A medtech startup needed a digital therapeutic to reach FDA clearance. We built the software validation framework, quality documentation, and compliance pipeline...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">PAYER • ANALYTICS</div>
+          <div class="proof-card-title">Population Health Analytics Dashboard for a National Payer</div>
+          <div class="proof-card-excerpt">A national health insurance company needed real-time population health insights to support care management programs. We built an analytics platform that surfaces...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ SOLUTION ACCORDION ════════════════════ -->
+<section class="solution-section">
+  <div class="solution-inner">
+    <span class="ds-tag">SOLUTION</span>
+    <h2 class="text-d2 solution-heading">Turning Fragmented Systems into Intelligent <span class="accent">Healthcare Ecosystems</span></h2>
+
+    <div class="acc-layout" id="accordionLayout">
+      <!-- Left list -->
+      <div class="acc-list">
+        <div class="acc-item" onclick="selectItem(this,0)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">From fragment systems to a unified lab platform</div>
+            <div class="acc-item-sub">Helix replaces fragmented legacy systems with a single, flexible solution.</div>
+          </div>
+        </div>
+        <div class="acc-item" onclick="selectItem(this,1)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">Streaming Analytics Platform</div>
+            <div class="acc-item-sub">Enable real-time visibility across patient care, operations, and systems.</div>
+          </div>
+        </div>
+        <div class="acc-item active" onclick="selectItem(this,2)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">Healthcare analytics for a USA-based healthcare firm</div>
+            <div class="acc-item-sub">Advanced analytics solutions improving visibility across diagnostics and operations.</div>
+          </div>
+        </div>
+        <div class="acc-item" onclick="selectItem(this,3)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">Revenue Cycle Intelligence &amp; Automation</div>
+            <div class="acc-item-sub">The product works. Now make it work like it was built today.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right panels -->
+      <div class="acc-panel" id="panel-0">
+        <div class="panel-label">UNIFIED LAB PLATFORM</div>
+        <h3 class="text-h3 panel-heading">A single, flexible solution for connected lab operations.</h3>
+        <div class="panel-body">
+          <p>Helix replaces fragmented legacy systems with a single, flexible solution that supports seamless integration, patient-centric workflows, and scalable lab operations. It unifies data across labs, departments, and care settings — reducing the manual coordination that slows clinical teams down.</p>
+        </div>
+      </div>
+      <div class="acc-panel" id="panel-1">
+        <div class="panel-label">STREAMING ANALYTICS PLATFORM</div>
+        <h3 class="text-h3 panel-heading">Real-time visibility as care happens, not hours after.</h3>
+        <div class="panel-body">
+          <p>Enable real-time visibility across patient care, operations, and systems by streaming data as it is generated — not hours or days later. Clinical teams get the signal they need when decisions still matter, not after the window has passed.</p>
+        </div>
+      </div>
+      <div class="acc-panel active" id="panel-2">
+        <!-- Spec content: IMPACT / TECH STACK / CAPABILITIES -->
+        <div class="spec-block">
+          <div>
+            <p class="spec-section-label">Impact</p>
+            <ol class="impact-list">
+              <li class="impact-item">
+                <span class="impact-num">1</span>
+                <span class="impact-text">Reduced turnaround times across diagnostic and operational workflows.</span>
+              </li>
+              <li class="impact-item">
+                <span class="impact-num">2</span>
+                <span class="impact-text">Improved visibility across clinical, financial, and operational functions.</span>
+              </li>
+              <li class="impact-item">
+                <span class="impact-num">3</span>
+                <span class="impact-text">Enabled faster, data-driven decision-making across care teams.</span>
+              </li>
+            </ol>
+          </div>
+          <div>
+            <p class="spec-section-label">Tech Stack</p>
+            <div class="tags-row">
+              <span class="tag-pill">AI Adoption Strategy</span>
+              <span class="tag-pill">SQL Server</span>
+              <span class="tag-pill">Azure Data Services</span>
+              <span class="tag-pill">API</span>
+            </div>
+          </div>
+          <div>
+            <p class="spec-section-label">Capabilities</p>
+            <div class="tags-row">
+              <span class="tag-pill">Healthcare Analytics</span>
+              <span class="tag-pill">Clinical Insights</span>
+              <span class="tag-pill">Performance Visibility</span>
+              <span class="tag-pill">Decision Support System</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="acc-panel" id="panel-3">
+        <div class="panel-label">REVENUE CYCLE INTELLIGENCE</div>
+        <h3 class="text-h3 panel-heading">Automate the revenue cycle. Recover what's leaking.</h3>
+        <div class="panel-body">
+          <p>Revenue cycle failures are rarely visible until the denial arrives. We build intelligent automation that catches errors before claims are submitted, routes exceptions to the right workflows, and gives finance teams a real-time view of the cycle from service to payment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ CTA BANNER ════════════════════ -->
+<div class="cta-outer">
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <p class="cta-label">LET'S WORK ON IT TOGETHER</p>
+        <h2 class="text-d2 cta-heading">Ready to accelerate your digital &amp; AI journey ?</h2>
+        <p class="cta-body">Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate.</p>
+        <div class="cta-btns">
+          <a href="#" class="btn-primary">Schedule a Strategy Session →</a>
+          <a href="#" class="btn-secondary btn-secondary--onDark">Contact Us</a>
+        </div>
+      </div>
+      <div class="cta-right">
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer class="footer-section">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo-link">
+        <img src="../../../assets/logos/logo-white.svg" alt="Technossus" height="32">
+      </a>
+      <p class="footer-tagline">Engineering intelligence into every layer of your digital operations.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-icon" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitter/X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-head">Services</div>
+        <ul>
+          <li><a href="#">Quality Engineering</a></li>
+          <li><a href="#">AI &amp; Data Engineering</a></li>
+          <li><a href="#">Cloud &amp; DevOps</a></li>
+          <li><a href="#">Platform Engineering</a></li>
+          <li><a href="#">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Industries</div>
+        <ul>
+          <li><a href="#">Healthcare</a></li>
+          <li><a href="#">Fintech</a></li>
+          <li><a href="#">Insurance</a></li>
+          <li><a href="#">Life Sciences</a></li>
+          <li><a href="#">Manufacturing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Company</div>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Insights</a></li>
+          <li><a href="#">Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Contact</div>
+        <ul>
+          <li>
+            <div class="contact-row">
+              <span class="material-symbols-outlined">mail</span>
+              <span class="contact-text">hello@technossus.com</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-row">
+              <span class="material-symbols-outlined">call</span>
+              <span class="contact-text">+1 (800) 123-4567</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-row">
+              <span class="material-symbols-outlined">location_on</span>
+              <span class="contact-text">Chicago, IL · San Francisco, CA</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Technossus. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Accordion ── */
+function selectItem(el, idx) {
+  const layout = document.getElementById('accordionLayout');
+  layout.querySelectorAll('.acc-item').forEach(i => i.classList.remove('active'));
+  layout.querySelectorAll('.acc-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-' + idx).classList.add('active');
+}
+
+/* ── Hamburger ── */
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+</script>
+</body>
+</html>

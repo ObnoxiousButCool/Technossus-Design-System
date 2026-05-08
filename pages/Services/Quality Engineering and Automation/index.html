@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quality Engineering &amp; Automation – Technossus Services</title>
+
+<!-- Fonts: Roboto Serif + General Sans -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,300..900;1,8..144,300..900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+<!-- Design System: tokens + typography -->
+<link rel="stylesheet" href="../../../css/variables.css">
+<link rel="stylesheet" href="../../../css/typography.css">
+
+<style>
+/* ── Reset ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{display:block}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+
+/* ── Alias design-system variables for convenience ── */
+:root{
+  --red:   var(--color-brand-primary);
+  --dark:  var(--color-bg-dark-1);
+  --light: var(--color-brand-light-gray);
+  --max:   var(--grid-max-desktop);
+}
+
+body{
+  font-family:var(--font-sans);
+  color:var(--color-text-900);
+  background:#fff;
+  overflow-x:hidden;
+}
+
+/* Material Symbols */
+.material-symbols-outlined{
+  font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;
+  font-size:20px;line-height:1;vertical-align:middle;
+  display:inline-flex;align-items:center;user-select:none;
+}
+
+/* ── TAG component ── */
+.ds-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--font-sans);font-weight:700;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--color-text-900);
+}
+.ds-tag::before{content:'[';color:var(--red);}
+.ds-tag::after{content:']';color:var(--red);}
+.ds-tag--light{color:var(--color-text-100);}
+
+/* ── Buttons ── */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--red);color:#fff;
+  font-family:var(--font-sans);font-weight:700;font-size:14px;line-height:1;
+  height:56px;padding:0 28px;
+  border:none;cursor:pointer;white-space:nowrap;
+}
+.btn-primary:hover{opacity:.9;}
+.btn-secondary{
+  display:inline-flex;align-items:center;
+  background:transparent;color:var(--red);
+  font-family:var(--font-sans);font-weight:700;font-size:14px;line-height:1;
+  height:56px;padding:0 28px;
+  border:2px solid var(--red);cursor:pointer;white-space:nowrap;
+}
+.btn-secondary:hover{background:rgba(237,41,57,.05);}
+.btn-secondary--onDark{color:#fff;border-color:#fff;}
+.btn-secondary--onDark:hover{background:rgba(255,255,255,.06);}
+.btn-cta{
+  display:inline-flex;align-items:center;
+  background:var(--color-bg-dark-1);color:#fff;
+  font-family:var(--font-sans);font-weight:700;font-size:14px;line-height:1;
+  height:48px;padding:0 20px;
+  border:none;cursor:pointer;white-space:nowrap;
+}
+
+/* ── Layout container ── */
+.container{max-width:var(--max);margin:0 auto;padding:0 var(--grid-margin-desktop);}
+
+/* ── Image placeholder ── */
+.img-ph{display:block;width:100%;height:100%;background:#D4D4D4;}
+.hero-img{background:#D4D4D4;}
+.proof-card-img{background:#2E2E2E;}
+.cta-right{background:#2A2A2A;}
+
+/* ── Corner decorations ── */
+.section-cornered{position:relative;overflow:hidden;}
+.corner-tl{position:absolute;top:0;left:0;width:118px;height:118px;pointer-events:none;z-index:2;}
+.corner-br{position:absolute;bottom:0;right:0;width:118px;height:118px;pointer-events:none;z-index:2;}
+
+/* ═══════ HEADER ═══════ */
+.header{
+  background:#fff;border-bottom:1px solid #E8E8E8;
+  position:sticky;top:0;z-index:100;width:100%;
+}
+.header-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:0 var(--grid-margin-desktop);
+  height:80px;display:flex;align-items:center;gap:48px;
+}
+.logo-link{display:inline-flex;line-height:0;flex-shrink:0;}
+.nav{flex:1;display:flex;gap:32px;align-items:center;justify-content:center;}
+.nav a{
+  font-family:var(--font-sans);font-size:14px;font-weight:500;
+  color:var(--color-text-900);display:inline-flex;align-items:center;gap:2px;white-space:nowrap;
+}
+.nav a:hover{color:var(--red);}
+.hamburger{
+  display:none;background:none;border:none;cursor:pointer;
+  padding:4px;margin-left:auto;color:var(--color-text-900);
+}
+.mobile-nav{
+  display:none;flex-direction:column;
+  background:#fff;border-top:1px solid #E8E8E8;padding:12px 24px 20px;
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{
+  padding:14px 0;font-family:var(--font-sans);font-size:16px;font-weight:500;
+  color:var(--color-text-900);border-bottom:1px solid #E8E8E8;
+}
+.mob-cta{padding-top:16px;}
+
+/* ═══════ BREADCRUMB ═══════ */
+.breadcrumb{
+  display:flex;align-items:center;gap:6px;padding:18px 0 0;
+  font-family:var(--font-sans);font-size:13px;font-weight:500;
+}
+.breadcrumb a{color:var(--color-text-700);}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb .sep{color:var(--color-text-500);}
+.breadcrumb .cur{color:var(--red);}
+
+/* ═══════ HERO ═══════ */
+.hero-section{background:#fff;}
+.hero-layout{
+  display:flex;align-items:center;gap:60px;
+  padding-top:56px;padding-bottom:60px;min-height:576px;
+}
+.hero-left{flex:0 0 820px;display:flex;flex-direction:column;gap:32px;}
+.hero-h1{color:var(--color-text-900);}
+.hero-h1 .accent{color:var(--red);}
+.hero-body{
+  font-family:var(--font-sans);font-size:16px;font-weight:400;
+  line-height:1.7;color:var(--color-text-700);max-width:680px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+.hero-right{flex:1;display:flex;align-items:center;justify-content:center;min-height:460px;}
+.hero-img{width:100%;max-width:540px;height:440px;overflow:hidden;}
+
+/* ═══════ TRUSTED BY ═══════ */
+.trusted-section{background:#fff;border-top:1px solid #E8E8E8;min-height:111px;}
+.trusted-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:22px var(--grid-margin-desktop);
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+}
+.trusted-label{
+  font-family:var(--font-sans);font-size:11px;font-weight:600;
+  letter-spacing:.12em;color:var(--color-text-500);text-transform:uppercase;
+}
+.trusted-logos{display:flex;align-items:center;justify-content:center;gap:72px;flex-wrap:wrap;}
+.logo-pill{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--font-sans);font-size:13px;font-weight:700;
+  color:#888;letter-spacing:.02em;white-space:nowrap;
+  filter:grayscale(100%);opacity:.65;
+}
+
+/* ═══════ SECTION GAPS ═══════ */
+.gap-80{height:80px;}
+
+/* ═══════ THE SHIFT (dark) ═══════ */
+.shift-section{background:var(--color-bg-dark-1);}
+.shift-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+}
+.shift-tag-row{margin-bottom:40px;}
+.shift-layout{display:flex;gap:48px;align-items:flex-start;}
+.shift-left{flex:0 0 485px;display:flex;flex-direction:column;gap:28px;}
+.shift-heading{color:var(--color-text-100);}
+.shift-heading .accent{color:var(--red);font-style:italic;}
+.shift-paras{display:flex;flex-direction:column;gap:16px;}
+.shift-body{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  line-height:1.8;color:var(--color-text-600);
+}
+.stat-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.stat-box{background:#242424;padding:28px 24px;display:flex;flex-direction:column;gap:12px;}
+.stat-num{
+  font-family:var(--font-serif);
+  font-size:var(--text-d1-size);line-height:var(--text-d1-lh);
+  font-weight:600;color:var(--red);
+}
+.stat-desc{font-family:var(--font-sans);font-size:14px;font-weight:400;line-height:1.6;color:#fff;}
+.stat-src{font-family:var(--font-sans);font-size:12px;color:var(--color-text-600);margin-top:auto;}
+
+/* ═══════ SERVICE OFFERINGS ═══════ */
+.offerings-section{background:#fff;min-height:718px;}
+.offerings-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+}
+.offerings-heading{color:var(--color-text-900);margin-top:20px;max-width:860px;}
+.offerings-heading .accent{color:var(--red);font-style:italic;}
+.acc-layout{display:flex;margin-top:48px;border:1px solid #E8E8E8;}
+.acc-list{flex:0 0 440px;border-right:1px solid #E8E8E8;}
+.acc-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:20px 24px;border-left:4px solid transparent;
+  border-bottom:1px solid #E8E8E8;cursor:pointer;background:#fff;transition:background .15s;
+}
+.acc-item:last-child{border-bottom:none;}
+.acc-item:hover{background:#FAFAFA;}
+.acc-item.active{background:#FAFAFA;border-left-color:var(--red);}
+.acc-dot{
+  width:10px;height:10px;border-radius:50%;border:2px solid #ccc;
+  flex-shrink:0;margin-top:5px;
+}
+.acc-item.active .acc-dot{background:var(--red);border-color:var(--red);}
+.acc-item-title{
+  font-family:var(--font-sans);font-size:15px;font-weight:700;
+  color:var(--color-text-900);line-height:1.4;
+}
+.acc-item-sub{
+  font-family:var(--font-sans);font-size:13px;font-weight:400;
+  color:var(--color-neutral-600);margin-top:4px;line-height:1.5;
+}
+.acc-panel{
+  flex:1;padding:40px;background:#FAFAFA;
+  display:none;flex-direction:column;gap:20px;
+}
+.acc-panel.active{display:flex;}
+.panel-label{
+  font-family:var(--font-sans);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-600);
+}
+.panel-heading{color:var(--red);}
+.panel-body{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  line-height:1.7;color:var(--color-text-700);
+  display:flex;flex-direction:column;gap:12px;
+}
+.panel-quote{
+  border:1px solid #E0E0E0;padding:20px;background:#fff;
+  font-family:var(--font-sans);font-size:13px;font-weight:600;
+  line-height:1.6;color:var(--color-text-900);margin-top:8px;
+}
+
+/* ═══════ HOW WE WORK ═══════ */
+.how-section{background:#fff;min-height:543px;}
+.how-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+  display:flex;gap:64px;align-items:flex-start;
+}
+.how-left{flex:0 0 500px;display:flex;flex-direction:column;gap:20px;}
+.how-heading{color:var(--color-text-900);margin-top:20px;}
+.how-heading .accent{color:var(--red);font-style:italic;}
+.how-body{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;
+  line-height:1.7;color:var(--color-text-700);
+}
+.how-cards{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.how-card{background:#F5F5F5;padding:24px;display:flex;flex-direction:column;gap:14px;}
+.how-icon .material-symbols-outlined{font-size:28px;color:var(--red);}
+.how-card-title{
+  font-family:var(--font-sans);font-size:16px;font-weight:700;
+  color:var(--color-text-900);line-height:1.3;
+}
+.how-card-body{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  line-height:1.6;color:var(--color-neutral-600);
+}
+
+/* ═══════ PROOF / SUCCESS STORIES (dark) ═══════ */
+.proof-section{background:var(--color-bg-dark-1);min-height:828px;}
+.proof-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+}
+.proof-tag-row{margin-bottom:32px;}
+.proof-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:48px;gap:32px;
+}
+.proof-heading{color:#fff;}
+.proof-heading .accent{color:var(--red);}
+.proof-subtitle{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;
+  color:var(--color-neutral-600);margin-top:10px;line-height:1.6;
+}
+.proof-viewall{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  color:var(--red);text-decoration:underline;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;flex-shrink:0;align-self:flex-end;
+}
+.proof-cards{display:flex;gap:24px;}
+.proof-card{
+  flex:1;background:#242424;
+  display:flex;flex-direction:column;overflow:hidden;min-height:566px;
+}
+.proof-card-img{width:100%;height:220px;overflow:hidden;flex-shrink:0;}
+.proof-card-body{padding:28px 24px;display:flex;flex-direction:column;gap:12px;flex:1;}
+.proof-card-tags{
+  font-family:var(--font-sans);font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-600);
+}
+.proof-card-title{
+  font-family:var(--font-serif);font-weight:700;font-size:20px;
+  line-height:1.4;color:#fff;
+}
+.proof-card-excerpt{
+  font-family:var(--font-sans);font-size:14px;font-weight:400;
+  line-height:1.6;color:var(--color-neutral-600);flex:1;
+}
+.proof-card-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  border:2px solid var(--red);color:var(--red);
+  font-family:var(--font-sans);font-weight:700;font-size:14px;
+  height:48px;padding:0 20px;margin-top:8px;align-self:flex-start;white-space:nowrap;
+}
+.proof-card-btn:hover{background:rgba(237,41,57,.08);}
+
+/* ═══════ SOUND FAMILIAR / PAIN POINTS ═══════ */
+.pain-section{background:var(--color-brand-light-gray);min-height:728px;}
+.pain-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:var(--space-80) var(--grid-margin-desktop);
+}
+.pain-heading{color:var(--color-text-900);margin-top:20px;max-width:860px;}
+.pain-heading .accent{color:var(--red);font-style:italic;}
+.pain-subtitle{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;
+  line-height:1.6;color:var(--color-neutral-600);margin-top:16px;
+}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+.pain-card{background:#fff;padding:32px;}
+.pain-card-heading{
+  font-family:var(--font-sans);font-size:24px;font-weight:700;
+  line-height:1.3;color:var(--color-text-900);
+}
+.pain-divider{height:1px;background:var(--red);margin:24px 0;}
+.pain-card-body{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;
+  line-height:1.7;color:var(--color-neutral-600);
+}
+
+/* ═══════ CTA BANNER ═══════ */
+.cta-outer{background:#fff;padding:0 96px;}
+.cta-section{background:var(--color-bg-dark-1);min-height:437px;}
+.cta-inner{
+  padding:var(--space-80);
+  display:flex;align-items:center;gap:64px;position:relative;
+}
+.cta-inner::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:4px;background:var(--red);
+}
+.cta-left{flex:1;display:flex;flex-direction:column;gap:20px;}
+.cta-label{
+  font-family:var(--font-sans);font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--color-neutral-600);
+}
+.cta-heading{color:#fff;}
+.cta-body{
+  font-family:var(--font-sans);font-size:15px;font-weight:400;
+  line-height:1.7;color:var(--color-text-600);max-width:500px;
+}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+.cta-right{flex:0 0 420px;height:320px;overflow:hidden;}
+
+/* ═══════ FOOTER ═══════ */
+.footer-section{background:#111;}
+.footer-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:64px var(--grid-margin-desktop) 0;
+  display:flex;gap:64px;flex-wrap:wrap;
+}
+.footer-brand{flex:0 0 260px;display:flex;flex-direction:column;gap:18px;}
+.footer-logo-link{display:inline-flex;line-height:0;}
+.footer-tagline{
+  font-family:var(--font-sans);font-size:13px;font-weight:400;
+  line-height:1.7;color:var(--color-text-600);
+}
+.footer-socials{display:flex;gap:10px;margin-top:4px;}
+.social-icon{
+  width:36px;height:36px;border:1px solid #2E2E2E;
+  display:flex;align-items:center;justify-content:center;color:var(--color-text-600);
+}
+.social-icon:hover{border-color:var(--red);color:var(--red);}
+.social-icon svg{width:16px;height:16px;}
+.footer-cols{flex:1;display:flex;gap:48px;flex-wrap:wrap;justify-content:flex-end;}
+.footer-col{display:flex;flex-direction:column;gap:16px;min-width:130px;}
+.footer-col-head{
+  font-family:var(--font-sans);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;
+}
+.footer-col ul{display:flex;flex-direction:column;gap:10px;}
+.footer-col a{font-family:var(--font-sans);font-size:13px;font-weight:400;color:var(--color-neutral-600);line-height:1.5;}
+.footer-col a:hover{color:#fff;}
+.contact-row{display:flex;align-items:flex-start;gap:10px;}
+.contact-row .material-symbols-outlined{font-size:16px !important;flex-shrink:0;margin-top:1px;color:var(--color-neutral-600);}
+.contact-text{font-family:var(--font-sans);font-size:13px;color:var(--color-neutral-600);line-height:1.5;}
+.footer-bottom{
+  max-width:var(--max);margin:48px auto 0;
+  padding:24px var(--grid-margin-desktop);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:12px;border-top:1px solid #222;
+}
+.footer-copy{font-family:var(--font-sans);font-size:13px;color:#5C5C5C;}
+.footer-legal{display:flex;gap:24px;}
+.footer-legal a{font-family:var(--font-sans);font-size:13px;color:#5C5C5C;}
+.footer-legal a:hover{color:#fff;}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:1200px){
+  .hero-left{flex:0 0 auto;}
+  .shift-left{flex:0 0 380px;}
+}
+@media(max-width:1023px){
+  .header-inner,.shift-inner,.offerings-inner,.how-inner,
+  .proof-inner,.pain-inner,.footer-inner,.footer-bottom,.trusted-inner{
+    padding-left:40px;padding-right:40px;
+  }
+  .hero-layout{padding-left:40px;padding-right:40px;}
+  .cta-outer{padding:0 40px;}
+  .cta-inner{padding:60px 40px;}
+  .nav{display:none;}
+  .hamburger{display:flex !important;}
+  .how-inner{flex-direction:column;}
+  .how-left{flex:auto;}
+  .shift-layout{flex-direction:column;}
+  .shift-left{flex:auto;}
+}
+@media(max-width:767px){
+  .header-inner,.shift-inner,.offerings-inner,.how-inner,
+  .proof-inner,.pain-inner,.footer-inner,.footer-bottom,.trusted-inner{
+    padding-left:20px;padding-right:20px;
+  }
+  .hero-layout{flex-direction:column;padding:28px 20px;}
+  .hero-right{display:none;}
+  .hero-left{flex:auto;}
+  .acc-layout{flex-direction:column;}
+  .acc-list{flex:auto;border-right:none;border-bottom:1px solid #E8E8E8;}
+  .proof-cards{flex-direction:column;}
+  .pain-grid{grid-template-columns:1fr;}
+  .cta-outer{padding:0;}
+  .cta-inner{flex-direction:column;padding:40px 20px;}
+  .cta-right{display:none;}
+  .footer-inner{flex-direction:column;gap:40px;}
+  .footer-cols{justify-content:flex-start;}
+  .how-cards{grid-template-columns:1fr;}
+  .stat-grid{grid-template-columns:1fr;}
+  .trusted-logos{gap:32px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo-link" aria-label="Technossus home">
+      <img src="../../../assets/logos/logo-dark.svg" alt="Technossus" height="32">
+    </a>
+    <nav class="nav">
+      <a href="#">AI Studio</a>
+      <a href="#">Services <span class="material-symbols-outlined" style="font-size:16px">expand_more</span></a>
+      <a href="#">Industries <span class="material-symbols-outlined" style="font-size:16px">expand_more</span></a>
+      <a href="#">Resources</a>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+    </nav>
+    <a href="#" class="btn-cta" style="flex-shrink:0">Contact us</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span class="material-symbols-outlined" style="font-size:24px">menu</span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#">AI Studio</a>
+    <a href="#">Services</a>
+    <a href="#">Industries</a>
+    <a href="#">Resources</a>
+    <a href="#">About Us</a>
+    <a href="#">Careers</a>
+    <div class="mob-cta"><a href="#" class="btn-cta">Contact us</a></div>
+  </nav>
+</header>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero-section">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/pages/Services/">Service Offerings</a>
+      <span class="sep">/</span>
+      <span class="cur">Quality Engineering and Automation</span>
+    </nav>
+    <div class="hero-layout">
+      <div class="hero-left">
+        <h1 class="text-d1 hero-h1">
+          You know what's broken. The problem is <span class="accent">what you don't know yet.</span>
+        </h1>
+        <p class="hero-body">Most quality programs are built to catch what already went wrong. We work with your team to build the kind of intelligence that finds problems before your users do and the kind of automation that holds up long after we're gone.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn-primary">Show us the problem →</a>
+          <a href="#" class="btn-secondary">See How We Work</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-img"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ TRUSTED BY ════════════════════ -->
+<section class="trusted-section">
+  <div class="trusted-inner">
+    <p class="trusted-label">Trusted By</p>
+    <div class="trusted-logos">
+      <div class="logo-pill">
+        <span style="font-size:12px;font-weight:700;line-height:1.3">TOYOTA<br><span style="font-size:9px;font-weight:500;letter-spacing:.04em">FINANCIAL SERVICES</span></span>
+      </div>
+      <div class="logo-pill">
+        <span style="font-size:14px;font-weight:800;letter-spacing:-.5px">GE <span style="font-size:11px;font-weight:500">HealthCare</span></span>
+      </div>
+      <div class="logo-pill">
+        <span style="font-size:13px;font-weight:800;letter-spacing:-.3px;line-height:1.3">CHOICE<br><span style="font-size:9px;font-weight:500;letter-spacing:.06em">ADMINISTRATORS</span></span>
+      </div>
+      <div class="logo-pill">
+        <span style="font-size:12px;font-weight:700;line-height:1.3">BIO<br><span style="font-size:9px;font-weight:500;letter-spacing:.06em">THERANOSTICS</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ THE SHIFT ════════════════════ -->
+<section class="shift-section section-cornered">
+  <img class="corner-tl" src="../../../assets/icons/corner-topleft.svg" alt="">
+  <img class="corner-br" src="../../../assets/icons/corner-bottomright.svg" alt="">
+  <div class="shift-inner">
+    <div class="shift-tag-row">
+      <span class="ds-tag ds-tag--light">THE SHIFT</span>
+    </div>
+    <div class="shift-layout">
+      <div class="shift-left">
+        <h2 class="text-d2 shift-heading">
+          Quality doesn't start at the end of the build. That's just where <span class="accent">quality failures get identified.</span>
+        </h2>
+        <div class="shift-paras">
+          <p class="shift-body">Testing has always been the part of the delivery cycle that absorbs everyone else's delays and still gets blamed when something ships broken. Engineers are moving faster than ever, and the gap between release velocity and quality confidence is widening, not closing.</p>
+          <p class="shift-body">AI is changing the economics of that gap. Not by replacing QA engineers, but by giving them the kind of leverage that actually matches the pace they're being asked to work at. We work alongside your team to build that leverage — through automation that transfers, tooling your team can own, and a quality practice that compounds instead of decaying.</p>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-num">85%</div>
+          <div class="stat-desc">of defects that reach production were detectable earlier in the cycle at a fraction of the cost to fix.</div>
+          <div class="stat-src">— IBM Systems Sciences Institute</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">6×</div>
+          <div class="stat-desc">more expensive to fix a defect post-release than to catch it during development.</div>
+          <div class="stat-src">— NIST</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">30%</div>
+          <div class="stat-desc">average release cycle reduction when QA is shifted left and automated pipelines replace manual regression.</div>
+          <div class="stat-src">— Technossus Engagements</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">90%+</div>
+          <div class="stat-desc">of Technossus clients continue working with us after the first engagement — many for over a decade.</div>
+          <div class="stat-src">— Technossus Internal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ SERVICE OFFERINGS ════════════════════ -->
+<section class="offerings-section">
+  <div class="offerings-inner">
+    <span class="ds-tag">SERVICE OFFERINGS</span>
+    <h2 class="text-d2 offerings-heading">Release confidence, compliance readiness, and <span class="accent">AI quality built in from the start.</span></h2>
+
+    <div class="acc-layout" id="accordionLayout">
+      <!-- Left list -->
+      <div class="acc-list">
+        <div class="acc-item" onclick="selectItem(this,0)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">Continuous Quality &amp; QA Ops Engineering</div>
+            <div class="acc-item-sub">Quality that lives in the pipeline, from design to release.</div>
+          </div>
+        </div>
+        <div class="acc-item" onclick="selectItem(this,1)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">Performance, Resilience &amp; Scalability</div>
+            <div class="acc-item-sub">Ship version one. Then build the product it needs to become.</div>
+          </div>
+        </div>
+        <div class="acc-item active" onclick="selectItem(this,2)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">Quality Engineering &amp; Independent Assurance</div>
+            <div class="acc-item-sub">Your release shouldn't feel like a bet every time.</div>
+          </div>
+        </div>
+        <div class="acc-item" onclick="selectItem(this,3)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">Governance, Compliance &amp; Trust Assurance</div>
+            <div class="acc-item-sub">The product works. Now make it work like it was built today.</div>
+          </div>
+        </div>
+        <div class="acc-item" onclick="selectItem(this,4)">
+          <div class="acc-dot"></div>
+          <div>
+            <div class="acc-item-title">AI-first &amp; Responsible Quality Engineering</div>
+            <div class="acc-item-sub">Keep the business logic. Lose the technical debt holding it hostage.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right panels -->
+      <div class="acc-panel" id="panel-0">
+        <div class="panel-label">CONTINUOUS QUALITY &amp; QA OPS ENGINEERING</div>
+        <h3 class="text-h3 panel-heading">Build quality into every commit, not just the last one before release.</h3>
+        <div class="panel-body">
+          <p>Continuous quality means your pipeline catches problems the moment they appear — not three sprints later when the cost to fix them has compounded. We work with your team to embed quality gates, test automation, and observability throughout the delivery lifecycle.</p>
+          <p>From CI/CD integration to release readiness dashboards, every touchpoint is designed to give engineers real signal, not noise. The result is a pipeline that moves fast and holds up.</p>
+        </div>
+        <blockquote class="panel-quote">Defects found in production cost 100x more to fix than those found during design. Shift quality left — before the first commit. — IBM Research</blockquote>
+      </div>
+      <div class="acc-panel" id="panel-1">
+        <div class="panel-label">PERFORMANCE, RESILIENCE &amp; SCALABILITY</div>
+        <h3 class="text-h3 panel-heading">Ship version one. Then build the product it needs to become.</h3>
+        <div class="panel-body">
+          <p>Performance testing is most valuable when it's run before the system is under pressure, not after users are experiencing it. We design load, stress, and resilience tests that reflect real traffic patterns and failure modes — so you know how the product behaves before the world does.</p>
+          <p>We help teams establish performance baselines, define SLOs that matter, and automate the tests that protect them across every release.</p>
+        </div>
+      </div>
+      <div class="acc-panel active" id="panel-2">
+        <div class="panel-label">QUALITY ENGINEERING &amp; INDEPENDENT ASSURANCE</div>
+        <h3 class="text-h3 panel-heading">Find out if the idea works before you bet the quarter on it.</h3>
+        <div class="panel-body">
+          <p>Objective validation matters most when the team that built the system is also the one reviewing it. Independent quality assurance brings a consistent, unbiased perspective across releases, environments, and system changes — surfacing what's easy to miss when engineers are close to the code.</p>
+          <p>We work with your product and engineering teams to design test strategies around how you actually build: your stack, release cadence, and the business-critical paths where a failure would hurt most. Coverage gets built to hold across releases, not just pass the next one.</p>
+        </div>
+        <blockquote class="panel-quote">Organizations with mature QE practices resolve production defects 6x faster and at 30x lower cost than teams catching the same issues post-release. — NIST</blockquote>
+      </div>
+      <div class="acc-panel" id="panel-3">
+        <div class="panel-label">GOVERNANCE, COMPLIANCE &amp; TRUST ASSURANCE</div>
+        <h3 class="text-h3 panel-heading">The product works. Now make sure it works the way it was meant to.</h3>
+        <div class="panel-body">
+          <p>Compliance validation is most expensive when it's the last thing addressed before a submission, audit, or release. We build traceability and governance into quality practices from the start — so the documentation exists when it's needed, not when it's requested.</p>
+          <p>Whether your context is FDA regulated, SOC 2, HIPAA, or internal standards, we help teams build quality artifacts that hold up to scrutiny and transfer to whoever needs them next.</p>
+        </div>
+      </div>
+      <div class="acc-panel" id="panel-4">
+        <div class="panel-label">AI-FIRST &amp; RESPONSIBLE QUALITY ENGINEERING</div>
+        <h3 class="text-h3 panel-heading">AI models need quality engineering too — it just looks different.</h3>
+        <div class="panel-body">
+          <p>Model outputs aren't deterministic. Traditional test suites don't catch hallucinations, fairness drift, or latency degradation under production load. We build evaluation frameworks for AI systems that reflect the risks that matter: accuracy, safety, consistency, and behavior at scale.</p>
+          <p>From prompt regression suites to LLM evaluation pipelines, we work alongside your AI team to build the infrastructure that gives confidence before deployment — and catches drift after it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ HOW WE WORK ════════════════════ -->
+<section class="how-section">
+  <div class="how-inner">
+    <div class="how-left">
+      <span class="ds-tag">HOW WE WORK</span>
+      <h2 class="text-d2 how-heading">We don't build a testing practice <span class="accent">your team can't maintain.</span></h2>
+      <p class="how-body">Every engagement is designed around transfer, not dependency. Quality strategies, automation frameworks, and validation practices get built collaboratively, with the people who will own them involved from the first conversation. When delivery closes, the capability stays.</p>
+      <p class="how-body">Bringing in outside expertise on quality creates a real tension for most teams — the fear that what gets built won't be understood, or that standards will slip the moment the engagement ends. Over 90% of Technossus clients continue working with us after the first engagement. Many have for over a decade. That's not a retention metric, it's what happens when a practice gets built right the first time.</p>
+    </div>
+    <div class="how-cards">
+      <div class="how-card">
+        <div class="how-icon"><span class="material-symbols-outlined">rocket_launch</span></div>
+        <div class="how-card-title">Embedded From Day One.</div>
+        <div class="how-card-body">Quality strategy gets shaped alongside engineering and product, before the first test case is written.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon"><span class="material-symbols-outlined">handshake</span></div>
+        <div class="how-card-title">Capability Transfers</div>
+        <div class="how-card-body">Frameworks, tooling, and methodology are documented and handed over as working knowledge, not as artifacts nobody can use.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon"><span class="material-symbols-outlined">align_horizontal_left</span></div>
+        <div class="how-card-title">Alignment Before Delivery.</div>
+        <div class="how-card-body">We work within what serves the product and business, and get alignment on what needs to change before it becomes a problem.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-icon"><span class="material-symbols-outlined">verified</span></div>
+        <div class="how-card-title">Standards That Hold.</div>
+        <div class="how-card-body">Quality benchmarks are set at the start and maintained through delivery. They don't flex when timelines get tight.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ SUCCESS STORIES ════════════════════ -->
+<section class="proof-section section-cornered">
+  <img class="corner-tl" src="../../../assets/icons/corner-topleft.svg" alt="">
+  <img class="corner-br" src="../../../assets/icons/corner-bottomright.svg" alt="">
+  <div class="proof-inner">
+    <div class="proof-tag-row">
+      <span class="ds-tag ds-tag--light">PROOF</span>
+    </div>
+    <div class="proof-header">
+      <div>
+        <h2 class="text-d1 proof-heading">Success <span class="accent">stories.</span></h2>
+        <p class="proof-subtitle">If any of these describe where your team is right now, we should talk.</p>
+      </div>
+      <a href="#" class="proof-viewall">View All</a>
+    </div>
+    <div class="proof-cards">
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">FINTECH • PLATFORM MODERNIZATION</div>
+          <div class="proof-card-title">Architecting a High-Frequency Trading Engine for Global Markets</div>
+          <div class="proof-card-excerpt">We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40% using event-driven microservices and localized...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">HEALTHCARE • QUALITY ENGINEERING</div>
+          <div class="proof-card-title">Rebuilding QA Confidence Across a Multi-Cloud Healthcare Platform</div>
+          <div class="proof-card-excerpt">A regional health system was shipping monthly but losing trust with every release. We embedded QA from sprint zero and rebuilt their automation...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-img"></div>
+        <div class="proof-card-body">
+          <div class="proof-card-tags">AI • RESPONSIBLE QE</div>
+          <div class="proof-card-title">Evaluation Frameworks for LLM-Powered Clinical Decision Support</div>
+          <div class="proof-card-excerpt">A diagnostics company needed confidence in their AI model before going live with hospital partners. We built a full evaluation pipeline covering...</div>
+          <a href="#" class="proof-card-btn">See How We Work</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ SOUND FAMILIAR ════════════════════ -->
+<section class="pain-section">
+  <div class="pain-inner">
+    <span class="ds-tag">SOUND FAMILIAR</span>
+    <h2 class="text-d1 pain-heading">If any of these sound like your last project retrospective, we <span class="accent">should talk.</span></h2>
+    <p class="pain-subtitle">These aren't hypotheticals. They're the conversations we have most often.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-card-heading">We keep finding issues too late</div>
+        <div class="pain-divider"></div>
+        <div class="pain-card-body">Testing happens at the end. The build is already done, the release is already scheduled, and the defects showing up now should have been caught three sprints ago. Every cycle ends the same way — scrambling, slipping, or shipping something you're not fully confident in.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-heading">Our automation suite exists. It just doesn't help.</div>
+        <div class="pain-divider"></div>
+        <div class="pain-card-body">The test infrastructure is there. Coverage numbers look reasonable on paper. But the suite is brittle, maintenance is constant, and half the team isn't sure what the tests are actually validating anymore. Automation that was supposed to create confidence has become its own source of risk.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-heading">We found out about the compliance gap at the wrong moment.</div>
+        <div class="pain-divider"></div>
+        <div class="pain-card-body">The audit window opened or the submission deadline arrived and the validation documentation wasn't where it needed to be. Requirements that should have been mapped at the start got picked up midway through, or not at all. The release held. The confidence didn't.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-heading">We tested it thoroughly. So why doesn't it behave the way it did?</div>
+        <div class="pain-divider"></div>
+        <div class="pain-card-body">The model passed every evaluation. Staging looked good. But in production, outputs drift, edge cases surface, and guardrails show gaps under real user behavior. Something between validation and production isn't adding up — and it's not always obvious where to look.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ CTA BANNER ════════════════════ -->
+<div class="cta-outer">
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <p class="cta-label">LET'S WORK ON IT TOGETHER</p>
+        <h2 class="text-d2 cta-heading">Ready to accelerate your digital &amp; AI journey ?</h2>
+        <p class="cta-body">Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate.</p>
+        <div class="cta-btns">
+          <a href="#" class="btn-primary">Schedule a Strategy Session →</a>
+          <a href="#" class="btn-secondary btn-secondary--onDark">Contact Us</a>
+        </div>
+      </div>
+      <div class="cta-right">
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- 80px gap -->
+<div class="gap-80"></div>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer class="footer-section">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo-link">
+        <img src="../../../assets/logos/logo-white.svg" alt="Technossus" height="32">
+      </a>
+      <p class="footer-tagline">Engineering intelligence into every layer of your digital operations.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-icon" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitter/X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-head">Services</div>
+        <ul>
+          <li><a href="#">Quality Engineering</a></li>
+          <li><a href="#">AI &amp; Data Engineering</a></li>
+          <li><a href="#">Cloud &amp; DevOps</a></li>
+          <li><a href="#">Platform Engineering</a></li>
+          <li><a href="#">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Industries</div>
+        <ul>
+          <li><a href="#">Healthcare</a></li>
+          <li><a href="#">Fintech</a></li>
+          <li><a href="#">Insurance</a></li>
+          <li><a href="#">Life Sciences</a></li>
+          <li><a href="#">Manufacturing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Company</div>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Insights</a></li>
+          <li><a href="#">Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Contact</div>
+        <ul>
+          <li>
+            <div class="contact-row">
+              <span class="material-symbols-outlined">mail</span>
+              <span class="contact-text">hello@technossus.com</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-row">
+              <span class="material-symbols-outlined">call</span>
+              <span class="contact-text">+1 (800) 123-4567</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-row">
+              <span class="material-symbols-outlined">location_on</span>
+              <span class="contact-text">Chicago, IL · San Francisco, CA</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Technossus. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Accordion ── */
+function selectItem(el, idx) {
+  const layout = document.getElementById('accordionLayout');
+  layout.querySelectorAll('.acc-item').forEach(i => i.classList.remove('active'));
+  layout.querySelectorAll('.acc-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-' + idx).classList.add('active');
+}
+
+/* ── Hamburger ── */
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+</script>
+</body>
+</html>
