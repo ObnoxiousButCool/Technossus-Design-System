@@ -11,7 +11,7 @@ const imgVector1Mobile= 'http://localhost:3845/assets/8b570c1a688d9313d655e94f4d
 const imgArrowForward = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
 const imgChevronDown  = 'http://localhost:3845/assets/f88d5745dbe17d6eba516dff8c1ec66ec8f95eab.svg';
 const imgChevronDownRed = 'http://localhost:3845/assets/872f59963a8db7797238fb9af0174f8aafeeae1e.svg';
-const imgDehaze       = 'http://localhost:3845/assets/76457196f8ce163b915b684934ba5e3d5f9be564.svg';
+const imgDehaze       = 'http://localhost:3845/assets/6e17ae7884a4c0e898213f199f1e02dde4bf9183.svg';
 const imgClose        = 'http://localhost:3845/assets/9e2c1bf0fb472642f558f6a71e09a2760043da15.svg';
 const imgChevronMobile= 'http://localhost:3845/assets/c1a9ec4c00df07c37e0547669be3582f3fea68da.svg';
 const imgChevronMobile2= 'http://localhost:3845/assets/2b83e41f03742bdfe0c3187ec66114fe384b11e1.svg';
@@ -61,7 +61,15 @@ const defaultNavItems: NavItem[] = [
       { label: 'HiTech / SaaS',      href: '/industries/hitech' },
     ],
   },
-  { label: 'Resources', href: '/resources' },
+  {
+    label: 'Resources',
+    href: '/resources',
+    children: [
+      { label: 'Insights',     href: '/insights' },
+      { label: 'Case Studies', href: '/case-studies' },
+      { label: 'Blog',         href: '/blog' },
+    ],
+  },
   { label: 'About Us',  href: '/about' },
   { label: 'Careers',   href: '/careers' },
 ];
@@ -270,7 +278,7 @@ export function MainHeader({
               backgroundColor: '#FFFFFF',
               borderBottom: '1px solid #EEEEEE',
               display: 'flex',
-              gap: 112,
+              gap: 120,
               alignItems: 'center',
               justifyContent: 'center',
               paddingTop: 48,
