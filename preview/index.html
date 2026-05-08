@@ -1370,6 +1370,325 @@ body {
   </div>
 </div>
 
+<!-- ═══════════════════ ACCORDION DEMO ═══════════════════ -->
+<section id="accordion-demo" style="background:#F2F2F2;padding:64px 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px 40px">
+    <p style="font-family:'General Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ED2939;margin:0 0 10px">Components</p>
+    <h2 style="font-family:'General Sans',sans-serif;font-weight:700;font-size:28px;color:#1E1E1E;margin:0">Accordion</h2>
+  </div>
+
+  <!-- DESKTOP STATE label -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px 16px">
+    <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;color:#767676;letter-spacing:.06em;text-transform:uppercase">Desktop · Default &amp; Active</span>
+  </div>
+
+  <!-- DESKTOP accordion -->
+  <div id="acc-desktop" style="max-width:1280px;margin:0 auto 48px;display:flex;box-shadow:0 1px 4px rgba(0,0,0,.08)">
+    <!-- Sidebar -->
+    <div id="acc-sidebar" style="width:38%;background:#F2F2F2;flex-shrink:0"></div>
+    <div style="width:1px;background:#E0E0E0;flex-shrink:0"></div>
+    <!-- Content panel -->
+    <div id="acc-panel" style="flex:1;background:#F2F2F2;padding:40px 48px;min-height:360px"></div>
+  </div>
+
+  <!-- MOBILE label -->
+  <div style="max-width:480px;margin:0 auto;padding:0 24px 16px">
+    <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;color:#767676;letter-spacing:.06em;text-transform:uppercase">Mobile · Default &amp; Active</span>
+  </div>
+
+  <!-- MOBILE accordion -->
+  <div id="acc-mobile" style="max-width:480px;margin:0 auto;box-shadow:0 1px 4px rgba(0,0,0,.08)"></div>
+</section>
+
+<script>
+(function() {
+  const RED   = '#ED2939';
+  const DARK  = '#1E1E1E';
+  const GRAY  = '#767676';
+  const BGLT  = '#F2F2F2';
+  const BORD  = '#D4D4D4';
+  const font  = "'General Sans',system-ui,sans-serif";
+
+  const items = [
+    {
+      title: 'Continuous Quality & QA Ops Engineering',
+      subtitle: 'Quality that lives in the pipeline, from design to release.',
+      content: {
+        type: 'spec',
+        impact: [
+          'Reduced turnaround times across diagnostic and operational workflows.',
+          'Improved visibility across clinical, financial, and operational functions.',
+          'Enabled faster, data-driven decision-making across care teams.',
+        ],
+        techStack: ['AI Adoption Strategy', 'SQL Server', 'Azure Data Services', 'API'],
+        capabilities: ['Healthcare Analytics', 'Clinical Insights', 'Performance Visibility', 'Decision Support System'],
+      },
+    },
+    {
+      title: 'Performance, Resilience & Scalability',
+      subtitle: 'Ship version one. Then build the product it needs to become.',
+      content: {
+        type: 'spec',
+        impact: [
+          'Cut P99 latency by 60% through async queue refactor.',
+          'Achieved 99.99% uptime SLA across three cloud regions.',
+          'Reduced infrastructure cost by 40% after load-adaptive scaling.',
+        ],
+        techStack: ['Kubernetes', 'Kafka', 'Redis', 'Terraform'],
+        capabilities: ['Chaos Engineering', 'Load Testing', 'SLO Monitoring'],
+      },
+    },
+    {
+      title: 'Quality Engineering & Independent Assurance',
+      subtitle: 'Your release shouldn’t feel like a bet every time.',
+      content: {
+        type: 'detail',
+        serviceLabel: 'Quality Engineering & Independent Assurance',
+        heading: 'Find out if the idea works before you bet the quarter on it.',
+        body: [
+          'Objective validation matters most when the team that built the system is also the one reviewing it. Independent quality assurance brings a consistent, unbiased perspective across releases, environments, and system changes surfacing what’s easy to miss when engineers are close to the code.',
+          'We work with your product and engineering teams to design test strategies around how you actually build: your stack, release cadence, and the business-critical paths where a failure would hurt most. Coverage gets built to hold across releases, not just pass the next one.',
+        ],
+        quote: 'Organizations with mature QE practices resolve production defects 6x faster and at 30x lower cost than teams catching the same issues post-release. — NIST',
+      },
+    },
+    {
+      title: 'Governance, Compliance & Trust Assurance',
+      subtitle: 'The product works. Now make it work like it was built today.',
+      content: {
+        type: 'spec',
+        impact: [
+          'Zero compliance findings across SOC 2 Type II audit.',
+          'Automated policy enforcement reduced manual review by 80%.',
+          'Full audit trail implemented across all critical data flows.',
+        ],
+        techStack: ['OPA', 'Vault', 'AWS Config', 'Terraform Sentinel'],
+        capabilities: ['Policy as Code', 'Data Lineage', 'Access Control Review'],
+      },
+    },
+    {
+      title: 'AI-first & Responsible Quality Engineering',
+      subtitle: 'Keep the business logic. Lose the technical debt holding it hostage.',
+      content: {
+        type: 'spec',
+        impact: [
+          'Test generation time reduced by 70% with AI-assisted coverage.',
+          'False positive rate in anomaly detection dropped to under 2%.',
+          'Continuous model drift monitoring introduced across 12 ML pipelines.',
+        ],
+        techStack: ['LLM Testing', 'Pytest', 'Great Expectations', 'MLflow'],
+        capabilities: ['Model Evaluation', 'Bias Detection', 'Regression Harness'],
+      },
+    },
+  ];
+
+  // ── helpers ────────────────────────────────────────────────────────────────
+
+  function el(tag, styles, attrs) {
+    var e = document.createElement(tag);
+    Object.assign(e.style, styles || {});
+    Object.assign(e, attrs || {});
+    return e;
+  }
+
+  function sectionLabel(text) {
+    var p = el('p', {
+      fontFamily: font, fontWeight: '700', fontSize: '11px',
+      letterSpacing: '.08em', textTransform: 'uppercase',
+      color: RED, margin: '0 0 12px',
+    });
+    p.textContent = text;
+    return p;
+  }
+
+  function specPanel(content) {
+    var wrap = el('div', { display:'flex', flexDirection:'column', gap:'28px' });
+
+    // Impact
+    var impBlock = el('div');
+    impBlock.appendChild(sectionLabel('Impact'));
+    var ol = el('ol', { listStyle:'none', margin:'0', padding:'0', display:'flex', flexDirection:'column', gap:'12px' });
+    content.impact.forEach(function(txt, i) {
+      var li  = el('li', { display:'flex', gap:'12px', alignItems:'flex-start' });
+      var num = el('span', {
+        flexShrink:'0', width:'22px', height:'22px', borderRadius:'50%',
+        background:'#E4E4E4', display:'flex', alignItems:'center',
+        justifyContent:'center', fontFamily:font, fontWeight:'600',
+        fontSize:'11px', color:'#5C5C5C', marginTop:'1px',
+      });
+      num.textContent = String(i + 1);
+      var txt2 = el('span', { fontFamily:font, fontWeight:'400', fontSize:'14px', lineHeight:'22px', color:DARK });
+      txt2.textContent = txt;
+      li.appendChild(num); li.appendChild(txt2);
+      ol.appendChild(li);
+    });
+    impBlock.appendChild(ol);
+    wrap.appendChild(impBlock);
+
+    // Tech Stack + Capabilities
+    ['techStack','capabilities'].forEach(function(key) {
+      var blk = el('div');
+      blk.appendChild(sectionLabel(key === 'techStack' ? 'Tech Stack' : 'Capabilities'));
+      var chips = el('div', { display:'flex', flexWrap:'wrap', gap:'8px' });
+      content[key].forEach(function(tag) {
+        var c = el('span', {
+          fontFamily:font, fontWeight:'400', fontSize:'13px', lineHeight:'20px',
+          color:DARK, border:'1px solid '+BORD, borderRadius:'40px',
+          padding:'5px 14px', background:'#FFFFFF',
+        });
+        c.textContent = tag;
+        chips.appendChild(c);
+      });
+      blk.appendChild(chips);
+      wrap.appendChild(blk);
+    });
+
+    return wrap;
+  }
+
+  function detailPanel(content) {
+    var wrap = el('div', { display:'flex', flexDirection:'column', gap:'20px' });
+
+    var lbl = el('p', {
+      fontFamily:font, fontWeight:'500', fontSize:'10px', lineHeight:'14px',
+      letterSpacing:'.1em', textTransform:'uppercase', color:'#9B9B9B', margin:'0',
+    });
+    lbl.textContent = content.serviceLabel;
+    wrap.appendChild(lbl);
+
+    var h = el('h2', { fontFamily:font, fontWeight:'700', fontSize:'24px', lineHeight:'32px', color:RED, margin:'0' });
+    h.textContent = content.heading;
+    wrap.appendChild(h);
+
+    var bodyWrap = el('div', { display:'flex', flexDirection:'column', gap:'16px' });
+    content.body.forEach(function(para) {
+      var p = el('p', { fontFamily:font, fontWeight:'400', fontSize:'15px', lineHeight:'26px', color:'#4D4D4D', margin:'0' });
+      p.textContent = para;
+      bodyWrap.appendChild(p);
+    });
+    wrap.appendChild(bodyWrap);
+
+    if (content.quote) {
+      var q = el('blockquote', {
+        background:'#FFFFFF', borderRadius:'8px', padding:'20px 24px',
+        margin:'0', fontFamily:font, fontWeight:'700', fontSize:'14px', lineHeight:'22px', color:DARK,
+      });
+      q.textContent = content.quote;
+      wrap.appendChild(q);
+    }
+
+    return wrap;
+  }
+
+  function renderContent(content) {
+    return content.type === 'spec' ? specPanel(content) : detailPanel(content);
+  }
+
+  // ── Desktop ────────────────────────────────────────────────────────────────
+
+  var sidebar = document.getElementById('acc-sidebar');
+  var panel   = document.getElementById('acc-panel');
+  var dActive = 2; // default to 3rd item
+
+  function buildDesktopItem(idx) {
+    var item  = items[idx];
+    var isAct = idx === dActive;
+    var btn = el('button', {
+      width:'100%', display:'flex', alignItems:'flex-start', gap:'16px',
+      padding:'20px 24px', background: isAct ? '#FFFFFF' : 'transparent',
+      border:'none', borderLeft: isAct ? '4px solid '+RED : '4px solid transparent',
+      cursor:'pointer', textAlign:'left', boxSizing:'border-box',
+    });
+    btn.setAttribute('type','button');
+
+    var dot = el('span', {
+      flexShrink:'0', width:'10px', height:'10px', borderRadius:'50%',
+      background: isAct ? RED : DARK, marginTop:'6px',
+    });
+    var textWrap = el('span', { display:'flex', flexDirection:'column', gap:'4px' });
+    var title = el('span', { fontFamily:font, fontWeight:'700', fontSize:'16px', lineHeight:'24px', color:DARK });
+    title.textContent = item.title;
+    var sub = el('span', { fontFamily:font, fontWeight:'400', fontSize:'13px', lineHeight:'20px', color:GRAY });
+    sub.textContent = item.subtitle;
+    textWrap.appendChild(title); textWrap.appendChild(sub);
+    btn.appendChild(dot); btn.appendChild(textWrap);
+
+    btn.addEventListener('click', function() {
+      dActive = idx;
+      rebuildDesktop();
+    });
+    return btn;
+  }
+
+  function rebuildDesktop() {
+    sidebar.innerHTML = '';
+    items.forEach(function(_, i) { sidebar.appendChild(buildDesktopItem(i)); });
+    panel.innerHTML = '';
+    panel.appendChild(renderContent(items[dActive].content));
+  }
+
+  rebuildDesktop();
+
+  // ── Mobile ─────────────────────────────────────────────────────────────────
+
+  var mobileWrap = document.getElementById('acc-mobile');
+  var mActive = null;
+
+  function buildMobileItem(idx) {
+    var item  = items[idx];
+    var isAct = idx === mActive;
+    var frag  = document.createDocumentFragment();
+
+    var btn = el('button', {
+      width:'100%', display:'flex', alignItems:'flex-start', gap:'16px',
+      padding:'18px 20px', background: isAct ? '#FFFFFF' : 'transparent',
+      border:'none', borderLeft: isAct ? '4px solid '+RED : '4px solid transparent',
+      cursor:'pointer', textAlign:'left', boxSizing:'border-box',
+    });
+    btn.setAttribute('type','button');
+
+    var dot = el('span', {
+      flexShrink:'0', width:'10px', height:'10px', borderRadius:'50%',
+      background: isAct ? RED : DARK, marginTop:'6px',
+    });
+    var textWrap = el('span', { display:'flex', flexDirection:'column', gap:'4px' });
+    var title = el('span', { fontFamily:font, fontWeight:'700', fontSize:'16px', lineHeight:'24px', color:DARK });
+    title.textContent = item.title;
+    var sub = el('span', { fontFamily:font, fontWeight:'400', fontSize:'13px', lineHeight:'20px', color:GRAY });
+    sub.textContent = item.subtitle;
+    textWrap.appendChild(title); textWrap.appendChild(sub);
+    btn.appendChild(dot); btn.appendChild(textWrap);
+
+    btn.addEventListener('click', function() {
+      mActive = isAct ? null : idx;
+      rebuildMobile();
+    });
+    frag.appendChild(btn);
+
+    if (isAct) {
+      var expanded = el('div', {
+        background:'#FFFFFF', borderLeft:'4px solid '+RED,
+        padding:'24px 20px 28px', boxSizing:'border-box',
+      });
+      expanded.appendChild(renderContent(item.content));
+      frag.appendChild(expanded);
+    } else if (idx < items.length - 1) {
+      var divider = el('div', { height:'1px', background:'#E8E8E8', margin:'0 20px' });
+      frag.appendChild(divider);
+    }
+
+    return frag;
+  }
+
+  function rebuildMobile() {
+    mobileWrap.innerHTML = '';
+    items.forEach(function(_, i) { mobileWrap.appendChild(buildMobileItem(i)); });
+  }
+
+  rebuildMobile();
+})();
+</script>
+
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer class="footer-outer">
   <div class="footer-inner">

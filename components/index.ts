@@ -23,6 +23,6 @@ export type { LogoProps, LogoColor } from './Logo';
 export type { ChipsProps, ChipItem, ChipsMode } from './Chips';
 export type { CTABannerProps, CTABannerSize }   from './CTABanner';
 export type { BreadcrumbProps, BreadcrumbItem } from './Breadcrumb';
-export type { AccordionProps, AccordionItem, AccordionVariant } from './Accordion';
+export type { AccordionProps, AccordionItem, AccordionVariant, AccordionContent, SpecContent, DetailContent } from './Accordion';
 export type { MainHeaderProps, NavItem }        from './MainHeader';
 export type { MainFooterProps, FooterLinkGroup } from './MainFooter';
