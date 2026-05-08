@@ -1,182 +1,139 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 
-interface NavItem {
+export interface NavItem {
   label: string;
   href: string;
-  children?: NavItem[];
+  children?: { label: string; href: string; description?: string }[];
 }
 
-interface MainHeaderProps {
-  logo?: React.ReactNode;
+export interface MainHeaderProps {
   navItems?: NavItem[];
   ctaLabel?: string;
-  onCta?: () => void;
+  ctaHref?: string;
+  logoSrc?: string;
   className?: string;
 }
 
-const fontSans = '"General Sans", system-ui, -apple-system, sans-serif';
+const sans = '"General Sans", system-ui, -apple-system, sans-serif';
+const red  = '#ED2939';
+const dark = '#1E1E1E';
 
-const MenuIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
-
-const ChevronDownIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+const ChevronDown = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden>
     <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
-const ArrowIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+const HamburgerIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <path d="M3 6H21M3 12H21M3 18H21" stroke={dark} strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <path d="M6 6L18 18M18 6L6 18" stroke={dark} strokeWidth="2" strokeLinecap="round"/>
   </svg>
 );
 
 const defaultNavItems: NavItem[] = [
-  { label: 'Services',   href: '/services' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Insights',   href: '/insights' },
-  { label: 'About',      href: '/about' },
+  { label: 'AI Studio', href: '/ai-studio' },
+  {
+    label: 'Services',
+    href: '/services',
+    children: [
+      { label: 'AI Led Business Transformation',  href: '/services/ai-business-transformation', description: 'Engineering the new operating model.' },
+      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence',          description: 'Turn into a decision engine.' },
+      { label: 'Digital Experience Design',       href: '/services/digital-experience',         description: 'Reimagine product, UX and brand.' },
+      { label: 'Product Engineering',             href: '/services/product-engineering',        description: 'Ship full-stack at startup speed.' },
+      { label: 'Quality Engineering & Automation', href: '/services/quality-engineering',       description: 'Test, observe, accelerate releases.' },
+      { label: 'Cloud & Product Modernization',   href: '/services/cloud-modernization',        description: 'Lift, refactor, and run smarter.' },
+    ],
+  },
+  {
+    label: 'Industries',
+    href: '/industries',
+    children: [
+      { label: 'Healthcare',    href: '/industries/healthcare',    description: 'Digital health, interoperability & compliance.' },
+      { label: 'Fintech',       href: '/industries/fintech',       description: 'Trading systems, payments, and risk.' },
+      { label: 'Life Sciences', href: '/industries/life-sciences', description: 'LIMS, clinical trials, and lab automation.' },
+      { label: 'Manufacturing', href: '/industries/manufacturing', description: 'Smart factory, IoT, and supply chain.' },
+    ],
+  },
+  { label: 'Resources', href: '/resources' },
+  { label: 'About Us',  href: '/about' },
+  { label: 'Careers',   href: '/careers' },
 ];
 
 export function MainHeader({
-  logo,
   navItems = defaultNavItems,
-  ctaLabel = 'Contact Us',
-  onCta,
+  ctaLabel = 'Contact us',
+  ctaHref  = '/contact',
+  logoSrc,
   className = '',
 }: MainHeaderProps) {
-  const [mobileOpen, setMobileOpen]     = useState(false);
-  const [expandedItem, setExpandedItem] = useState<string | null>(null);
-  const { isDesktop } = useBreakpoint();
+  const { isMobile } = useBreakpoint();
+  const [openDropdown,   setOpenDropdown]   = useState<string | null>(null);
+  const [mobileOpen,     setMobileOpen]     = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
-  const navLinkStyle: React.CSSProperties = {
-    fontFamily: fontSans,
-    fontWeight: 600,
-    fontSize:   '16px',
-    lineHeight: '28px',
-    color:      '#FFFFFF',
-    textDecoration: 'none',
-    background: 'transparent',
-    border:     'none',
-    cursor:     'pointer',
-    padding:    '0',
-    display:    'flex',
-    alignItems: 'center',
-    gap:        '4px',
-  };
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
-  const ctaButtonStyle: React.CSSProperties = {
-    display:     'inline-flex',
-    alignItems:  'center',
-    gap:         '8px',
-    background:  '#ED2939',
-    color:       '#FFFFFF',
-    border:      'none',
-    height:      '48px',
-    padding:     '12px 20px',
-    borderRadius: '8px',
-    fontFamily:  fontSans,
-    fontWeight:  600,
-    fontSize:    '14px',
-    lineHeight:  '20px',
-    cursor:      'pointer',
-    whiteSpace:  'nowrap',
-    flexShrink:  0,
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  const navLinkBase: React.CSSProperties = {
+    fontFamily: sans, fontSize: 14, fontWeight: 500, color: dark,
+    textDecoration: 'none', background: 'none', border: 'none', cursor: 'pointer',
+    padding: 0, display: 'inline-flex', alignItems: 'center', gap: 3, whiteSpace: 'nowrap',
   };
 
   return (
     <header
+      ref={headerRef}
       className={className}
-      style={{
-        background:   '#010101',
-        width:        '100%',
-        boxSizing:    'border-box',
-        position:     'sticky',
-        top:          0,
-        zIndex:       100,
-      }}
+      style={{ background: '#fff', borderBottom: '1px solid #E8E8E8', position: 'sticky', top: 0, zIndex: 1000, width: '100%' }}
     >
       {/* Top bar */}
-      <div
-        style={{
-          display:        'flex',
-          alignItems:     'center',
-          justifyContent: 'space-between',
-          padding:        isDesktop ? '0 48px' : '0 20px',
-          height:         '72px',
-          gap:            '32px',
-        }}
-      >
-        {/* Logo */}
-        <a href="/" aria-label="Technossus home" style={{ flexShrink: 0, display: 'flex' }}>
-          {logo ?? (
-            <svg width="160" height="32" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="29" fontFamily={fontSans} fontWeight="600" fontSize="24" fill="#FFFFFF" letterSpacing="-0.5">
-                Technossus
-              </text>
-              <circle cx="174" cy="8" r="5" fill="#ED2939" />
-            </svg>
-          )}
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 20px' : '0 48px', height: 80, display: 'flex', alignItems: 'center', gap: 48 }}>
+
+        <a href="/" aria-label="Technossus home" style={{ display: 'inline-flex', lineHeight: 0, flexShrink: 0 }}>
+          <img src={logoSrc ?? '/assets/logos/logo-dark.svg'} alt="Technossus" height={32} />
         </a>
 
         {/* Desktop nav */}
-        {isDesktop && (
-          <nav aria-label="Main navigation" style={{ display: 'flex', gap: '32px', alignItems: 'center', flex: 1 }}>
-            {navItems.map((item) => (
+        {!isMobile && (
+          <nav aria-label="Main" style={{ flex: 1, display: 'flex', gap: 32, alignItems: 'center', justifyContent: 'center' }}>
+            {navItems.map(item => (
               <div key={item.label} style={{ position: 'relative' }}>
                 {item.children ? (
-                  <>
-                    <button
-                      style={navLinkStyle}
-                      onClick={() => setExpandedItem(expandedItem === item.label ? null : item.label)}
-                      aria-expanded={expandedItem === item.label}
-                    >
-                      {item.label}
-                      <ChevronDownIcon />
-                    </button>
-                    {expandedItem === item.label && (
-                      <div
-                        style={{
-                          position:  'absolute',
-                          top:       'calc(100% + 8px)',
-                          left:      0,
-                          background: '#1B1B1B',
-                          minWidth:  '200px',
-                          padding:   '8px 0',
-                          borderRadius: '8px',
-                          zIndex:    200,
-                          boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-                        }}
-                      >
-                        {item.children.map((child) => (
-                          <a
-                            key={child.label}
-                            href={child.href}
-                            style={{
-                              ...navLinkStyle,
-                              padding: '10px 20px',
-                              display: 'block',
-                              fontWeight: 500,
-                            }}
-                          >
-                            {child.label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </>
+                  <button
+                    style={{ ...navLinkBase, color: openDropdown === item.label ? red : dark }}
+                    aria-expanded={openDropdown === item.label}
+                    onClick={() => setOpenDropdown(p => p === item.label ? null : item.label)}
+                  >
+                    {item.label}
+                    <span style={{ transform: openDropdown === item.label ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>
+                      <ChevronDown />
+                    </span>
+                  </button>
                 ) : (
-                  <a href={item.href} style={navLinkStyle}>
+                  <a href={item.href} style={navLinkBase}
+                    onMouseEnter={e => (e.currentTarget.style.color = red)}
+                    onMouseLeave={e => (e.currentTarget.style.color = dark)}
+                  >
                     {item.label}
                   </a>
                 )}
@@ -186,75 +143,115 @@ export function MainHeader({
         )}
 
         {/* Desktop CTA */}
-        {isDesktop && (
-          <button onClick={onCta} style={ctaButtonStyle}>
+        {!isMobile && (
+          <a href={ctaHref} style={{ flexShrink: 0, background: dark, color: '#fff', fontFamily: sans, fontSize: 14, fontWeight: 600, padding: '12px 20px', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', textDecoration: 'none' }}>
             {ctaLabel}
-            <ArrowIcon />
-          </button>
+          </a>
         )}
 
         {/* Mobile hamburger */}
-        {!isDesktop && (
+        {isMobile && (
           <button
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            style={{
-              background: 'transparent',
-              border:     'none',
-              color:      '#FFFFFF',
-              cursor:     'pointer',
-              padding:    '4px',
-              display:    'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            onClick={() => setMobileOpen(o => !o)}
+            style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex' }}
           >
-            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+            {mobileOpen ? <CloseIcon /> : <HamburgerIcon />}
           </button>
         )}
       </div>
 
-      {/* Mobile drawer */}
-      {!isDesktop && mobileOpen && (
-        <nav
-          aria-label="Mobile navigation"
-          style={{
-            background:     '#1B1B1B',
-            padding:        '24px 20px 32px',
-            display:        'flex',
-            flexDirection:  'column',
-            gap:            0,
-            borderTop:      '1px solid #343434',
-          }}
-        >
-          {navItems.map((item) => (
-            <div key={item.label} style={{ borderBottom: '1px solid #343434' }}>
-              <a
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                style={{
-                  ...navLinkStyle,
-                  padding: '16px 0',
-                  display: 'block',
-                }}
-              >
-                {item.label}
+      {/* Desktop mega-menu */}
+      {!isMobile && openDropdown && (() => {
+        const active = navItems.find(i => i.label === openDropdown);
+        if (!active?.children) return null;
+        return (
+          <div style={{ position: 'absolute', left: 0, right: 0, background: '#fff', borderBottom: '1px solid #E8E8E8', boxShadow: '0 8px 32px rgba(0,0,0,.08)', zIndex: 999 }}>
+            <div style={{ maxWidth: 1440, margin: '0 auto', padding: '48px 48px 52px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(active.children.length, 3)}, 1fr)`, gap: '40px 64px' }}>
+                {active.children.map(child => (
+                  <a
+                    key={child.label}
+                    href={child.href}
+                    onClick={() => setOpenDropdown(null)}
+                    style={{ display: 'flex', flexDirection: 'column', gap: 6, textDecoration: 'none' }}
+                  >
+                    <span style={{ fontFamily: sans, fontSize: 16, fontWeight: 600, color: dark, transition: 'color .15s' }}
+                      onMouseEnter={e => (e.currentTarget.style.color = red)}
+                      onMouseLeave={e => (e.currentTarget.style.color = dark)}
+                    >
+                      {child.label}
+                    </span>
+                    {child.description && (
+                      <span style={{ fontFamily: sans, fontSize: 13, fontWeight: 400, color: '#767676', lineHeight: 1.5 }}>
+                        {child.description}
+                      </span>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* Mobile fullscreen overlay */}
+      {isMobile && mobileOpen && (
+        <div style={{ position: 'fixed', inset: 0, background: '#fff', zIndex: 998, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', height: 80, borderBottom: '1px solid #E8E8E8', flexShrink: 0 }}>
+            <a href="/" style={{ display: 'inline-flex', lineHeight: 0 }} onClick={() => setMobileOpen(false)}>
+              <img src="/assets/logos/logo-dark.svg" alt="Technossus" height={32} />
+            </a>
+            <button onClick={() => setMobileOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex' }}>
+              <CloseIcon />
+            </button>
+          </div>
+          <nav style={{ flex: 1, padding: '0 20px' }}>
+            {navItems.map(item => (
+              <div key={item.label} style={{ borderBottom: '1px solid #E8E8E8' }}>
+                {item.children ? (
+                  <>
+                    <button
+                      aria-expanded={mobileExpanded === item.label}
+                      onClick={() => setMobileExpanded(p => p === item.label ? null : item.label)}
+                      style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 0', background: 'none', border: 'none', cursor: 'pointer', fontFamily: sans, fontSize: 18, fontWeight: 600, color: dark }}
+                    >
+                      {item.label}
+                      <span style={{ transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>
+                        <ChevronDown size={20} />
+                      </span>
+                    </button>
+                    {mobileExpanded === item.label && (
+                      <div style={{ paddingBottom: 16 }}>
+                        {item.children.map(child => (
+                          <a key={child.label} href={child.href} onClick={() => setMobileOpen(false)}
+                            style={{ display: 'block', padding: '14px 0 14px 20px', fontFamily: sans, fontSize: 15, fontWeight: 400, color: '#545454', borderBottom: '1px solid #F2F2F2', textDecoration: 'none' }}>
+                            {child.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <a href={item.href} onClick={() => setMobileOpen(false)}
+                    style={{ display: 'flex', alignItems: 'center', padding: '20px 0', fontFamily: sans, fontSize: 18, fontWeight: 600, color: dark, textDecoration: 'none' }}>
+                    {item.label}
+                  </a>
+                )}
+              </div>
+            ))}
+            <div style={{ padding: '24px 0' }}>
+              <a href={ctaHref} onClick={() => setMobileOpen(false)}
+                style={{ display: 'inline-flex', background: dark, color: '#fff', fontFamily: sans, fontSize: 14, fontWeight: 600, padding: '14px 28px', textDecoration: 'none' }}>
+                {ctaLabel}
               </a>
             </div>
-          ))}
-          <button
-            onClick={() => { onCta?.(); setMobileOpen(false); }}
-            style={{ ...ctaButtonStyle, marginTop: '24px', alignSelf: 'flex-start' }}
-          >
-            {ctaLabel}
-            <ArrowIcon />
-          </button>
-        </nav>
+          </nav>
+        </div>
       )}
     </header>
   );
 }
 
-export type { MainHeaderProps, NavItem };
 export default MainHeader;
