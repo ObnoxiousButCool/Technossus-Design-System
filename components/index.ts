@@ -13,6 +13,7 @@ export { Breadcrumb }  from './Breadcrumb';
 export { Accordion }   from './Accordion';
 export { MainHeader }  from './MainHeader';
 export { MainFooter }  from './MainFooter';
+export { Leader }      from './Leader';
 
 export type { CardProps }            from './Card';
 export type { TestimonialColor }     from './Testimonial';
@@ -26,3 +27,4 @@ export type { BreadcrumbProps, BreadcrumbItem } from './Breadcrumb';
 export type { AccordionProps, AccordionItem, AccordionVariant, AccordionContent, SpecContent, DetailContent } from './Accordion';
 export type { MainHeaderProps, NavItem }        from './MainHeader';
 export type { MainFooterProps, FooterLinkGroup } from './MainFooter';
+export type { LeaderProps, LeaderState }        from './Leader';

@@ -1,9 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 
+// Asset URLs from Figma
+const imgGroupDark    = 'http://localhost:3845/assets/848a2b3ff5faeffd006796fa2fd67e06f439fc5a.svg';
+const imgVectorDark   = 'http://localhost:3845/assets/efd5f1d9f9e1ddeffb9a2c0e8bdb4bf929613739.svg';
+const imgVector1Dark  = 'http://localhost:3845/assets/6124ed745a3f456ad8224b80fd39bfef3a22bf3d.svg';
+const imgGroupMobile  = 'http://localhost:3845/assets/695666a5f2eb0d5292832164ad938ed7569216fd.svg';
+const imgVectorMobile = 'http://localhost:3845/assets/d87fac3a6d6d9e25c67b5a01544bc22857c3f986.svg';
+const imgVector1Mobile= 'http://localhost:3845/assets/8b570c1a688d9313d655e94f4df2d62c83009b0e.svg';
+const imgArrowForward = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
+const imgChevronDown  = 'http://localhost:3845/assets/f88d5745dbe17d6eba516dff8c1ec66ec8f95eab.svg';
+const imgChevronDownRed = 'http://localhost:3845/assets/872f59963a8db7797238fb9af0174f8aafeeae1e.svg';
+const imgDehaze       = 'http://localhost:3845/assets/76457196f8ce163b915b684934ba5e3d5f9be564.svg';
+const imgClose        = 'http://localhost:3845/assets/9e2c1bf0fb472642f558f6a71e09a2760043da15.svg';
+const imgChevronMobile= 'http://localhost:3845/assets/c1a9ec4c00df07c37e0547669be3582f3fea68da.svg';
+const imgChevronMobile2= 'http://localhost:3845/assets/2b83e41f03742bdfe0c3187ec66114fe384b11e1.svg';
+
+// Design tokens
+const sans = '"General Sans", system-ui, -apple-system, sans-serif';
+const red  = '#ED2939';
+const dark = '#383838';
+
 export interface NavItem {
   label: string;
   href: string;
+  active?: boolean;
   children?: { label: string; href: string; description?: string }[];
 }
 
@@ -11,43 +32,23 @@ export interface MainHeaderProps {
   navItems?: NavItem[];
   ctaLabel?: string;
   ctaHref?: string;
-  logoSrc?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-const sans = '"General Sans", system-ui, -apple-system, sans-serif';
-const red  = '#ED2939';
-const dark = '#1E1E1E';
-
-const ChevronDown = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden>
-    <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const HamburgerIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-    <path d="M3 6H21M3 12H21M3 18H21" stroke={dark} strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-    <path d="M6 6L18 18M18 6L6 18" stroke={dark} strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
-
+// Figma default nav items
 const defaultNavItems: NavItem[] = [
   { label: 'AI Studio', href: '/ai-studio' },
   {
     label: 'Services',
     href: '/services',
+    active: true,
     children: [
       { label: 'AI Led Business Transformation',  href: '/services/ai-business-transformation', description: 'Engineering the new operating model.' },
-      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence',          description: 'Turn into a decision engine.' },
-      { label: 'Digital Experience Design',       href: '/services/digital-experience',         description: 'Reimagine product, UX and brand.' },
       { label: 'Product Engineering',             href: '/services/product-engineering',        description: 'Ship full-stack at startup speed.' },
+      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence',          description: 'Turn into a decision engine.' },
       { label: 'Quality Engineering & Automation', href: '/services/quality-engineering',       description: 'Test, observe, accelerate releases.' },
+      { label: 'Digital Experience Design',       href: '/services/digital-experience',         description: 'Reimagine product, UX and brand.' },
       { label: 'Cloud & Product Modernization',   href: '/services/cloud-modernization',        description: 'Lift, refactor, and run smarter.' },
     ],
   },
@@ -55,10 +56,9 @@ const defaultNavItems: NavItem[] = [
     label: 'Industries',
     href: '/industries',
     children: [
-      { label: 'Healthcare',    href: '/industries/healthcare',    description: 'Digital health, interoperability & compliance.' },
-      { label: 'Fintech',       href: '/industries/fintech',       description: 'Trading systems, payments, and risk.' },
-      { label: 'Life Sciences', href: '/industries/life-sciences', description: 'LIMS, clinical trials, and lab automation.' },
-      { label: 'Manufacturing', href: '/industries/manufacturing', description: 'Smart factory, IoT, and supply chain.' },
+      { label: 'Healthcare',         href: '/industries/healthcare' },
+      { label: 'Financial Services', href: '/industries/fintech' },
+      { label: 'HiTech / SaaS',      href: '/industries/hitech' },
     ],
   },
   { label: 'Resources', href: '/resources' },
@@ -70,13 +70,13 @@ export function MainHeader({
   navItems = defaultNavItems,
   ctaLabel = 'Contact us',
   ctaHref  = '/contact',
-  logoSrc,
   className = '',
+  style,
 }: MainHeaderProps) {
   const { isMobile } = useBreakpoint();
-  const [openDropdown,   setOpenDropdown]   = useState<string | null>(null);
-  const [mobileOpen,     setMobileOpen]     = useState(false);
-  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileOpen,   setMobileOpen]   = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>('Service Offerings');
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -94,159 +94,398 @@ export function MainHeader({
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const navLinkBase: React.CSSProperties = {
-    fontFamily: sans, fontSize: 14, fontWeight: 500, color: dark,
-    textDecoration: 'none', background: 'none', border: 'none', cursor: 'pointer',
-    padding: 0, display: 'inline-flex', alignItems: 'center', gap: 3, whiteSpace: 'nowrap',
-  };
+  // ── Desktop logo
+  const DesktopLogo = () => (
+    <div style={{ height: 32, position: 'relative', flexShrink: 0, width: 192.849, overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: '24.85%', right: '7.54%', bottom: '24.85%', left: '8.11%' }}>
+        <img alt="Technossus" src={imgGroupDark} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: 0, right: '95.74%', bottom: 0, left: 0 }}>
+        <img alt="" src={imgVectorDark} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: '95.93%' }}>
+        <img alt="" src={imgVector1Dark} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+      </div>
+    </div>
+  );
+
+  // ── Mobile logo
+  const MobileLogo = () => (
+    <div style={{ height: 24, position: 'relative', flexShrink: 0, width: 144.637, overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: '24.85%', right: '7.54%', bottom: '24.85%', left: '8.11%' }}>
+        <img alt="Technossus" src={imgGroupMobile} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: 0, right: '95.74%', bottom: 0, left: 0 }}>
+        <img alt="" src={imgVectorMobile} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: '95.93%' }}>
+        <img alt="" src={imgVector1Mobile} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+      </div>
+    </div>
+  );
 
   return (
     <header
       ref={headerRef}
       className={className}
-      style={{ background: '#fff', borderBottom: '1px solid #E8E8E8', position: 'sticky', top: 0, zIndex: 1000, width: '100%' }}
+      data-node-id={isMobile ? '85:590' : '38:842'}
+      style={{
+        backgroundColor: '#FFFFFF',
+        borderBottom: '1px solid #EEEEEE',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
+        width: '100%',
+        ...style,
+      }}
     >
-      {/* Top bar */}
-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 20px' : '0 48px', height: 80, display: 'flex', alignItems: 'center', gap: 48 }}>
+      {/* ── Desktop header bar ── */}
+      {!isMobile && (
+        <div
+          style={{
+            display: 'flex',
+            gap: 40,
+            height: 80,
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingBottom: 1,
+            paddingLeft: 96,
+            paddingRight: 96,
+            width: '100%',
+            boxSizing: 'border-box',
+          }}
+        >
+          <a href="/" style={{ display: 'inline-flex', flexShrink: 0, lineHeight: 0 }}>
+            <DesktopLogo />
+          </a>
 
-        <a href="/" aria-label="Technossus home" style={{ display: 'inline-flex', lineHeight: 0, flexShrink: 0 }}>
-          <img src={logoSrc ?? '/assets/logos/logo-dark.svg'} alt="Technossus" height={32} />
-        </a>
+          {/* Nav */}
+          <nav
+            style={{
+              flex: '1 0 0',
+              minWidth: 0,
+              position: 'relative',
+              display: 'flex',
+            }}
+          >
+            <div style={{ display: 'flex', gap: 32, alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+              {navItems.map((item) => {
+                const isActive = item.active;
+                const isOpen = openDropdown === item.label;
 
-        {/* Desktop nav */}
-        {!isMobile && (
-          <nav aria-label="Main" style={{ flex: 1, display: 'flex', gap: 32, alignItems: 'center', justifyContent: 'center' }}>
-            {navItems.map(item => (
-              <div key={item.label} style={{ position: 'relative' }}>
-                {item.children ? (
-                  <button
-                    style={{ ...navLinkBase, color: openDropdown === item.label ? red : dark }}
-                    aria-expanded={openDropdown === item.label}
-                    onClick={() => setOpenDropdown(p => p === item.label ? null : item.label)}
-                  >
-                    {item.label}
-                    <span style={{ transform: openDropdown === item.label ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>
-                      <ChevronDown />
-                    </span>
-                  </button>
-                ) : (
-                  <a href={item.href} style={navLinkBase}
-                    onMouseEnter={e => (e.currentTarget.style.color = red)}
-                    onMouseLeave={e => (e.currentTarget.style.color = dark)}
+                if (item.children) {
+                  return (
+                    <div key={item.label} style={{ position: 'relative' }}>
+                      <button
+                        aria-expanded={isOpen}
+                        onClick={() => setOpenDropdown(isOpen ? null : item.label)}
+                        style={{
+                          display: 'flex',
+                          gap: 4,
+                          alignItems: 'center',
+                          background: 'none',
+                          border: 'none',
+                          cursor: 'pointer',
+                          padding: 0,
+                          fontFamily: sans,
+                          fontWeight: isActive ? 600 : 500,
+                          fontSize: 14,
+                          lineHeight: '20px',
+                          color: isActive ? red : dark,
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {item.label}
+                        <div style={{ width: 16, height: 16, position: 'relative', flexShrink: 0 }}>
+                          <img
+                            alt=""
+                            src={isActive ? imgChevronDownRed : imgChevronDown}
+                            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+                          />
+                        </div>
+                      </button>
+                    </div>
+                  );
+                }
+
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    style={{
+                      fontFamily: sans,
+                      fontWeight: 500,
+                      fontSize: 14,
+                      lineHeight: '20px',
+                      color: dark,
+                      textDecoration: 'none',
+                      whiteSpace: 'nowrap',
+                    }}
                   >
                     {item.label}
                   </a>
-                )}
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </nav>
-        )}
 
-        {/* Desktop CTA */}
-        {!isMobile && (
-          <a href={ctaHref} style={{ flexShrink: 0, background: dark, color: '#fff', fontFamily: sans, fontSize: 14, fontWeight: 600, padding: '12px 20px', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', textDecoration: 'none' }}>
+          {/* CTA button */}
+          <a
+            href={ctaHref}
+            style={{
+              backgroundColor: '#1E1E1E',
+              color: '#FFFFFF',
+              fontFamily: sans,
+              fontWeight: 600,
+              fontSize: 14,
+              lineHeight: '20px',
+              padding: '8px 24px',
+              height: 48,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+              width: 122,
+              boxSizing: 'border-box',
+            }}
+          >
             {ctaLabel}
           </a>
-        )}
+        </div>
+      )}
 
-        {/* Mobile hamburger */}
-        {isMobile && (
-          <button
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen(o => !o)}
-            style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex' }}
-          >
-            {mobileOpen ? <CloseIcon /> : <HamburgerIcon />}
-          </button>
-        )}
-      </div>
-
-      {/* Desktop mega-menu */}
+      {/* ── Desktop mega menu ── */}
       {!isMobile && openDropdown && (() => {
         const active = navItems.find(i => i.label === openDropdown);
         if (!active?.children) return null;
         return (
-          <div style={{ position: 'absolute', left: 0, right: 0, background: '#fff', borderBottom: '1px solid #E8E8E8', boxShadow: '0 8px 32px rgba(0,0,0,.08)', zIndex: 999 }}>
-            <div style={{ maxWidth: 1440, margin: '0 auto', padding: '48px 48px 52px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(active.children.length, 3)}, 1fr)`, gap: '40px 64px' }}>
-                {active.children.map(child => (
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              backgroundColor: '#FFFFFF',
+              borderBottom: '1px solid #EEEEEE',
+              display: 'flex',
+              gap: 112,
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingTop: 48,
+              paddingBottom: 63,
+            }}
+          >
+            {/* Group items in columns of 2 */}
+            {Array.from({ length: Math.ceil(active.children.length / 2) }, (_, colIdx) => (
+              <div key={colIdx} style={{ display: 'flex', flexDirection: 'column', gap: 48, alignItems: 'flex-start', justifyContent: 'center' }}>
+                {active.children!.slice(colIdx * 2, colIdx * 2 + 2).map((child) => (
                   <a
                     key={child.label}
                     href={child.href}
                     onClick={() => setOpenDropdown(null)}
-                    style={{ display: 'flex', flexDirection: 'column', gap: 6, textDecoration: 'none' }}
+                    style={{ display: 'flex', flexDirection: 'column', gap: 8, textDecoration: 'none', whiteSpace: 'nowrap' }}
                   >
-                    <span style={{ fontFamily: sans, fontSize: 16, fontWeight: 600, color: dark, transition: 'color .15s' }}
-                      onMouseEnter={e => (e.currentTarget.style.color = red)}
-                      onMouseLeave={e => (e.currentTarget.style.color = dark)}
-                    >
+                    <span style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: dark }}>
                       {child.label}
                     </span>
                     {child.description && (
-                      <span style={{ fontFamily: sans, fontSize: 13, fontWeight: 400, color: '#767676', lineHeight: 1.5 }}>
+                      <span style={{ fontFamily: sans, fontWeight: 500, fontSize: 16, lineHeight: '24px', color: '#949494' }}>
                         {child.description}
                       </span>
                     )}
                   </a>
                 ))}
               </div>
-            </div>
+            ))}
           </div>
         );
       })()}
 
-      {/* Mobile fullscreen overlay */}
-      {isMobile && mobileOpen && (
-        <div style={{ position: 'fixed', inset: 0, background: '#fff', zIndex: 998, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', height: 80, borderBottom: '1px solid #E8E8E8', flexShrink: 0 }}>
-            <a href="/" style={{ display: 'inline-flex', lineHeight: 0 }} onClick={() => setMobileOpen(false)}>
-              <img src="/assets/logos/logo-dark.svg" alt="Technossus" height={32} />
-            </a>
-            <button onClick={() => setMobileOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex' }}>
-              <CloseIcon />
+      {/* ── Mobile default bar ── */}
+      {isMobile && !mobileOpen && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: 80,
+            paddingBottom: 1,
+            paddingLeft: 20,
+            paddingRight: 20,
+            width: '100%',
+            boxSizing: 'border-box',
+          }}
+        >
+          <div style={{ display: 'flex', gap: 24, alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+            <div style={{ display: 'flex', flex: '1 0 0', flexDirection: 'column', alignItems: 'flex-start', minWidth: 0 }}>
+              <a href="/" style={{ display: 'inline-flex', lineHeight: 0 }}>
+                <MobileLogo />
+              </a>
+            </div>
+            <button
+              aria-label="Open menu"
+              onClick={() => setMobileOpen(true)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', flexShrink: 0 }}
+            >
+              <div style={{ width: 32, height: 32, position: 'relative' }}>
+                <img alt="" src={imgDehaze} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+              </div>
             </button>
           </div>
-          <nav style={{ flex: 1, padding: '0 20px' }}>
-            {navItems.map(item => (
-              <div key={item.label} style={{ borderBottom: '1px solid #E8E8E8' }}>
-                {item.children ? (
-                  <>
+        </div>
+      )}
+
+      {/* ── Mobile expanded menu ── */}
+      {isMobile && mobileOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: '#FFFFFF',
+            zIndex: 998,
+            overflowY: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 32,
+            alignItems: 'center',
+            paddingBottom: 25,
+            paddingTop: 24,
+            paddingLeft: 20,
+            paddingRight: 20,
+            borderBottom: '1px solid #E5E7EB',
+            width: '100%',
+            boxSizing: 'border-box',
+          }}
+        >
+          {/* Logo + close */}
+          <div style={{ display: 'flex', gap: 24, alignItems: 'center', justifyContent: 'center', flexShrink: 0, width: '100%' }}>
+            <div style={{ display: 'flex', flex: '1 0 0', flexDirection: 'column', alignItems: 'flex-start', minWidth: 0 }}>
+              <MobileLogo />
+            </div>
+            <button
+              aria-label="Close menu"
+              onClick={() => setMobileOpen(false)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', flexShrink: 0 }}
+            >
+              <div style={{ width: 32, height: 32, position: 'relative' }}>
+                <img alt="" src={imgClose} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+              </div>
+            </button>
+          </div>
+
+          {/* Nav items */}
+          <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexShrink: 0, width: '100%' }}>
+            {navItems.map((item) => {
+              const isExpanded = mobileExpanded === item.label;
+
+              if (item.children) {
+                return (
+                  <div key={item.label} style={{ width: '100%' }}>
                     <button
-                      aria-expanded={mobileExpanded === item.label}
-                      onClick={() => setMobileExpanded(p => p === item.label ? null : item.label)}
-                      style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 0', background: 'none', border: 'none', cursor: 'pointer', fontFamily: sans, fontSize: 18, fontWeight: 600, color: dark }}
+                      aria-expanded={isExpanded}
+                      onClick={() => setMobileExpanded(isExpanded ? null : item.label)}
+                      style={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        paddingTop: 24,
+                        paddingBottom: 24,
+                        borderBottom: '1px solid #C6C6C7',
+                        background: 'none',
+                        border: 'none',
+                        borderBottomWidth: 1,
+                        borderBottomStyle: 'solid',
+                        borderBottomColor: '#C6C6C7',
+                        cursor: 'pointer',
+                      }}
                     >
-                      {item.label}
-                      <span style={{ transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>
-                        <ChevronDown size={20} />
+                      <span
+                        style={{
+                          fontFamily: sans,
+                          fontWeight: 600,
+                          fontSize: 20,
+                          lineHeight: '28px',
+                          color: dark,
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {item.label === 'Services' ? 'Service Offerings' : item.label}
                       </span>
+                      <div style={{ width: 24, height: 24, position: 'relative', flexShrink: 0 }}>
+                        <img
+                          alt=""
+                          src={isExpanded ? imgChevronMobile2 : imgChevronMobile}
+                          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+                        />
+                      </div>
                     </button>
-                    {mobileExpanded === item.label && (
-                      <div style={{ paddingBottom: 16 }}>
-                        {item.children.map(child => (
-                          <a key={child.label} href={child.href} onClick={() => setMobileOpen(false)}
-                            style={{ display: 'block', padding: '14px 0 14px 20px', fontFamily: sans, fontSize: 15, fontWeight: 400, color: '#545454', borderBottom: '1px solid #F2F2F2', textDecoration: 'none' }}>
+
+                    {isExpanded && item.children && (
+                      <div>
+                        {item.children.map((child) => (
+                          <a
+                            key={child.label}
+                            href={child.href}
+                            onClick={() => setMobileOpen(false)}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              padding: '20px 16px',
+                              fontFamily: sans,
+                              fontWeight: 500,
+                              fontSize: 18,
+                              lineHeight: '24px',
+                              color: dark,
+                              textDecoration: 'none',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
                             {child.label}
                           </a>
                         ))}
                       </div>
                     )}
-                  </>
-                ) : (
-                  <a href={item.href} onClick={() => setMobileOpen(false)}
-                    style={{ display: 'flex', alignItems: 'center', padding: '20px 0', fontFamily: sans, fontSize: 18, fontWeight: 600, color: dark, textDecoration: 'none' }}>
-                    {item.label}
+                  </div>
+                );
+              }
+
+              return (
+                <div
+                  key={item.label}
+                  style={{ width: '100%', borderBottom: '1px solid #C6C6C7' }}
+                >
+                  <a
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      paddingTop: 24,
+                      paddingBottom: 24,
+                      width: '100%',
+                    }}
+                  >
+                    <span
+                      style={{
+                        flex: '1 0 0',
+                        fontFamily: sans,
+                        fontWeight: 600,
+                        fontSize: 20,
+                        lineHeight: '28px',
+                        color: dark,
+                        textDecoration: 'none',
+                      }}
+                    >
+                      {item.label}
+                    </span>
                   </a>
-                )}
-              </div>
-            ))}
-            <div style={{ padding: '24px 0' }}>
-              <a href={ctaHref} onClick={() => setMobileOpen(false)}
-                style={{ display: 'inline-flex', background: dark, color: '#fff', fontFamily: sans, fontSize: 14, fontWeight: 600, padding: '14px 28px', textDecoration: 'none' }}>
-                {ctaLabel}
-              </a>
-            </div>
+                </div>
+              );
+            })}
           </nav>
         </div>
       )}
