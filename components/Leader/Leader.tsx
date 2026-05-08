@@ -9,7 +9,7 @@ const imgSubtractBR   = 'http://localhost:3845/assets/327c85a8854e96b954593950f4
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';
 
-export type LeaderState = 'default' | 'active';
+export type LeaderState = 'Active' | 'Default';
 
 export interface LeaderProps {
   state?: LeaderState;
@@ -24,7 +24,7 @@ export interface LeaderProps {
 }
 
 export function Leader({
-  state = 'default',
+  state = 'Default',
   role = 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA',
   name = 'Zia Rahman',
   bio = 'Drives technology and delivery at scale, playing a key role in building, shaping, and scaling systems, teams, and execution capabilities from the ground up.',
@@ -32,7 +32,7 @@ export function Leader({
   className,
   style,
 }: LeaderProps) {
-  const isActive = state === 'active';
+  const isActive = state === 'Active';
 
   return (
     <div
