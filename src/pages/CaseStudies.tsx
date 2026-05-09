@@ -3,6 +3,7 @@ import { Breadcrumb } from '../../components/Breadcrumb';
 import { Tag } from '../../components/Tag';
 import { CTABanner } from '../../components/CTABanner';
 import { Button } from '../../components/Button';
+import { FadeUp } from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
@@ -165,32 +166,36 @@ export default function CaseStudies() {
               ]}
             />
 
-            <h1
-              style={{
-                fontFamily: serif,
-                fontWeight: 600,
-                fontSize: isMobile ? 28 : isTablet ? 40 : 48,
-                lineHeight: isMobile ? '36px' : isTablet ? '48px' : '56px',
-                color: '#1E1E1E',
-                margin: 0,
-              }}
-            >
-              Real outcomes, delivered with{' '}
-              <span style={{ color: red }}>precision.</span>
-            </h1>
+            <FadeUp>
+              <h1
+                style={{
+                  fontFamily: serif,
+                  fontWeight: 600,
+                  fontSize: isMobile ? 28 : isTablet ? 40 : 48,
+                  lineHeight: isMobile ? '36px' : isTablet ? '48px' : '56px',
+                  color: '#1E1E1E',
+                  margin: 0,
+                }}
+              >
+                Real outcomes, delivered with{' '}
+                <span style={{ color: red }}>precision.</span>
+              </h1>
+            </FadeUp>
 
-            <p
-              style={{
-                fontFamily: sans,
-                fontWeight: 500,
-                fontSize: 18,
-                lineHeight: '24px',
-                color: '#5C5C5C',
-                margin: 0,
-              }}
-            >
-              Explore how Technossus has helped healthcare, financial services, and technology organizations solve their most complex engineering challenges.
-            </p>
+            <FadeUp delay={80}>
+              <p
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 500,
+                  fontSize: 18,
+                  lineHeight: '24px',
+                  color: '#5C5C5C',
+                  margin: 0,
+                }}
+              >
+                Explore how Technossus has helped healthcare, financial services, and technology organizations solve their most complex engineering challenges.
+              </p>
+            </FadeUp>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
               <Button variant="primary" label="Talk to Our Team" href="/contact" />

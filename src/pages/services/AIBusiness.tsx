@@ -4,6 +4,7 @@ import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Accordion }  from '../../../components/Accordion';
 import { CTABanner }  from '../../../components/CTABanner';
 import { Button }     from '../../../components/Button';
+import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
 
@@ -153,17 +154,23 @@ export default function AIBusiness() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
               <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>AI that drives real business outcomes</p>
-              <h1 style={d1()}>
-                Make AI your{' '}
-                <span style={{ color: red }}>competitive advantage.</span>
-              </h1>
-              <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                Move into an era of intelligent systems with AI embedded across your business. We help you identify high-impact use cases, build solutions, and integrate them into your workflows so your systems operate with less friction and scale more reliably.
-              </p>
-              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                <Button variant="primary"   label="Explore AI Studio"         href="#" />
-                <Button variant="secondary" label="Talk to an AI Evangelist"  href="#" />
-              </div>
+              <FadeUp>
+                <h1 style={d1()}>
+                  Make AI your{' '}
+                  <span style={{ color: red }}>competitive advantage.</span>
+                </h1>
+              </FadeUp>
+              <FadeUp delay={80}>
+                <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
+                  Move into an era of intelligent systems with AI embedded across your business. We help you identify high-impact use cases, build solutions, and integrate them into your workflows so your systems operate with less friction and scale more reliably.
+                </p>
+              </FadeUp>
+              <FadeUp delay={120}>
+                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                  <Button variant="primary"   label="Explore AI Studio"         href="#" />
+                  <Button variant="secondary" label="Talk to an AI Evangelist"  href="#" />
+                </div>
+              </FadeUp>
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>

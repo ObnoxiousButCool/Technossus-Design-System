@@ -3,6 +3,7 @@ import { Tag }         from '../../components/Tag';
 import { Leader }      from '../../components/Leader';
 import { Testimonial } from '../../components/Testimonial';
 import { CTABanner }   from '../../components/CTABanner';
+import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
 
@@ -90,14 +91,19 @@ export default function AboutUs() {
         <div style={{ position: 'relative', ...px, minHeight: isMobile ? 420 : 560, display: 'flex', alignItems: 'center' }}>
           <div style={{ maxWidth: 711, display: 'flex', flexDirection: 'column', gap: isMobile ? 32 : 60 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <p style={{ fontFamily: serif, fontWeight: 500, fontSize: heroFontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
-                <span style={{ color: '#FFFFFF' }}>Our Focus is On Your Success. </span>
-                <span style={{ color: red }}>Your Success is an Extension of Our Values.</span>
-              </p>
-              <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: '#FFFFFF', margin: 0 }}>
-                At Technossus, our mission is to accelerate your vision through purposeful digital transformation engineered across four core pillars that bring strategy, technology, and execution into alignment. We aim to simplify complexity and enable businesses to adopt the right technologies with clarity and speed.
-              </p>
+              <FadeUp>
+                <p style={{ fontFamily: serif, fontWeight: 500, fontSize: heroFontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
+                  <span style={{ color: '#FFFFFF' }}>Our Focus is On Your Success. </span>
+                  <span style={{ color: red }}>Your Success is an Extension of Our Values.</span>
+                </p>
+              </FadeUp>
+              <FadeUp delay={80}>
+                <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: '#FFFFFF', margin: 0 }}>
+                  At Technossus, our mission is to accelerate your vision through purposeful digital transformation engineered across four core pillars that bring strategy, technology, and execution into alignment. We aim to simplify complexity and enable businesses to adopt the right technologies with clarity and speed.
+                </p>
+              </FadeUp>
             </div>
+            <FadeUp delay={120}>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <button style={{ display: 'flex', alignItems: 'center', gap: 8, height: 56, padding: '16px 24px', backgroundColor: red, border: 'none', cursor: 'pointer', fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: '#FFFFFF' }}>
                 See how we work
@@ -107,6 +113,7 @@ export default function AboutUs() {
                 Contact Us
               </button>
             </div>
+            </FadeUp>
           </div>
         </div>
       </section>
@@ -114,22 +121,25 @@ export default function AboutUs() {
       {/* ── OUR MISSION ──────────────────────────────────────────────────────── */}
       <section>
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <Tag label="OUR MISSION" />
+          <FadeUp duration={500}><Tag label="OUR MISSION" /></FadeUp>
           <div style={{ position: 'relative', backgroundColor: dark1, padding: isMobile ? '32px 20px' : isTablet ? '40px 32px' : 56, display: 'flex', flexDirection: 'column', gap: 36, overflow: 'hidden' }}>
             <img alt="" src={imgSubtractTL} style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 118, pointerEvents: 'none' }} />
             <img alt="" src={imgSubtractBR} style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none' }} />
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 934, color: '#FFFFFF' }}>
-              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0 }}>
-                Engineered to accelerate your vision through{' '}
-                <span style={{ color: red }}>four core pillars</span>
-                {' '}of digital transformation.
-              </h2>
-              <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', margin: 0 }}>
-                At Technossus, our mission is to accelerate your vision through purposeful digital transformation engineered across four core pillars that bring strategy, technology, and execution into alignment.
-              </p>
-            </div>
+            <FadeUp>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 934, color: '#FFFFFF' }}>
+                <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0 }}>
+                  Engineered to accelerate your vision through{' '}
+                  <span style={{ color: red }}>four core pillars</span>
+                  {' '}of digital transformation.
+                </h2>
+                <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', margin: 0 }}>
+                  At Technossus, our mission is to accelerate your vision through purposeful digital transformation engineered across four core pillars that bring strategy, technology, and execution into alignment.
+                </p>
+              </div>
+            </FadeUp>
 
+            <FadeUp delay={60}>
             <div style={{ display: 'grid', gridTemplateColumns: pillarsGrid, gap: 24 }}>
               {pillars.map((p) => (
                 <div key={p.title} style={{ backgroundColor: dark1, border: '1px solid rgba(255,255,255,0.05)', padding: isMobile ? '24px 20px' : 33, display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -141,6 +151,7 @@ export default function AboutUs() {
                 </div>
               ))}
             </div>
+            </FadeUp>
           </div>
         </div>
       </section>
@@ -149,12 +160,15 @@ export default function AboutUs() {
       <section>
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 36 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Tag label="EXECUTIVE LEADERSHIP" />
-            <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, color: colors.text[900], margin: 0, maxWidth: 946 }}>
-              <span style={{ color: dark1 }}>Meet the executive leadership </span>
-              <span style={{ color: red }}>driving Technossus with vision and impact.</span>
-            </h2>
+            <FadeUp duration={500}><Tag label="EXECUTIVE LEADERSHIP" /></FadeUp>
+            <FadeUp>
+              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, color: colors.text[900], margin: 0, maxWidth: 946 }}>
+                <span style={{ color: dark1 }}>Meet the executive leadership </span>
+                <span style={{ color: red }}>driving Technossus with vision and impact.</span>
+              </h2>
+            </FadeUp>
           </div>
+          <FadeUp delay={60}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             {[leaders.slice(0, 4), leaders.slice(4)].map((row, ri) => (
               <div key={ri} style={{ display: 'grid', gridTemplateColumns: leadersGrid, gap: 16 }}>
@@ -164,6 +178,7 @@ export default function AboutUs() {
               </div>
             ))}
           </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -171,17 +186,21 @@ export default function AboutUs() {
       <section>
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Tag label="OUR HISTORY" />
-            <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0, maxWidth: 946 }}>
-              <span style={{ color: dark1 }}>From vision to execution: </span>
-              <span style={{ color: red }}>our story of continuous evolution</span>
-            </h2>
+            <FadeUp duration={500}><Tag label="OUR HISTORY" /></FadeUp>
+            <FadeUp>
+              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0, maxWidth: 946 }}>
+                <span style={{ color: dark1 }}>From vision to execution: </span>
+                <span style={{ color: red }}>our story of continuous evolution</span>
+              </h2>
+            </FadeUp>
           </div>
-          <img
-            alt="Technossus history timeline"
-            src={imgHistory}
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-          />
+          <FadeUp delay={40} distance={16}>
+            <img
+              alt="Technossus history timeline"
+              src={imgHistory}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          </FadeUp>
         </div>
       </section>
 
@@ -189,16 +208,18 @@ export default function AboutUs() {
       <section>
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 48 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Tag label="TESTIMONIALS" />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0 }}>
-                <span style={{ color: '#010101' }}>Hear what </span>
-                <span style={{ color: red }}>our clients have to say.</span>
-              </h2>
-              <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: colors.text[700], margin: 0 }}>
-                Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
-              </p>
-            </div>
+            <FadeUp duration={500}><Tag label="TESTIMONIALS" /></FadeUp>
+            <FadeUp>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0 }}>
+                  <span style={{ color: '#010101' }}>Hear what </span>
+                  <span style={{ color: red }}>our clients have to say.</span>
+                </h2>
+                <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: colors.text[700], margin: 0 }}>
+                  Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
+                </p>
+              </div>
+            </FadeUp>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: 24 }}>
             {testimonials.map((t, i) => (

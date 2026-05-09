@@ -1,4 +1,6 @@
 export { Tag }               from './Tag';
+export { FadeUp }            from './Animate/FadeUp';
+export type { FadeUpProps }  from './Animate/FadeUp';
 export type { TagVariant }   from './Tag';
 export { Stats }       from './Stats';
 export { SearchBar }   from './SearchBar';

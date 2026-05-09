@@ -4,6 +4,7 @@ import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Accordion }  from '../../../components/Accordion';
 import { CTABanner }  from '../../../components/CTABanner';
 import { Button }     from '../../../components/Button';
+import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
 
@@ -152,17 +153,23 @@ export default function DataIntelligence() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
               <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Data you can trust. Insights you can act on.</p>
-              <h1 style={d1()}>
-                Your data is speaking.{' '}
-                <span style={{ color: red }}>Are you listening fast enough?</span>
-              </h1>
-              <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                Data and Analytics only matter when they lead to clear, confident decisions. We unify, clean, and structure data so it tells a single, aligned story. Decisions move faster, and teams focus on acting — not reconciling.
-              </p>
-              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                <Button variant="primary"   label="Talk to a Data Expert"  href="#" />
-                <Button variant="secondary" label="Explore Our Work"       href="#" />
-              </div>
+              <FadeUp>
+                <h1 style={d1()}>
+                  Your data is speaking.{' '}
+                  <span style={{ color: red }}>Are you listening fast enough?</span>
+                </h1>
+              </FadeUp>
+              <FadeUp delay={80}>
+                <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
+                  Data and Analytics only matter when they lead to clear, confident decisions. We unify, clean, and structure data so it tells a single, aligned story. Decisions move faster, and teams focus on acting — not reconciling.
+                </p>
+              </FadeUp>
+              <FadeUp delay={120}>
+                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                  <Button variant="primary"   label="Talk to a Data Expert"  href="#" />
+                  <Button variant="secondary" label="Explore Our Work"       href="#" />
+                </div>
+              </FadeUp>
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>

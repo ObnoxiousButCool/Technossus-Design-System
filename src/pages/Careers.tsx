@@ -3,6 +3,7 @@ import { Tag }         from '../../components/Tag';
 import { Accordion }   from '../../components/Accordion';
 import { Testimonial } from '../../components/Testimonial';
 import { CTABanner }   from '../../components/CTABanner';
+import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
 import type { AccordionItem } from '../../components/Accordion';
@@ -122,14 +123,19 @@ export default function Careers() {
         <div style={{ position: 'relative', ...px, minHeight: isMobile ? 400 : 560, display: 'flex', alignItems: 'center' }}>
           <div style={{ maxWidth: 711, display: 'flex', flexDirection: 'column', gap: isMobile ? 32 : 60 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <p style={{ fontFamily: serif, fontWeight: 500, fontSize: heroFontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
-                <span style={{ color: '#FFFFFF' }}>Shape the </span>
-                <span style={{ color: red }}>future of technology</span>
-              </p>
-              <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: '#FFFFFF', margin: 0 }}>
-                We're more than a company, we're a hub of innovation, collaboration, and continuous learning. If you're passionate about technology and making real impact, your next chapter starts here.
-              </p>
+              <FadeUp>
+                <p style={{ fontFamily: serif, fontWeight: 500, fontSize: heroFontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
+                  <span style={{ color: '#FFFFFF' }}>Shape the </span>
+                  <span style={{ color: red }}>future of technology</span>
+                </p>
+              </FadeUp>
+              <FadeUp delay={80}>
+                <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: '#FFFFFF', margin: 0 }}>
+                  We're more than a company, we're a hub of innovation, collaboration, and continuous learning. If you're passionate about technology and making real impact, your next chapter starts here.
+                </p>
+              </FadeUp>
             </div>
+            <FadeUp delay={120}>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <button style={{ display: 'flex', alignItems: 'center', gap: 8, height: 56, padding: '16px 24px', backgroundColor: red, border: 'none', cursor: 'pointer', fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: '#FFFFFF' }}>
                 Show us the problem
@@ -139,6 +145,7 @@ export default function Careers() {
                 See how we work
               </button>
             </div>
+            </FadeUp>
           </div>
         </div>
       </section>
@@ -146,7 +153,7 @@ export default function Careers() {
       {/* ── LIFE AT TECHNOSSUS / BENTO PHOTO GRID ────────────────────────────── */}
       <section style={{ backgroundColor: '#FFFFFF' }}>
         <div style={{ ...px, paddingTop: isMobile ? 48 : isTablet ? 60 : 80, paddingBottom: isMobile ? 48 : isTablet ? 60 : 80, display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <Tag label="LIFE AT TECHNOSSUS" />
+          <FadeUp duration={500}><Tag label="LIFE AT TECHNOSSUS" /></FadeUp>
           {isMobile ? (
             /* Mobile: stacked */
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -211,11 +218,13 @@ export default function Careers() {
       <section>
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 36 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Tag label="A PLACE TO BELONG" />
-            <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0, maxWidth: 844, color: dark }}>
-              Release confidence, compliance readiness, and{' '}
-              <span style={{ color: red }}>AI quality built in from the start.</span>
-            </h2>
+            <FadeUp duration={500}><Tag label="A PLACE TO BELONG" /></FadeUp>
+            <FadeUp>
+              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0, maxWidth: 844, color: dark }}>
+                Release confidence, compliance readiness, and{' '}
+                <span style={{ color: red }}>AI quality built in from the start.</span>
+              </h2>
+            </FadeUp>
           </div>
           <Accordion items={accordionItems} defaultActiveIndex={2} />
         </div>
@@ -240,6 +249,7 @@ export default function Careers() {
 
             {/* Left: text + button */}
             <div style={{ position: 'relative', flex: '1 0 0', display: 'flex', flexDirection: 'column', gap: 36, minWidth: 0 }}>
+              <FadeUp>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, color: '#FFFFFF', margin: 0 }}>
                   We ARE HIRING!
@@ -248,6 +258,7 @@ export default function Careers() {
                   Share your profile with Technossus and tell us where you'd like to contribute! We're always looking for enthusiastic people across engineering, design, AI, cloud, and more.
                 </p>
               </div>
+            </FadeUp>
               <button
                 style={{ display: 'flex', alignItems: 'center', gap: 8, height: 56, padding: '16px 24px', backgroundColor: red, border: 'none', cursor: 'pointer', fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: '#FFFFFF', alignSelf: 'flex-start' }}
               >
@@ -272,16 +283,18 @@ export default function Careers() {
       <section>
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 48 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Tag label="TESTIMONIALS" />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0 }}>
-                <span style={{ color: '#010101' }}>Hear what </span>
-                <span style={{ color: red }}>our clients have to say.</span>
-              </h2>
-              <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: colors.text[700], margin: 0 }}>
-                Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
-              </p>
-            </div>
+            <FadeUp duration={500}><Tag label="TESTIMONIALS" /></FadeUp>
+            <FadeUp>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0 }}>
+                  <span style={{ color: '#010101' }}>Hear what </span>
+                  <span style={{ color: red }}>our clients have to say.</span>
+                </h2>
+                <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: colors.text[700], margin: 0 }}>
+                  Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
+                </p>
+              </div>
+            </FadeUp>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: 24 }}>
             {testimonials.map((t, i) => (

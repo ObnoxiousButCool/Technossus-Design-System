@@ -5,6 +5,7 @@ import { Testimonial } from '../../components/Testimonial';
 import { CTABanner }   from '../../components/CTABanner';
 import { Button }      from '../../components/Button';
 import { Card }        from '../../components/Card';
+import { FadeUp }      from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
@@ -141,27 +142,33 @@ export default function Home() {
           }}>
             <div style={{ maxWidth: 565, display: 'flex', flexDirection: 'column', gap: 43 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <h1 style={{
-                  fontFamily: serif,
-                  fontSize: h1Size, lineHeight: h1Line,
-                  fontWeight: 500, letterSpacing: '-0.02em',
-                  color: '#fff', margin: 0,
-                }}>
-                  Hit the outcomes that matters,{' '}
-                  <span style={{ color: red }}>with precision.</span>
-                </h1>
-                <p style={{
-                  fontFamily: sans,
-                  fontSize: isMobile ? 14 : 18,
-                  fontWeight: 500, lineHeight: '24px',
-                  color: '#fff', margin: 0,
-                }}>
-                  We help you what works, execute the precision, and turn the efforts into the measurable results faster.
-                </p>
+                <FadeUp>
+                  <h1 style={{
+                    fontFamily: serif,
+                    fontSize: h1Size, lineHeight: h1Line,
+                    fontWeight: 500, letterSpacing: '-0.02em',
+                    color: '#fff', margin: 0,
+                  }}>
+                    Hit the outcomes that matters,{' '}
+                    <span style={{ color: red }}>with precision.</span>
+                  </h1>
+                </FadeUp>
+                <FadeUp delay={80}>
+                  <p style={{
+                    fontFamily: sans,
+                    fontSize: isMobile ? 14 : 18,
+                    fontWeight: 500, lineHeight: '24px',
+                    color: '#fff', margin: 0,
+                  }}>
+                    We help you what works, execute the precision, and turn the efforts into the measurable results faster.
+                  </p>
+                </FadeUp>
               </div>
-              <div>
-                <Button variant="primary" label="Explore Solutions" href="/services" />
-              </div>
+              <FadeUp delay={120}>
+                <div>
+                  <Button variant="primary" label="Explore Solutions" href="/services" />
+                </div>
+              </FadeUp>
             </div>
           </div>
         </div>
@@ -244,15 +251,17 @@ export default function Home() {
       {/* ── STATS ─────────────────────────────────────────────────────────────── */}
       <section style={{ background: '#fff', overflow: 'hidden' }}>
         <div style={inner}>
-          <Tag label="STATISTICS" />
-          <h2 style={{
-            fontFamily: serif,
-            fontSize: shSize, lineHeight: shLine,
-            fontWeight: 500, color: '#1E1E1E',
-            marginTop: 16, marginBottom: 0,
-          }}>
-            Trusted by <span style={{ color: red }}>leaders.</span>
-          </h2>
+          <FadeUp duration={500}><Tag label="STATISTICS" /></FadeUp>
+          <FadeUp>
+            <h2 style={{
+              fontFamily: serif,
+              fontSize: shSize, lineHeight: shLine,
+              fontWeight: 500, color: '#1E1E1E',
+              marginTop: 16, marginBottom: 0,
+            }}>
+              Trusted by <span style={{ color: red }}>leaders.</span>
+            </h2>
+          </FadeUp>
 
           <div style={{
             display: 'flex',
@@ -357,64 +366,70 @@ export default function Home() {
       {/* ── FEATURED CASE STUDY ──────────────────────────────────────────────── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
-          <Tag label="FEATURED CASE STUDY" />
-          <div style={{ marginTop: 32 }}>
-            <Card
-              mode="dark"
-              type="large"
-              category="HEALTHCARE"
-              heading="Automating Home Care Operations for Unprecedented Efficiency."
-              body="Transformed high-volume operational workflows with RPA and Smart Rules, eliminating manual bottlenecks across order entry, billing, and insurance, while enabling seamless management of thousands of daily transactions."
-              image={imgCaseStudy}
-              stats={[
-                { value: '$50M+',   label: 'TOTAL COST SAVING' },
-                { value: '20,000+', label: 'ORDERS PLACED SUCCESSFULLY' },
-              ]}
-              primaryLabel="View All Case Study"
-              secondaryLabel="View All"
-            />
-          </div>
+          <FadeUp duration={500}><Tag label="FEATURED CASE STUDY" /></FadeUp>
+          <FadeUp delay={60}>
+            <div style={{ marginTop: 32 }}>
+              <Card
+                mode="dark"
+                type="large"
+                category="HEALTHCARE"
+                heading="Automating Home Care Operations for Unprecedented Efficiency."
+                body="Transformed high-volume operational workflows with RPA and Smart Rules, eliminating manual bottlenecks across order entry, billing, and insurance, while enabling seamless management of thousands of daily transactions."
+                image={imgCaseStudy}
+                stats={[
+                  { value: '$50M+',   label: 'TOTAL COST SAVING' },
+                  { value: '20,000+', label: 'ORDERS PLACED SUCCESSFULLY' },
+                ]}
+                primaryLabel="View All Case Study"
+                secondaryLabel="View All"
+              />
+            </div>
+          </FadeUp>
         </div>
       </section>
 
       {/* ── WHAT WE DELIVER ──────────────────────────────────────────────────── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
-          <Tag label="INTEGRATED CAPABILITIES" />
-          <h2 style={{
-            fontFamily: serif,
-            fontSize: shSize, lineHeight: shLine,
-            fontWeight: 500, color: '#1E1E1E',
-            marginTop: 16, marginBottom: 0,
-          }}>
-            What we <span style={{ color: red }}>deliver.</span>
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
-            {[
-              { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.' },
-              { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.' },
-              { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.' },
-              { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.' },
-              { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.' },
-              { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.' },
-            ].map((card, i) => (
-              <Card
-                key={i}
-                mode="light"
-                type="deliver"
-                image={imgCardPhoto}
-                title={card.title}
-                description={card.description}
-              />
-            ))}
-          </div>
+          <FadeUp duration={500}><Tag label="INTEGRATED CAPABILITIES" /></FadeUp>
+          <FadeUp>
+            <h2 style={{
+              fontFamily: serif,
+              fontSize: shSize, lineHeight: shLine,
+              fontWeight: 500, color: '#1E1E1E',
+              marginTop: 16, marginBottom: 0,
+            }}>
+              What we <span style={{ color: red }}>deliver.</span>
+            </h2>
+          </FadeUp>
+          <FadeUp delay={60}>
+            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
+              {[
+                { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.' },
+                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.' },
+                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.' },
+                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.' },
+                { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.' },
+                { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.' },
+              ].map((card, i) => (
+                <Card
+                  key={i}
+                  mode="light"
+                  type="deliver"
+                  image={imgCardPhoto}
+                  title={card.title}
+                  description={card.description}
+                />
+              ))}
+            </div>
+          </FadeUp>
         </div>
       </section>
 
       {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
-          <Tag label="AI SOLUTIONS AND ACCELERATORS" />
+          <FadeUp duration={500}><Tag label="AI SOLUTIONS AND ACCELERATORS" /></FadeUp>
           <div style={{
             marginTop: 16,
             position: 'relative',
@@ -425,43 +440,47 @@ export default function Home() {
             <CornerTL />
             <CornerBR />
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 36 }}>
-              <h2 style={{
-                fontFamily: serif,
-                fontSize: shSize, lineHeight: shLine,
-                fontWeight: 500, color: '#fff',
-                maxWidth: 731, margin: 0,
-              }}>
-                See AI in action, before you build at{' '}
-                <span style={{ color: red }}>Technossus AI Studio</span>
-                {' - TAS'}
-              </h2>
-              <p style={{
-                fontFamily: sans, fontSize: 18, fontWeight: 500,
-                color: '#F9FAFB', lineHeight: '24px', margin: 0,
-              }}>
-                Explore real AI systems you can test before committing to build.
-              </p>
-            </div>
+            <FadeUp>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 36 }}>
+                <h2 style={{
+                  fontFamily: serif,
+                  fontSize: shSize, lineHeight: shLine,
+                  fontWeight: 500, color: '#fff',
+                  maxWidth: 731, margin: 0,
+                }}>
+                  See AI in action, before you build at{' '}
+                  <span style={{ color: red }}>Technossus AI Studio</span>
+                  {' - TAS'}
+                </h2>
+                <p style={{
+                  fontFamily: sans, fontSize: 18, fontWeight: 500,
+                  color: '#F9FAFB', lineHeight: '24px', margin: 0,
+                }}>
+                  Explore real AI systems you can test before committing to build.
+                </p>
+              </div>
+            </FadeUp>
 
-            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20, marginBottom: 36 }}>
-              {[
-                { category: 'FASTER PROCESSING',  title: 'Automate document workflows',        description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.',  ctaLabel: 'Try in AI Studio' },
-                { category: 'INTELLIGENT SEARCH', title: 'Surface insights from your data',    description: 'Connect your enterprise knowledge base to conversational AI that understands context, retrieves accurately, and scales across every team without custom pipelines.',                       ctaLabel: 'Try in AI Studio' },
-                { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.',                                        ctaLabel: 'Try in AI Studio' },
-              ].map(card => (
-                <Card
-                  key={card.category}
-                  mode="dark"
-                  type="medium"
-                  icon={imgDocumentIcon}
-                  category={card.category}
-                  title={card.title}
-                  description={card.description}
-                  ctaLabel={card.ctaLabel}
-                />
-              ))}
-            </div>
+            <FadeUp delay={60}>
+              <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20, marginBottom: 36 }}>
+                {[
+                  { category: 'FASTER PROCESSING',  title: 'Automate document workflows',        description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.',  ctaLabel: 'Try in AI Studio' },
+                  { category: 'INTELLIGENT SEARCH', title: 'Surface insights from your data',    description: 'Connect your enterprise knowledge base to conversational AI that understands context, retrieves accurately, and scales across every team without custom pipelines.',                       ctaLabel: 'Try in AI Studio' },
+                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.',                                        ctaLabel: 'Try in AI Studio' },
+                ].map(card => (
+                  <Card
+                    key={card.category}
+                    mode="dark"
+                    type="medium"
+                    icon={imgDocumentIcon}
+                    category={card.category}
+                    title={card.title}
+                    description={card.description}
+                    ctaLabel={card.ctaLabel}
+                  />
+                ))}
+              </div>
+            </FadeUp>
 
             <CTABanner
               size="small"
@@ -476,57 +495,61 @@ export default function Home() {
       {/* ── LATEST INSIGHTS ──────────────────────────────────────────────────── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
-          <Tag label="INSIGHTS" />
-          <div style={{
-            display: 'flex',
-            flexDirection: isMobile ? 'column' : 'row',
-            alignItems: isMobile ? 'flex-start' : 'flex-end',
-            justifyContent: 'space-between',
-            gap: 8,
-            marginTop: 16, marginBottom: 32,
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <h2 style={{
-                fontFamily: serif,
-                fontSize: shSize, lineHeight: shLine,
-                fontWeight: 500, color: '#1E1E1E', margin: 0,
-              }}>
-                Latest <span style={{ color: red }}>insights.</span>
-              </h2>
-              <p style={{
-                fontFamily: sans, fontSize: 18, fontWeight: 500,
-                color: '#5C5C5C', lineHeight: '24px', margin: 0,
-              }}>
-                Thinking and perspectives from our domain experts.
-              </p>
-            </div>
-            <a href="#" style={{
-              fontFamily: sans, fontSize: 16, fontWeight: 600,
-              color: red, textDecoration: 'underline',
-              whiteSpace: 'nowrap', flexShrink: 0, lineHeight: '28px',
+          <FadeUp duration={500}><Tag label="INSIGHTS" /></FadeUp>
+          <FadeUp>
+            <div style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: isMobile ? 'flex-start' : 'flex-end',
+              justifyContent: 'space-between',
+              gap: 8,
+              marginTop: 16, marginBottom: 32,
             }}>
-              View All
-            </a>
-          </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <h2 style={{
+                  fontFamily: serif,
+                  fontSize: shSize, lineHeight: shLine,
+                  fontWeight: 500, color: '#1E1E1E', margin: 0,
+                }}>
+                  Latest <span style={{ color: red }}>insights.</span>
+                </h2>
+                <p style={{
+                  fontFamily: sans, fontSize: 18, fontWeight: 500,
+                  color: '#5C5C5C', lineHeight: '24px', margin: 0,
+                }}>
+                  Thinking and perspectives from our domain experts.
+                </p>
+              </div>
+              <a href="#" style={{
+                fontFamily: sans, fontSize: 16, fontWeight: 600,
+                color: red, textDecoration: 'underline',
+                whiteSpace: 'nowrap', flexShrink: 0, lineHeight: '28px',
+              }}>
+                View All
+              </a>
+            </div>
+          </FadeUp>
 
-          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 32 }}>
-            {[
-              { tags: 'FINTECH • PLATFORM MODERNIZATION', title: 'Architecting a High-Frequency Trading Engine for Global Markets',           excerpt: 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40% using event-driven microservices and localized data centers.' },
-              { tags: 'HEALTHCARE • AI AUTOMATION',       title: 'Automating Prior Auth with AI: 60% Faster Approvals in Clinical Workflows', excerpt: 'A payer-provider integration that cut prior authorization turnaround from days to hours by embedding AI decision layers into existing clinical systems.' },
-              { tags: 'DATA ENGINEERING • ANALYTICS',     title: 'Building a Real-Time Analytics Platform for Enterprise Decision Intelligence', excerpt: 'How we replaced a batch-heavy data warehouse with a streaming architecture that delivers insights 14x faster across 12 business units.' },
-            ].map((card, i) => (
-              <Card
-                key={i}
-                mode="light"
-                type="insights"
-                image={imgCardPhoto}
-                tags={card.tags}
-                title={card.title}
-                excerpt={card.excerpt}
-                ctaLabel="See How We Work"
-              />
-            ))}
-          </div>
+          <FadeUp delay={60}>
+            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 32 }}>
+              {[
+                { tags: 'FINTECH • PLATFORM MODERNIZATION', title: 'Architecting a High-Frequency Trading Engine for Global Markets',           excerpt: 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40% using event-driven microservices and localized data centers.' },
+                { tags: 'HEALTHCARE • AI AUTOMATION',       title: 'Automating Prior Auth with AI: 60% Faster Approvals in Clinical Workflows', excerpt: 'A payer-provider integration that cut prior authorization turnaround from days to hours by embedding AI decision layers into existing clinical systems.' },
+                { tags: 'DATA ENGINEERING • ANALYTICS',     title: 'Building a Real-Time Analytics Platform for Enterprise Decision Intelligence', excerpt: 'How we replaced a batch-heavy data warehouse with a streaming architecture that delivers insights 14x faster across 12 business units.' },
+              ].map((card, i) => (
+                <Card
+                  key={i}
+                  mode="light"
+                  type="insights"
+                  image={imgCardPhoto}
+                  tags={card.tags}
+                  title={card.title}
+                  excerpt={card.excerpt}
+                  ctaLabel="See How We Work"
+                />
+              ))}
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -535,25 +558,28 @@ export default function Home() {
         <CornerTL />
         <CornerBR />
         <div style={inner}>
-          <Tag label="TECHNOSSUS" />
+          <FadeUp duration={500}><Tag label="TECHNOSSUS" /></FadeUp>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16, marginBottom: 36 }}>
-            <h2 style={{
-              fontFamily: serif,
-              fontSize: shSize, lineHeight: shLine,
-              fontWeight: 500, margin: 0,
-            }}>
-              <span style={{ color: '#fff' }}>Why </span>
-              <span style={{ color: red }}>Technossus</span>
-            </h2>
-            <p style={{
-              fontFamily: sans, fontSize: 18, fontWeight: 500,
-              color: '#fff', lineHeight: '24px', margin: 0,
-            }}>
-              We don't just build software; we engineer competitive advantages through technological precision.
-            </p>
-          </div>
+          <FadeUp>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16, marginBottom: 36 }}>
+              <h2 style={{
+                fontFamily: serif,
+                fontSize: shSize, lineHeight: shLine,
+                fontWeight: 500, margin: 0,
+              }}>
+                <span style={{ color: '#fff' }}>Why </span>
+                <span style={{ color: red }}>Technossus</span>
+              </h2>
+              <p style={{
+                fontFamily: sans, fontSize: 18, fontWeight: 500,
+                color: '#fff', lineHeight: '24px', margin: 0,
+              }}>
+                We don't just build software; we engineer competitive advantages through technological precision.
+              </p>
+            </div>
+          </FadeUp>
 
+          <FadeUp delay={60}>
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 24 }}>
             {[
               { icon: imgIconOutcome, title: 'Outcome Driven',      description: 'Our systems are meticulously designed to scale operations and unlock new growth opportunities, ensuring measurable impact on your bottom line.' },
@@ -573,14 +599,16 @@ export default function Home() {
               />
             ))}
           </div>
+          </FadeUp>
         </div>
       </section>
 
       {/* ── TESTIMONIALS ─────────────────────────────────────────────────────── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
-          <Tag label="TESTIMONIALS" />
+          <FadeUp duration={500}><Tag label="TESTIMONIALS" /></FadeUp>
 
+          <FadeUp>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16, marginBottom: 48 }}>
             <h2 style={{
               fontFamily: serif,
@@ -597,6 +625,7 @@ export default function Home() {
               Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
             </p>
           </div>
+          </FadeUp>
 
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 24 }}>
             <Testimonial

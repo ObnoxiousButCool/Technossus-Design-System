@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // Asset URLs from Figma
@@ -45,6 +45,8 @@ export function CTABanner({
   style,
 }: CTABannerProps) {
   const { isMobile, isTablet } = useBreakpoint();
+  const [largePrimaryHovered, setLargePrimaryHovered] = useState(false);
+  const [smallPrimaryHovered, setSmallPrimaryHovered] = useState(false);
   const resolvedPrimary  = primaryCta ?? ctaLabel ?? 'Schedule a Strategy Session';
   const resolvedCallback = onPrimary  ?? onCta;
 
@@ -179,13 +181,15 @@ export function CTABanner({
           >
             <button
               onClick={resolvedCallback}
+              onMouseEnter={() => setLargePrimaryHovered(true)}
+              onMouseLeave={() => setLargePrimaryHovered(false)}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: 56,
                 padding: '16px 24px',
-                backgroundColor: red,
+                backgroundColor: largePrimaryHovered ? '#D42030' : red,
                 color: '#FFFFFF',
                 fontFamily: sans,
                 fontWeight: 600,
@@ -194,6 +198,8 @@ export function CTABanner({
                 border: 'none',
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
+                transform: largePrimaryHovered ? 'scale(1.01)' : 'scale(1)',
+                transition: 'background-color 0.2s ease, transform 0.15s ease',
               }}
             >
               {resolvedPrimary}
@@ -296,14 +302,18 @@ export function CTABanner({
         </div>
       </div>
 
-      {/* Primary button */}
+      {/* Primary button wrapper */}
       <div
+        onMouseEnter={() => setSmallPrimaryHovered(true)}
+        onMouseLeave={() => setSmallPrimaryHovered(false)}
         style={{
           backgroundColor: red,
           height: 56,
           position: 'relative',
           flexShrink: 0,
           width: isMobile ? '100%' : 215,
+          transform: smallPrimaryHovered ? 'scale(1.01)' : 'scale(1)',
+          transition: 'background-color 0.2s ease, transform 0.15s ease',
         }}
       >
         <button

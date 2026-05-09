@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Asset URLs from Figma
 const imgArrowForward = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
@@ -31,6 +31,7 @@ export function Button({
   style,
   children,
 }: ButtonProps) {
+  const [isHovered, setIsHovered] = useState(false);
   const content = children ?? label;
 
   if (variant === 'primary') {
@@ -54,11 +55,22 @@ export function Button({
       cursor: disabled ? 'not-allowed' : 'pointer',
       opacity: disabled ? 0.5 : 1,
       whiteSpace: 'nowrap',
+      transform: isHovered && !disabled ? 'translateY(-1px)' : 'translateY(0)',
+      boxShadow: isHovered && !disabled ? '0 6px 20px rgba(237,41,57,0.3)' : 'none',
+      transition: 'background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease',
       ...style,
     };
     const Tag = href ? 'a' : 'button';
     return (
-      <Tag href={href} onClick={onClick} disabled={!href && disabled} className={className} style={s}>
+      <Tag
+        href={href}
+        onClick={onClick}
+        disabled={!href && disabled}
+        className={className}
+        style={s}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <span>{content ?? 'Explore Solutions'}</span>
         <img src={imgArrowForward} alt="" style={{ width: 24, height: 24, display: 'block', flexShrink: 0 }} />
       </Tag>
@@ -72,8 +84,8 @@ export function Button({
       justifyContent: 'center',
       height: 56,
       padding: '16px 24px',
-      backgroundColor: 'transparent',
-      color: red,
+      backgroundColor: isHovered && !disabled ? red : 'transparent',
+      color: isHovered && !disabled ? '#fff' : red,
       fontFamily: sans,
       fontWeight: 600,
       fontSize: 16,
@@ -85,11 +97,20 @@ export function Button({
       cursor: disabled ? 'not-allowed' : 'pointer',
       opacity: disabled ? 0.5 : 1,
       whiteSpace: 'nowrap',
+      transition: 'background-color 0.2s ease, color 0.2s ease',
       ...style,
     };
     const Tag = href ? 'a' : 'button';
     return (
-      <Tag href={href} onClick={onClick} disabled={!href && disabled} className={className} style={s}>
+      <Tag
+        href={href}
+        onClick={onClick}
+        disabled={!href && disabled}
+        className={className}
+        style={s}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {content ?? 'See How We Work'}
       </Tag>
     );
@@ -103,7 +124,7 @@ export function Button({
       flexDirection: 'column',
       height: 48,
       padding: '8px 24px',
-      backgroundColor: '#1E1E1E',
+      backgroundColor: isHovered && !disabled ? '#2E2E2E' : '#1E1E1E',
       color: '#FFFFFF',
       fontFamily: sans,
       fontWeight: 600,
@@ -116,11 +137,20 @@ export function Button({
       cursor: disabled ? 'not-allowed' : 'pointer',
       opacity: disabled ? 0.5 : 1,
       whiteSpace: 'nowrap',
+      transition: 'background-color 0.2s ease',
       ...style,
     };
     const Tag = href ? 'a' : 'button';
     return (
-      <Tag href={href} onClick={onClick} disabled={!href && disabled} className={className} style={s}>
+      <Tag
+        href={href}
+        onClick={onClick}
+        disabled={!href && disabled}
+        className={className}
+        style={s}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {content ?? 'Contact us'}
       </Tag>
     );
@@ -142,12 +172,21 @@ export function Button({
     borderRadius: 0,
     padding: 0,
     cursor: disabled ? 'not-allowed' : 'pointer',
-    opacity: disabled ? 0.5 : 1,
+    opacity: disabled ? 0.5 : isHovered ? 0.8 : 1,
+    transition: 'opacity 0.2s ease',
     ...style,
   };
   const Tag = href ? 'a' : 'button';
   return (
-    <Tag href={href} onClick={onClick} disabled={!href && disabled} className={className} style={s}>
+    <Tag
+      href={href}
+      onClick={onClick}
+      disabled={!href && disabled}
+      className={className}
+      style={s}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {content ?? 'Try in AI Studio'}
     </Tag>
   );

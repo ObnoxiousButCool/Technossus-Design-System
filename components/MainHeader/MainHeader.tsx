@@ -83,10 +83,34 @@ function MegaMenuLink({ child, onClose }: { child: { label: string; href: string
       onClick={onClose}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ display: 'flex', flexDirection: 'column', gap: 8, textDecoration: 'none', whiteSpace: 'nowrap' }}
+      style={{ display: 'flex', flexDirection: 'column', gap: 8, textDecoration: 'none' }}
     >
-      <span style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: isHovered ? red : dark, transition: 'color 0.15s ease' }}>
-        {child.label}
+      <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <span
+          style={{
+            fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px',
+            color: isHovered ? red : dark,
+            transition: 'color 0.15s ease',
+            borderBottom: '1px solid transparent',
+            borderBottomColor: isHovered ? red : 'transparent',
+            paddingBottom: 1,
+          }}
+        >
+          {child.label}
+        </span>
+        <span
+          style={{
+            opacity: isHovered ? 1 : 0,
+            transform: isHovered ? 'translateX(0px)' : 'translateX(-6px)',
+            transition: 'opacity 0.18s ease, transform 0.18s ease',
+            color: red,
+            fontSize: 18,
+            lineHeight: 1,
+            flexShrink: 0,
+          }}
+        >
+          ›
+        </span>
       </span>
       {child.description && (
         <span style={{ fontFamily: sans, fontWeight: 500, fontSize: 16, lineHeight: '24px', color: isHovered ? '#ED2939' : '#949494', transition: 'color 0.15s ease' }}>
@@ -107,11 +131,15 @@ export function MainHeader({
   const { isMobile } = useBreakpoint();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [dropdownMounted, setDropdownMounted] = useState<string | null>(null);
+  const [dropdownVisible, setDropdownVisible] = useState<string | null>(null);
   const [hoveredNav,   setHoveredNav]   = useState<string | null>(null);
   const [mobileOpen,   setMobileOpen]   = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>('Service Offerings');
   const [mobilePressed, setMobilePressed] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isItemActive = (item: NavItem): boolean => {
     const path = location.pathname;
@@ -121,6 +149,29 @@ export function MainHeader({
     if (item.href === '/') return path === '/';
     return path === item.href || path.startsWith(item.href + '/');
   };
+
+  // Animate dropdown mount/unmount
+  useEffect(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+    if (openDropdown !== null) {
+      setDropdownMounted(openDropdown);
+      setDropdownVisible(openDropdown);
+    } else {
+      setDropdownVisible(null);
+      closeTimerRef.current = setTimeout(() => {
+        setDropdownMounted(null);
+        closeTimerRef.current = null;
+      }, 220);
+    }
+    return () => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, [openDropdown]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -136,6 +187,15 @@ export function MainHeader({
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
+
+  // Scroll shadow effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 8);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // ── Desktop logo
   const DesktopLogo = () => (
@@ -179,6 +239,8 @@ export function MainHeader({
         top: 0,
         zIndex: 1000,
         width: '100%',
+        boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.07)' : 'none',
+        transition: 'box-shadow 0.3s ease',
         ...style,
       }}
     >
@@ -196,6 +258,7 @@ export function MainHeader({
             paddingRight: 96,
             width: '100%',
             boxSizing: 'border-box',
+            position: 'relative',
           }}
         >
           <a href="/" style={{ display: 'inline-flex', flexShrink: 0, lineHeight: 0 }}>
@@ -248,7 +311,11 @@ export function MainHeader({
                           <img
                             alt=""
                             src={highlight ? imgChevronDownRed : imgChevronDown}
-                            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+                            style={{
+                              position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block',
+                              transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                              transition: 'transform 0.22s ease',
+                            }}
                           />
                         </div>
                       </button>
@@ -308,16 +375,10 @@ export function MainHeader({
         </div>
       )}
 
-      {/* ── Desktop mega menu (ActiveExpanded-3: 3 items per row, gap 120px) ── */}
-      {!isMobile && openDropdown && (() => {
-        const active = navItems.find(i => i.label === openDropdown);
+      {/* ── Desktop mega menu with CSS Grid and animation ── */}
+      {!isMobile && dropdownMounted && (() => {
+        const active = navItems.find(i => i.label === dropdownMounted);
         if (!active?.children) return null;
-
-        // Chunk children into rows of 3 (matches Figma ActiveExpanded-3 layout)
-        const rows: typeof active.children[] = [];
-        for (let i = 0; i < active.children.length; i += 3) {
-          rows.push(active.children.slice(i, i + 3));
-        }
 
         return (
           <div
@@ -327,22 +388,27 @@ export function MainHeader({
               right: 0,
               backgroundColor: '#FFFFFF',
               borderBottom: '1px solid #EEEEEE',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
               paddingTop: 48,
               paddingBottom: 63,
-              gap: 48,
+              opacity: dropdownVisible ? 1 : 0,
+              transform: dropdownVisible ? 'translateY(0)' : 'translateY(-10px)',
+              transition: 'opacity 0.22s cubic-bezier(0.16,1,0.3,1), transform 0.22s cubic-bezier(0.16,1,0.3,1)',
             }}
           >
-            {rows.map((row, rowIdx) => (
-              <div key={rowIdx} style={{ display: 'flex', gap: 120, alignItems: 'center', justifyContent: 'center' }}>
-                {row.map((child) => (
-                  <MegaMenuLink key={child.label} child={child} onClose={() => setOpenDropdown(null)} />
-                ))}
-              </div>
-            ))}
+            <div
+              style={{
+                maxWidth: 1248,
+                margin: '0 auto',
+                padding: '0 96px',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                gap: '40px 80px',
+              }}
+            >
+              {active.children.map((child) => (
+                <MegaMenuLink key={child.label} child={child} onClose={() => setOpenDropdown(null)} />
+              ))}
+            </div>
           </div>
         );
       })()}

@@ -4,6 +4,7 @@ import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Accordion }  from '../../../components/Accordion';
 import { CTABanner }  from '../../../components/CTABanner';
 import { Button }     from '../../../components/Button';
+import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
@@ -214,17 +215,23 @@ export default function Healthcare() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
               <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Healthcare & Life Sciences</p>
-              <h1 style={d1()}>
-                When healthcare systems fall short, care delivery feels the impact.{' '}
-                <span style={{ color: red }}>We improve & manage both.</span>
-              </h1>
-              <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                Most healthcare friction doesn't begin in the exam room, the lab, or the patient app. It begins in the gaps between them — a system that doesn't talk, a workflow that still depends on manual work, a report that arrives after the moment has passed. Technossus helps healthcare organizations connect the systems behind care, simplify the work around it, and build digital operations that can actually keep up.
-              </p>
-              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                <Button variant="primary"   label="Talk to Our Team"  href="#" />
-                <Button variant="secondary" label="Explore Our Work"  href="#proof" />
-              </div>
+              <FadeUp>
+                <h1 style={d1()}>
+                  When healthcare systems fall short, care delivery feels the impact.{' '}
+                  <span style={{ color: red }}>We improve & manage both.</span>
+                </h1>
+              </FadeUp>
+              <FadeUp delay={80}>
+                <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
+                  Most healthcare friction doesn't begin in the exam room, the lab, or the patient app. It begins in the gaps between them — a system that doesn't talk, a workflow that still depends on manual work, a report that arrives after the moment has passed. Technossus helps healthcare organizations connect the systems behind care, simplify the work around it, and build digital operations that can actually keep up.
+                </p>
+              </FadeUp>
+              <FadeUp delay={120}>
+                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                  <Button variant="primary"   label="Talk to Our Team"  href="#" />
+                  <Button variant="secondary" label="Explore Our Work"  href="#proof" />
+                </div>
+              </FadeUp>
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', minHeight: isTablet ? 300 : 460 }}>

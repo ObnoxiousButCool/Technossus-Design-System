@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // Asset URLs from Figma
@@ -110,12 +110,15 @@ export type CardProps =
 
 export function Card(props: CardProps) {
   const { isMobile } = useBreakpoint();
+  const [isHovered, setIsHovered] = useState(false);
 
   // ── Dark / Small ─────────────────────────────────────────────────────────
   if (props.mode === 'dark' && props.type === 'small') {
     return (
       <div
         className={props.className}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -126,6 +129,11 @@ export function Card(props: CardProps) {
           padding: 33,
           width: '100%',
           boxSizing: 'border-box',
+          cursor: 'pointer',
+          transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+          boxShadow: isHovered ? '0 12px 32px rgba(0,0,0,0.25)' : 'none',
+          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+          willChange: 'transform',
           ...props.style,
         }}
       >
@@ -153,6 +161,8 @@ export function Card(props: CardProps) {
     return (
       <div
         className={props.className}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -164,6 +174,11 @@ export function Card(props: CardProps) {
           padding: 33,
           width: '100%',
           boxSizing: 'border-box',
+          cursor: 'pointer',
+          transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+          boxShadow: isHovered ? '0 12px 32px rgba(0,0,0,0.25)' : 'none',
+          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+          willChange: 'transform',
           ...props.style,
         }}
       >
@@ -271,6 +286,8 @@ export function Card(props: CardProps) {
     return (
       <div
         className={props.className}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -278,6 +295,11 @@ export function Card(props: CardProps) {
           backgroundColor: '#1E1E1E',
           width: '100%',
           boxSizing: 'border-box',
+          cursor: 'pointer',
+          transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+          boxShadow: isHovered ? '0 12px 32px rgba(0,0,0,0.18)' : 'none',
+          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+          willChange: 'transform',
           ...props.style,
         }}
       >
@@ -314,6 +336,8 @@ export function Card(props: CardProps) {
     return (
       <div
         className={props.className}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -321,6 +345,11 @@ export function Card(props: CardProps) {
           backgroundColor: '#FFFFFF',
           width: '100%',
           boxSizing: 'border-box',
+          cursor: 'pointer',
+          transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+          boxShadow: isHovered ? '0 12px 32px rgba(0,0,0,0.10)' : 'none',
+          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+          willChange: 'transform',
           ...props.style,
         }}
       >
@@ -356,6 +385,8 @@ export function Card(props: CardProps) {
     return (
       <div
         className={props.className}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -363,6 +394,11 @@ export function Card(props: CardProps) {
           backgroundColor: '#FFFFFF',
           width: '100%',
           boxSizing: 'border-box',
+          cursor: 'pointer',
+          transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+          boxShadow: isHovered ? '0 8px 24px rgba(0,0,0,0.08)' : 'none',
+          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+          willChange: 'transform',
           ...props.style,
         }}
       >

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Tag }            from '../../components/Tag';
 import { TextInputField } from '../../components/TextInputField';
 import { CTABanner }      from '../../components/CTABanner';
+import { FadeUp }         from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint }  from '../../ts/breakpoints';
 
@@ -63,14 +64,19 @@ export default function ContactUs() {
         <div style={{ position: 'relative', ...px, minHeight: isMobile ? 400 : 560, display: 'flex', alignItems: 'center' }}>
           <div style={{ maxWidth: 711, display: 'flex', flexDirection: 'column', gap: isMobile ? 32 : 60 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <p style={{ fontFamily: serif, fontWeight: 500, fontSize: heroFontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
-                <span style={{ color: '#FFFFFF' }}>Big ideas, complex problems, or questions about what we do. </span>
-                <span style={{ color: red }}>We're here to listen and help.</span>
-              </p>
-              <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: '#FFFFFF', margin: 0 }}>
-                At Technossus, every conversation is a starting point for solving meaningful challenges. Whether you're exploring a new idea, need support with a complex problem, or want to understand how our technology solutions can fit your business, our team is ready to connect. Reach out to us and let's turn your challenges into opportunities together.
-              </p>
+              <FadeUp>
+                <p style={{ fontFamily: serif, fontWeight: 500, fontSize: heroFontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
+                  <span style={{ color: '#FFFFFF' }}>Big ideas, complex problems, or questions about what we do. </span>
+                  <span style={{ color: red }}>We're here to listen and help.</span>
+                </p>
+              </FadeUp>
+              <FadeUp delay={80}>
+                <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: '#FFFFFF', margin: 0 }}>
+                  At Technossus, every conversation is a starting point for solving meaningful challenges. Whether you're exploring a new idea, need support with a complex problem, or want to understand how our technology solutions can fit your business, our team is ready to connect. Reach out to us and let's turn your challenges into opportunities together.
+                </p>
+              </FadeUp>
             </div>
+            <FadeUp delay={120}>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <button style={{ display: 'flex', alignItems: 'center', gap: 8, height: 56, padding: '16px 24px', backgroundColor: red, border: 'none', cursor: 'pointer', fontFamily: sans, fontWeight: 600, fontSize: 16, color: '#FFFFFF' }}>
                 Show us the problem
@@ -80,6 +86,7 @@ export default function ContactUs() {
                 See how we work
               </button>
             </div>
+            </FadeUp>
           </div>
         </div>
       </section>
@@ -88,11 +95,13 @@ export default function ContactUs() {
       <section>
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 36 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Tag label="OUR PHILOSPHY" />
-            <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, color: dark, margin: 0, maxWidth: 844 }}>
-              At Technossus, we believe every conversation is the{' '}
-              <span style={{ color: red }}>beginning of a meaningful relationship.</span>
-            </h2>
+            <FadeUp duration={500}><Tag label="OUR PHILOSPHY" /></FadeUp>
+            <FadeUp>
+              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, color: dark, margin: 0, maxWidth: 844 }}>
+                At Technossus, we believe every conversation is the{' '}
+                <span style={{ color: red }}>beginning of a meaningful relationship.</span>
+              </h2>
+            </FadeUp>
           </div>
           <div style={{ backgroundColor: colors.text[200], display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 24 : 61, alignItems: 'center', padding: isMobile ? '32px 20px' : isTablet ? '40px 32px' : '52px 48px', overflow: 'hidden' }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -122,6 +131,7 @@ export default function ContactUs() {
       {/* ── CONTACT FORM ─────────────────────────────────────────────────────── */}
       <section>
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <FadeUp>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, color: dark, margin: 0, maxWidth: 583 }}>
               Let's start the conversation
@@ -130,6 +140,7 @@ export default function ContactUs() {
               Share your details and our team will get back to you to explore how we can help.
             </p>
           </div>
+          </FadeUp>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
             <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 32 }}>
