@@ -4,7 +4,8 @@ import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Accordion }  from '../../../components/Accordion';
 import { CTABanner }  from '../../../components/CTABanner';
 import { Button }     from '../../../components/Button';
-import { Stats }      from '../../../components/Stats';
+import { FadeUp }     from '../../../components/Animate/FadeUp';
+import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -21,166 +22,170 @@ const CornerBR = () => (
     style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none', zIndex: 2 }} />
 );
 
-const inner: React.CSSProperties = { maxWidth: 1440, margin: '0 auto', padding: '80px 80px' };
-
-function D1({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  return <h1 style={{ fontFamily: serif, fontSize: 48, lineHeight: '52px', fontWeight: 500, margin: 0, ...style }}>{children}</h1>;
-}
-function D2({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  return <h2 style={{ fontFamily: serif, fontSize: 40, lineHeight: '48px', fontWeight: 600, letterSpacing: '-1px', margin: 0, ...style }}>{children}</h2>;
-}
-
 const accordionItems: AccordionItem[] = [
   {
-    title: 'AI Strategy & Readiness',
-    subtitle: 'Know where AI fits and the pace your organization can actually absorb it.',
+    title: 'AI Advisory & Enablement',
+    subtitle: 'Define where AI fits, identify high-impact use cases, and build the capability to scale them.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI STRATEGY & READINESS',
-      heading: 'Know where AI fits and the pace your organization can actually absorb it.',
+      serviceLabel: 'AI ADVISORY & ENABLEMENT',
+      heading: 'Most AI efforts fail not because the technology isn\'t capable — but because the organization isn\'t structured to absorb it.',
       body: [
-        'Most AI strategies fail not because the technology isn\'t capable, but because the organization isn\'t structured to absorb it. We work with your leadership team to map AI opportunities against your actual delivery capacity — what\'s ready now, what needs infrastructure first, and what the board needs to see.',
-        'The output is a prioritized roadmap with investment accountability built in — not a vision document that sits in a drawer after the kickoff.',
+        'We work with your leadership team to define where AI fits, identify and prioritize high-impact use cases, and support adoption through consulting-led enablement, capability building, and implementation support.',
+        'The output is a prioritized roadmap with investment accountability built in — not a vision document that sits in a drawer after the kickoff. What gets approved is what gets built.',
       ],
     },
   },
   {
-    title: 'Decision Intelligence',
-    subtitle: 'Decisions that land where your strategy said they would.',
+    title: 'AI-Augmented Decision Intelligence',
+    subtitle: 'Embed models for forecasting, prediction, and optimization into the systems where decisions happen.',
     content: {
       type: 'detail',
-      serviceLabel: 'DECISION INTELLIGENCE',
-      heading: 'Decisions that land where your strategy said they would.',
+      serviceLabel: 'AI-AUGMENTED DECISION INTELLIGENCE',
+      heading: 'Your operating decisions need real-time intelligence from the data you already own.',
       body: [
-        'Your operating decisions — pricing, capacity, risk, market response — need real-time inputs from the data you already own. We build decision intelligence layers that combine predictive models, live data pipelines, and AI-driven insight into the workflows your leaders actually make calls in.',
-        'No dashboards that require someone to translate. No models only data scientists can read. Decision-intelligence adopters report material improvement in decision cycle time across pricing, capacity, and risk functions.',
+        'We embed models for forecasting, prediction, and optimization into your systems, so decisions are driven by real-time data and continuous intelligence — not dashboards that require someone to translate or models only data scientists can read.',
+        'From pricing and capacity to risk and market response, decision intelligence gets built into the workflows your leaders actually use to make calls.',
       ],
       quote: 'Decision-intelligence adopters report material improvement in decision cycle time across pricing, capacity, and risk functions. — Gartner, 2025.',
     },
   },
   {
-    title: 'Agentic Automation',
-    subtitle: 'Work that coordinates itself, until it needs a human decision.',
+    title: 'Systems That Think and Evolve',
+    subtitle: 'AI becomes the intelligence layer of the enterprise — powering systems that learn, reason, and self-correct.',
     content: {
       type: 'detail',
-      serviceLabel: 'AGENTIC AUTOMATION',
-      heading: 'Work that coordinates itself, until it needs a human decision.',
+      serviceLabel: 'SYSTEMS THAT THINK AND EVOLVE',
+      heading: 'AI is no longer just used for analysis or experiments — it\'s becoming part of how systems operate.',
       body: [
-        'Agentic AI doesn\'t just answer questions — it completes tasks, routes decisions, and escalates when human judgment is required. We design agentic workflows that reduce coordination overhead without removing accountability.',
-        'From procurement approval chains to compliance review loops, we map the decision boundaries that need to stay human and automate everything in between.',
+        'We build AI systems that power your enterprise workflows with intelligence that learns, reasons, self-corrects, and continuously evolves without requiring constant human intervention. The systems improve as they run.',
+        'Instead of relying only on fixed rules, these systems adapt to new patterns, surface emerging risks, and optimize across the business in real time — turning AI from a point solution into an enterprise capability.',
       ],
     },
   },
   {
-    title: 'Enterprise Generative AI',
-    subtitle: 'Gen AI tools your teams actually use, because they actually help.',
+    title: 'Autonomous Decisioning in Real Time',
+    subtitle: 'Decisions move from delayed approvals to autonomous, real-time execution.',
     content: {
       type: 'detail',
-      serviceLabel: 'ENTERPRISE GENERATIVE AI',
-      heading: 'Gen AI tools your teams actually use, because they actually help.',
+      serviceLabel: 'AUTONOMOUS DECISIONING',
+      heading: 'Real-time decisioning driven by continuously learning intelligence across the organization.',
       body: [
-        'Generic AI assistants don\'t work at enterprise scale. The tools your teams use need to understand your data, your domain, and your workflows — not just generate plausible text.',
-        'We build generative AI systems that are grounded in your knowledge base, connected to your systems, and evaluated against the use cases that matter for your business — before they go anywhere near production.',
+        'We design autonomous decision systems that complete tasks, route approvals, and escalate when human judgment is required — reducing coordination overhead without removing accountability.',
+        'From procurement approval chains to compliance review loops and fraud detection, we map the decision boundaries that need to stay human and automate everything in between.',
       ],
     },
   },
   {
-    title: 'AI Governance, Risk & Data Security',
-    subtitle: 'Board-defensible AI. From policy to production.',
+    title: 'Self-Healing Workflows',
+    subtitle: 'Workflows that sense, respond, optimize, and self-heal — reducing dependency on manual intervention.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI GOVERNANCE, RISK & DATA SECURITY',
-      heading: 'Board-defensible AI. From policy to production.',
+      serviceLabel: 'SELF-HEALING WORKFLOWS',
+      heading: 'The next frontier isn\'t faster workflows. It\'s workflows that fix themselves.',
       body: [
-        'Three different teams have deployed something AI-powered. You learned about two of them from a vendor invoice. Shadow deployment is now the default state — and governance that used to be implicit in the process no longer is.',
-        'We build AI governance infrastructure that makes the inventory visible, the risk accountable, and the policy defensible at the altitude your board operates at. From model documentation to data classification to audit trails, we close the gap between what was approved and what\'s running.',
-      ],
-    },
-  },
-  {
-    title: 'Innovation Labs & Prototyping',
-    subtitle: 'See it working, before you bet the strategy on it.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'INNOVATION LABS & PROTOTYPING',
-      heading: 'See it working, before you bet the strategy on it.',
-      body: [
-        'The fastest way to resolve a disagreement about whether an AI concept will work is to build it quickly enough that you can test it. We run structured prototyping sprints — two to three days — that produce working systems you can evaluate with real users and real data.',
-        'Not decks. Not wireframes. Working prototypes that answer the question the business is actually asking.',
+        'We build adaptive operational systems that detect anomalies, reroute around failures, and restore normal state without requiring a human to identify and diagnose the problem first.',
+        'Self-healing workflows reduce operational overhead, minimize downtime, and free your teams to focus on higher-value work — not monitoring systems for problems that should never have required human attention.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Your story to the board stays defensible.',    body: 'What you approved is what gets built and you can explain every decision along the way, in the altitude your board operates at.' },
-  { title: 'Your organization moves at the pace it can absorb.', body: 'Change management is part of the deliverable. Fast where the organization is ready, patient where it isn\'t, honest about which is which.' },
-  { title: 'What gets built traces back to what you approved.', body: 'No scope creep that lands on your desk at invoice time. Investment accountability is part of the delivery, not a risk we hand back.' },
-  { title: 'We tell you when fast is the right bet and when it isn\'t.', body: 'Our job is strategic pace, not performance theater. We\'ll push when the window is open, and slow you down when speed is the wrong signal to the organization.' },
+  { title: 'Start with what matters.',        body: 'We identify high-impact use cases based on business value, data readiness, and feasibility — so effort goes where it can deliver real outcomes, not just impressive demos.' },
+  { title: 'Prove it early.',                 body: 'We move quickly to a working proof of concept, validating use cases before committing full investment — so the plan responds to real signal instead of assumptions.' },
+  { title: 'Build for scale.',                body: 'We architect solutions that can grow — governed, reliable, and ready to expand as AI maturity increases across the organization.' },
+  { title: 'Your board stays informed.',      body: 'What you approved is what gets built. Governance is visible from week one, and your leadership team can explain every decision at the altitude the board operates at.' },
 ];
 
 const proofCards = [
-  { tags: 'COMMERCE • AI REDESIGN',  title: '56% faster product discovery', excerpt: 'A high-volume commerce experience was redesigned so users could find what they needed faster and with less friction.' },
-  { tags: 'FINTECH • RAPID PROTOTYPING', title: 'Working prototype in 24 hours', excerpt: 'A fintech concept moved from idea to functioning product in a single day — fast enough to test, validate, and spark market interest.' },
-  { tags: 'MOBILE • LAUNCH READINESS', title: '4M+ views in 48 hours', excerpt: 'A client\'s configurable mobile product launched with immediate traction, proving the value of speed, usability, and launch readiness.' },
+  { tags: 'HEALTHCARE • AI / NLP',          title: 'AI-Powered OCR Engine: ~95% Accuracy in Document Extraction', excerpt: 'Document-heavy workflows required manual data entry, causing delays and inconsistencies. A proprietary OCR + NER engine now extracts and structures data from unstructured inputs with ~95% accuracy.' },
+  { tags: 'HEALTHCARE • PREDICTIVE AI',     title: 'Predictive Fatigue Modeling Prevents Operational Risk',       excerpt: 'A healthcare organization lacked visibility into fatigue-related workforce risks. A predictive analytics platform using biometric data now forecasts fatigue levels and triggers proactive alerts.' },
+  { tags: 'SECURITY • REAL-TIME AI',        title: 'Threat Detection Reduced from 8 Hours to Minutes',            excerpt: 'Manual monitoring of restricted premises delayed identification of unauthorized individuals. A real-time AI-based recognition system now detects and alerts on intrusions in under 10 minutes.' },
 ];
 
 const painCards = [
-  {
-    heading: '"We\'ve been in discovery for months and still aren\'t sure what we\'re building."',
-    body: 'The steering committee keeps asking for AI transformation updates. You\'re not sure how to give them without sounding like nothing is happening, or like too much is happening unchecked.',
-  },
-  {
-    heading: '"We shipped a product, but now every new feature feels like open-heart surgery."',
-    body: 'Three different teams have deployed something AI-powered. You learned about two of them from a vendor invoice.',
-  },
-  {
-    heading: '"We know AI could improve our product, we just haven\'t found the right entry point."',
-    body: 'Your board asks how the AI strategy is going. You know the answer you want to give. You\'re not sure it\'s the one the data supports.',
-  },
-  {
-    heading: '"Our teams pull data from three different systems to answer one question."',
-    body: 'Your general counsel flagged model governance as a gap. No one in the organization owns the fix.',
-  },
+  { heading: '"AI efforts are underway, but direction and impact are still unclear."',         body: 'The steering committee keeps asking for AI transformation updates. You\'re not sure how to answer without sounding like nothing is happening — or like too much is happening unchecked.' },
+  { heading: '"Early experiments show promise, but scaling across teams remains a challenge."', body: 'Pilots succeed. Production deployments stall. The gap between a working prototype and an enterprise capability turns out to be the hardest part of the journey.' },
+  { heading: '"Multiple AI efforts are active, but they operate in silos."',                   body: 'Three different teams have deployed something AI-powered. You learned about two of them from a vendor invoice. Governance that used to be implicit in the process no longer is.' },
 ];
 
 export default function AIBusiness() {
+  const { isMobile, isTablet } = useBreakpoint();
+
+  const inner = {
+    maxWidth: 1440,
+    margin: '0 auto',
+    padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
+  };
+
+  const d1 = (color?: string): React.CSSProperties => ({
+    fontFamily: serif,
+    fontSize: isMobile ? 26 : isTablet ? 34 : 48,
+    lineHeight: isMobile ? '34px' : isTablet ? '42px' : '52px',
+    fontWeight: 500,
+    margin: 0,
+    color: color ?? '#1E1E1E',
+  });
+
+  const d2 = (color?: string): React.CSSProperties => ({
+    fontFamily: serif,
+    fontSize: isMobile ? 22 : isTablet ? 28 : 40,
+    lineHeight: isMobile ? '30px' : isTablet ? '36px' : '48px',
+    fontWeight: 600,
+    letterSpacing: '-1px',
+    margin: 0,
+    color: color ?? '#1E1E1E',
+  });
+
+  const cols3 = isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)';
+  const cols2 = isMobile ? '1fr' : 'repeat(2, 1fr)';
+
   return (
     <>
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '40px 80px 80px' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
             { label: 'Service Offerings', href: '/services' },
             { label: 'AI-Led Business Transformation', active: true },
           ]} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: 60, marginTop: 40 }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <D1 style={{ color: '#1E1E1E' }}>
-                The AI strategy is approved, and the teams are moving. The question is whether{' '}
-                <span style={{ color: red }}>the investment is actually working.</span>
-              </D1>
-              <p style={{ fontFamily: sans, fontSize: 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                Governance frameworks, investment accountability, and team alignment don't self-organize around an approved strategy. We work with your leadership team to make sure what's building across the organization actually lands where you said it would.
-              </p>
-              <div style={{ display: 'flex', gap: 16 }}>
-                <Button variant="primary"   label="Bring us your toughest problem" href="#" />
-                <Button variant="secondary" label="See How We Work" href="#" />
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>AI that drives real business outcomes</p>
+              <FadeUp>
+                <h1 style={d1()}>
+                  Make AI your{' '}
+                  <span style={{ color: red }}>competitive advantage.</span>
+                </h1>
+              </FadeUp>
+              <FadeUp delay={80}>
+                <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
+                  Move into an era of intelligent systems with AI embedded across your business. We help you identify high-impact use cases, build solutions, and integrate them into your workflows so your systems operate with less friction and scale more reliably.
+                </p>
+              </FadeUp>
+              <FadeUp delay={120}>
+                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                  <Button variant="primary"   label="Explore AI Studio"         href="#" />
+                  <Button variant="secondary" label="Talk to an AI Evangelist"  href="#" />
+                </div>
+              </FadeUp>
+            </div>
+            {!isMobile && (
+              <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
+                <div style={{ background: '#D4D4D4', width: '100%', height: isTablet ? 300 : 460 }} />
               </div>
-            </div>
-            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 460 }}>
-              <div style={{ background: '#D4D4D4', width: '100%', height: 460 }} />
-            </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* ── TRUSTED BY ── */}
       <section style={{ borderTop: '1px solid #E8E8E8' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 72, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
             {['TOYOTA FINANCIAL SERVICES', 'GE HealthCare', 'COMMONSPIRIT', 'BIO-RAD', 'ADAPTHEALTH'].map(name => (
               <span key={name} style={{ fontFamily: sans, fontSize: 13, fontWeight: 700, color: '#888', filter: 'grayscale(100%)', opacity: .65 }}>{name}</span>
             ))}
@@ -188,38 +193,37 @@ export default function AIBusiness() {
         </div>
       </section>
 
-      <div style={{ height: 80 }} />
+      <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── THE SHIFT ── */}
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="THE SHIFT" />
-          <div style={{ display: 'flex', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
-            <div style={{ flex: 1, minWidth: 320 }}>
-              <D2 style={{ color: '#fff' }}>
-                The constraint used to be capability. Now the constraint is{' '}
-                <span style={{ color: red }}>coherence.</span>
-              </D2>
+          <Tag label="THE SHIFT" variant="light" />
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
+            <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
+              <h2 style={d2('#fff')}>
+                From AI adoption to{' '}
+                <span style={{ color: red }}>intelligent enterprise systems.</span>
+              </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'Three years ago, deploying AI was a specialist act. It required a data science team, procurement review, architecture review, an executive sponsor, and a budget line. Governance was implicit in the deployment process. Nothing reached production without a lot of eyes on it.',
-                  'That infrastructure has dissolved. AI capability now arrives through every SaaS tool and every agentic workflow. Any team that can write a prompt can deploy it. The executive didn\'t lose visibility because decisions went wrong — it\'s gone because the process that used to produce visibility isn\'t there anymore.',
-                  'Governance that used to be implicit now has to be explicit. It has to be approved, tracked, and visible at the altitude the board operates at. That work doesn\'t self-organize around momentum. It\'s what we build with your leadership team.',
+                  'AI is no longer just used for analysis or experiments. It is becoming part of how products work, how teams operate, and how decisions are made. The focus is now on building systems that deliver value across the business.',
+                  'Systems are starting to improve as they run — instead of relying only on fixed rules. The organizations pulling ahead are the ones building AI into their core workflows, not running it as a parallel experiment.',
                 ].map((p, i) => (
-                  <p key={i} style={{ fontFamily: sans, fontSize: 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
+                  <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: '0 0 440px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '26%',    desc: 'Of enterprise AI initiatives produce measurable business value at scale. The rest stall in pilots or deploy without a path to outcome.' },
-                { num: '5 of 5', desc: 'Delivery lines configured to every engagement: Product Engineering, Data Intelligence, Cloud, Quality, Experience Design.' },
-                { num: '~70%',   desc: 'Of large organizations cannot produce a single inventory of AI in production. Shadow deployment is now the default state.' },
+                { num: '7%',  desc: 'Of businesses have successfully scaled AI enterprise-wide. The other 93% are still running pilots.' },
+                { num: '92%', desc: 'Of companies are planning to increase their AI investments — the pressure to scale is accelerating.' },
+                { num: '~70%', desc: 'Of large organizations cannot produce a single inventory of AI in production. Shadow deployment is now the default state.' },
                 { num: 'Week 1', desc: 'Your leadership team sees what\'s being built, how governance is structured, and what they\'ll own at handoff.' },
               ].map(s => (
-                <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  <div style={{ fontFamily: serif, fontSize: 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
+                <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
                   <p style={{ fontFamily: sans, fontSize: 13, lineHeight: 1.6, color: '#9B9B9B', margin: 0 }}>{s.desc}</p>
                 </div>
               ))}
@@ -228,44 +232,44 @@ export default function AIBusiness() {
         </div>
       </section>
 
-      <div style={{ height: 80 }} />
+      <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── SERVICE OFFERINGS ── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
           <Tag label="SERVICE OFFERINGS" />
-          <D2 style={{ color: '#1E1E1E', marginTop: 16 }}>
+          <h2 style={{ ...d2(), marginTop: 16 }}>
             Your strategy, configured across the delivery that makes it{' '}
             <span style={{ color: red }}>land.</span>
-          </D2>
+          </h2>
           <div style={{ marginTop: 48 }}>
             <Accordion items={accordionItems} defaultActiveIndex={1} />
           </div>
         </div>
       </section>
 
-      <div style={{ height: 80 }} />
+      <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── HOW WE WORK ── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
-          <div style={{ display: 'flex', gap: 64, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-            <div style={{ flex: 1, minWidth: 320 }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 32 : 64, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+            <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <Tag label="HOW WE WORK" />
-              <D2 style={{ color: '#1E1E1E', marginTop: 16 }}>
+              <h2 style={{ ...d2(), marginTop: 16 }}>
                 We don't deliver an AI transformation and leave you to{' '}
                 <span style={{ color: red }}>explain it.</span>
-              </D2>
+              </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
                   'We work embedded with your leadership team — making governance visible, tracing investment to outcome, and transferring the thread to your people as we build. When the engagement ends, your team owns the framework, understands the architecture, and can defend it without us in the room.',
-                  'AI transformation creates as many questions as answers for executives, for middle management, for the teams doing the work. Our approach is designed to bring your organization along, not leave it dependent on us. That\'s how we\'ve maintained 90%+ client retention across our delivery history.',
+                  'AI transformation creates as many questions as answers for executives, for middle management, for the teams doing the work. Our approach is designed to bring your organization along, not leave it dependent on us.',
                 ].map((p, i) => (
-                  <p key={i} style={{ fontFamily: sans, fontSize: 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
+                  <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
               </div>
             </div>
-            <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, minWidth: 320 }}>
+            <div style={{ flex: 1, display: 'grid', gridTemplateColumns: cols2, gap: 20, minWidth: isMobile ? '100%' : 320 }}>
               {howCards.map(card => (
                 <div key={card.title} style={{ background: '#F2F2F2', padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ color: red, fontSize: 24 }}>◈</div>
@@ -278,23 +282,21 @@ export default function AIBusiness() {
         </div>
       </section>
 
-      <div style={{ height: 80 }} />
+      <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── SUCCESS STORIES ── */}
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="PROOF" />
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 32, marginTop: 16, marginBottom: 40 }}>
+          <Tag label="PROOF" variant="light" />
+          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
             <div>
-              <D1 style={{ color: '#fff' }}>Success <span style={{ color: red }}>stories.</span></D1>
-              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>
-                If any of these describe where your team is right now, we should talk.
-              </p>
+              <h1 style={d1('#fff')}>Success <span style={{ color: red }}>stories.</span></h1>
+              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
             </div>
             <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
             {proofCards.map((card, i) => (
               <article key={i} style={{ background: '#262626', border: '1px solid #343434', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ background: '#2A2A2A', height: 200, width: '100%' }} />
@@ -310,20 +312,18 @@ export default function AIBusiness() {
         </div>
       </section>
 
-      <div style={{ height: 80 }} />
+      <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── SOUND FAMILIAR ── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
-          <D1 style={{ color: '#1E1E1E', marginTop: 16 }}>
-            This page is for leadership teams who recognize themselves in{' '}
-            <span style={{ color: red }}>these moments.</span>
-          </D1>
-          <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>
-            These aren't hypotheticals. They're the conversations we have most often.
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 24, marginTop: 48 }}>
+          <h1 style={{ ...d1(), marginTop: 16 }}>
+            If any of these describe your current AI situation, we{' '}
+            <span style={{ color: red }}>should talk.</span>
+          </h1>
+          <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: cols2, gap: 24, marginTop: 48 }}>
             {painCards.map((card, i) => (
               <div key={i} style={{ background: '#F2F2F2', padding: '32px 28px', display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <h3 style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: '#1E1E1E', lineHeight: 1.4, margin: 0 }}>{card.heading}</h3>
@@ -334,22 +334,18 @@ export default function AIBusiness() {
           </div>
 
           {/* Consulting offer block */}
-          <div style={{ background: dark1, padding: '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: 28, fontWeight: 600, color: '#fff', margin: 0 }}>Bring us your toughest transformation problem.</h3>
-            <p style={{ fontFamily: sans, fontSize: 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              Two days with a Technossus partner and a senior team. At no cost. Pressure-test the problem on the table — the governance gap, the adoption curve, the investment that isn't landing, the strategy that needs a second read. Walk out with a clear view on whether a larger engagement would help, and what the shape of it would be.
+          <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Win with AI. Start with the right use cases and a clear plan.</h3>
+            <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
+              We help bring clarity and direction to your AI efforts — identifying meaningful use cases, aligning them with business priorities, and turning early experiments into scalable, real solutions. Your first AI use case, defined with us, at no cost.
             </p>
-            <p style={{ fontFamily: sans, fontSize: 13, color: '#9B9B9B', margin: 0 }}>
-              Two-day consulting investment. No pitch deck. No deliverable handoff. A real read on a real problem.
-            </p>
+            <p style={{ fontFamily: sans, fontSize: 13, color: '#9B9B9B', margin: 0 }}>No-cost AI Opportunity Assessment. No pitch deck. A real read on your highest-value use case.</p>
             <div>
-              <Button variant="primary" label="Schedule Two Days →" href="#" />
+              <Button variant="primary" label="Get Your First AI Use Case Defined →" href="#" />
             </div>
           </div>
         </div>
       </section>
-
-      <div style={{ height: 80 }} />
 
       {/* ── CTA BANNER ── */}
       <CTABanner
@@ -361,7 +357,7 @@ export default function AIBusiness() {
         secondaryCta="Contact Us"
       />
 
-      <div style={{ height: 80 }} />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }
