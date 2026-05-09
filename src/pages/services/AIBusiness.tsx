@@ -284,33 +284,164 @@ export default function AIBusiness() {
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
-      {/* ── SUCCESS STORIES ── */}
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
-        <CornerTL /><CornerBR />
-        <div style={inner}>
-          <Tag label="PROOF" variant="light" />
-          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
-            <div>
-              <h1 style={d1('#fff')}>Success <span style={{ color: red }}>stories.</span></h1>
-              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
+{/* ── SUCCESS STORIES ── */}
+<div
+  style={{
+    maxWidth: 1440,
+    margin: '0 auto',
+    marginBottom: isMobile ? 12 : 16,
+    padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+    background: '#fff',
+  }}
+>
+  <Tag label="PROOF" variant="dark" />
+</div>
+
+<section
+  style={{
+    background: dark1,
+    position: 'relative',
+    overflow: 'hidden',
+  }}
+>
+  <CornerTL />
+  <CornerBR />
+
+  <div style={inner}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: isMobile ? 'flex-start' : 'flex-end',
+        flexDirection: isMobile ? 'column' : 'row',
+        justifyContent: 'space-between',
+        gap: 16,
+        marginBottom: 40,
+      }}
+    >
+      <div>
+        <h1 style={d1('#fff')}>
+          Success <span style={{ color: red }}>stories.</span>
+        </h1>
+
+        <p
+          style={{
+            fontFamily: sans,
+            fontSize: 15,
+            color: '#9B9B9B',
+            marginTop: 10,
+          }}
+        >
+          If any of these describe where your team is right now, we should talk.
+        </p>
+      </div>
+
+      <a
+        href="#"
+        style={{
+          fontFamily: sans,
+          fontSize: 14,
+          color: '#9B9B9B',
+          textDecoration: 'underline',
+          whiteSpace: 'nowrap',
+          flexShrink: 0,
+        }}
+      >
+        View All
+      </a>
+    </div>
+
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: cols3,
+        gap: 20,
+      }}
+    >
+      {proofCards.map((card, i) => (
+        <article
+          key={i}
+          style={{
+            background: '#262626',
+            border: '1px solid #343434',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <div
+            style={{
+              background: '#2A2A2A',
+              height: 200,
+              width: '100%',
+            }}
+          />
+
+          <div
+            style={{
+              padding: '24px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 12,
+              flex: 1,
+            }}
+          >
+            <div
+              style={{
+                fontFamily: sans,
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: '.1em',
+                textTransform: 'uppercase',
+                color: '#767676',
+              }}
+            >
+              {card.tags}
             </div>
-            <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
+
+            <h3
+              style={{
+                fontFamily: sans,
+                fontSize: 18,
+                fontWeight: 700,
+                color: '#fff',
+                lineHeight: 1.4,
+                margin: 0,
+              }}
+            >
+              {card.title}
+            </h3>
+
+            <p
+              style={{
+                fontFamily: sans,
+                fontSize: 14,
+                lineHeight: 1.6,
+                color: '#9B9B9B',
+                flex: 1,
+                margin: 0,
+              }}
+            >
+              {card.excerpt}
+            </p>
+
+            <a
+              href="#"
+              style={{
+                fontFamily: sans,
+                fontSize: 14,
+                fontWeight: 700,
+                color: red,
+                textDecoration: 'underline',
+                marginTop: 8,
+              }}
+            >
+              See How We Work →
+            </a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
-            {proofCards.map((card, i) => (
-              <article key={i} style={{ background: '#262626', border: '1px solid #343434', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ background: '#2A2A2A', height: 200, width: '100%' }} />
-                <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
-                  <div style={{ fontFamily: sans, fontSize: 11, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', color: '#767676' }}>{card.tags}</div>
-                  <h3 style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>{card.title}</h3>
-                  <p style={{ fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: '#9B9B9B', flex: 1, margin: 0 }}>{card.excerpt}</p>
-                  <a href="#" style={{ fontFamily: sans, fontSize: 14, fontWeight: 700, color: red, textDecoration: 'underline', marginTop: 8 }}>See How We Work →</a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
