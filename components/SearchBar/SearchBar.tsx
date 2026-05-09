@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 // Asset URLs from Figma
-const imgStarIcon = 'http://localhost:3845/assets/48d3f461d4f1fb6e204239f98530920c972d5b67.svg';
-const imgSendIcon = 'http://localhost:3845/assets/2580e4c1a8b8f63b73573a7293d6016283d423ca.svg';
+const imgStarIcon = '/assets/48d3f461d4f1fb6e204239f98530920c972d5b67.svg';
+const imgSendIcon = '/assets/2580e4c1a8b8f63b73573a7293d6016283d423ca.svg';
 
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';

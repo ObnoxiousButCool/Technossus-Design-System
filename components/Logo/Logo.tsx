@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Asset URLs from Figma
-const imgGroupDark  = 'http://localhost:3845/assets/f3e451e62d0a62f01f4f1b0698024af87155a795.svg';
-const imgGroupWhite = 'http://localhost:3845/assets/923217667e0c1525eeb7dcbbf41a47f9131ef9da.svg';
-const imgVector     = 'http://localhost:3845/assets/5debaa76a49f7c9140a5b02e65db6c5c3ce03c29.svg';
-const imgVector1    = 'http://localhost:3845/assets/128fdad109b4136371919c890dfdf0ce864d7fd0.svg';
+const imgGroupDark  = '/assets/f3e451e62d0a62f01f4f1b0698024af87155a795.svg';
+const imgGroupWhite = '/assets/923217667e0c1525eeb7dcbbf41a47f9131ef9da.svg';
+const imgVector     = '/assets/5debaa76a49f7c9140a5b02e65db6c5c3ce03c29.svg';
+const imgVector1    = '/assets/128fdad109b4136371919c890dfdf0ce864d7fd0.svg';
 
 export type LogoColor = 'dark' | 'white';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
 // Asset URLs from Figma
-const imgBracketLeft  = 'http://localhost:3845/assets/a503f8db2ff38d97c46dcf929d8bac29e3db7723.svg';
-const imgBracketRight = 'http://localhost:3845/assets/c1e94a65e8e3a307886bea2c5f20cbbca8d072df.svg';
+const imgBracketLeft  = '/assets/a503f8db2ff38d97c46dcf929d8bac29e3db7723.svg';
+const imgBracketRight = '/assets/c1e94a65e8e3a307886bea2c5f20cbbca8d072df.svg';
 
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';

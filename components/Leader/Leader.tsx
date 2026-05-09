@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 // Asset URLs from Figma
-const imgPhotoDefault = 'http://localhost:3845/assets/4a0fc133e1c62243f5802cc6bf49e291e4ce809e.png';
-const imgPhotoActive  = 'http://localhost:3845/assets/f47b6d03ecad9a885a234fa94d706d5b28d344ee.png';
-const imgSubtractTL   = 'http://localhost:3845/assets/a673075179a0266ec6df160cb442200db0abbd40.svg';
-const imgSubtractBR   = 'http://localhost:3845/assets/327c85a8854e96b954593950f4410e8d5c52443a.svg';
+const imgPhotoDefault = '/assets/4a0fc133e1c62243f5802cc6bf49e291e4ce809e.png';
+const imgPhotoActive  = '/assets/f47b6d03ecad9a885a234fa94d706d5b28d344ee.png';
+const imgSubtractTL   = '/assets/a673075179a0266ec6df160cb442200db0abbd40.svg';
+const imgSubtractBR   = '/assets/327c85a8854e96b954593950f4410e8d5c52443a.svg';
 
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';

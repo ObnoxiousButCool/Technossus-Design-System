@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Asset URLs from Figma
-const imgArrowForward = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
+const imgArrowForward = '/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
 
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';

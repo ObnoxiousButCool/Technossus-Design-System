@@ -13,9 +13,9 @@ const red   = '#ED2939';
 const dark1 = '#1B1B1B';
 
 // ─── Asset URLs ───────────────────────────────────────────────────────────────
-const imgHero        = 'http://localhost:3845/assets/d16e5b610d1fff4d128bb7e9580d630eb3fa03e8.png';
-const imgCardDefault = 'http://localhost:3845/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
-const imgChevron     = 'http://localhost:3845/assets/83feb004fa8d4ad578fcccdd2d4ee67a5041135b.svg';
+const imgHero        = '/assets/d16e5b610d1fff4d128bb7e9580d630eb3fa03e8.png';
+const imgCardDefault = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
+const imgChevron     = '/assets/83feb004fa8d4ad578fcccdd2d4ee67a5041135b.svg';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 interface CaseStudy {

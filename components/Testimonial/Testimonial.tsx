@@ -2,8 +2,8 @@ import React from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // Asset URLs from Figma
-const imgQuoteRed   = 'http://localhost:3845/assets/0998def33f700c7cb3694e6d19602e37485c5521.svg';
-const imgQuoteWhite = 'http://localhost:3845/assets/6d7dc670fa855e67c9d007a12ccf9dfcf80945cf.svg';
+const imgQuoteRed   = '/assets/0998def33f700c7cb3694e6d19602e37485c5521.svg';
+const imgQuoteWhite = '/assets/6d7dc670fa855e67c9d007a12ccf9dfcf80945cf.svg';
 
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';

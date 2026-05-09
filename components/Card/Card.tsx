@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // Asset URLs from Figma
-const imgHeroPhoto     = 'http://localhost:3845/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
-const imgPhoto2Dark    = 'http://localhost:3845/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
-const imgPhoto2Light   = 'http://localhost:3845/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
-const imgContainerSvg  = 'http://localhost:3845/assets/f6fd2f419935273b9e66a4b9c11731de18271c48.svg';
-const imgIconSvg       = 'http://localhost:3845/assets/da42ce3d86cd28e1121776ec014cdcdbe6f8208e.svg';
-const imgContainerSvg1 = 'http://localhost:3845/assets/487c967a36fb2b5113f573275756c62f0ec9a2fb.svg';
-const imgArrowForward  = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
+const imgHeroPhoto     = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
+const imgPhoto2Dark    = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
+const imgPhoto2Light   = '/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
+const imgContainerSvg  = '/assets/f6fd2f419935273b9e66a4b9c11731de18271c48.svg';
+const imgIconSvg       = '/assets/da42ce3d86cd28e1121776ec014cdcdbe6f8208e.svg';
+const imgContainerSvg1 = '/assets/487c967a36fb2b5113f573275756c62f0ec9a2fb.svg';
+const imgArrowForward  = '/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';

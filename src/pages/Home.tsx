@@ -17,43 +17,43 @@ const dark2 = '#1E1E1E';
 
 // ─── Figma asset URLs ─────────────────────────────────────────────────────────
 // Hero
-const imgHeroBg         = 'http://localhost:3845/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png';
+const imgHeroBg         = '/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png';
 
 // Search bar icons
-const imgSearchAiStar   = 'http://localhost:3845/assets/1396fbe0e7d98149afea22065d702750dbf4a387.svg';
-const imgSearchSend     = 'http://localhost:3845/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg';
+const imgSearchAiStar   = '/assets/1396fbe0e7d98149afea22065d702750dbf4a387.svg';
+const imgSearchSend     = '/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg';
 
 // Stats section — globe / network visualization
-const imgStatsGlobe     = 'http://localhost:3845/assets/174c99f8f6f7d0951c6bf317ea6eee19b0fe116e.png';
-const imgStatsNetwork   = 'http://localhost:3845/assets/2af307f43a169f9425489c8ddda2bae8542408cb.svg';
+const imgStatsGlobe     = '/assets/174c99f8f6f7d0951c6bf317ea6eee19b0fe116e.png';
+const imgStatsNetwork   = '/assets/2af307f43a169f9425489c8ddda2bae8542408cb.svg';
 
 // Collaborator logos
-const imgLogoToyota     = 'http://localhost:3845/assets/07257e50d6618362732217b05125eff67876481e.png';
-const imgLogoGE         = 'http://localhost:3845/assets/2401c6977517bcd5d77ed42b90f5f4b022f8186c.png';
-const imgLogoChoice     = 'http://localhost:3845/assets/91534fe0e36130e7166a22de186f19e1011c79f0.png';
-const imgLogoBio        = 'http://localhost:3845/assets/e2af84967fea8470188b90cf7819b999289255d7.png';
+const imgLogoToyota     = '/assets/07257e50d6618362732217b05125eff67876481e.png';
+const imgLogoGE         = '/assets/2401c6977517bcd5d77ed42b90f5f4b022f8186c.png';
+const imgLogoChoice     = '/assets/91534fe0e36130e7166a22de186f19e1011c79f0.png';
+const imgLogoBio        = '/assets/e2af84967fea8470188b90cf7819b999289255d7.png';
 
 // Case Study
-const imgCaseStudy      = 'http://localhost:3845/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
+const imgCaseStudy      = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
 
 // What We Deliver + Insights card image
-const imgCardPhoto      = 'http://localhost:3845/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
+const imgCardPhoto      = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 
 // AI Studio medium card icon (document)
-const imgDocumentIcon   = 'http://localhost:3845/assets/e242e8576977e4f3d29c4be05ad738619168755a.svg';
+const imgDocumentIcon   = '/assets/e242e8576977e4f3d29c4be05ad738619168755a.svg';
 
 // Why Technossus card icons
-const imgIconOutcome    = 'http://localhost:3845/assets/ac8dbae3d6a4ef3869c92f062ba66c3ebc0095c2.svg';
-const imgIconScale      = 'http://localhost:3845/assets/1842a7b6c6f7844a725781346897858a8c24e609.svg';
-const imgIconEnhance    = 'http://localhost:3845/assets/be00e1883e0f4b7bbdff5b000b66f3f1cfa30930.svg';
+const imgIconOutcome    = '/assets/ac8dbae3d6a4ef3869c92f062ba66c3ebc0095c2.svg';
+const imgIconScale      = '/assets/1842a7b6c6f7844a725781346897858a8c24e609.svg';
+const imgIconEnhance    = '/assets/be00e1883e0f4b7bbdff5b000b66f3f1cfa30930.svg';
 
 // Testimonial author images
-const imgAuthorJeffrey  = 'http://localhost:3845/assets/e002c8497c961f13d2ce3906447a0b0b6dceca9a.png';
-const imgAuthorAnita    = 'http://localhost:3845/assets/72a44557c520c7dbcc23c7fffb1534945709d41d.png';
+const imgAuthorJeffrey  = '/assets/e002c8497c961f13d2ce3906447a0b0b6dceca9a.png';
+const imgAuthorAnita    = '/assets/72a44557c520c7dbcc23c7fffb1534945709d41d.png';
 
 // Corner decorators (Figma Subtract SVGs)
-const imgCornerTL       = 'http://localhost:3845/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
-const imgCornerBR       = 'http://localhost:3845/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
+const imgCornerTL       = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
+const imgCornerBR       = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
 
 // ─── Corner decorator components ──────────────────────────────────────────────
 const CornerTL = () => (

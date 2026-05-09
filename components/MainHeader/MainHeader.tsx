@@ -3,19 +3,19 @@ import { useLocation } from 'react-router-dom';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // Asset URLs from Figma
-const imgGroupDark    = 'http://localhost:3845/assets/848a2b3ff5faeffd006796fa2fd67e06f439fc5a.svg';
-const imgVectorDark   = 'http://localhost:3845/assets/efd5f1d9f9e1ddeffb9a2c0e8bdb4bf929613739.svg';
-const imgVector1Dark  = 'http://localhost:3845/assets/6124ed745a3f456ad8224b80fd39bfef3a22bf3d.svg';
-const imgGroupMobile  = 'http://localhost:3845/assets/695666a5f2eb0d5292832164ad938ed7569216fd.svg';
-const imgVectorMobile = 'http://localhost:3845/assets/d87fac3a6d6d9e25c67b5a01544bc22857c3f986.svg';
-const imgVector1Mobile= 'http://localhost:3845/assets/8b570c1a688d9313d655e94f4df2d62c83009b0e.svg';
-const imgArrowForward = 'http://localhost:3845/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
-const imgChevronDown  = 'http://localhost:3845/assets/f88d5745dbe17d6eba516dff8c1ec66ec8f95eab.svg';
-const imgChevronDownRed = 'http://localhost:3845/assets/872f59963a8db7797238fb9af0174f8aafeeae1e.svg';
-const imgDehaze       = 'http://localhost:3845/assets/6e17ae7884a4c0e898213f199f1e02dde4bf9183.svg';
-const imgClose        = 'http://localhost:3845/assets/9e2c1bf0fb472642f558f6a71e09a2760043da15.svg';
-const imgChevronMobile= 'http://localhost:3845/assets/c1a9ec4c00df07c37e0547669be3582f3fea68da.svg';
-const imgChevronMobile2= 'http://localhost:3845/assets/2b83e41f03742bdfe0c3187ec66114fe384b11e1.svg';
+const imgGroupDark    = '/assets/848a2b3ff5faeffd006796fa2fd67e06f439fc5a.svg';
+const imgVectorDark   = '/assets/efd5f1d9f9e1ddeffb9a2c0e8bdb4bf929613739.svg';
+const imgVector1Dark  = '/assets/6124ed745a3f456ad8224b80fd39bfef3a22bf3d.svg';
+const imgGroupMobile  = '/assets/695666a5f2eb0d5292832164ad938ed7569216fd.svg';
+const imgVectorMobile = '/assets/d87fac3a6d6d9e25c67b5a01544bc22857c3f986.svg';
+const imgVector1Mobile= '/assets/8b570c1a688d9313d655e94f4df2d62c83009b0e.svg';
+const imgArrowForward = '/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
+const imgChevronDown  = '/assets/f88d5745dbe17d6eba516dff8c1ec66ec8f95eab.svg';
+const imgChevronDownRed = '/assets/872f59963a8db7797238fb9af0174f8aafeeae1e.svg';
+const imgDehaze       = '/assets/6e17ae7884a4c0e898213f199f1e02dde4bf9183.svg';
+const imgClose        = '/assets/9e2c1bf0fb472642f558f6a71e09a2760043da15.svg';
+const imgChevronMobile= '/assets/c1a9ec4c00df07c37e0547669be3582f3fea68da.svg';
+const imgChevronMobile2= '/assets/2b83e41f03742bdfe0c3187ec66114fe384b11e1.svg';
 
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';

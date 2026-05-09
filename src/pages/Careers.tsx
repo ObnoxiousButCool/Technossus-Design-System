@@ -9,14 +9,14 @@ import { useBreakpoint } from '../../ts/breakpoints';
 import type { AccordionItem } from '../../components/Accordion';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
-const imgHeroBg       = 'http://localhost:3845/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
-const imgArrowForward = 'http://localhost:3845/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
-const imgBento1       = 'http://localhost:3845/assets/a2c5aedfd47c9d61a54070b6ef0abcd89a59217a.png';
-const imgBento2       = 'http://localhost:3845/assets/b0f341860b2c6f76cfb4422ad266623aab2d1f6e.png';
-const imgBento3       = 'http://localhost:3845/assets/fba5208f46ffc48029fdd0a7b3697e305c66419c.png';
-const imgHiringPerson = 'http://localhost:3845/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
-const imgSubtractTL   = 'http://localhost:3845/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
-const imgSubtractBR   = 'http://localhost:3845/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
+const imgHeroBg       = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
+const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
+const imgBento1       = '/assets/a2c5aedfd47c9d61a54070b6ef0abcd89a59217a.png';
+const imgBento2       = '/assets/b0f341860b2c6f76cfb4422ad266623aab2d1f6e.png';
+const imgBento3       = '/assets/fba5208f46ffc48029fdd0a7b3697e305c66419c.png';
+const imgHiringPerson = '/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
+const imgSubtractTL   = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
+const imgSubtractBR   = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
 
 // ── Local tokens ──────────────────────────────────────────────────────────────
 const sans  = fontFamily.sans;

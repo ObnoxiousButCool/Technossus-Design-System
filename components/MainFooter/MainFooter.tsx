@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // Figma asset URLs (node 2224:14122)
-const imgBgGlow     = 'http://localhost:3845/assets/e656c8753bae72822861dd6f6ef7424990db2349.png';
-const imgGroupLogo  = 'http://localhost:3845/assets/30f5ea3fef5714e5969e054275c3c3d5f425deac.svg';
-const imgVectorL    = 'http://localhost:3845/assets/22da8268791bf1ad67d4263cf0b4f098e5054b2e.svg';
-const imgVectorR    = 'http://localhost:3845/assets/e42f40009d317a9d71ff95afdb66d5607546eef7.svg';
-const imgSocialIG   = 'http://localhost:3845/assets/6a00908eb6bd4641b0a4e8cb2350f564e48d7d2b.svg';
-const imgSocialLI   = 'http://localhost:3845/assets/fa373e610fe616834b7105bb1d4d3616c6199f8e.svg';
-const imgSocialX    = 'http://localhost:3845/assets/c5d3af9e9305ffc0b3b4359688a0df3337d46980.svg';
-const imgSocialGH   = 'http://localhost:3845/assets/be84f68c6a79149d79e586b0b5b01611477cc446.svg';
-const imgMail       = 'http://localhost:3845/assets/e8d6b5721b7832e3e8b3dfff1882e57b57f43b3b.svg';
-const imgCall       = 'http://localhost:3845/assets/cc2161879de0de7879df9185d3f3d1dd0da8626f.svg';
-const imgLocationOn = 'http://localhost:3845/assets/574d773c73caadf45288b9d45439cb8fe275e1f9.svg';
+const imgBgGlow     = '/assets/e656c8753bae72822861dd6f6ef7424990db2349.png';
+const imgGroupLogo  = '/assets/30f5ea3fef5714e5969e054275c3c3d5f425deac.svg';
+const imgVectorL    = '/assets/22da8268791bf1ad67d4263cf0b4f098e5054b2e.svg';
+const imgVectorR    = '/assets/e42f40009d317a9d71ff95afdb66d5607546eef7.svg';
+const imgSocialIG   = '/assets/6a00908eb6bd4641b0a4e8cb2350f564e48d7d2b.svg';
+const imgSocialLI   = '/assets/fa373e610fe616834b7105bb1d4d3616c6199f8e.svg';
+const imgSocialX    = '/assets/c5d3af9e9305ffc0b3b4359688a0df3337d46980.svg';
+const imgSocialGH   = '/assets/be84f68c6a79149d79e586b0b5b01611477cc446.svg';
+const imgMail       = '/assets/e8d6b5721b7832e3e8b3dfff1882e57b57f43b3b.svg';
+const imgCall       = '/assets/cc2161879de0de7879df9185d3f3d1dd0da8626f.svg';
+const imgLocationOn = '/assets/574d773c73caadf45288b9d45439cb8fe275e1f9.svg';
 
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';
 const gray500 = '#ADADAD';

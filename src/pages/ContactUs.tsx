@@ -7,15 +7,15 @@ import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint }  from '../../ts/breakpoints';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
-const imgHeroBg       = 'http://localhost:3845/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
-const imgArrowForward = 'http://localhost:3845/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
-const imgPhilosophyImg= 'http://localhost:3845/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
-const imgUSA          = 'http://localhost:3845/assets/35e377ed5891bac0f8a31896629116de4c517a53.png';
-const imgUK           = 'http://localhost:3845/assets/e002c8497c961f13d2ce3906447a0b0b6dceca9a.png';
-const imgIndia1       = 'http://localhost:3845/assets/d7ae10b0cff18a8a95fedb06a8ef1ebb8a0fb077.png';
-const imgIndia2       = 'http://localhost:3845/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
-const imgSubtractTL   = 'http://localhost:3845/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
-const imgSubtractBR   = 'http://localhost:3845/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
+const imgHeroBg       = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
+const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
+const imgPhilosophyImg= '/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
+const imgUSA          = '/assets/35e377ed5891bac0f8a31896629116de4c517a53.png';
+const imgUK           = '/assets/e002c8497c961f13d2ce3906447a0b0b6dceca9a.png';
+const imgIndia1       = '/assets/d7ae10b0cff18a8a95fedb06a8ef1ebb8a0fb077.png';
+const imgIndia2       = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
+const imgSubtractTL   = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
+const imgSubtractBR   = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
 
 // ── Local tokens ──────────────────────────────────────────────────────────────
 const sans  = fontFamily.sans;
