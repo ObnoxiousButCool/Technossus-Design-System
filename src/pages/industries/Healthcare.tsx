@@ -423,6 +423,7 @@ export default function Healthcare() {
         primaryCta="Talk to Our Team →"
         secondaryCta="Explore Our Work"
       />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }
