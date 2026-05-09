@@ -9,6 +9,8 @@ import DigitalExperience from './pages/services/DigitalExperience';
 import ProductEngineering from './pages/services/ProductEngineering';
 import CloudModernization from './pages/services/CloudModernization';
 import Healthcare from './pages/industries/Healthcare';
+import FinancialServices from './pages/industries/FinancialServices';
+import HiTechSaaS from './pages/industries/HiTechSaaS';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Careers from './pages/Careers';
@@ -25,6 +27,8 @@ export default function App() {
         <Route path="/services/quality-engineering" element={<QualityEngineering />} />
         <Route path="/services/cloud-product-modernization" element={<CloudModernization />} />
         <Route path="/industries/healthcare" element={<Healthcare />} />
+        <Route path="/industries/financial-services" element={<FinancialServices />} />
+        <Route path="/industries/hitech-saas" element={<HiTechSaaS />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/careers" element={<Careers />} />
