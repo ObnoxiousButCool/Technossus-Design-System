@@ -37,9 +37,9 @@ const defaultGroups: FooterLinkGroup[] = [
     links: [
       { label: 'AI Led Business Transformation', href: '/services/ai-business-transformation' },
       { label: 'Product Engineering',             href: '/services/product-engineering' },
-      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence' },
-      { label: 'Cloud Consulting & Support',      href: '/services/cloud-consulting' },
-      { label: 'Digital Experience Design',       href: '/services/digital-experience' },
+      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence-analytics' },
+      { label: 'Cloud & Product Modernization',   href: '/services/cloud-product-modernization' },
+      { label: 'Digital Experience Design',       href: '/services/digital-experience-design' },
       { label: 'Quality Engineering & Verification', href: '/services/quality-engineering' },
       { label: 'AI Studio',                       href: '/ai-studio' },
     ],
@@ -48,8 +48,8 @@ const defaultGroups: FooterLinkGroup[] = [
     heading: 'INDUSTRIES',
     links: [
       { label: 'Healthcare',         href: '/industries/healthcare' },
-      { label: 'Financial Services', href: '/industries/fintech' },
-      { label: 'HiTech / SaaS',      href: '/industries/hitech' },
+      { label: 'Financial Services', href: '/industries/financial-services' },
+      { label: 'HiTech / SaaS',      href: '/industries/hitech-saas' },
     ],
   },
   {

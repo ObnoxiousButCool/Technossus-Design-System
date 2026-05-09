@@ -44,12 +44,12 @@ const defaultNavItems: NavItem[] = [
     label: 'Services',
     href: '/services',
     children: [
-      { label: 'AI Led Business Transformation',  href: '/services/ai-business-transformation', description: 'Engineering the new operating model.' },
-      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence',          description: 'Turn into a decision engine.' },
-      { label: 'Digital Experience Design',       href: '/services/digital-experience',         description: 'Reimagine product, UX and brand.' },
-      { label: 'Product Engineering',             href: '/services/product-engineering',        description: 'Ship full-stack at startup speed.' },
-      { label: 'Quality Engineering & Automation', href: '/services/quality-engineering',       description: 'Test, observe, accelerate releases.' },
-      { label: 'Cloud & Product Modernization',   href: '/services/cloud-modernization',        description: 'Lift, refactor, and run smarter.' },
+      { label: 'AI Led Business Transformation',  href: '/services/ai-business-transformation',  description: 'Engineering the new operating model.' },
+      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence-analytics', description: 'Turn into a decision engine.' },
+      { label: 'Digital Experience Design',       href: '/services/digital-experience-design',   description: 'Reimagine product, UX and brand.' },
+      { label: 'Product Engineering',             href: '/services/product-engineering',         description: 'Ship full-stack at startup speed.' },
+      { label: 'Quality Engineering & Automation', href: '/services/quality-engineering',        description: 'Test, observe, accelerate releases.' },
+      { label: 'Cloud & Product Modernization',   href: '/services/cloud-product-modernization', description: 'Lift, refactor, and run smarter.' },
     ],
   },
   {
@@ -57,8 +57,8 @@ const defaultNavItems: NavItem[] = [
     href: '/industries',
     children: [
       { label: 'Healthcare',         href: '/industries/healthcare' },
-      { label: 'Financial Services', href: '/industries/fintech' },
-      { label: 'HiTech / SaaS',      href: '/industries/hitech' },
+      { label: 'Financial Services', href: '/industries/financial-services' },
+      { label: 'HiTech / SaaS',      href: '/industries/hitech-saas' },
     ],
   },
   {
