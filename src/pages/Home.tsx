@@ -540,14 +540,15 @@ export default function Home() {
       </section>
 
       {/* ── WHY TECHNOSSUS ───────────────────────────────────────────────────── */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <FadeUp duration={500}><Tag label="TECHNOSSUS" variant="dark" /></FadeUp>
+      </div>
       <section style={{ background: dark2, position: 'relative', overflow: 'hidden' }}>
         <CornerTL />
         <CornerBR />
         <div style={inner}>
-          <FadeUp duration={500}><Tag label="TECHNOSSUS" /></FadeUp>
-
           <FadeUp>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16, marginBottom: 36 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 0, marginBottom: 36 }}>
               <h2 style={{
                 fontFamily: serif,
                 fontSize: shSize, lineHeight: shLine,
