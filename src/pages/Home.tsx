@@ -57,30 +57,16 @@ const imgCornerBR       = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg'
 
 // ─── Corner decorator components ──────────────────────────────────────────────
 const CornerTL = () => (
-  <img
-    src={imgCornerTL}
-    alt=""
-    aria-hidden
-    style={{
-      position: 'absolute', top: 0, left: 0,
-      width: 118, height: 118,
-      pointerEvents: 'none', zIndex: 2,
-      transform: 'rotate(180deg) scaleY(1)',
-    }}
-  />
+  <>
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 const CornerBR = () => (
-  <img
-    src={imgCornerBR}
-    alt=""
-    aria-hidden
-    style={{
-      position: 'absolute', bottom: 0, right: 0,
-      width: 118, height: 118,
-      pointerEvents: 'none', zIndex: 2,
-      transform: 'scaleY(-1)',
-    }}
-  />
+  <>
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
