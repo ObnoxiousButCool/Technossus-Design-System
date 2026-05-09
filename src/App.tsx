@@ -14,6 +14,7 @@ import HiTechSaaS from './pages/industries/HiTechSaaS';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Careers from './pages/Careers';
+import CaseStudies from './pages/CaseStudies';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="/case-studies" element={<CaseStudies />} />
       </Route>
     </Routes>
   );
