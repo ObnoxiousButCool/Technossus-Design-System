@@ -123,8 +123,10 @@ export default function AboutUs() {
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 24 }}>
           <FadeUp duration={500}><Tag label="OUR MISSION" /></FadeUp>
           <div style={{ position: 'relative', backgroundColor: dark1, padding: isMobile ? '32px 20px' : isTablet ? '40px 32px' : 56, display: 'flex', flexDirection: 'column', gap: 36, overflow: 'hidden' }}>
-            <img alt="" src={imgSubtractTL} style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 118, pointerEvents: 'none' }} />
-            <img alt="" src={imgSubtractBR} style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, pointerEvents: 'none' }} />
 
             <FadeUp>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 934, color: '#FFFFFF' }}>
