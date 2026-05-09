@@ -330,11 +330,13 @@ export default function Healthcare() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── DHE FRAMEWORK ── */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <Tag label="DIGITAL HEALTH ENGINEERING" variant="dark" />
+      </div>
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="DIGITAL HEALTH ENGINEERING" variant="light" />
-          <h2 style={{ ...d2('#fff'), marginTop: 16 }}>
+          <h2 style={{ ...d2('#fff'), marginTop: 0 }}>
             The engineering foundation that powers every{' '}
             <span style={{ color: red }}>digital health experience.</span>
           </h2>
@@ -376,11 +378,13 @@ export default function Healthcare() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── FEATURED CASE STUDIES ── */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <Tag label="FEATURED CASE STUDIES" variant="dark" />
+      </div>
       <section id="proof" style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="FEATURED CASE STUDIES" variant="light" />
-          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
             <div>
               <h1 style={d1('#fff')}>Featured case <span style={{ color: red }}>studies.</span></h1>
               <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Real outcomes from healthcare organizations we've partnered with.</p>

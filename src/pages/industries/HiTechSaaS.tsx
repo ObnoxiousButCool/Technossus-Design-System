@@ -346,11 +346,13 @@ export default function HiTechSaaS() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── CASE STUDIES ── */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <Tag label="CASE STUDIES" variant="dark" />
+      </div>
       <section id="proof" style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="CASE STUDIES" variant="light" />
-          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
             <div>
               <h1 style={d1('#fff')}>The work speaks <span style={{ color: red }}>for itself.</span></h1>
               <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Real outcomes from HiTech and SaaS organizations we've partnered with.</p>
