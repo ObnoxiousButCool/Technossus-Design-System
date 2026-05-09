@@ -253,7 +253,7 @@ export default function Healthcare() {
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="THE SHIFT" />
+          <Tag label="THE SHIFT" variant="light" />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
             <div style={{ flex: isMobile ? undefined : '0 0 380px', minWidth: isMobile ? '100%' : 280, width: isMobile ? '100%' : undefined }}>
               <h2 style={d2('#fff')}>
@@ -324,7 +324,7 @@ export default function Healthcare() {
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="DIGITAL HEALTH ENGINEERING" />
+          <Tag label="DIGITAL HEALTH ENGINEERING" variant="light" />
           <h2 style={{ ...d2('#fff'), marginTop: 16 }}>
             The engineering foundation that powers every{' '}
             <span style={{ color: red }}>digital health experience.</span>
@@ -370,7 +370,7 @@ export default function Healthcare() {
       <section id="proof" style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="FEATURED CASE STUDIES" />
+          <Tag label="FEATURED CASE STUDIES" variant="light" />
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
             <div>
               <h1 style={d1('#fff')}>Featured case <span style={{ color: red }}>studies.</span></h1>

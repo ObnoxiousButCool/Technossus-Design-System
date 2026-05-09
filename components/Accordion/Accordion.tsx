@@ -288,7 +288,8 @@ function ItemRow({
             fontSize: 20,
             lineHeight: '28px',
             color: '#383838',
-            whiteSpace: 'nowrap',
+            whiteSpace: 'normal',
+            wordBreak: 'break-word',
           }}
         >
           {item.title}
@@ -300,8 +301,7 @@ function ItemRow({
             fontSize: 16,
             lineHeight: '24px',
             color: '#5C5C5C',
-            minWidth: '100%',
-            width: 'min-content',
+            width: '100%',
           }}
         >
           {item.subtitle}
@@ -325,15 +325,15 @@ function DesktopAccordion({
   const active = items[activeIndex];
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
-      {/* Left: list */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'center', flexShrink: 0, width: 573 }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 40 }}>
+      {/* Left: list — caps at 573px but scales down on smaller viewports */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'stretch', flexShrink: 0, width: 'min(573px, 48%)' }}>
         {items.map((item, i) => (
           <ItemRow key={i} item={item} isActive={activeIndex === i} onClick={() => setActiveIndex(i)} />
         ))}
       </div>
 
-      {/* Right: expanded panel — Figma: #F5F5F5, 580px tall, 24px pad */}
+      {/* Right: expanded panel */}
       <div
         data-node-id="2043:4924"
         style={{
@@ -341,13 +341,12 @@ function DesktopAccordion({
           display: 'flex',
           flexDirection: 'column',
           gap: 24,
-          height: 580,
+          minHeight: 480,
           alignItems: 'flex-start',
           padding: 24,
-          flexShrink: 0,
-          width: 573,
+          flex: 1,
+          minWidth: 0,
           boxSizing: 'border-box',
-          overflow: 'hidden',
         }}
       >
         {active && <ContentPanel content={active.content} />}
@@ -368,7 +367,7 @@ function MobileAccordion({
   setActiveIndex: (i: number | null) => void;
 }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 573, alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%', alignItems: 'stretch' }}>
       {items.map((item, i) => {
         const isActive = activeIndex === i;
         return (
@@ -382,13 +381,10 @@ function MobileAccordion({
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 24,
-                  height: 580,
                   alignItems: 'flex-start',
                   padding: 24,
-                  flexShrink: 0,
                   width: '100%',
                   boxSizing: 'border-box',
-                  overflow: 'hidden',
                 }}
               >
                 <ContentPanel content={item.content} />

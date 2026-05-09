@@ -253,7 +253,7 @@ export default function HiTechSaaS() {
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="THE SHIFT" />
+          <Tag label="THE SHIFT" variant="light" />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
             <div style={{ flex: isMobile ? undefined : '0 0 380px', minWidth: isMobile ? '100%' : 280, width: isMobile ? '100%' : undefined }}>
               <h2 style={d2('#fff')}>
@@ -321,11 +321,10 @@ export default function HiTechSaaS() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── SOLUTIONS ── */}
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
-        <CornerTL /><CornerBR />
+      <section style={{ background: '#fff' }}>
         <div style={inner}>
           <Tag label="SOLUTIONS" />
-          <h2 style={{ ...d2('#fff'), marginTop: 16 }}>
+          <h2 style={{ ...d2(), marginTop: 16 }}>
             Proven solutions for HiTech and SaaS{' '}
             <span style={{ color: red }}>at scale.</span>
           </h2>
@@ -338,19 +337,20 @@ export default function HiTechSaaS() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── CASE STUDIES ── */}
-      <section id="proof" style={{ background: '#fff' }}>
+      <section id="proof" style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+        <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="CASE STUDIES" />
+          <Tag label="CASE STUDIES" variant="light" />
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
             <div>
-              <h1 style={d1()}>The work speaks <span style={{ color: red }}>for itself.</span></h1>
-              <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 10 }}>Real outcomes from HiTech and SaaS organizations we've partnered with.</p>
+              <h1 style={d1('#fff')}>The work speaks <span style={{ color: red }}>for itself.</span></h1>
+              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Real outcomes from HiTech and SaaS organizations we've partnered with.</p>
             </div>
-            <a href="#" style={{ fontFamily: sans, fontSize: 14, color: red, textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
+            <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
             {featuredCards.map((card, i) => (
-              <Card key={i} mode="light" type="insights" tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
+              <Card key={i} mode="dark" type="insights" tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
             ))}
           </div>
         </div>
@@ -359,17 +359,16 @@ export default function HiTechSaaS() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── MORE STORIES ── */}
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
-        <CornerTL /><CornerBR />
+      <section style={{ background: '#fff' }}>
         <div style={inner}>
           <Tag label="MORE SUCCESS STORIES" />
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
-            <h1 style={d1('#fff')}>More from <span style={{ color: red }}>HiTech & SaaS.</span></h1>
-            <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
+            <h1 style={d1()}>More from <span style={{ color: red }}>HiTech & SaaS.</span></h1>
+            <a href="#" style={{ fontFamily: sans, fontSize: 14, color: red, textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
             {successCards.map((card, i) => (
-              <Card key={i} mode="dark" type="insights" tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
+              <Card key={i} mode="light" type="insights" tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
             ))}
           </div>
         </div>
