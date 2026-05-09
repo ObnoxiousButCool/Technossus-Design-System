@@ -18,6 +18,7 @@ export { MainHeader }  from './MainHeader';
 export { MainFooter }  from './MainFooter';
 export { Leader }           from './Leader';
 export { TextInputField }   from './TextInputField';
+export { DecorativeOverlay, DecorativeImage, PlaceholderBlock } from './DecorativeMedia';
 
 export type { CardProps }            from './Card';
 export type { TestimonialColor }     from './Testimonial';
@@ -33,3 +34,4 @@ export type { MainHeaderProps, NavItem }        from './MainHeader';
 export type { MainFooterProps, FooterLinkGroup } from './MainFooter';
 export type { LeaderProps, LeaderState }                      from './Leader';
 export type { TextInputFieldProps, TextInputFieldState }      from './TextInputField';
+export type { DecorativeOverlayProps, DecorativeImageProps, PlaceholderBlockProps } from './DecorativeMedia';

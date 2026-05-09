@@ -6,6 +6,7 @@ import { CTABanner }   from '../../components/CTABanner';
 import { Button }      from '../../components/Button';
 import { Card }        from '../../components/Card';
 import { FadeUp }      from '../../components/Animate/FadeUp';
+import { DecorativeOverlay, DecorativeImage } from '../../components/DecorativeMedia';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
@@ -275,41 +276,24 @@ export default function Home() {
               <Stats value="98+"  label="CLIENT RETENTION" />
             </div>
 
-            {/* Globe / network visualization */}
+            {/* Globe / network visualization — both layers registered to same origin */}
             {!isMobile && (
-              <div style={{
-                position: 'absolute',
-                right: isTablet ? -32 : -80,
-                top: -80,
-                width: 632,
-                height: 553,
-                pointerEvents: 'none',
-              }}>
-                <img
+              <DecorativeOverlay top={-80} right={isTablet ? -32 : -80} width={608} height={429}>
+                <DecorativeImage
                   src={imgStatsGlobe}
-                  alt=""
-                  aria-hidden
-                  style={{
-                    position: 'absolute',
-                    top: 0, left: 0,
-                    width: 608, height: 429,
-                    objectFit: 'cover',
-                    opacity: 0.25,
-                    mixBlendMode: 'color-dodge',
-                  }}
+                  top={0} left={0}
+                  width={608} height={429}
+                  objectFit="cover"
+                  opacity={0.25}
+                  blendMode="color-dodge"
                 />
-                <img
+                <DecorativeImage
                   src={imgStatsNetwork}
-                  alt=""
-                  aria-hidden
-                  style={{
-                    position: 'absolute',
-                    top: 0, left: 127,
-                    width: 505, height: 553,
-                    objectFit: 'contain',
-                  }}
+                  top={0} left={0}
+                  width={608} height={429}
+                  objectFit="contain"
                 />
-              </div>
+              </DecorativeOverlay>
             )}
           </div>
         </div>
