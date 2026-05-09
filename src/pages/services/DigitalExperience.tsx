@@ -23,93 +23,92 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'AI Advisory & Enablement',
-    subtitle: 'Define where AI fits, identify high-impact use cases, and build the capability to scale them.',
+    title: 'Experience Strategy & Adoption Roadmapping',
+    subtitle: 'Define where experience gaps exist, what\'s driving them, and the clearest path to closing them.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI ADVISORY & ENABLEMENT',
-      heading: 'Most AI efforts fail not because the technology isn\'t capable — but because the organization isn\'t structured to absorb it.',
+      serviceLabel: 'EXPERIENCE STRATEGY & ADOPTION ROADMAPPING',
+      heading: 'Most digital investments underdeliver not because the technology fails, but because adoption was never designed for.',
       body: [
-        'We work with your leadership team to define where AI fits, identify and prioritize high-impact use cases, and support adoption through consulting-led enablement, capability building, and implementation support.',
-        'The output is a prioritized roadmap with investment accountability built in — not a vision document that sits in a drawer after the kickoff. What gets approved is what gets built.',
+        'We help you define where experience gaps exist, what\'s driving them, and the clearest path to closing them. That work happens before a single design frame is opened — because the most expensive design is the one that solves the wrong problem.',
+        'Adoption roadmaps are built around how your users actually work, not how the system expects them to. The result is a clear, sequenced plan that connects design investment to measurable behavior change.',
       ],
     },
   },
   {
-    title: 'AI-Augmented Decision Intelligence',
-    subtitle: 'Embed models for forecasting, prediction, and optimization into the systems where decisions happen.',
+    title: 'Design-Led Innovation & Rapid Validation',
+    subtitle: 'The best ideas don\'t need more time — they need faster proof.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI-AUGMENTED DECISION INTELLIGENCE',
-      heading: 'Your operating decisions need real-time intelligence from the data you already own.',
+      serviceLabel: 'DESIGN-LED INNOVATION & RAPID VALIDATION',
+      heading: 'See it working before you bet engineering resources on it.',
       body: [
-        'We embed models for forecasting, prediction, and optimization into your systems, so decisions are driven by real-time data and continuous intelligence — not dashboards that require someone to translate or models only data scientists can read.',
-        'From pricing and capacity to risk and market response, decision intelligence gets built into the workflows your leaders actually use to make calls.',
-      ],
-      quote: 'Decision-intelligence adopters report material improvement in decision cycle time across pricing, capacity, and risk functions. — Gartner, 2025.',
-    },
-  },
-  {
-    title: 'Systems That Think and Evolve',
-    subtitle: 'AI becomes the intelligence layer of the enterprise — powering systems that learn, reason, and self-correct.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'SYSTEMS THAT THINK AND EVOLVE',
-      heading: 'AI is no longer just used for analysis or experiments — it\'s becoming part of how systems operate.',
-      body: [
-        'We build AI systems that power your enterprise workflows with intelligence that learns, reasons, self-corrects, and continuously evolves without requiring constant human intervention. The systems improve as they run.',
-        'Instead of relying only on fixed rules, these systems adapt to new patterns, surface emerging risks, and optimize across the business in real time — turning AI from a point solution into an enterprise capability.',
+        'We run design sprints, prototyping cycles, and early validation sessions that surface what works before engineering resources are committed. A validated direction is worth ten well-documented assumptions.',
+        'From concept to clickable prototype to user feedback in days — not weeks. The discipline of rapid validation isn\'t about moving fast for its own sake. It\'s about closing the gap between what you believe users need and what they actually respond to.',
       ],
     },
   },
   {
-    title: 'Autonomous Decisioning in Real Time',
-    subtitle: 'Decisions move from delayed approvals to autonomous, real-time execution.',
+    title: 'AI-Driven Design Innovation',
+    subtitle: 'Embed intelligence into product flows through predictive recommendations and adaptive UI states.',
     content: {
       type: 'detail',
-      serviceLabel: 'AUTONOMOUS DECISIONING',
-      heading: 'Real-time decisioning driven by continuously learning intelligence across the organization.',
+      serviceLabel: 'AI-DRIVEN DESIGN INNOVATION',
+      heading: 'AI amplifies human creativity when it\'s built into the design process, not bolted on after.',
       body: [
-        'We design autonomous decision systems that complete tasks, route approvals, and escalate when human judgment is required — reducing coordination overhead without removing accountability.',
-        'From procurement approval chains to compliance review loops and fraud detection, we map the decision boundaries that need to stay human and automate everything in between.',
+        'We integrate AI across the design and delivery lifecycle — to amplify human creativity and reduce uncertainty. This includes embedding intelligence into product flows through predictive recommendations, contextual automation, and adaptive UI states that respond to real user behavior.',
+        'The interfaces that win adoption don\'t just look good — they learn from usage and respond to context. We help design teams build that capability in, rather than treating AI as a feature to be added in a future release.',
       ],
     },
   },
   {
-    title: 'Self-Healing Workflows',
-    subtitle: 'Workflows that sense, respond, optimize, and self-heal — reducing dependency on manual intervention.',
+    title: 'Enterprise & Platform UX Design',
+    subtitle: 'Complex enterprise systems don\'t have to feel complex to the people using them.',
     content: {
       type: 'detail',
-      serviceLabel: 'SELF-HEALING WORKFLOWS',
-      heading: 'The next frontier isn\'t faster workflows. It\'s workflows that fix themselves.',
+      serviceLabel: 'ENTERPRISE & PLATFORM UX DESIGN',
+      heading: 'Complexity in the system shouldn\'t mean complexity for the user.',
       body: [
-        'We build adaptive operational systems that detect anomalies, reroute around failures, and restore normal state without requiring a human to identify and diagnose the problem first.',
-        'Self-healing workflows reduce operational overhead, minimize downtime, and free your teams to focus on higher-value work — not monitoring systems for problems that should never have required human attention.',
+        'Enterprise platforms are often built by engineering teams optimizing for function, not experience. The result is software that works — technically — but creates friction, training overhead, and adoption resistance at scale.',
+        'We specialize in making enterprise-grade platforms feel intuitive. From information architecture to interaction design to design system governance, we work with your product and engineering teams to build platforms that people actually want to use.',
+      ],
+    },
+  },
+  {
+    title: 'Legacy Platform Modernization & UX Uplift',
+    subtitle: 'Modernize without losing what already works for your users.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'LEGACY PLATFORM MODERNIZATION & UX UPLIFT',
+      heading: 'The goal isn\'t to redesign everything. It\'s to improve what matters most without breaking what works.',
+      body: [
+        'Legacy modernization projects fail when design is treated as a skin applied to a new system. Users have workflows, muscle memory, and mental models built over years. Ignoring that context creates resistance, not adoption.',
+        'We work with your teams to identify the highest-friction points in existing experiences, prioritize where investment will drive the most behavioral change, and execute modernization in phases that users can absorb — not in a big-bang cutover that puts everything at risk.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Start with what matters.',        body: 'We identify high-impact use cases based on business value, data readiness, and feasibility — so effort goes where it can deliver real outcomes, not just impressive demos.' },
-  { title: 'Prove it early.',                 body: 'We move quickly to a working proof of concept, validating use cases before committing full investment — so the plan responds to real signal instead of assumptions.' },
-  { title: 'Build for scale.',                body: 'We architect solutions that can grow — governed, reliable, and ready to expand as AI maturity increases across the organization.' },
-  { title: 'Your board stays informed.',      body: 'What you approved is what gets built. Governance is visible from week one, and your leadership team can explain every decision at the altitude the board operates at.' },
+  { title: 'Validate Assumptions Faster',        body: 'Get to a validated design direction sooner, so the plan responds to real user signal instead of assumptions — reducing downstream rework before engineering commits.' },
+  { title: 'Design with Engineering, Not After', body: 'Design and engineering work together from the start, reducing handoff friction and helping ideas move into production more cleanly.' },
+  { title: 'Human-Centered, Always',             body: 'Whether the end user is an enterprise employee, a B2B partner, or a consumer, we apply the same discipline: understand how they work, design around how they think.' },
+  { title: 'Adoption Is the Metric',             body: 'We measure success by what users actually do, not by what was delivered. Adoption signals tell us whether the design solved the right problem.' },
 ];
 
 const proofCards = [
-  { tags: 'HEALTHCARE • AI / NLP',          title: 'AI-Powered OCR Engine: ~95% Accuracy in Document Extraction', excerpt: 'Document-heavy workflows required manual data entry, causing delays and inconsistencies. A proprietary OCR + NER engine now extracts and structures data from unstructured inputs with ~95% accuracy.' },
-  { tags: 'HEALTHCARE • PREDICTIVE AI',     title: 'Predictive Fatigue Modeling Prevents Operational Risk',       excerpt: 'A healthcare organization lacked visibility into fatigue-related workforce risks. A predictive analytics platform using biometric data now forecasts fatigue levels and triggers proactive alerts.' },
-  { tags: 'SECURITY • REAL-TIME AI',        title: 'Threat Detection Reduced from 8 Hours to Minutes',            excerpt: 'Manual monitoring of restricted premises delayed identification of unauthorized individuals. A real-time AI-based recognition system now detects and alerts on intrusions in under 10 minutes.' },
+  { tags: 'COMMERCE • AI REDESIGN',         title: '56% Faster Product Discovery',    excerpt: 'A high-volume commerce experience was redesigned so users could find what they needed faster and with less friction — validated through usability research before a single line of production code changed.' },
+  { tags: 'FINTECH • RAPID PROTOTYPING',    title: 'Working Prototype in 24 Hours',   excerpt: 'A fintech concept moved from idea to functioning product in a single day — fast enough to test, validate, and spark investor and market interest.' },
+  { tags: 'ENTERPRISE • PLATFORM UPLIFT',  title: 'Legacy System Adopted at Scale',   excerpt: 'An enterprise workflow platform that users were actively avoiding was redesigned around real work patterns. Adoption increased 40% in the first quarter post-launch.' },
 ];
 
 const painCards = [
-  { heading: '"AI efforts are underway, but direction and impact are still unclear."',         body: 'The steering committee keeps asking for AI transformation updates. You\'re not sure how to answer without sounding like nothing is happening — or like too much is happening unchecked.' },
-  { heading: '"Early experiments show promise, but scaling across teams remains a challenge."', body: 'Pilots succeed. Production deployments stall. The gap between a working prototype and an enterprise capability turns out to be the hardest part of the journey.' },
-  { heading: '"Multiple AI efforts are active, but they operate in silos."',                   body: 'Three different teams have deployed something AI-powered. You learned about two of them from a vendor invoice. Governance that used to be implicit in the process no longer is.' },
+  { heading: '"We shipped the product, but users aren\'t adopting it."',                               body: 'The build is done. The launch happened. But usage metrics tell a different story. Support tickets are up, training costs are rising, and the team is starting to ask whether the design solved the right problem.' },
+  { heading: '"Design and engineering keep misaligning — too many handoffs."',                         body: 'Specs get handed over, developers interpret them differently, and by the time QA catches the gap, it\'s too late to fix without a full rebuild. The friction compounds with every sprint.' },
+  { heading: '"We need to modernize a legacy platform without breaking what already works."',          body: 'The old system has years of institutional knowledge baked into workflows. Every attempt to modernize it risks breaking something users depend on. The team is stuck between urgency and caution.' },
 ];
 
-export default function AIBusiness() {
+export default function DigitalExperience() {
   const { isMobile, isTablet } = useBreakpoint();
 
   const inner = {
@@ -148,21 +147,20 @@ export default function AIBusiness() {
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
             { label: 'Service Offerings', href: '/services' },
-            { label: 'AI-Led Business Transformation', active: true },
+            { label: 'Digital Experience Design', active: true },
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>AI that drives real business outcomes</p>
               <h1 style={d1()}>
-                Make AI your{' '}
-                <span style={{ color: red }}>competitive advantage.</span>
+                Experiences that drive adoption,{' '}
+                <span style={{ color: red }}>not just attention.</span>
               </h1>
               <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                Move into an era of intelligent systems with AI embedded across your business. We help you identify high-impact use cases, build solutions, and integrate them into your workflows so your systems operate with less friction and scale more reliably.
+                Most software is built fast. Few are adopted with confidence. We combine research, design, and engineering to create experiences — across enterprise platforms, partner portals, and customer applications — that fit how people work, earn real adoption, and deliver the outcomes your business is built to achieve.
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                <Button variant="primary"   label="Explore AI Studio"         href="#" />
-                <Button variant="secondary" label="Talk to an AI Evangelist"  href="#" />
+                <Button variant="primary"   label="Talk to a Design Expert" href="#" />
+                <Button variant="secondary" label="Explore Our Work"        href="#" />
               </div>
             </div>
             {!isMobile && (
@@ -196,24 +194,24 @@ export default function AIBusiness() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
-                From AI adoption to{' '}
-                <span style={{ color: red }}>intelligent enterprise systems.</span>
+                Digital is everywhere.{' '}
+                <span style={{ color: red }}>Adoption isn't.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'AI is no longer just used for analysis or experiments. It is becoming part of how products work, how teams operate, and how decisions are made. The focus is now on building systems that deliver value across the business.',
-                  'Systems are starting to improve as they run — instead of relying only on fixed rules. The organizations pulling ahead are the ones building AI into their core workflows, not running it as a parallel experiment.',
+                  'Organisations have invested heavily in digital — new platforms, modernised systems, and customer-facing products. But investment alone doesn\'t create usage. The shift now is toward experiences that are intuitive, trusted, and built to be adopted — not just deployed.',
+                  'Faster release cycles solved time-to-market. The next frontier is time-to-adoption. Design-led validation, early prototyping, and user research close that gap before go-live — and before the cost of the wrong answer becomes the cost of a full rebuild.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '7%',  desc: 'Of businesses have successfully scaled AI enterprise-wide. The other 93% are still running pilots.' },
-                { num: '92%', desc: 'Of companies are planning to increase their AI investments — the pressure to scale is accelerating.' },
-                { num: '~70%', desc: 'Of large organizations cannot produce a single inventory of AI in production. Shadow deployment is now the default state.' },
-                { num: 'Week 1', desc: 'Your leadership team sees what\'s being built, how governance is structured, and what they\'ll own at handoff.' },
+                { num: '70%',   desc: 'Of digital transformation projects fail to meet adoption targets — not because the technology doesn\'t work, but because users don\'t.' },
+                { num: '56%',   desc: 'Faster product discovery for a high-volume commerce client after a research-led design intervention.' },
+                { num: '24hrs', desc: 'From concept to working prototype for a fintech client — fast enough to validate, iterate, and raise interest.' },
+                { num: '4M+',   desc: 'Views in 48 hours for a mobile product that launched with a design-led go-to-market experience.' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
@@ -232,8 +230,8 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SERVICE OFFERINGS" />
           <h2 style={{ ...d2(), marginTop: 16 }}>
-            Your strategy, configured across the delivery that makes it{' '}
-            <span style={{ color: red }}>land.</span>
+            Human-centered, seamless, and intelligent experiences —{' '}
+            <span style={{ color: red }}>from insights to implementation.</span>
           </h2>
           <div style={{ marginTop: 48 }}>
             <Accordion items={accordionItems} defaultActiveIndex={1} />
@@ -250,13 +248,13 @@ export default function AIBusiness() {
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <Tag label="HOW WE WORK" />
               <h2 style={{ ...d2(), marginTop: 16 }}>
-                We don't deliver an AI transformation and leave you to{' '}
-                <span style={{ color: red }}>explain it.</span>
+                Validate early, design together,{' '}
+                <span style={{ color: red }}>build with intent.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'We work embedded with your leadership team — making governance visible, tracing investment to outcome, and transferring the thread to your people as we build. When the engagement ends, your team owns the framework, understands the architecture, and can defend it without us in the room.',
-                  'AI transformation creates as many questions as answers for executives, for middle management, for the teams doing the work. Our approach is designed to bring your organization along, not leave it dependent on us.',
+                  'The Technossus way is simple: validate early where it saves effort, stay human-centered where it matters, and design with your team — not around them. Whether the end user is an enterprise employee, a B2B partner, or a consumer, the discipline is the same.',
+                  'We work embedded with your product and engineering teams. Design decisions get made with engineering context, and engineering decisions get made with design context. That alignment is what makes adoption possible at the speed your business needs.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
@@ -284,8 +282,8 @@ export default function AIBusiness() {
           <Tag label="PROOF" />
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
             <div>
-              <h1 style={d1('#fff')}>Success <span style={{ color: red }}>stories.</span></h1>
-              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
+              <h1 style={d1('#fff')}>Results that speak <span style={{ color: red }}>for themselves.</span></h1>
+              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Adoption metrics tell the real story of a design engagement.</p>
             </div>
             <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
           </div>
@@ -312,7 +310,7 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h1 style={{ ...d1(), marginTop: 16 }}>
-            If any of these describe your current AI situation, we{' '}
+            If adoption gaps are slowing momentum, we{' '}
             <span style={{ color: red }}>should talk.</span>
           </h1>
           <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
@@ -326,15 +324,14 @@ export default function AIBusiness() {
             ))}
           </div>
 
-          {/* Consulting offer block */}
+          {/* CTA offer block */}
           <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Win with AI. Start with the right use cases and a clear plan.</h3>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Have an experience to design, improve, or scale?</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              We help bring clarity and direction to your AI efforts — identifying meaningful use cases, aligning them with business priorities, and turning early experiments into scalable, real solutions. Your first AI use case, defined with us, at no cost.
+              If adoption gaps, modernization needs, or design-engineering friction are slowing momentum — let's start with what matters most. A focused conversation with a Technossus design leader costs nothing and usually surfaces the clearest path forward.
             </p>
-            <p style={{ fontFamily: sans, fontSize: 13, color: '#9B9B9B', margin: 0 }}>No-cost AI Opportunity Assessment. No pitch deck. A real read on your highest-value use case.</p>
             <div>
-              <Button variant="primary" label="Get Your First AI Use Case Defined →" href="#" />
+              <Button variant="primary" label="Talk to a Design Expert →" href="#" />
             </div>
           </div>
         </div>

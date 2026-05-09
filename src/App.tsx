@@ -4,6 +4,10 @@ import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import QualityEngineering from './pages/services/QualityEngineering';
 import AIBusiness from './pages/services/AIBusiness';
+import DataIntelligence from './pages/services/DataIntelligence';
+import DigitalExperience from './pages/services/DigitalExperience';
+import ProductEngineering from './pages/services/ProductEngineering';
+import CloudModernization from './pages/services/CloudModernization';
 import Healthcare from './pages/industries/Healthcare';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
@@ -14,8 +18,12 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/services/quality-engineering" element={<QualityEngineering />} />
         <Route path="/services/ai-business-transformation" element={<AIBusiness />} />
+        <Route path="/services/data-intelligence-analytics" element={<DataIntelligence />} />
+        <Route path="/services/digital-experience-design" element={<DigitalExperience />} />
+        <Route path="/services/product-engineering" element={<ProductEngineering />} />
+        <Route path="/services/quality-engineering" element={<QualityEngineering />} />
+        <Route path="/services/cloud-product-modernization" element={<CloudModernization />} />
         <Route path="/industries/healthcare" element={<Healthcare />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />

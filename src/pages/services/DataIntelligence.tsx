@@ -23,93 +23,92 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'AI Advisory & Enablement',
-    subtitle: 'Define where AI fits, identify high-impact use cases, and build the capability to scale them.',
+    title: 'Data Infrastructure & Productization',
+    subtitle: 'Scalable, governed data platforms that ensure consistent, clean, and decision-ready data across the enterprise.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI ADVISORY & ENABLEMENT',
-      heading: 'Most AI efforts fail not because the technology isn\'t capable — but because the organization isn\'t structured to absorb it.',
+      serviceLabel: 'DATA INFRASTRUCTURE & PRODUCTIZATION',
+      heading: 'Build the data foundation your decisions can actually rely on.',
       body: [
-        'We work with your leadership team to define where AI fits, identify and prioritize high-impact use cases, and support adoption through consulting-led enablement, capability building, and implementation support.',
-        'The output is a prioritized roadmap with investment accountability built in — not a vision document that sits in a drawer after the kickoff. What gets approved is what gets built.',
+        'Modern enterprises generate large volumes of data, but the challenge is making it usable, consistent, and reliable for decision-making. We strengthen existing data ecosystems and design scalable, governed platforms — enabling seamless data migration and improving accessibility with minimal disruption.',
+        'We establish and enhance robust data pipelines that ingest, transform, and standardize data across systems — creating a single, consistent view. Beyond infrastructure, we enable data productization by treating data as a reusable asset across teams.',
       ],
     },
   },
   {
-    title: 'AI-Augmented Decision Intelligence',
-    subtitle: 'Embed models for forecasting, prediction, and optimization into the systems where decisions happen.',
+    title: 'Analytics, Visualization & Insights',
+    subtitle: 'Intuitive dashboards and predictive insights that enable faster, more informed decisions.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI-AUGMENTED DECISION INTELLIGENCE',
-      heading: 'Your operating decisions need real-time intelligence from the data you already own.',
+      serviceLabel: 'ANALYTICS, VISUALIZATION & INSIGHTS',
+      heading: 'Turn your data into a single, aligned story your teams can act on.',
       body: [
-        'We embed models for forecasting, prediction, and optimization into your systems, so decisions are driven by real-time data and continuous intelligence — not dashboards that require someone to translate or models only data scientists can read.',
-        'From pricing and capacity to risk and market response, decision intelligence gets built into the workflows your leaders actually use to make calls.',
-      ],
-      quote: 'Decision-intelligence adopters report material improvement in decision cycle time across pricing, capacity, and risk functions. — Gartner, 2025.',
-    },
-  },
-  {
-    title: 'Systems That Think and Evolve',
-    subtitle: 'AI becomes the intelligence layer of the enterprise — powering systems that learn, reason, and self-correct.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'SYSTEMS THAT THINK AND EVOLVE',
-      heading: 'AI is no longer just used for analysis or experiments — it\'s becoming part of how systems operate.',
-      body: [
-        'We build AI systems that power your enterprise workflows with intelligence that learns, reasons, self-corrects, and continuously evolves without requiring constant human intervention. The systems improve as they run.',
-        'Instead of relying only on fixed rules, these systems adapt to new patterns, surface emerging risks, and optimize across the business in real time — turning AI from a point solution into an enterprise capability.',
+        'We design intuitive dashboards and reporting solutions that provide a unified view of business performance. By standardizing metrics and aligning data models, we ensure a single version of truth — eliminating discrepancies and enabling consistent decision-making.',
+        'Insights are delivered in near real-time and embedded into business workflows, enabling users to interpret trends, identify issues, and take action quickly — without waiting for a data analyst to run a report.',
       ],
     },
   },
   {
-    title: 'Autonomous Decisioning in Real Time',
-    subtitle: 'Decisions move from delayed approvals to autonomous, real-time execution.',
+    title: 'Next-Gen Data & Enterprise LLM Builds',
+    subtitle: 'AI and LLM solutions built on enterprise data for contextual, reliable, and business-relevant outputs.',
     content: {
       type: 'detail',
-      serviceLabel: 'AUTONOMOUS DECISIONING',
-      heading: 'Real-time decisioning driven by continuously learning intelligence across the organization.',
+      serviceLabel: 'NEXT-GEN DATA & ENTERPRISE LLM BUILDS',
+      heading: 'AI that works with your data, not around it.',
       body: [
-        'We design autonomous decision systems that complete tasks, route approvals, and escalate when human judgment is required — reducing coordination overhead without removing accountability.',
-        'From procurement approval chains to compliance review loops and fraud detection, we map the decision boundaries that need to stay human and automate everything in between.',
+        'We integrate internal data sources — documents, knowledge bases, and structured datasets — into AI workflows, supported by model-ready data pipelines. The result is AI that answers questions grounded in what your organization actually knows.',
+        'With built-in governance and monitoring, we ensure AI solutions remain controlled, consistent, and scalable — so the answers your teams get reflect reality, not hallucination.',
       ],
     },
   },
   {
-    title: 'Self-Healing Workflows',
-    subtitle: 'Workflows that sense, respond, optimize, and self-heal — reducing dependency on manual intervention.',
+    title: 'Data Annotation, Validation & Verification',
+    subtitle: 'High-quality, labeled, and verified data that powers reliable analytics and AI.',
     content: {
       type: 'detail',
-      serviceLabel: 'SELF-HEALING WORKFLOWS',
-      heading: 'The next frontier isn\'t faster workflows. It\'s workflows that fix themselves.',
+      serviceLabel: 'DATA ANNOTATION, VALIDATION & VERIFICATION',
+      heading: 'Clean data isn\'t a nice-to-have. It\'s what separates useful AI from unreliable AI.',
       body: [
-        'We build adaptive operational systems that detect anomalies, reroute around failures, and restore normal state without requiring a human to identify and diagnose the problem first.',
-        'Self-healing workflows reduce operational overhead, minimize downtime, and free your teams to focus on higher-value work — not monitoring systems for problems that should never have required human attention.',
+        'High-quality data is essential for both analytics and AI, yet many organizations struggle with incomplete, inconsistent, or unverified datasets. We establish scalable processes to label, categorize, and enrich data across structured, semi-structured, and unstructured formats.',
+        'Validation and verification mechanisms are embedded within data pipelines to detect errors, inconsistencies, and anomalies early — before they propagate into models, dashboards, or executive decisions.',
+      ],
+    },
+  },
+  {
+    title: 'Augmented Decision Intelligence',
+    subtitle: 'Integrate data, analytics, and AI into the workflows where decisions actually happen.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'AUGMENTED DECISION INTELLIGENCE',
+      heading: 'From reactive dashboards to proactive decision support.',
+      body: [
+        'We integrate data, analytics, and AI into the environments where decisions are made — whether through dashboards, applications, or operational systems. By leveraging predictive analytics, recommendations, and AI-driven insights, we enable organizations to move from reactive to proactive decision-making.',
+        'The result isn\'t another dashboard that sits unused. It\'s decision support embedded where your teams already work — so the right signal reaches the right person at the right moment.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Start with what matters.',        body: 'We identify high-impact use cases based on business value, data readiness, and feasibility — so effort goes where it can deliver real outcomes, not just impressive demos.' },
-  { title: 'Prove it early.',                 body: 'We move quickly to a working proof of concept, validating use cases before committing full investment — so the plan responds to real signal instead of assumptions.' },
-  { title: 'Build for scale.',                body: 'We architect solutions that can grow — governed, reliable, and ready to expand as AI maturity increases across the organization.' },
-  { title: 'Your board stays informed.',      body: 'What you approved is what gets built. Governance is visible from week one, and your leadership team can explain every decision at the altitude the board operates at.' },
+  { title: 'Business-First, Data-Driven Solutions',  body: 'Every solution is anchored in the outcomes leaders need to drive, ensuring data models, pipelines, and reporting layers directly support business priorities — not just technical best practices.' },
+  { title: 'Data Lineage and Governance',             body: 'We embed data quality, governance, and end-to-end data lineage into every layer, ensuring transparency, traceability, and trust across the data ecosystem.' },
+  { title: 'Bridging Technical and Business Teams',  body: 'Our focus is on making data usable and trusted in real business environments, bridging the gap between technical systems and the decision-making outcomes your teams need.' },
+  { title: 'Continuous Monitoring & Improvement',    body: 'Data quality isn\'t a project — it\'s an ongoing discipline. We embed monitoring into pipelines so data integrity is validated continuously, not just at deployment.' },
 ];
 
 const proofCards = [
-  { tags: 'HEALTHCARE • AI / NLP',          title: 'AI-Powered OCR Engine: ~95% Accuracy in Document Extraction', excerpt: 'Document-heavy workflows required manual data entry, causing delays and inconsistencies. A proprietary OCR + NER engine now extracts and structures data from unstructured inputs with ~95% accuracy.' },
-  { tags: 'HEALTHCARE • PREDICTIVE AI',     title: 'Predictive Fatigue Modeling Prevents Operational Risk',       excerpt: 'A healthcare organization lacked visibility into fatigue-related workforce risks. A predictive analytics platform using biometric data now forecasts fatigue levels and triggers proactive alerts.' },
-  { tags: 'SECURITY • REAL-TIME AI',        title: 'Threat Detection Reduced from 8 Hours to Minutes',            excerpt: 'Manual monitoring of restricted premises delayed identification of unauthorized individuals. A real-time AI-based recognition system now detects and alerts on intrusions in under 10 minutes.' },
+  { tags: 'HEALTHCARE • DATA UNIFICATION',       title: 'From Fragmented Data to Predictive, Decision-Ready Insights', excerpt: 'We unified MDxHealth\'s scattered data ecosystem to create a governed, single source of truth across clinical, operational, and financial workflows. Advanced predictive analytics enabled proactive decision-making.' },
+  { tags: 'HEALTHCARE • ANALYTICS PLATFORM',     title: 'CarePredictor: Turning Care Signals Into Earlier Action',       excerpt: 'Technossus supported CarePredictor in strengthening a healthcare platform that uses data-driven insights to identify patients at risk earlier, enabling timely interventions and better care outcomes.' },
+  { tags: 'ENTERPRISE • DATA PLATFORM',          title: 'Scalable Data Foundation for Enterprise AI Readiness',          excerpt: 'A large enterprise needed a reliable data foundation before scaling AI. We designed a governed data platform that unified disparate sources and enabled AI teams to build with confidence.' },
 ];
 
 const painCards = [
-  { heading: '"AI efforts are underway, but direction and impact are still unclear."',         body: 'The steering committee keeps asking for AI transformation updates. You\'re not sure how to answer without sounding like nothing is happening — or like too much is happening unchecked.' },
-  { heading: '"Early experiments show promise, but scaling across teams remains a challenge."', body: 'Pilots succeed. Production deployments stall. The gap between a working prototype and an enterprise capability turns out to be the hardest part of the journey.' },
-  { heading: '"Multiple AI efforts are active, but they operate in silos."',                   body: 'Three different teams have deployed something AI-powered. You learned about two of them from a vendor invoice. Governance that used to be implicit in the process no longer is.' },
+  { heading: '"Data is spread across systems, but our reports don\'t match."',     body: 'Teams spend more time reconciling numbers than making decisions. Every meeting starts with a debate about which number is right — and ends without resolving it.' },
+  { heading: '"Our AI initiatives keep failing to scale."',                        body: 'Early experiments show promise, but when the team tries to scale them, they hit a wall. The data isn\'t structured, complete, or trustworthy enough for production AI.' },
+  { heading: '"Decision-making is delayed because nobody trusts the data."',       body: 'Manual processes, inconsistent data, and too many one-off reports mean decisions wait on data validation instead of moving on insight.' },
 ];
 
-export default function AIBusiness() {
+export default function DataIntelligence() {
   const { isMobile, isTablet } = useBreakpoint();
 
   const inner = {
@@ -148,21 +147,21 @@ export default function AIBusiness() {
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
             { label: 'Service Offerings', href: '/services' },
-            { label: 'AI-Led Business Transformation', active: true },
+            { label: 'Data Intelligence & Analytics', active: true },
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>AI that drives real business outcomes</p>
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Data you can trust. Insights you can act on.</p>
               <h1 style={d1()}>
-                Make AI your{' '}
-                <span style={{ color: red }}>competitive advantage.</span>
+                Your data is speaking.{' '}
+                <span style={{ color: red }}>Are you listening fast enough?</span>
               </h1>
               <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                Move into an era of intelligent systems with AI embedded across your business. We help you identify high-impact use cases, build solutions, and integrate them into your workflows so your systems operate with less friction and scale more reliably.
+                Data and Analytics only matter when they lead to clear, confident decisions. We unify, clean, and structure data so it tells a single, aligned story. Decisions move faster, and teams focus on acting — not reconciling.
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                <Button variant="primary"   label="Explore AI Studio"         href="#" />
-                <Button variant="secondary" label="Talk to an AI Evangelist"  href="#" />
+                <Button variant="primary"   label="Talk to a Data Expert"  href="#" />
+                <Button variant="secondary" label="Explore Our Work"       href="#" />
               </div>
             </div>
             {!isMobile && (
@@ -196,24 +195,24 @@ export default function AIBusiness() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
-                From AI adoption to{' '}
-                <span style={{ color: red }}>intelligent enterprise systems.</span>
+                Data is growing faster than{' '}
+                <span style={{ color: red }}>decision readiness.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'AI is no longer just used for analysis or experiments. It is becoming part of how products work, how teams operate, and how decisions are made. The focus is now on building systems that deliver value across the business.',
-                  'Systems are starting to improve as they run — instead of relying only on fixed rules. The organizations pulling ahead are the ones building AI into their core workflows, not running it as a parallel experiment.',
+                  'Organizations have moved beyond collecting data — the challenge today is making it usable for decisions. The shift is from descriptive dashboards to predictive, personalised, and decision-support capabilities.',
+                  'As expectations rise, teams need data that is aligned, governed, and ready to act on — so insight turns into action without friction. The bottleneck is no longer data volume. It\'s data trust.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '7%',  desc: 'Of businesses have successfully scaled AI enterprise-wide. The other 93% are still running pilots.' },
-                { num: '92%', desc: 'Of companies are planning to increase their AI investments — the pressure to scale is accelerating.' },
-                { num: '~70%', desc: 'Of large organizations cannot produce a single inventory of AI in production. Shadow deployment is now the default state.' },
-                { num: 'Week 1', desc: 'Your leadership team sees what\'s being built, how governance is structured, and what they\'ll own at handoff.' },
+                { num: '73%',   desc: 'Of organizations say data quality is a major barrier to realizing value from analytics and AI. — Gartner' },
+                { num: '2.5×',  desc: 'More revenue growth among organizations that treat data as a product and govern it at the enterprise level.' },
+                { num: '60%',   desc: 'Of AI project failures are attributed to data issues — not model problems. Clean data is the foundation.' },
+                { num: '< 1%',  desc: 'Of enterprise data is analyzed and acted upon. The opportunity isn\'t more collection — it\'s better utilization.' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
@@ -232,8 +231,8 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SERVICE OFFERINGS" />
           <h2 style={{ ...d2(), marginTop: 16 }}>
-            Your strategy, configured across the delivery that makes it{' '}
-            <span style={{ color: red }}>land.</span>
+            From raw data to trusted insights — configured for{' '}
+            <span style={{ color: red }}>how your business actually decides.</span>
           </h2>
           <div style={{ marginTop: 48 }}>
             <Accordion items={accordionItems} defaultActiveIndex={1} />
@@ -250,13 +249,13 @@ export default function AIBusiness() {
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <Tag label="HOW WE WORK" />
               <h2 style={{ ...d2(), marginTop: 16 }}>
-                We don't deliver an AI transformation and leave you to{' '}
-                <span style={{ color: red }}>explain it.</span>
+                We focus on making data usable and trusted in{' '}
+                <span style={{ color: red }}>real business environments.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'We work embedded with your leadership team — making governance visible, tracing investment to outcome, and transferring the thread to your people as we build. When the engagement ends, your team owns the framework, understands the architecture, and can defend it without us in the room.',
-                  'AI transformation creates as many questions as answers for executives, for middle management, for the teams doing the work. Our approach is designed to bring your organization along, not leave it dependent on us.',
+                  'Every data engagement starts with the decision it needs to support — not the technology that will deliver it. We work with your business and data teams together, so the solutions we build are anchored in real outcomes, not technical milestones.',
+                  'Our approach bridges the gap between the people who manage data infrastructure and the people who make decisions with it. When the engagement ends, your team owns both the platform and the practice.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
@@ -285,7 +284,7 @@ export default function AIBusiness() {
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
             <div>
               <h1 style={d1('#fff')}>Success <span style={{ color: red }}>stories.</span></h1>
-              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
+              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Real outcomes from teams that needed data they could trust.</p>
             </div>
             <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
           </div>
@@ -312,8 +311,8 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h1 style={{ ...d1(), marginTop: 16 }}>
-            If any of these describe your current AI situation, we{' '}
-            <span style={{ color: red }}>should talk.</span>
+            If data problems are slowing your decisions, you're not{' '}
+            <span style={{ color: red }}>alone.</span>
           </h1>
           <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
           <div style={{ display: 'grid', gridTemplateColumns: cols2, gap: 24, marginTop: 48 }}>
@@ -326,15 +325,14 @@ export default function AIBusiness() {
             ))}
           </div>
 
-          {/* Consulting offer block */}
+          {/* CTA offer block */}
           <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Win with AI. Start with the right use cases and a clear plan.</h3>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Turn your data into a reliable business asset.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              We help bring clarity and direction to your AI efforts — identifying meaningful use cases, aligning them with business priorities, and turning early experiments into scalable, real solutions. Your first AI use case, defined with us, at no cost.
+              Whether you are strengthening your data foundation or scaling AI, we help you move forward with clarity, control, and measurable outcomes. Start with a focused conversation about where your data ecosystem needs the most attention.
             </p>
-            <p style={{ fontFamily: sans, fontSize: 13, color: '#9B9B9B', margin: 0 }}>No-cost AI Opportunity Assessment. No pitch deck. A real read on your highest-value use case.</p>
             <div>
-              <Button variant="primary" label="Get Your First AI Use Case Defined →" href="#" />
+              <Button variant="primary" label="Schedule a Discussion →" href="#" />
             </div>
           </div>
         </div>

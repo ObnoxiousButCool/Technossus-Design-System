@@ -25,79 +25,79 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'Continuous Quality & QA Ops Engineering',
-    subtitle: 'Quality that lives in the pipeline, from design to release.',
+    title: 'Independent Quality Assurance',
+    subtitle: 'Validate end-to-end system behavior through functional, non-functional, API, and regression testing.',
     content: {
       type: 'detail',
-      serviceLabel: 'CONTINUOUS QUALITY & QA OPS ENGINEERING',
-      heading: 'Build quality into every commit, not just the last one before release.',
+      serviceLabel: 'INDEPENDENT QUALITY ASSURANCE',
+      heading: 'Objective validation matters most when the team that built the system is also the one reviewing it.',
       body: [
-        'Continuous quality means your pipeline catches problems the moment they appear — not three sprints later when the cost to fix them has compounded. We work with your team to embed quality gates, test automation, and observability throughout the delivery lifecycle.',
-        'From CI/CD integration to release readiness dashboards, every touchpoint is designed to give engineers real signal, not noise. The result is a pipeline that moves fast and holds up.',
-      ],
-      quote: 'Defects found in production cost 100x more to fix than those found during design. Shift quality left — before the first commit. — IBM Research',
-    },
-  },
-  {
-    title: 'Performance, Resilience & Scalability',
-    subtitle: 'Ship version one. Then build the product it needs to become.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'PERFORMANCE, RESILIENCE & SCALABILITY',
-      heading: 'Ship version one. Then build the product it needs to become.',
-      body: [
-        'Performance testing is most valuable when it\'s run before the system is under pressure, not after users are experiencing it. We design load, stress, and resilience tests that reflect real traffic patterns and failure modes — so you know how the product behaves before the world does.',
-        'We help teams establish performance baselines, define SLOs that matter, and automate the tests that protect them across every release.',
-      ],
-    },
-  },
-  {
-    title: 'Quality Engineering & Independent Assurance',
-    subtitle: 'Your release shouldn\'t feel like a bet every time.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'QUALITY ENGINEERING & INDEPENDENT ASSURANCE',
-      heading: 'Find out if the idea works before you bet the quarter on it.',
-      body: [
-        'Objective validation matters most when the team that built the system is also the one reviewing it. Independent quality assurance brings a consistent, unbiased perspective across releases, environments, and system changes — surfacing what\'s easy to miss when engineers are close to the code.',
+        'Independent quality assurance brings a consistent, unbiased perspective across releases, environments, and system changes — surfacing what\'s easy to miss when engineers are close to the code.',
         'We work with your product and engineering teams to design test strategies around how you actually build: your stack, release cadence, and the business-critical paths where a failure would hurt most. Coverage gets built to hold across releases, not just pass the next one.',
       ],
       quote: 'Organizations with mature QE practices resolve production defects 6x faster and at 30x lower cost than teams catching the same issues post-release. — NIST',
     },
   },
   {
+    title: 'Test Automation Engineering',
+    subtitle: 'Integrate automated testing into CI/CD pipelines to enable continuous validation and surface risks early.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'TEST AUTOMATION ENGINEERING',
+      heading: 'Quality built into the pipeline is quality that holds across every release.',
+      body: [
+        'We integrate automated testing and intelligent agents into CI/CD pipelines to enable continuous validation — so risks surface early in the release cycle, when they cost the least to fix.',
+        'Automated functional, non-functional, API, and regression testing gets built to protect business-critical outcomes — not to maximize coverage numbers. The result is a test suite your team can maintain and trust.',
+      ],
+      quote: 'Defects found in production cost 100x more to fix than those found during design. Shift quality left — before the first commit. — IBM Research',
+    },
+  },
+  {
     title: 'Governance, Compliance & Trust Assurance',
-    subtitle: 'The product works. Now make it work like it was built today.',
+    subtitle: 'Ensure systems remain reliable, traceable, and compliant with WCAG, HIPAA, and audit requirements.',
     content: {
       type: 'detail',
       serviceLabel: 'GOVERNANCE, COMPLIANCE & TRUST ASSURANCE',
-      heading: 'The product works. Now make sure it works the way it was meant to.',
+      heading: 'Compliance validation is most expensive when it\'s the last thing addressed before an audit.',
       body: [
-        'Compliance validation is most expensive when it\'s the last thing addressed before a submission, audit, or release. We build traceability and governance into quality practices from the start — so the documentation exists when it\'s needed, not when it\'s requested.',
-        'Whether your context is FDA regulated, SOC 2, HIPAA, or internal standards, we help teams build quality artifacts that hold up to scrutiny and transfer to whoever needs them next.',
+        'We build traceability and governance into quality practices from the start — so the documentation exists when it\'s needed, not when it\'s requested. Whether your context is FDA regulated, SOC 2, HIPAA, or accessibility standards, quality artifacts are built to hold up to scrutiny.',
+        'Systems remain reliable, traceable, and compliant at scale — with security, accessibility, and audit readiness embedded into how quality gets delivered.',
       ],
     },
   },
   {
-    title: 'AI-first & Responsible Quality Engineering',
-    subtitle: 'Keep the business logic. Lose the technical debt holding it hostage.',
+    title: 'Model Validation, Security & Performance Engineering',
+    subtitle: 'Validate model outputs, system security, and performance under real-world usage and load.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI-FIRST & RESPONSIBLE QUALITY ENGINEERING',
-      heading: 'AI models need quality engineering too — it just looks different.',
+      serviceLabel: 'MODEL VALIDATION, SECURITY & PERFORMANCE ENGINEERING',
+      heading: 'AI models need quality engineering too — and it looks very different from traditional testing.',
       body: [
         'Model outputs aren\'t deterministic. Traditional test suites don\'t catch hallucinations, fairness drift, or latency degradation under production load. We build evaluation frameworks for AI systems that reflect the risks that matter: accuracy, safety, consistency, and behavior at scale.',
-        'From prompt regression suites to LLM evaluation pipelines, we work alongside your AI team to build the infrastructure that gives confidence before deployment — and catches drift after it.',
+        'Performance testing is most valuable before the system is under pressure, not after users experience it. We design load, stress, and resilience tests that reflect real traffic patterns — so you know how the product behaves before the world does.',
+      ],
+    },
+  },
+  {
+    title: 'Probabilistic Testing',
+    subtitle: 'Test how systems behave under unpredictable inputs, edge cases, and changing conditions.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'PROBABILISTIC TESTING',
+      heading: 'The failures that hurt most are rarely the ones you planned your test cases around.',
+      body: [
+        'Probabilistic testing validates how systems behave under unpredictable inputs, edge cases, and changing conditions — not just the predefined scenarios your team already thought of.',
+        'From prompt regression suites to LLM evaluation pipelines and chaos engineering, we work alongside your team to build the infrastructure that gives confidence before deployment — and catches unexpected behavior after it.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Embedded From Day One',     body: 'Quality strategy gets shaped alongside engineering and product, before the first test case is written.' },
-  { title: 'Capability Transfers',      body: 'Frameworks, tooling, and methodology are documented and handed over as working knowledge, not as artifacts nobody can use.' },
-  { title: 'Alignment Before Delivery', body: 'We work within what serves the product and business, and get alignment on what needs to change before it becomes a problem.' },
-  { title: 'Standards That Hold',       body: 'Quality benchmarks are set at the start and maintained through delivery. They don\'t flex when timelines get tight.' },
+  { title: 'Embed Quality into Delivery Pipelines', body: 'Quality is built into CI/CD through functional, API, regression, and non-functional testing — so validation happens continuously, not at the end of the sprint.' },
+  { title: 'Focus on What Actually Matters',        body: 'Validation is prioritized using risk signals, usage patterns, and change impact — so effort goes toward what protects real business outcomes, not just coverage numbers.' },
+  { title: 'Transfer Knowledge, Not Just Frameworks', body: 'Every engagement is designed to leave your team more capable — with automation frameworks, testing strategies, and quality practices they can own and evolve after we leave.' },
+  { title: 'Standards That Hold',                   body: 'Quality benchmarks are set at the start and maintained through delivery. They don\'t flex when timelines get tight, and they transfer cleanly to your team.' },
 ];
 
 const proofCards = [
@@ -152,20 +152,21 @@ export default function QualityEngineering() {
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
             { label: 'Service Offerings', href: '/services' },
-            { label: 'Quality Engineering and Automation', active: true },
+            { label: 'Quality Engineering & Automation', active: true },
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Move beyond testing. Build for quality.</p>
               <h1 style={d1()}>
-                You know what's broken. The problem is{' '}
-                <span style={{ color: red }}>what you don't know yet.</span>
+                Engineer quality into{' '}
+                <span style={{ color: red }}>every release.</span>
               </h1>
               <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                Most quality programs are built to catch what already went wrong. We work with your team to build the kind of intelligence that finds problems before your users do — and the kind of automation that holds up long after we're gone.
+                Traditional testing is nearing its end. We help teams fast-track modern quality engineering — embedding continuous validation into delivery pipelines so every release is reliable, secure, and ready for real-world use.
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                <Button variant="primary"   label="Show us the problem" href="#" />
-                <Button variant="secondary" label="See How We Work"     href="#how" />
+                <Button variant="primary"   label="Talk to a Quality Expert" href="#" />
+                <Button variant="secondary" label="See How We Work"          href="#how" />
               </div>
             </div>
             {!isMobile && (

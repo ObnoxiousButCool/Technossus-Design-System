@@ -23,93 +23,94 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'AI Advisory & Enablement',
-    subtitle: 'Define where AI fits, identify high-impact use cases, and build the capability to scale them.',
+    title: 'Multi-Cloud Resilience Engineering',
+    subtitle: 'Design and manage platforms that perform consistently across cloud and hybrid environments.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI ADVISORY & ENABLEMENT',
-      heading: 'Most AI efforts fail not because the technology isn\'t capable — but because the organization isn\'t structured to absorb it.',
+      serviceLabel: 'MULTI-CLOUD RESILIENCE ENGINEERING',
+      heading: 'Modern cloud environments span multiple providers. Consistency across them shouldn\'t require heroics.',
       body: [
-        'We work with your leadership team to define where AI fits, identify and prioritize high-impact use cases, and support adoption through consulting-led enablement, capability building, and implementation support.',
-        'The output is a prioritized roadmap with investment accountability built in — not a vision document that sits in a drawer after the kickoff. What gets approved is what gets built.',
+        'We help ensure systems remain observable and perform consistently across multi-cloud and hybrid environments, reducing operational blind spots and dependency risks. Resilience is built into how platforms run — not retrofitted after the first outage.',
+        'Through structured monitoring, failover readiness, and consistent performance management across infrastructure layers, your platform recovers reliably under disruptions — and your team knows why before users do.',
       ],
     },
   },
   {
-    title: 'AI-Augmented Decision Intelligence',
-    subtitle: 'Embed models for forecasting, prediction, and optimization into the systems where decisions happen.',
+    title: 'Cloud FinOps & AI Token Optimization',
+    subtitle: 'Establish clear ownership, cost visibility, and usage discipline across cloud and AI consumption.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI-AUGMENTED DECISION INTELLIGENCE',
-      heading: 'Your operating decisions need real-time intelligence from the data you already own.',
+      serviceLabel: 'CLOUD FINOPS & AI TOKEN OPTIMIZATION',
+      heading: 'Cloud and AI consumption grow without clear ownership. Costs become unpredictable. We fix that.',
       body: [
-        'We embed models for forecasting, prediction, and optimization into your systems, so decisions are driven by real-time data and continuous intelligence — not dashboards that require someone to translate or models only data scientists can read.',
-        'From pricing and capacity to risk and market response, decision intelligence gets built into the workflows your leaders actually use to make calls.',
-      ],
-      quote: 'Decision-intelligence adopters report material improvement in decision cycle time across pricing, capacity, and risk functions. — Gartner, 2025.',
-    },
-  },
-  {
-    title: 'Systems That Think and Evolve',
-    subtitle: 'AI becomes the intelligence layer of the enterprise — powering systems that learn, reason, and self-correct.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'SYSTEMS THAT THINK AND EVOLVE',
-      heading: 'AI is no longer just used for analysis or experiments — it\'s becoming part of how systems operate.',
-      body: [
-        'We build AI systems that power your enterprise workflows with intelligence that learns, reasons, self-corrects, and continuously evolves without requiring constant human intervention. The systems improve as they run.',
-        'Instead of relying only on fixed rules, these systems adapt to new patterns, surface emerging risks, and optimize across the business in real time — turning AI from a point solution into an enterprise capability.',
+        'We bring structure through FinOps practices — defining accountability, improving cost visibility, and aligning usage with business priorities. The result is predictable, optimized spend — where both cloud usage and AI consumption are continuously monitored, governed, and aligned to value.',
+        'As AI token consumption becomes a significant line item for enterprises, governance of that spend requires the same discipline as cloud infrastructure. We build both into a single, unified cost ownership model.',
       ],
     },
   },
   {
-    title: 'Autonomous Decisioning in Real Time',
-    subtitle: 'Decisions move from delayed approvals to autonomous, real-time execution.',
+    title: 'AI Model Governance',
+    subtitle: 'Govern the full lifecycle of AI workloads — from deployment to monitoring and control.',
     content: {
       type: 'detail',
-      serviceLabel: 'AUTONOMOUS DECISIONING',
-      heading: 'Real-time decisioning driven by continuously learning intelligence across the organization.',
+      serviceLabel: 'AI MODEL GOVERNANCE',
+      heading: 'As AI adoption scales, managing access, usage, and compliance becomes critical infrastructure.',
       body: [
-        'We design autonomous decision systems that complete tasks, route approvals, and escalate when human judgment is required — reducing coordination overhead without removing accountability.',
-        'From procurement approval chains to compliance review loops and fraud detection, we map the decision boundaries that need to stay human and automate everything in between.',
+        'We enable governed cloud environments that support the full lifecycle of AI workloads — from deployment to monitoring and control. With governance embedded, organizations can scale AI confidently — ensuring compliance, reducing risk, and maintaining control over model usage and outcomes.',
+        'Shadow AI deployment is now the default state in most enterprises. Governance that used to be implicit in the deployment process now has to be explicit, tracked, and defensible at the altitude your board operates at.',
       ],
     },
   },
   {
-    title: 'Self-Healing Workflows',
-    subtitle: 'Workflows that sense, respond, optimize, and self-heal — reducing dependency on manual intervention.',
+    title: 'Autonomous Cloud Operations (AI/ML Ops)',
+    subtitle: 'Improve incident response and routine operations through automation and operational visibility.',
     content: {
       type: 'detail',
-      serviceLabel: 'SELF-HEALING WORKFLOWS',
-      heading: 'The next frontier isn\'t faster workflows. It\'s workflows that fix themselves.',
+      serviceLabel: 'AUTONOMOUS CLOUD OPERATIONS',
+      heading: 'Cloud operations that depend on manual processes are always one incident away from a problem.',
       body: [
-        'We build adaptive operational systems that detect anomalies, reroute around failures, and restore normal state without requiring a human to identify and diagnose the problem first.',
-        'Self-healing workflows reduce operational overhead, minimize downtime, and free your teams to focus on higher-value work — not monitoring systems for problems that should never have required human attention.',
+        'We improve incident response and routine operations through automation, operational visibility, and structured workflows. Over time, operations become more predictable and efficient — reducing downtime, improving reliability, and allowing teams to focus on higher-value work instead of reactive fixes.',
+        'The goal is operations that self-heal where possible, escalate intelligently where needed, and give your team clear visibility into everything that matters.',
+      ],
+    },
+  },
+  {
+    title: 'Cloud Security & Compliance',
+    subtitle: 'Security and compliance built into how cloud environments operate — not an afterthought.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'CLOUD SECURITY & COMPLIANCE',
+      heading: 'Security integrated into operations means you can scale confidently without introducing additional risk.',
+      body: [
+        'We embed access control, policy enforcement, and compliance into day-to-day cloud operations — so security isn\'t a gate at the end of the release cycle, but a property of how the environment runs.',
+        'With security integrated into operations, organizations can maintain control, meet regulatory requirements, and scale confidently — without every new workload requiring a separate security review from scratch.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Start with what matters.',        body: 'We identify high-impact use cases based on business value, data readiness, and feasibility — so effort goes where it can deliver real outcomes, not just impressive demos.' },
-  { title: 'Prove it early.',                 body: 'We move quickly to a working proof of concept, validating use cases before committing full investment — so the plan responds to real signal instead of assumptions.' },
-  { title: 'Build for scale.',                body: 'We architect solutions that can grow — governed, reliable, and ready to expand as AI maturity increases across the organization.' },
-  { title: 'Your board stays informed.',      body: 'What you approved is what gets built. Governance is visible from week one, and your leadership team can explain every decision at the altitude the board operates at.' },
+  { title: 'Stabilize Before You Scale',                body: 'We start with current environments — stabilize performance, reduce operational friction, and improve reliability before introducing new layers or tools.' },
+  { title: 'Make Ownership Visible and Actionable',     body: 'Define clear accountability across teams so decisions on cost, performance, and reliability are taken with full context and the right authority.' },
+  { title: 'Govern Continuously, Not Periodically',     body: 'Governance is embedded into how environments are managed — so compliance and cost control are routine decisions, not reactive responses to audits.' },
+  { title: 'Build for What\'s Coming, Not Just What Is', body: 'Cloud environments that support today\'s workloads need to be ready for AI, data, and new business models. We build that readiness in from the start.' },
 ];
 
 const proofCards = [
-  { tags: 'HEALTHCARE • AI / NLP',          title: 'AI-Powered OCR Engine: ~95% Accuracy in Document Extraction', excerpt: 'Document-heavy workflows required manual data entry, causing delays and inconsistencies. A proprietary OCR + NER engine now extracts and structures data from unstructured inputs with ~95% accuracy.' },
-  { tags: 'HEALTHCARE • PREDICTIVE AI',     title: 'Predictive Fatigue Modeling Prevents Operational Risk',       excerpt: 'A healthcare organization lacked visibility into fatigue-related workforce risks. A predictive analytics platform using biometric data now forecasts fatigue levels and triggers proactive alerts.' },
-  { tags: 'SECURITY • REAL-TIME AI',        title: 'Threat Detection Reduced from 8 Hours to Minutes',            excerpt: 'Manual monitoring of restricted premises delayed identification of unauthorized individuals. A real-time AI-based recognition system now detects and alerts on intrusions in under 10 minutes.' },
+  { tags: 'HEALTHCARE • CLOUD PLATFORM',      title: 'Cloud Platform Saves Millions in Clinical Trials',          excerpt: 'A cloud-based clinical trials system enabled real-time monitoring and early risk detection. With $70M+ trial costs and 80%+ failure rates, early intervention through cloud-enabled visibility helped avoid significant losses.' },
+  { tags: 'MARKETING • ANALYTICS & VOICE',    title: 'Cloud-Based Analytics and Voice-Driven Brand Insights',     excerpt: 'A cloud-based data visualization and voice-enabled experience was prototyped to help marketers access brand performance insights faster and more intuitively — reducing analysis time from days to minutes.' },
+  { tags: 'HEALTHCARE • ARCHITECTURE DESIGN', title: 'Proof of Concept Minimizes Risk at Dignity Health',         excerpt: 'A cloud-based reference architecture was designed and validated to reduce risk in a multi-million-dollar healthcare digital transformation initiative — before a single production line was written.' },
 ];
 
 const painCards = [
-  { heading: '"AI efforts are underway, but direction and impact are still unclear."',         body: 'The steering committee keeps asking for AI transformation updates. You\'re not sure how to answer without sounding like nothing is happening — or like too much is happening unchecked.' },
-  { heading: '"Early experiments show promise, but scaling across teams remains a challenge."', body: 'Pilots succeed. Production deployments stall. The gap between a working prototype and an enterprise capability turns out to be the hardest part of the journey.' },
-  { heading: '"Multiple AI efforts are active, but they operate in silos."',                   body: 'Three different teams have deployed something AI-powered. You learned about two of them from a vendor invoice. Governance that used to be implicit in the process no longer is.' },
+  { heading: '"Infrastructure is active, but there\'s limited clarity on performance."',             body: 'Systems are running, but nobody can say confidently whether they\'re performing as expected, what the dependencies are, or where the next failure is most likely to come from.' },
+  { heading: '"AI usage is growing, but token consumption isn\'t governed."',                        body: 'Usage is increasing faster than anyone planned for, costs are rising unpredictably, and there\'s no clear owner for the spend. Every month is a surprise at invoice time.' },
+  { heading: '"How do I add new capabilities without disrupting current operations?"',               body: 'Every time a new capability is introduced, the team holds its breath. The integration risk is real, the downtime tolerance is zero, and the runway for a measured rollout keeps getting shorter.' },
+  { heading: '"Systems scale, but reliability depends heavily on manual effort."',                   body: 'Incident response requires heroics. Failover procedures live in someone\'s head. The system works — but only because people are watching it around the clock.' },
+  { heading: '"Am I getting locked into vendor decisions that limit flexibility later?"',             body: 'Commitments that made sense at the time are now creating constraints. Moving workloads, switching tooling, or re-platforming feels expensive and risky in equal measure.' },
 ];
 
-export default function AIBusiness() {
+export default function CloudModernization() {
   const { isMobile, isTablet } = useBreakpoint();
 
   const inner = {
@@ -148,21 +149,21 @@ export default function AIBusiness() {
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
             { label: 'Service Offerings', href: '/services' },
-            { label: 'AI-Led Business Transformation', active: true },
+            { label: 'Cloud & Product Modernization', active: true },
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>AI that drives real business outcomes</p>
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Designed for control. Ready for scale.</p>
               <h1 style={d1()}>
-                Make AI your{' '}
-                <span style={{ color: red }}>competitive advantage.</span>
+                Cloud environments that hold up{' '}
+                <span style={{ color: red }}>as the business scales.</span>
               </h1>
               <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                Move into an era of intelligent systems with AI embedded across your business. We help you identify high-impact use cases, build solutions, and integrate them into your workflows so your systems operate with less friction and scale more reliably.
+                We help organizations design, manage, and improve cloud environments — strengthening reliability, bringing costs under control, and embedding governance. So systems run smoothly while supporting business needs, including future data and AI use cases.
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                <Button variant="primary"   label="Explore AI Studio"         href="#" />
-                <Button variant="secondary" label="Talk to an AI Evangelist"  href="#" />
+                <Button variant="primary"   label="Talk to a CTO-on-Demand" href="#" />
+                <Button variant="secondary" label="Explore Our Work"        href="#" />
               </div>
             </div>
             {!isMobile && (
@@ -196,24 +197,24 @@ export default function AIBusiness() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
-                From AI adoption to{' '}
-                <span style={{ color: red }}>intelligent enterprise systems.</span>
+                Cloud is scaling. Operations are{' '}
+                <span style={{ color: red }}>catching up.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'AI is no longer just used for analysis or experiments. It is becoming part of how products work, how teams operate, and how decisions are made. The focus is now on building systems that deliver value across the business.',
-                  'Systems are starting to improve as they run — instead of relying only on fixed rules. The organizations pulling ahead are the ones building AI into their core workflows, not running it as a parallel experiment.',
+                  'Cloud adoption is no longer the barrier — managing it effectively is. As environments grow, the focus has shifted to reliability, cost control, and governance so cloud supports business needs without adding operational complexity.',
+                  'Organizations continue to increase cloud spending, but lack clear ownership and cost discipline across environments. Multi-cloud and hybrid architectures are the norm, creating new operational complexity that most teams weren\'t structured to handle.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '7%',  desc: 'Of businesses have successfully scaled AI enterprise-wide. The other 93% are still running pilots.' },
-                { num: '92%', desc: 'Of companies are planning to increase their AI investments — the pressure to scale is accelerating.' },
-                { num: '~70%', desc: 'Of large organizations cannot produce a single inventory of AI in production. Shadow deployment is now the default state.' },
-                { num: 'Week 1', desc: 'Your leadership team sees what\'s being built, how governance is structured, and what they\'ll own at handoff.' },
+                { num: '$70M+',  desc: 'Clinical trial costs managed through a cloud platform built for real-time monitoring and early risk detection.' },
+                { num: '35%',    desc: 'Average cloud spend reduction for enterprises that implement formal FinOps disciplines and cost ownership models.' },
+                { num: '80%',    desc: 'Of enterprise AI initiatives are blocked by cloud governance gaps — not model performance or data quality.' },
+                { num: 'Week 1', desc: 'When governance is embedded from the start, your board sees what\'s running, what it costs, and who\'s accountable.' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
@@ -232,8 +233,8 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SERVICE OFFERINGS" />
           <h2 style={{ ...d2(), marginTop: 16 }}>
-            Your strategy, configured across the delivery that makes it{' '}
-            <span style={{ color: red }}>land.</span>
+            Cloud platforms that stay reliable, controlled, and cost-efficient —{' '}
+            <span style={{ color: red }}>while enabling secure AI adoption.</span>
           </h2>
           <div style={{ marginTop: 48 }}>
             <Accordion items={accordionItems} defaultActiveIndex={1} />
@@ -250,13 +251,13 @@ export default function AIBusiness() {
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <Tag label="HOW WE WORK" />
               <h2 style={{ ...d2(), marginTop: 16 }}>
-                We don't deliver an AI transformation and leave you to{' '}
-                <span style={{ color: red }}>explain it.</span>
+                Our approach focuses on how cloud environments{' '}
+                <span style={{ color: red }}>operate day to day.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'We work embedded with your leadership team — making governance visible, tracing investment to outcome, and transferring the thread to your people as we build. When the engagement ends, your team owns the framework, understands the architecture, and can defend it without us in the room.',
-                  'AI transformation creates as many questions as answers for executives, for middle management, for the teams doing the work. Our approach is designed to bring your organization along, not leave it dependent on us.',
+                  'We focus on keeping systems reliable, costs predictable, and governance embedded into routine decisions — not bolt-on audits that happen once a quarter.',
+                  'Every engagement starts by understanding how your environment actually runs today — not how the architecture diagram says it should. From there, we build toward the kind of operational maturity that makes scaling predictable instead of nerve-wracking.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
@@ -285,7 +286,7 @@ export default function AIBusiness() {
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
             <div>
               <h1 style={d1('#fff')}>Success <span style={{ color: red }}>stories.</span></h1>
-              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
+              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Real cloud outcomes from organizations that needed control as much as capability.</p>
             </div>
             <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
           </div>
@@ -312,7 +313,7 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h1 style={{ ...d1(), marginTop: 16 }}>
-            If any of these describe your current AI situation, we{' '}
+            If cloud complexity is creating operational risk, we{' '}
             <span style={{ color: red }}>should talk.</span>
           </h1>
           <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
@@ -326,15 +327,14 @@ export default function AIBusiness() {
             ))}
           </div>
 
-          {/* Consulting offer block */}
+          {/* CTA offer block */}
           <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Win with AI. Start with the right use cases and a clear plan.</h3>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Build a platform that holds as you scale.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              We help bring clarity and direction to your AI efforts — identifying meaningful use cases, aligning them with business priorities, and turning early experiments into scalable, real solutions. Your first AI use case, defined with us, at no cost.
+              Whether you are improving reliability, bringing cloud spend under control, or preparing for AI — we help you move forward with greater confidence and less operational risk. A focused conversation with our cloud leadership team costs nothing.
             </p>
-            <p style={{ fontFamily: sans, fontSize: 13, color: '#9B9B9B', margin: 0 }}>No-cost AI Opportunity Assessment. No pitch deck. A real read on your highest-value use case.</p>
             <div>
-              <Button variant="primary" label="Get Your First AI Use Case Defined →" href="#" />
+              <Button variant="primary" label="Talk to a CTO-on-Demand →" href="#" />
             </div>
           </div>
         </div>
