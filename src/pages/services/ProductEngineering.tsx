@@ -6,6 +6,7 @@ import { CTABanner }  from '../../../components/CTABanner';
 import { Button }     from '../../../components/Button';
 import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
+import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -186,7 +187,7 @@ export default function ProductEngineering() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <div style={{ background: '#D4D4D4', width: '100%', height: isTablet ? 300 : 460 }} />
+                <PlaceholderBlock width="100%" height={isTablet ? 300 : 460} />
               </div>
             )}
           </div>
@@ -315,7 +316,7 @@ export default function ProductEngineering() {
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
             {proofCards.map((card, i) => (
               <article key={i} style={{ background: '#262626', border: '1px solid #343434', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ background: '#2A2A2A', height: 200, width: '100%' }} />
+                <PlaceholderBlock width="100%" height={200} style={{ background: '#2A2A2A' }} />
                 <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
                   <div style={{ fontFamily: sans, fontSize: 11, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', color: '#767676' }}>{card.tags}</div>
                   <h3 style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>{card.title}</h3>

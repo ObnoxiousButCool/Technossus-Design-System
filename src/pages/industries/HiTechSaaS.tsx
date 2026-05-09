@@ -7,6 +7,7 @@ import { Button }     from '../../../components/Button';
 import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
+import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -235,7 +236,7 @@ export default function HiTechSaaS() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <div style={{ background: '#D4D4D4', width: '100%', height: isTablet ? 300 : 460 }} />
+                <PlaceholderBlock width="100%" height={isTablet ? 300 : 460} />
               </div>
             )}
           </div>
