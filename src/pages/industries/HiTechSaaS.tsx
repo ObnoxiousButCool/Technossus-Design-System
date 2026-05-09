@@ -392,6 +392,7 @@ export default function HiTechSaaS() {
         primaryCta="Talk to a HiTech & SaaS Expert →"
         secondaryCta="Explore Our Solutions"
       />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }

@@ -366,6 +366,7 @@ export default function FinancialServices() {
         primaryCta="Explore Our Solutions →"
         secondaryCta="Talk to a Financial Expert"
       />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }
