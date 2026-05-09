@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "vite-dev",
-      "runtimeExecutable": "/opt/homebrew/bin/node",
-      "runtimeArgs": ["node_modules/.bin/vite", "--port", "4321", "--host"],
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "cd /Users/pranavmanchanda/Claude/.claude/worktrees/objective-wu-113819 && node_modules/.bin/vite --port 4321 --host"],
       "port": 4321
     }
   ]
