@@ -6,8 +6,8 @@ import { CTABanner }   from '../../components/CTABanner';
 import { Button }      from '../../components/Button';
 import { Card }        from '../../components/Card';
 import { FadeUp }      from '../../components/Animate/FadeUp';
-import { DecorativeOverlay, DecorativeImage } from '../../components/DecorativeMedia';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { DecorativeOverlay, DecorativeImage } from '../../components/DecorativeMedia';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -24,9 +24,8 @@ const imgHeroBg         = '/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png'
 const imgSearchAiStar   = '/assets/1396fbe0e7d98149afea22065d702750dbf4a387.svg';
 const imgSearchSend     = '/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg';
 
-// Stats section — globe / network visualization
-const imgStatsGlobe     = '/assets/174c99f8f6f7d0951c6bf317ea6eee19b0fe116e.png';
-const imgStatsNetwork   = '/assets/2af307f43a169f9425489c8ddda2bae8542408cb.svg';
+// Stats section — combined globe + network arc composition
+const imgStatsComposed  = '/assets/215811fe-eab7-431c-9d72-d65f9783311c.png';
 
 // Collaborator logos
 const imgLogoToyota     = '/assets/07257e50d6618362732217b05125eff67876481e.png';
@@ -276,21 +275,13 @@ export default function Home() {
               <Stats value="98+"  label="CLIENT RETENTION" />
             </div>
 
-            {/* Globe / network visualization — both layers registered to same origin */}
+            {/* Globe + arc composition — single inline SVG so image href resolves in DOM */}
             {!isMobile && (
-              <DecorativeOverlay top={-80} right={isTablet ? -32 : -80} width={608} height={429}>
+              <DecorativeOverlay top={-80} right={isTablet ? -32 : -80} width={608} height={453}>
                 <DecorativeImage
-                  src={imgStatsGlobe}
+                  src={imgStatsComposed}
                   top={0} left={0}
-                  width={608} height={429}
-                  objectFit="cover"
-                  opacity={0.25}
-                  blendMode="color-dodge"
-                />
-                <DecorativeImage
-                  src={imgStatsNetwork}
-                  top={0} left={0}
-                  width={608} height={429}
+                  width={608} height={453}
                   objectFit="contain"
                 />
               </DecorativeOverlay>
