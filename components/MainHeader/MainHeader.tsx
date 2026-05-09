@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useBreakpoint } from '../../ts/breakpoints';
 
@@ -140,6 +140,40 @@ export function MainHeader({
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openTimerRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // ── Hover intent helpers ─────────────────────────────────────────────────
+  const clearTimers = useCallback(() => {
+    if (openTimerRef.current)  { clearTimeout(openTimerRef.current);  openTimerRef.current  = null; }
+    if (closeTimerRef.current) { clearTimeout(closeTimerRef.current); closeTimerRef.current = null; }
+  }, []);
+
+  const handleNavEnter = useCallback((label: string) => {
+    clearTimers();
+    // open after a short intent delay so fast mouse-overs don't flash the menu
+    openTimerRef.current = setTimeout(() => {
+      setOpenDropdown(label);
+    }, 120);
+  }, [clearTimers]);
+
+  const handleNavLeave = useCallback(() => {
+    clearTimers();
+    // keep menu alive long enough for the mouse to reach it
+    closeTimerRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 180);
+  }, [clearTimers]);
+
+  const handleDropdownEnter = useCallback(() => {
+    clearTimers(); // mouse is on the panel — cancel any pending close
+  }, [clearTimers]);
+
+  const handleDropdownLeave = useCallback(() => {
+    clearTimers();
+    closeTimerRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 180);
+  }, [clearTimers]);
 
   const isItemActive = (item: NavItem): boolean => {
     const path = location.pathname;
@@ -150,27 +184,21 @@ export function MainHeader({
     return path === item.href || path.startsWith(item.href + '/');
   };
 
-  // Animate dropdown mount/unmount
+  // Animate dropdown mount/unmount (separate timer from hover timers)
+  const animTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
-    }
+    if (animTimerRef.current) { clearTimeout(animTimerRef.current); animTimerRef.current = null; }
     if (openDropdown !== null) {
       setDropdownMounted(openDropdown);
       setDropdownVisible(openDropdown);
     } else {
       setDropdownVisible(null);
-      closeTimerRef.current = setTimeout(() => {
+      animTimerRef.current = setTimeout(() => {
         setDropdownMounted(null);
-        closeTimerRef.current = null;
+        animTimerRef.current = null;
       }, 220);
     }
-    return () => {
-      if (closeTimerRef.current) {
-        clearTimeout(closeTimerRef.current);
-      }
-    };
+    return () => { if (animTimerRef.current) clearTimeout(animTimerRef.current); };
   }, [openDropdown]);
 
   useEffect(() => {
@@ -283,12 +311,15 @@ export function MainHeader({
 
                 if (item.children) {
                   return (
-                    <div key={item.label} style={{ position: 'relative' }}>
+                    <div
+                      key={item.label}
+                      style={{ position: 'relative' }}
+                      onMouseEnter={() => { setHoveredNav(item.label); handleNavEnter(item.label); }}
+                      onMouseLeave={() => { setHoveredNav(null); handleNavLeave(); }}
+                    >
                       <button
                         aria-expanded={isOpen}
-                        onClick={() => setOpenDropdown(isOpen ? null : item.label)}
-                        onMouseEnter={() => setHoveredNav(item.label)}
-                        onMouseLeave={() => setHoveredNav(null)}
+                        onClick={() => { clearTimers(); setOpenDropdown(isOpen ? null : item.label); }}
                         style={{
                           display: 'flex',
                           gap: 4,
@@ -296,7 +327,7 @@ export function MainHeader({
                           background: 'none',
                           border: 'none',
                           cursor: 'pointer',
-                          padding: 0,
+                          padding: '8px 0',
                           fontFamily: sans,
                           fontWeight: highlight ? 600 : 500,
                           fontSize: 14,
@@ -382,6 +413,8 @@ export function MainHeader({
 
         return (
           <div
+            onMouseEnter={handleDropdownEnter}
+            onMouseLeave={handleDropdownLeave}
             style={{
               position: 'absolute',
               left: 0,
