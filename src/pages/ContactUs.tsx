@@ -248,6 +248,7 @@ export default function ContactUs() {
         primaryCta="Schedule a Strategy Session →"
         secondaryCta="Contact Us"
       />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }
