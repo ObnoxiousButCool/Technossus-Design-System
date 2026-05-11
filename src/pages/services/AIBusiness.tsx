@@ -29,90 +29,103 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'AI Advisory & Enablement',
-    subtitle: 'Define where AI fits, identify high-impact use cases, and build the capability to scale them.',
+    title: 'AI Strategy & Readiness',
+    subtitle: 'Map where AI creates durable value, sequence use cases by impact, and align the organization around what\'s being built.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI ADVISORY & ENABLEMENT',
-      heading: 'Most AI efforts fail not because the technology isn\'t capable — but because the organization isn\'t structured to absorb it.',
+      serviceLabel: 'AI STRATEGY & READINESS',
+      heading: 'Know where AI fits, and the pace your organization can actually absorb it.',
       body: [
-        'We work with your leadership team to define where AI fits, identify and prioritize high-impact use cases, and support adoption through consulting-led enablement, capability building, and implementation support.',
-        'The output is a prioritized roadmap with investment accountability built in — not a vision document that sits in a drawer after the kickoff. What gets approved is what gets built.',
+        'Every AI engagement starts here. We map where AI creates durable value in your business, sequence the use cases by impact and readiness, and align the organization around what\'s being built and why. Strategy is the artifact your board signs off on. Readiness is the work that makes the strategy executable on the ground, at the pace your teams can carry.',
+        'Organizations with a sequenced AI roadmap are significantly more likely to reach production outcomes within 18 months. McKinsey State of AI, 2025.',
       ],
     },
   },
   {
-    title: 'AI-Augmented Decision Intelligence',
-    subtitle: 'Embed models for forecasting, prediction, and optimization into the systems where decisions happen.',
+    title: 'Decision Intelligence',
+    subtitle: 'Predictive models and live data pipelines embedded into the workflows your leaders actually make decisions in.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI-AUGMENTED DECISION INTELLIGENCE',
-      heading: 'Your operating decisions need real-time intelligence from the data you already own.',
+      serviceLabel: 'DECISION INTELLIGENCE',
+      heading: 'Decisions that land where your strategy said they would.',
       body: [
-        'We embed models for forecasting, prediction, and optimization into your systems, so decisions are driven by real-time data and continuous intelligence — not dashboards that require someone to translate or models only data scientists can read.',
-        'From pricing and capacity to risk and market response, decision intelligence gets built into the workflows your leaders actually use to make calls.',
-      ],
-      quote: 'Decision-intelligence adopters report material improvement in decision cycle time across pricing, capacity, and risk functions. — Gartner, 2025.',
-    },
-  },
-  {
-    title: 'Systems That Think and Evolve',
-    subtitle: 'AI becomes the intelligence layer of the enterprise — powering systems that learn, reason, and self-correct.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'SYSTEMS THAT THINK AND EVOLVE',
-      heading: 'AI is no longer just used for analysis or experiments — it\'s becoming part of how systems operate.',
-      body: [
-        'We build AI systems that power your enterprise workflows with intelligence that learns, reasons, self-corrects, and continuously evolves without requiring constant human intervention. The systems improve as they run.',
-        'Instead of relying only on fixed rules, these systems adapt to new patterns, surface emerging risks, and optimize across the business in real time — turning AI from a point solution into an enterprise capability.',
+        'Your operating decisions — pricing, capacity, risk, market response — need real-time inputs from the data you already own. We build decision intelligence layers that combine predictive models, live data pipelines, and AI-driven insight into the workflows your leaders actually make calls in. No dashboards that require someone to translate.',
+        'Decision-intelligence adopters report material improvement in decision cycle time across pricing, capacity, and risk functions. Gartner, 2025.',
       ],
     },
   },
   {
-    title: 'Autonomous Decisioning in Real Time',
-    subtitle: 'Decisions move from delayed approvals to autonomous, real-time execution.',
+    title: 'Agentic Automation',
+    subtitle: 'AI agents that understand context, make decisions within guardrails, and coordinate work without constant human intervention.',
     content: {
       type: 'detail',
-      serviceLabel: 'AUTONOMOUS DECISIONING',
-      heading: 'Real-time decisioning driven by continuously learning intelligence across the organization.',
+      serviceLabel: 'AGENTIC AUTOMATION',
+      heading: 'Work that coordinates itself, until it needs a human decision.',
       body: [
-        'We design autonomous decision systems that complete tasks, route approvals, and escalate when human judgment is required — reducing coordination overhead without removing accountability.',
-        'From procurement approval chains to compliance review loops and fraud detection, we map the decision boundaries that need to stay human and automate everything in between.',
+        'Process automation used to mean scripted workflows that broke when context changed. Agentic automation is different — AI agents that understand context, make decisions within guardrails, and coordinate work across systems without constant human intervention. We identify where agentic workflows unlock real capacity and build them into the platforms your teams already use.',
+        'By 2027, 40% of enterprise applications will include task-specific AI agents embedded in core workflows. Gartner.',
       ],
     },
   },
   {
-    title: 'Self-Healing Workflows',
-    subtitle: 'Workflows that sense, respond, optimize, and self-heal — reducing dependency on manual intervention.',
+    title: 'Enterprise Generative AI',
+    subtitle: 'Copilots and assistants trained on your data, governed by your policy, and measured against the productivity lift they deliver.',
     content: {
       type: 'detail',
-      serviceLabel: 'SELF-HEALING WORKFLOWS',
-      heading: 'The next frontier isn\'t faster workflows. It\'s workflows that fix themselves.',
+      serviceLabel: 'ENTERPRISE GENERATIVE AI',
+      heading: 'GenAI tools your teams actually use — because they actually help.',
       body: [
-        'We build adaptive operational systems that detect anomalies, reroute around failures, and restore normal state without requiring a human to identify and diagnose the problem first.',
-        'Self-healing workflows reduce operational overhead, minimize downtime, and free your teams to focus on higher-value work — not monitoring systems for problems that should never have required human attention.',
+        'Copilots, internal assistants, and content generation tools are the GenAI surface your teams interact with every day. We build them into your workflow, trained on your data, governed by your policy, and measured against the productivity lift they deliver. Not demos. Not pilots. Tools that land on the desk and stay there because the team wants them.',
+        'Copilots deliver 26–45% productivity gains when built into existing workflows, near zero when bolted on. GitHub / McKinsey, 2024–25.',
+      ],
+    },
+  },
+  {
+    title: 'AI Governance, Risk & Data Security',
+    subtitle: 'Policy frameworks, model registries, usage guardrails, and audit trails wired into the deployment path.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'AI GOVERNANCE, RISK & DATA SECURITY',
+      heading: 'Board-defensible AI. From policy to production.',
+      body: [
+        'Every AI deployment in your organization now sits inside a governance gap that didn\'t exist three years ago. Model decisions have to be explainable to regulators. Data flows through LLMs have to be traceable. We put the governance layer in place: policy frameworks, model registries, usage guardrails, data boundary architecture, and audit trails wired into the deployment path.',
+        'Governance gaps are the single largest blocker to scaling enterprise generative AI through 2027. Gartner, 2025.',
+      ],
+    },
+  },
+  {
+    title: 'Innovation Labs & Prototyping',
+    subtitle: 'A working prototype in two weeks — to test whether an idea is worth scaling before you bet the strategy on it.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'INNOVATION LABS & PROTOTYPING',
+      heading: 'See it working, before you bet the strategy on it.',
+      body: [
+        'Not every strategic question needs a full engagement to answer. Innovation Labs is where we build a working prototype in two weeks that tests whether an idea is worth scaling. Walk in with a question. Walk out with a validated prototype, a clear read on what works, and a defensible answer to \'should we build this?\'',
+        'Every engagement starts with a two-day consulting investment at no cost — a pressure test on the problem, not a pitch.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Start with what matters.',        body: 'We identify high-impact use cases based on business value, data readiness, and feasibility — so effort goes where it can deliver real outcomes, not just impressive demos.' },
-  { title: 'Prove it early.',                 body: 'We move quickly to a working proof of concept, validating use cases before committing full investment — so the plan responds to real signal instead of assumptions.' },
-  { title: 'Build for scale.',                body: 'We architect solutions that can grow — governed, reliable, and ready to expand as AI maturity increases across the organization.' },
-  { title: 'Your board stays informed.',      body: 'What you approved is what gets built. Governance is visible from week one, and your leadership team can explain every decision at the altitude the board operates at.' },
+  { title: 'Your story to the board stays defensible.',          body: 'What you approved is what gets built — and you can explain every decision along the way, in the altitude your board operates at.' },
+  { title: 'What gets built traces back to what you approved.',  body: 'No scope creep that lands on your desk at invoice time. Investment accountability is part of the delivery, not a risk we hand back.' },
+  { title: 'Your organization moves at the pace it can absorb.', body: 'Change management is part of the deliverable. Fast where the organization is ready, patient where it isn\'t, honest about which is which.' },
+  { title: 'We tell you when fast is the right bet.',            body: 'Our job is strategic pace, not performance theater. We\'ll push when the window is open, and slow you down when speed is the wrong signal to the organization.' },
 ];
 
 const proofCards = [
-  { tags: 'HEALTHCARE • AI / NLP',          title: 'AI-Powered OCR Engine: ~95% Accuracy in Document Extraction', excerpt: 'Document-heavy workflows required manual data entry, causing delays and inconsistencies. A proprietary OCR + NER engine now extracts and structures data from unstructured inputs with ~95% accuracy.' },
-  { tags: 'HEALTHCARE • PREDICTIVE AI',     title: 'Predictive Fatigue Modeling Prevents Operational Risk',       excerpt: 'A healthcare organization lacked visibility into fatigue-related workforce risks. A predictive analytics platform using biometric data now forecasts fatigue levels and triggers proactive alerts.' },
-  { tags: 'SECURITY • REAL-TIME AI',        title: 'Threat Detection Reduced from 8 Hours to Minutes',            excerpt: 'Manual monitoring of restricted premises delayed identification of unauthorized individuals. A real-time AI-based recognition system now detects and alerts on intrusions in under 10 minutes.' },
+  { tags: 'DOCUMENT INTELLIGENCE • AI / OCR',    title: 'AI-Powered OCR Engine Achieves ~95% Accuracy in Document Extraction',          excerpt: 'Document-heavy workflows required manual data entry, causing delays and inconsistencies. A proprietary OCR + NER engine now extracts and structures data from unstructured inputs with ~95% accuracy, enabling faster downstream processing.' },
+  { tags: 'HEALTHCARE • PREDICTIVE AI',           title: 'Predictive Fatigue Modeling Prevents Operational Risk Before It Occurs',        excerpt: 'A healthcare organization lacked visibility into fatigue-related risks impacting workforce safety. A predictive analytics platform using biometric data now forecasts fatigue levels and triggers proactive alerts.' },
+  { tags: 'SECURITY OPERATIONS • REAL-TIME AI',  title: 'Automated Threat Detection Reduces Security Processing Time from 8 Hours to Minutes', excerpt: 'Manual monitoring of restricted premises delayed identification of unauthorized individuals. A real-time AI-based facial recognition system now detects and alerts on intrusions in under 10 minutes.' },
 ];
 
 const painCards = [
-  { heading: '"AI efforts are underway, but direction and impact are still unclear."',         body: 'The steering committee keeps asking for AI transformation updates. You\'re not sure how to answer without sounding like nothing is happening — or like too much is happening unchecked.' },
-  { heading: '"Early experiments show promise, but scaling across teams remains a challenge."', body: 'Pilots succeed. Production deployments stall. The gap between a working prototype and an enterprise capability turns out to be the hardest part of the journey.' },
-  { heading: '"Multiple AI efforts are active, but they operate in silos."',                   body: 'Three different teams have deployed something AI-powered. You learned about two of them from a vendor invoice. Governance that used to be implicit in the process no longer is.' },
+  { heading: '"The steering committee keeps asking for AI transformation updates."', body: 'You\'re not sure how to give them without sounding like nothing is happening, or like too much is happening unchecked.' },
+  { heading: '"Three different teams have deployed something AI-powered."',           body: 'You learned about two of them from a vendor invoice. Governance that used to be implicit in the process no longer is.' },
+  { heading: '"Your board asks how the AI strategy is going."',                       body: 'You know the answer you want to give. You\'re not sure it\'s the one the data supports.' },
+  { heading: '"Your general counsel flagged model governance as a gap."',             body: 'No one in the organization owns the fix. The question has been on the agenda for two quarters.' },
 ];
 
 export default function AIBusiness() {
@@ -158,22 +171,22 @@ export default function AIBusiness() {
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>AI that drives real business outcomes</p>
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>AI-LED BUSINESS TRANSFORMATION</p>
               <FadeUp>
                 <h1 style={d1()}>
-                  Make AI your{' '}
-                  <span style={{ color: red }}>competitive advantage.</span>
+                  The AI strategy is approved, and the teams are moving. The question is whether{' '}
+                  <span style={{ color: red }}>the investment is actually working.</span>
                 </h1>
               </FadeUp>
               <FadeUp delay={80}>
                 <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                  Move into an era of intelligent systems with AI embedded across your business. We help you identify high-impact use cases, build solutions, and integrate them into your workflows so your systems operate with less friction and scale more reliably.
+                  Governance frameworks, investment accountability, and team alignment don't self-organize around an approved strategy. We work with your leadership team to make sure what's building across the organization actually lands where you said it would.
                 </p>
               </FadeUp>
               <FadeUp delay={120}>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  <Button variant="primary"   label="Explore AI Studio"         href="#" />
-                  <Button variant="secondary" label="Talk to an AI Evangelist"  href="#" />
+                  <Button variant="primary"   label="Show us the problem" href="#" />
+                  <Button variant="secondary" label="See How We Work"     href="#" />
                 </div>
               </FadeUp>
             </div>
@@ -191,7 +204,7 @@ export default function AIBusiness() {
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
-            {['TOYOTA FINANCIAL SERVICES', 'GE HealthCare', 'COMMONSPIRIT', 'BIO-RAD', 'ADAPTHEALTH'].map(name => (
+            {['TOYOTA FINANCIAL', 'GE HEALTHCARE', 'COMMONSPIRIT', 'BIO-RAD', 'ADAPTHEALTH'].map(name => (
               <span key={name} style={{ fontFamily: sans, fontSize: 13, fontWeight: 700, color: '#888', filter: 'grayscale(100%)', opacity: .65 }}>{name}</span>
             ))}
           </div>
@@ -209,13 +222,14 @@ export default function AIBusiness() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
-                From AI adoption to{' '}
-                <span style={{ color: red }}>intelligent enterprise systems.</span>
+                The constraint used to be capability. Now the constraint{' '}
+                <span style={{ color: red }}>is coherence.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'AI is no longer just used for analysis or experiments. It is becoming part of how products work, how teams operate, and how decisions are made. The focus is now on building systems that deliver value across the business.',
-                  'Systems are starting to improve as they run — instead of relying only on fixed rules. The organizations pulling ahead are the ones building AI into their core workflows, not running it as a parallel experiment.',
+                  'Three years ago, deploying AI was a specialist act. It required a data science team, procurement review, architecture review, an executive sponsor, and a budget line. Governance was implicit in the deployment process. Nothing reached production without a lot of eyes on it.',
+                  'That infrastructure has dissolved. AI capability now arrives through every SaaS tool and every agentic workflow. Any team that can write a prompt can deploy it. The executive didn\'t lose visibility because decisions went wrong — it\'s gone because the process that used to produce visibility isn\'t there anymore.',
+                  'Governance that used to be implicit now has to be explicit. It has to be approved, tracked, and visible at the altitude the board operates at. That work doesn\'t self-organize around momentum. It\'s what we build with your leadership team.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
@@ -223,10 +237,10 @@ export default function AIBusiness() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '7%',  desc: 'Of businesses have successfully scaled AI enterprise-wide. The other 93% are still running pilots.' },
-                { num: '92%', desc: 'Of companies are planning to increase their AI investments — the pressure to scale is accelerating.' },
-                { num: '~70%', desc: 'Of large organizations cannot produce a single inventory of AI in production. Shadow deployment is now the default state.' },
-                { num: 'Week 1', desc: 'Your leadership team sees what\'s being built, how governance is structured, and what they\'ll own at handoff.' },
+                { num: '26%',     desc: 'of AI initiatives produce measurable business value at scale. The rest stall in pilots or deploy without a path to outcome.' },
+                { num: '~70%',    desc: 'of large organizations cannot produce a single inventory of AI in production. Shadow deployment is now the default state.' },
+                { num: '5 of 5',  desc: 'delivery lines configured to every engagement — Product, Data, Cloud, Quality, Experience Design.' },
+                { num: 'Week 1',  desc: 'Your leadership team sees what\'s being built, how governance is structured, and what they\'ll own at handoff.' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
@@ -450,7 +464,7 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h1 style={{ ...d1(), marginTop: 16 }}>
-            If any of these describe your current AI situation, we{' '}
+            If any of these sound like your last project retrospective, we{' '}
             <span style={{ color: red }}>should talk.</span>
           </h1>
           <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
@@ -465,16 +479,15 @@ export default function AIBusiness() {
           </div>
 
           {/* Consulting offer block */}
-          {/* <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Win with AI. Start with the right use cases and a clear plan.</h3>
+          <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Bring us your toughest transformation problem.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              We help bring clarity and direction to your AI efforts — identifying meaningful use cases, aligning them with business priorities, and turning early experiments into scalable, real solutions. Your first AI use case, defined with us, at no cost.
+              Two days with a Technossus partner and a senior team. At no cost. Pressure-test the problem on the table — the governance gap, the adoption curve, the investment that isn't landing, the strategy that needs a second read. Walk out with a clear view on whether a larger engagement would help, and what the shape of it would be.
             </p>
-            <p style={{ fontFamily: sans, fontSize: 13, color: '#9B9B9B', margin: 0 }}>No-cost AI Opportunity Assessment. No pitch deck. A real read on your highest-value use case.</p>
             <div>
-              <Button variant="primary" label="Get Your First AI Use Case Defined →" href="#" />
+              <Button variant="primary" label="Bring us your problem →" href="#" />
             </div>
-          </div> */}
+          </div>
         </div>
       </section>
 

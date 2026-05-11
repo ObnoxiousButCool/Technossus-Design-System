@@ -29,89 +29,103 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'Experience Strategy & Adoption Roadmapping',
-    subtitle: 'Define where experience gaps exist, what\'s driving them, and the clearest path to closing them.',
+    title: 'Experience Strategy & Transformation',
+    subtitle: 'An executable framework that maps experience gaps to growth, retention, and adoption metrics.',
     content: {
       type: 'detail',
-      serviceLabel: 'EXPERIENCE STRATEGY & ADOPTION ROADMAPPING',
-      heading: 'Most digital investments underdeliver not because the technology fails, but because adoption was never designed for.',
+      serviceLabel: 'EXPERIENCE STRATEGY & TRANSFORMATION',
+      heading: 'Align every experience decision to a business outcome.',
       body: [
-        'We help you define where experience gaps exist, what\'s driving them, and the clearest path to closing them. That work happens before a single design frame is opened — because the most expensive design is the one that solves the wrong problem.',
-        'Adoption roadmaps are built around how your users actually work, not how the system expects them to. The result is a clear, sequenced plan that connects design investment to measurable behavior change.',
+        'Experience strategy that sits above individual products, channels, and teams — not a vision document, but an executable framework your organization can own and act on. We map the current experience landscape, identify where friction is costing you customers, and build the transformation roadmap with the people who will carry it forward. Every decision traces to a growth, retention, or adoption metric.',
+        'Organizations that invest in unified experience strategy before individual product redesigns reduce downstream correction costs by 2–3× compared to reactive, channel-by-channel approaches.',
       ],
     },
   },
   {
-    title: 'Design-Led Innovation & Rapid Validation',
-    subtitle: 'The best ideas don\'t need more time — they need faster proof.',
+    title: 'Product Ideation & Co-Design',
+    subtitle: 'Pressure-test the idea before the roadmap commits to it — with Generative AI as a co-creator.',
     content: {
       type: 'detail',
-      serviceLabel: 'DESIGN-LED INNOVATION & RAPID VALIDATION',
-      heading: 'See it working before you bet engineering resources on it.',
+      serviceLabel: 'PRODUCT IDEATION & CO-DESIGN',
+      heading: 'Pressure-test the idea before the roadmap commits to it.',
       body: [
-        'We run design sprints, prototyping cycles, and early validation sessions that surface what works before engineering resources are committed. A validated direction is worth ten well-documented assumptions.',
-        'From concept to clickable prototype to user feedback in days — not weeks. The discipline of rapid validation isn\'t about moving fast for its own sake. It\'s about closing the gap between what you believe users need and what they actually respond to.',
+        'Structured ideation as a service — not a brainstorm, not a hackathon that leaves the room with Post-its and no direction. A facilitated engagement where your product, engineering, and business stakeholders co-ideate alongside our design team. Generative AI participates as a co-creator: surfacing patterns, accelerating prototypes, and letting your team explore more directions in a day than traditional ideation covers in a month.',
+        'Teams that run structured co-design validation before committing to roadmap reduce post-launch redesign costs by 30–50% and ship with measurably higher user confidence scores from day one.',
       ],
     },
   },
   {
-    title: 'AI-Driven Design Innovation',
-    subtitle: 'Embed intelligence into product flows through predictive recommendations and adaptive UI states.',
+    title: 'Digital Experience V&V',
+    subtitle: 'WCAG, ADA compliance review, usability testing, and AI-UX pattern validation in a single engagement.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI-DRIVEN DESIGN INNOVATION',
-      heading: 'AI amplifies human creativity when it\'s built into the design process, not bolted on after.',
+      serviceLabel: 'DIGITAL EXPERIENCE V&V',
+      heading: 'Don\'t let accessibility debt become a compliance crisis.',
       body: [
-        'We integrate AI across the design and delivery lifecycle — to amplify human creativity and reduce uncertainty. This includes embedding intelligence into product flows through predictive recommendations, contextual automation, and adaptive UI states that respond to real user behavior.',
-        'The interfaces that win adoption don\'t just look good — they learn from usage and respond to context. We help design teams build that capability in, rather than treating AI as a feature to be added in a future release.',
+        'Most firms address usability, accessibility, and compliance separately — on different timelines, by different teams, often after launch. We bundle all three into a single validated engagement: WCAG and ADA compliance review, usability testing across real user scenarios, and AI-UX pattern validation for products deploying generative interfaces.',
+        'Digital accessibility litigation in the U.S. exceeded 4,600 cases in 2023 — a 42% year-over-year increase. The majority of violations were preventable through pre-launch V&V.',
       ],
     },
   },
   {
-    title: 'Enterprise & Platform UX Design',
-    subtitle: 'Complex enterprise systems don\'t have to feel complex to the people using them.',
+    title: 'Omnichannel Customer Experience',
+    subtitle: 'Design across channels with a unified experience model — shared patterns, consistent language, visual identity at every touchpoint.',
     content: {
       type: 'detail',
-      serviceLabel: 'ENTERPRISE & PLATFORM UX DESIGN',
-      heading: 'Complexity in the system shouldn\'t mean complexity for the user.',
+      serviceLabel: 'OMNICHANNEL CUSTOMER EXPERIENCE',
+      heading: 'Meet your customer where they are — and make it feel like the same company.',
       body: [
-        'Enterprise platforms are often built by engineering teams optimizing for function, not experience. The result is software that works — technically — but creates friction, training overhead, and adoption resistance at scale.',
-        'We specialize in making enterprise-grade platforms feel intuitive. From information architecture to interaction design to design system governance, we work with your product and engineering teams to build platforms that people actually want to use.',
+        'Your customers don\'t see your org chart. They see whether the experience on your mobile app matches your web portal, your customer support interface, and every other surface they interact with. We design across channels with a unified experience model — shared interaction patterns, consistent language, and a visual identity that holds at every touchpoint.',
+        'Customers who engage across three or more channels have 90% higher lifetime value than single-channel customers — and experience consistency is what makes sustained cross-channel engagement possible.',
       ],
     },
   },
   {
-    title: 'Legacy Platform Modernization & UX Uplift',
-    subtitle: 'Modernize without losing what already works for your users.',
+    title: 'Design Systems',
+    subtitle: 'Built in Figma — tokens, components, patterns, documentation, and governance your engineering teams can implement and scale.',
     content: {
       type: 'detail',
-      serviceLabel: 'LEGACY PLATFORM MODERNIZATION & UX UPLIFT',
-      heading: 'The goal isn\'t to redesign everything. It\'s to improve what matters most without breaking what works.',
+      serviceLabel: 'DESIGN SYSTEMS',
+      heading: 'Make the design decision once. Deploy it everywhere.',
       body: [
-        'Legacy modernization projects fail when design is treated as a skin applied to a new system. Users have workflows, muscle memory, and mental models built over years. Ignoring that context creates resistance, not adoption.',
-        'We work with your teams to identify the highest-friction points in existing experiences, prioritize where investment will drive the most behavioral change, and execute modernization in phases that users can absorb — not in a big-bang cutover that puts everything at risk.',
+        'A design system is only as valuable as your team\'s ability to use and extend it. We build in Figma — tokens, components, patterns, documentation, and governance — to the standards your engineering teams can implement and scale. Your teams move faster because the decisions are already made. Your product looks consistent because the decisions are shared.',
+        'Teams operating from a mature design system ship 3–5× faster and spend 40% less time on design QA — freeing designers for the work that requires craft, not repetition.',
+      ],
+    },
+  },
+  {
+    title: 'Adaptive Experience Design',
+    subtitle: 'AI-native UX that observes, infers, and responds to each user in context.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'ADAPTIVE EXPERIENCE DESIGN',
+      heading: 'Experiences that know who they\'re talking to.',
+      body: [
+        'AI-native UX goes beyond personalization toggles — it\'s the architecture of experiences that observe, infer, and respond to each user in context. We design the interaction models, content patterns, and feedback loops that make your product feel less like software and more like a service that understands the person using it. Content that surfaces at the right moment. Flows that adapt based on what the user has already done.',
+        'Personalized digital experiences drive 40% higher engagement and measurably lower abandonment rates at every stage of the user journey — the patterns are the product.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Validate Assumptions Faster',        body: 'Get to a validated design direction sooner, so the plan responds to real user signal instead of assumptions — reducing downstream rework before engineering commits.' },
-  { title: 'Design with Engineering, Not After', body: 'Design and engineering work together from the start, reducing handoff friction and helping ideas move into production more cleanly.' },
-  { title: 'Human-Centered, Always',             body: 'Whether the end user is an enterprise employee, a B2B partner, or a consumer, we apply the same discipline: understand how they work, design around how they think.' },
-  { title: 'Adoption Is the Metric',             body: 'We measure success by what users actually do, not by what was delivered. Adoption signals tell us whether the design solved the right problem.' },
+  { title: 'Outcomes, not outputs.',                    body: 'Every engagement is framed around the business metric it should move — adoption, retention, conversion, satisfaction, time-to-value. Deliverables are the means. The metric is how we know the work worked.' },
+  { title: 'Capability transfers as we build.',         body: 'Workshop formats, design system components, and validation frameworks we produce are documented, trained on, and handed over. When we leave, your team is running the system — not waiting for us to come back.' },
+  { title: 'We work within your product cadence.',      body: 'We don\'t ask you to pause delivery to do experience strategy. We embed inside your existing sprint rhythm and move at a pace your organization can absorb and sustain.' },
+  { title: 'Accessibility and compliance are not checkboxes.', body: 'Every engagement is validated against WCAG, ADA, and usability standards before it ships. Quality is non-negotiable — and we carry that standard from the first wireframe to the final release.' },
 ];
 
 const proofCards = [
-  { tags: 'COMMERCE • AI REDESIGN',         title: '56% Faster Product Discovery',    excerpt: 'A high-volume commerce experience was redesigned so users could find what they needed faster and with less friction — validated through usability research before a single line of production code changed.' },
-  { tags: 'FINTECH • RAPID PROTOTYPING',    title: 'Working Prototype in 24 Hours',   excerpt: 'A fintech concept moved from idea to functioning product in a single day — fast enough to test, validate, and spark investor and market interest.' },
-  { tags: 'ENTERPRISE • PLATFORM UPLIFT',  title: 'Legacy System Adopted at Scale',   excerpt: 'An enterprise workflow platform that users were actively avoiding was redesigned around real work patterns. Adoption increased 40% in the first quarter post-launch.' },
+  { tags: 'COMMERCE • EXPERIENCE REDESIGN', title: '56% Faster Product Discovery',  excerpt: 'A high-volume commerce experience was redesigned so users could find what they needed faster and with less friction — validated through usability research before a single line of production code changed.' },
+  { tags: 'FINTECH • RAPID PROTOTYPING',    title: 'Working Prototype in 24 Hours', excerpt: 'A fintech concept moved from idea to functioning product in a single day — fast enough to test, validate, and spark investor and market interest.' },
+  { tags: 'MOBILE • LAUNCH READINESS',      title: '4M+ Views in 48 Hours',         excerpt: 'A client\'s configurable mobile product launched with immediate traction, proving the value of speed, usability, and design-led go-to-market readiness.' },
 ];
 
 const painCards = [
-  { heading: '"We shipped the product, but users aren\'t adopting it."',                               body: 'The build is done. The launch happened. But usage metrics tell a different story. Support tickets are up, training costs are rising, and the team is starting to ask whether the design solved the right problem.' },
-  { heading: '"Design and engineering keep misaligning — too many handoffs."',                         body: 'Specs get handed over, developers interpret them differently, and by the time QA catches the gap, it\'s too late to fix without a full rebuild. The friction compounds with every sprint.' },
-  { heading: '"We need to modernize a legacy platform without breaking what already works."',          body: 'The old system has years of institutional knowledge baked into workflows. Every attempt to modernize it risks breaking something users depend on. The team is stuck between urgency and caution.' },
+  { heading: '"We shipped the product, but adoption is lower than expected."',              body: 'Nobody can agree on whether it\'s a design problem, a feature problem, or a user research problem. The build is done and the question is still open.' },
+  { heading: '"Every team is designing their own patterns."',                                body: 'The product looks like three different companies built it, and the inconsistencies are starting to show up in customer feedback.' },
+  { heading: '"We have a product idea that everyone agrees on in principle."',               body: 'Until someone asks what you\'re actually building and the room goes quiet. Alignment on concept doesn\'t mean alignment on scope.' },
+  { heading: '"Our accessibility audit came back with violations we didn\'t know existed."', body: 'The legal team is asking how this reached production without anyone catching it. The answer is that compliance was treated as a post-launch checkbox.' },
 ];
 
 export default function DigitalExperience() {
@@ -159,19 +173,19 @@ export default function DigitalExperience() {
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
               <FadeUp>
                 <h1 style={d1()}>
-                  Experiences that drive adoption,{' '}
-                  <span style={{ color: red }}>not just attention.</span>
+                  Your users know what you built. They're just not sure{' '}
+                  <span style={{ color: red }}>it was built for them.</span>
                 </h1>
               </FadeUp>
               <FadeUp delay={80}>
                 <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                  Most software is built fast. Few are adopted with confidence. We combine research, design, and engineering to create experiences — across enterprise platforms, partner portals, and customer applications — that fit how people work, earn real adoption, and deliver the outcomes your business is built to achieve.
+                  The gap between what your team designed and what users actually experience isn't inevitable — it's the cost of building without validation, designing across silos, and shipping before the experience is proven. We work with your team to close that gap: from the first whiteboard session to the final release.
                 </p>
               </FadeUp>
               <FadeUp delay={120}>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  <Button variant="primary"   label="Talk to a Design Expert" href="#" />
-                  <Button variant="secondary" label="Explore Our Work"        href="#" />
+                  <Button variant="primary"   label="Show us the problem" href="#" />
+                  <Button variant="secondary" label="See How We Work"     href="#" />
                 </div>
               </FadeUp>
             </div>
@@ -189,7 +203,7 @@ export default function DigitalExperience() {
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
-            {['TOYOTA FINANCIAL SERVICES', 'GE HealthCare', 'COMMONSPIRIT', 'BIO-RAD', 'ADAPTHEALTH'].map(name => (
+            {['CEFALY', 'CARE PREDICTOR', 'WORD AND BROWN', 'BIOCAIR', 'TECH E STEEL'].map(name => (
               <span key={name} style={{ fontFamily: sans, fontSize: 13, fontWeight: 700, color: '#888', filter: 'grayscale(100%)', opacity: .65 }}>{name}</span>
             ))}
           </div>
@@ -208,13 +222,13 @@ export default function DigitalExperience() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
-                Digital is everywhere.{' '}
-                <span style={{ color: red }}>Adoption isn't.</span>
+                The craft should be your designers' job.{' '}
+                <span style={{ color: red }}>The repetition shouldn't.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'Organisations have invested heavily in digital — new platforms, modernised systems, and customer-facing products. But investment alone doesn\'t create usage. The shift now is toward experiences that are intuitive, trusted, and built to be adopted — not just deployed.',
-                  'Faster release cycles solved time-to-market. The next frontier is time-to-adoption. Design-led validation, early prototyping, and user research close that gap before go-live — and before the cost of the wrong answer becomes the cost of a full rebuild.',
+                  'Intelligence has compressed what used to take months in experience design — not by replacing your team\'s craft, but by accelerating the discovery, validation, and iteration cycles that consume most of the calendar. Your designers focus on the judgment, strategy, and creative decisions that shape the product. The repetitive layers move faster.',
+                  'Many organizations already have design teams, partial design systems, and experience work in motion. The challenge isn\'t starting — it\'s orchestrating what\'s already there: aligning experience across channels, closing the gap between design intent and what engineering delivers, and validating before the roadmap commits.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
@@ -222,10 +236,10 @@ export default function DigitalExperience() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '70%',   desc: 'Of digital transformation projects fail to meet adoption targets — not because the technology doesn\'t work, but because users don\'t.' },
-                { num: '56%',   desc: 'Faster product discovery for a high-volume commerce client after a research-led design intervention.' },
-                { num: '24hrs', desc: 'From concept to working prototype for a fintech client — fast enough to validate, iterate, and raise interest.' },
-                { num: '4M+',   desc: 'Views in 48 hours for a mobile product that launched with a design-led go-to-market experience.' },
+                { num: '88%',  desc: 'of customers say experience is as important as the product or service itself.' },
+                { num: '3–5×', desc: 'faster feature delivery for teams operating from a unified design system.' },
+                { num: '70%',  desc: 'of product failures traced to poor user research and validation before build.' },
+                { num: 'Zero', desc: 'Handoffs without capability transfer. Your team owns the system when we leave.' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
@@ -262,13 +276,13 @@ export default function DigitalExperience() {
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <Tag label="HOW WE WORK" />
               <h2 style={{ ...d2(), marginTop: 16 }}>
-                Validate early, design together,{' '}
-                <span style={{ color: red }}>build with intent.</span>
+                We're measured by what your business does{' '}
+                <span style={{ color: red }}>differently after we leave.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'The Technossus way is simple: validate early where it saves effort, stay human-centered where it matters, and design with your team — not around them. Whether the end user is an enterprise employee, a B2B partner, or a consumer, the discipline is the same.',
-                  'We work embedded with your product and engineering teams. Design decisions get made with engineering context, and engineering decisions get made with design context. That alignment is what makes adoption possible at the speed your business needs.',
+                  'Experience design is only worth what it moves — adoption that holds, retention that compounds, revenue that traces back to decisions made in the design phase. Everything we build is structured to deliver against those metrics and to keep delivering after the engagement ends.',
+                  'More than 90% of our clients extend their engagement beyond the original scope. Not because they can\'t move forward without us, but because the outcomes are compounding and the work is worth continuing.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
@@ -326,8 +340,8 @@ export default function DigitalExperience() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h1 style={{ ...d1(), marginTop: 16 }}>
-            If adoption gaps are slowing momentum, we{' '}
-            <span style={{ color: red }}>should talk.</span>
+            These are the conversations we have most often with{' '}
+            <span style={{ color: red }}>product and design leaders.</span>
           </h1>
           <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
           <div style={{ display: 'grid', gridTemplateColumns: cols2, gap: 24, marginTop: 48 }}>
@@ -342,12 +356,12 @@ export default function DigitalExperience() {
 
           {/* CTA offer block */}
           <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Have an experience to design, improve, or scale?</h3>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Bring us your toughest design problem.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              If adoption gaps, modernization needs, or design-engineering friction are slowing momentum — let's start with what matters most. A focused conversation with a Technossus design leader costs nothing and usually surfaces the clearest path forward.
+              We'll invest two days with your team — at no cost — understanding the challenge, mapping the experience landscape, and coming back within a week with a concrete direction. No 200-slide deck. No six-month proposal. A real path forward, built with the people who'll carry it.
             </p>
             <div>
-              <Button variant="primary" label="Talk to a Design Expert →" href="#" />
+              <Button variant="primary" label="Bring us your problems →" href="#" />
             </div>
           </div>
         </div>

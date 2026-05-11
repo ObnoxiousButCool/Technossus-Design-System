@@ -29,102 +29,116 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'Product Strategy & Discovery',
-    subtitle: 'Don\'t just build more. Build what matters.',
+    title: 'Discovery & Incubation',
+    subtitle: 'Find out if the idea works before you bet the quarter on it.',
     content: {
       type: 'detail',
-      serviceLabel: 'PRODUCT STRATEGY & DISCOVERY',
-      heading: 'Most products don\'t lose momentum because teams lack effort. They lose momentum because the direction is fuzzy.',
+      serviceLabel: 'DISCOVERY & INCUBATION',
+      heading: 'Find out if the idea works before you bet the quarter on it.',
       body: [
-        'We work with your team to sharpen the opportunity, clarify the user need, define what deserves to be built first, and shape an MVP that can prove its value quickly. The goal is not "more planning". It is better product judgment.',
-        'Priorities get bloated and too much gets funded before the right things get validated. We help teams cut through that — so effort goes toward the parts of the roadmap that will actually move the business.',
+        'Most product bets fail in discovery — not because the idea was wrong, but because the team spent too long finding out. We move from hypothesis to working prototype in weeks, using AI-accelerated methods that compress the front of the build without skipping the thinking that matters. You leave with a validated foundation to build on, or the clarity to redirect before the cost compounds.',
+        'Gartner: 45% of product launches are delayed by at least one month — and 20% of those delayed launches fail to meet their internal targets.',
       ],
     },
   },
   {
-    title: 'Experience Design & Product UX',
-    subtitle: 'If the experience feels heavy, growth feels heavy too.',
+    title: 'Product Scaling & Engineering',
+    subtitle: 'Ship version one. Then build the product it needs to become.',
     content: {
       type: 'detail',
-      serviceLabel: 'EXPERIENCE DESIGN & PRODUCT UX',
-      heading: 'Users don\'t care how impressive the architecture is. They care whether the product helps them.',
+      serviceLabel: 'PRODUCT SCALING & ENGINEERING',
+      heading: 'Ship version one. Then build the product it needs to become.',
       body: [
-        'We help teams turn complexity into clarity through better journeys, stronger interaction design, faster prototyping, and sharper product decisions. The payoff is bigger than usability — it shows up in activation, retention, and product confidence.',
-        'Design and engineering working together from the start means fewer handoff gaps, less rework, and products that actually feel like they were built by one team.',
+        'Getting to launch is one discipline. Scaling what you\'ve launched is an entirely different one — and most product teams hit the gap between the two harder than they expected. We evolve the architecture, integrations, and experience layer across releases, so the product grows without accumulating the kind of technical debt that makes every new feature a negotiation.',
+        'Gartner: 80% of product launches require significant changes after initial rollout due to market disruptions and evolving customer needs.',
       ],
     },
   },
   {
-    title: 'Custom Product Development',
-    subtitle: 'Ideas only matter if they survive real-world use.',
+    title: 'Enterprise Integration & Product Architecture',
+    subtitle: 'Your systems know things your business needs. They\'re just not talking to each other.',
     content: {
       type: 'detail',
-      serviceLabel: 'CUSTOM PRODUCT DEVELOPMENT',
-      heading: 'Vision meets engineering discipline. That\'s where products are made.',
+      serviceLabel: 'ENTERPRISE INTEGRATION & PRODUCT ARCHITECTURE',
+      heading: 'Your systems know things your business needs. They\'re just not talking to each other.',
       body: [
-        'We help teams turn product ideas into scalable software that works in the real world — not just in a demo, not just in a roadmap deck, and not just as a proof of concept. We engineer for performance, maintainability, and product momentum from the start.',
-        'That is the difference between shipping software and building product advantage. Every architecture decision is made with the product\'s next phase in mind, not just the current sprint.',
+        'Most organizations aren\'t short on systems — they\'re short on connections between them. Inventory sits in one place, finance in another, supply chain somewhere else entirely. We design and build the integration layer that connects your systems of record — so data flows where it needs to and processes run the way the business actually works.',
+        '71% of applications remain unintegrated or disconnected — unchanged for three consecutive years. Only 2% of IT leaders report integrating more than half of their applications.',
       ],
     },
   },
   {
-    title: 'Platform Engineering & Architecture',
-    subtitle: 'Weak foundations always send the bill later.',
+    title: 'AI & SaaS Product Augmentation',
+    subtitle: 'The product works. Now make it work like it was built today.',
     content: {
       type: 'detail',
-      serviceLabel: 'PLATFORM ENGINEERING & ARCHITECTURE',
-      heading: 'When products grow on shaky foundations, the symptoms show up fast.',
+      serviceLabel: 'AI & SAAS PRODUCT AUGMENTATION',
+      heading: 'The product works. Now make it work like it was built today.',
       body: [
-        'Slower releases, brittle integrations, rising maintenance drag, and teams spending more time managing complexity than moving the product forward. We build the technical backbone that lets products scale cleanly — cloud-ready, integration-ready, performance-ready, and resilient under real-world pressure.',
-        'A strong platform is not the headline. It is the reason the product can keep moving.',
+        'Most products in market today were built before the current wave of AI and SaaS capabilities existed. We identify where AI can eliminate friction your users have quietly accepted for years: document parsing instead of manual entry, agentic workflows that automate repetitive handoffs, intelligent features that make the product feel like it was built for today\'s expectations.',
+        'Gartner 2024: Early adopters of Gen AI report an average 15.2% cost savings and 22.6% productivity improvement. For every $1 invested, companies see an average return of $3.70.',
       ],
     },
   },
   {
-    title: 'Quality Engineering & Release Confidence',
-    subtitle: 'Speed means nothing if every release feels like a gamble.',
+    title: 'Application Modernization',
+    subtitle: 'Keep the business logic. Lose the technical debt holding it hostage.',
     content: {
       type: 'detail',
-      serviceLabel: 'QUALITY ENGINEERING & RELEASE CONFIDENCE',
-      heading: 'When teams lose confidence in the release, momentum slows everywhere.',
+      serviceLabel: 'APPLICATION MODERNIZATION',
+      heading: 'Keep the business logic. Lose the technical debt holding it hostage.',
       body: [
-        'Roadmaps stall, quality questions pile up, and engineering energy gets pulled into firefighting instead of forward motion. We build quality into the lifecycle through automation, regression coverage, release-readiness practices, and the kind of validation discipline that makes faster delivery safer — not riskier.',
-        'When confidence goes up, velocity stops being fragile.',
+        'The value in your existing application isn\'t the code — it\'s the business logic, domain knowledge, and workflows refined over years. We modernize the application layer incrementally — preserving what works, refactoring what doesn\'t, and introducing modern architecture patterns that let the product evolve without a big-bang rewrite.',
+        'Gartner: 60–80% of IT budgets are spent maintaining legacy systems — leaving little room for innovation or the strategic work that actually moves the product forward.',
       ],
     },
   },
   {
-    title: 'Product Modernization & Continuous Evolution',
-    subtitle: 'The strongest products are not replaced. They are re-engineered to keep winning.',
+    title: 'Product Support Automation',
+    subtitle: 'Product support burden doesn\'t have to scale with your product\'s success.',
     content: {
       type: 'detail',
-      serviceLabel: 'PRODUCT MODERNIZATION & CONTINUOUS EVOLUTION',
-      heading: 'Most products don\'t need a dramatic reset. They need a smarter path forward.',
+      serviceLabel: 'PRODUCT SUPPORT AUTOMATION',
+      heading: 'Product support burden doesn\'t have to scale with your product\'s success.',
       body: [
-        'We identify where legacy systems, technical debt, aging workflows, or outdated architecture are slowing the product down — then define a practical path to move it forward in phases. The product keeps delivering value while the right changes are being made underneath it.',
-        'Modernization stops stalling momentum when it\'s treated as an ongoing discipline, not a one-time project.',
+        'As your product grows, so does the volume of questions, issues, and requests. Without the right support architecture, that volume lands on your engineering and product teams. We design and implement intelligent support systems that handle the predictable load automatically, escalate what genuinely needs human attention, and generate operational insight your team needs to eliminate recurring issues at the source.',
+        'Gartner: Agentic AI will autonomously resolve 80% of common customer service issues without human intervention by 2029 — with a 30% reduction in operational costs.',
+      ],
+    },
+  },
+  {
+    title: 'Continuous Delivery & Release Engineering',
+    subtitle: 'The best release is the one nobody notices. Getting there should feel routine.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'CONTINUOUS DELIVERY & RELEASE ENGINEERING',
+      heading: 'The best release is the one nobody notices. Getting there should feel routine.',
+      body: [
+        'Release pain isn\'t a technology problem — it\'s an architecture and process problem that compounds quietly until it owns the calendar. We build the CI/CD pipelines, deployment architecture, and release governance that turn shipping into a repeatable, low-drama operation. The goal is a team that can push to production with confidence and spend its energy on the next feature rather than the last incident.',
+        'DORA 2024: Low-performing teams have a 64% change failure rate. Elite teams have 5%. The difference is process and architecture, not talent.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Validate Builds Faster',        body: 'Get to an early working version sooner, so the plan can respond to real signal instead of assumptions — reducing wasted engineering investment.' },
-  { title: 'Modernize Without Disruption',  body: 'Reduce product drag while creating room for new product value. The product keeps moving while the right changes are being made under the hood.' },
-  { title: 'Build Team Capability',         body: 'Transfer knowledge and build engineering capacity within your team as delivery progresses — so the team becomes stronger through the engagement, not dependent on it.' },
-  { title: 'Move Fast Where It Helps',      body: 'We push pace when the window is open, and slow down when speed is the wrong signal. Our job is product momentum, not performance theater.' },
+  { title: 'Your team stays in the driver\'s seat.',               body: 'We work alongside your engineers and product managers — never around them. Decision authority stays where it belongs.' },
+  { title: 'We build it so your team can own it.',                 body: 'The engagement model follows your business needs, not our convenience. We build it so your team can own it — or we stay as your delivery partner.' },
+  { title: 'We work within your governance, processes, and pace.', body: 'No mandate to change how your organization runs. We adapt to what exists and improve from the inside.' },
+  { title: 'Quality is non-negotiable.',                           body: 'Compressed timelines don\'t mean corners cut. The speed comes from eliminating waste, not from skipping what matters.' },
 ];
 
 const proofCards = [
-  { tags: 'COMMERCE • PRODUCT REDESIGN',   title: '56% Faster Product Discovery',     excerpt: 'A high-volume commerce experience was redesigned so users could find what they needed faster and with less friction — validated through research before a single production change.' },
-  { tags: 'FINTECH • RAPID PROTOTYPING',   title: 'Working Prototype in 24 Hours',    excerpt: 'A fintech concept moved from idea to functioning product in a single day — fast enough to test, validate, and spark investor and market interest.' },
-  { tags: 'MOBILE • LAUNCH READINESS',     title: '4M+ Views in 48 Hours',            excerpt: 'AppFitters\' configurable mobile platform generated massive organic traction immediately after launch, proving the value of speed, usability, and engineering-led go-to-market readiness.' },
+  { tags: 'COMMERCE • PRODUCT REDESIGN',  title: '56% Faster Product Discovery',  excerpt: 'A high-volume commerce experience was redesigned so users could find what they needed faster and with less friction — validated through research before a single production change.' },
+  { tags: 'FINTECH • RAPID PROTOTYPING',  title: 'Working Prototype in 24 Hours', excerpt: 'A fintech concept moved from idea to functioning product in a single day — fast enough to test, validate, and spark market interest.' },
+  { tags: 'MOBILE • LAUNCH READINESS',    title: '4M+ Views in 48 Hours',         excerpt: 'A client\'s configurable mobile product launched with immediate traction, proving the value of speed, usability, and launch readiness.' },
 ];
 
 const painCards = [
-  { heading: '"The team needs to move faster, but they need clarity, quality, and control."', body: 'Velocity without discipline creates technical debt. Discipline without velocity creates stalled roadmaps. We help teams find the balance that actually compounds.' },
-  { heading: '"We have something worth building, but we\'re missing the dedicated capacity."', body: 'The idea is validated. The market window is open. What\'s missing is the engineering capacity and execution structure to push it forward properly without destabilizing the existing product.' },
-  { heading: '"The team can create so much more value, if only they spent less time on maintenance."', body: 'Engineering cycles that should go into new product features keep getting pulled into scaffolding, rework, and the overhead of maintaining a system that wasn\'t built to evolve.' },
+  { heading: '"We\'ve been in discovery for months and still aren\'t sure what we\'re building."',      body: 'The idea is solid. The scope keeps shifting. Discovery has become the project rather than the path to the project.' },
+  { heading: '"We shipped a product — but now every new feature feels like open-heart surgery."',       body: 'Launch was a success. But the architecture that got you there isn\'t the one that scales. Every sprint costs more than the last.' },
+  { heading: '"Our teams pull data from three different systems to answer one question."',               body: 'Inventory, finance, and supply chain each have their version of reality. Nobody trusts the numbers until they\'ve reconciled them manually.' },
+  { heading: '"We know AI could improve our product — we just haven\'t found the right entry point."', body: 'The capability exists. The use cases are obvious in hindsight. But nobody has the bandwidth to scope it properly while keeping the product running.' },
 ];
 
 export default function ProductEngineering() {
@@ -170,22 +184,22 @@ export default function ProductEngineering() {
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Build with agility. Evolve with intent.</p>
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>PRODUCT ENGINEERING</p>
               <FadeUp>
                 <h1 style={d1()}>
-                  Want to turn a bold product vision{' '}
-                  <span style={{ color: red }}>into something real?</span>
+                  Great products don't stall because the idea was wrong. They stall because{' '}
+                  <span style={{ color: red }}>building and scaling are two completely different problems.</span>
                 </h1>
               </FadeUp>
               <FadeUp delay={80}>
                 <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                  Great products are no longer built for one release, one region, or one moment in time. We help teams launch, modernize, and improve digital products with stronger velocity, sharper execution, and the foundations to keep moving as the market moves.
+                  Most teams discover the gap between working and scaling only after they're already in it. We work with your team from first concept through platform maturity — getting to a working product faster than you'd expect, without the shortcuts that cause problems later.
                 </p>
               </FadeUp>
               <FadeUp delay={120}>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  <Button variant="primary"   label="Talk to a Product Expert" href="#" />
-                  <Button variant="secondary" label="Explore Our Work"         href="#" />
+                  <Button variant="primary"   label="Show us the problem" href="#" />
+                  <Button variant="secondary" label="See How We Work"     href="#" />
                 </div>
               </FadeUp>
             </div>
@@ -203,7 +217,7 @@ export default function ProductEngineering() {
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
-            {['TOYOTA FINANCIAL SERVICES', 'GE HealthCare', 'COMMONSPIRIT', 'BIO-RAD', 'ADAPTHEALTH'].map(name => (
+            {['CEFALY', 'WORD AND BROWN', 'CARE PREDICTOR', 'NEC', 'BIO-RAD'].map(name => (
               <span key={name} style={{ fontFamily: sans, fontSize: 13, fontWeight: 700, color: '#888', filter: 'grayscale(100%)', opacity: .65 }}>{name}</span>
             ))}
           </div>
@@ -222,13 +236,13 @@ export default function ProductEngineering() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
-                The market is moving fast. Product teams{' '}
-                <span style={{ color: red }}>need to move faster.</span>
+                Your product team didn't sign up to spend six months{' '}
+                <span style={{ color: red }}>finding out if the idea works.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'Great products begin with ambition, but today they get funded, built, and scaled only when teams can show a faster path from idea to working prototypes. The market now rewards velocity, adaptability, and products built for global reach with local relevance.',
-                  'The teams pulling ahead are not just building faster. They are building with more adaptability, more discipline, and more room to scale. Funding follows proof — ideas get backing faster when teams can show a credible, working product early.',
+                  'The window between idea and evidence used to be measured in quarters. Today, AI-accelerated engineering compresses that window to weeks — not by cutting corners, but by eliminating the cycles that never needed to exist.',
+                  'The teams we work with don\'t abandon their instincts or existing investments. They get to the answer faster, then build on ground they\'ve actually tested.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
@@ -236,10 +250,10 @@ export default function ProductEngineering() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '56%',   desc: 'Faster product discovery for a high-volume commerce client after a research-led product redesign.' },
-                { num: '24hrs', desc: 'Time from concept to working prototype for a fintech client — fast enough to validate and raise investment.' },
-                { num: '4M+',   desc: 'Views in 48 hours for a client\'s configurable mobile platform after a design-led launch.' },
-                { num: '90%+',  desc: 'Of Technossus product clients continue working with us after the first engagement — many for over a decade.' },
+                { num: 'Weeks not quarters', desc: 'From concept to working product — compressed without shortcuts.' },
+                { num: '70%',               desc: 'Of product delays are scope and discovery failures, not engineering ones — we solve for the front of the problem.' },
+                { num: '1→N',               desc: 'Scaling a product is a different discipline than building one — we bring both.' },
+                { num: 'Built to hand off',  desc: 'Your team owns it when we\'re done, or we transition into managed services.' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
@@ -276,13 +290,13 @@ export default function ProductEngineering() {
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <Tag label="HOW WE WORK" />
               <h2 style={{ ...d2(), marginTop: 16 }}>
-                Move fast where it helps. Stay{' '}
-                <span style={{ color: red }}>disciplined where it matters.</span>
+                We don't fly in, build something,{' '}
+                <span style={{ color: red }}>and leave.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'The Technossus way is simple: move fast where it helps, stay disciplined where it matters, and build with your team — not around them. We work embedded with your product and engineering teams, making decisions together rather than handing work over and walking away.',
-                  'When working software shows up sooner, teams get something real to test, learn from, and improve earlier. More engineering time goes to product value. Less goes into scaffolding, repetitive tasks, and delivery overhead.',
+                  'Technossus engineers are embedded in your delivery — not parachuted in to hand over a product and disappear. We work with your team as a natural extension of it: your processes, your governance, your cadence. Capability transfers as we build, so when the engagement ends, your team is stronger than when we started.',
+                  'Over 90% of our clients extend or expand their engagement within the first year.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
@@ -340,7 +354,7 @@ export default function ProductEngineering() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h1 style={{ ...d1(), marginTop: 16 }}>
-            If roadmap pressure is slowing momentum, we{' '}
+            If any of these describe where your team is right now, we{' '}
             <span style={{ color: red }}>should talk.</span>
           </h1>
           <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
@@ -356,12 +370,12 @@ export default function ProductEngineering() {
 
           {/* CTA offer block */}
           <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Have a product to build, maintain, or scale?</h3>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Bring us your toughest Engineering problem.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              If roadmap pressure, modernization needs, or delivery friction are slowing momentum — let's start with the parts that matter most. Two days with a Technossus product team. At no cost. A real read on the real problem.
+              We start with a 2-day free consulting engagement — no proposal theater, no 200-slide deck. Just your team, ours, and the real problem on the table.
             </p>
             <div>
-              <Button variant="primary" label="Talk to a Product Expert →" href="#" />
+              <Button variant="primary" label="Bring us your problems →" href="#" />
             </div>
           </div>
         </div>

@@ -29,91 +29,90 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'Multi-Cloud Resilience Engineering',
-    subtitle: 'Design and manage platforms that perform consistently across cloud and hybrid environments.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'MULTI-CLOUD RESILIENCE ENGINEERING',
-      heading: 'Modern cloud environments span multiple providers. Consistency across them shouldn\'t require heroics.',
-      body: [
-        'We help ensure systems remain observable and perform consistently across multi-cloud and hybrid environments, reducing operational blind spots and dependency risks. Resilience is built into how platforms run — not retrofitted after the first outage.',
-        'Through structured monitoring, failover readiness, and consistent performance management across infrastructure layers, your platform recovers reliably under disruptions — and your team knows why before users do.',
-      ],
-    },
-  },
-  {
     title: 'Cloud FinOps & AI Token Optimization',
-    subtitle: 'Establish clear ownership, cost visibility, and usage discipline across cloud and AI consumption.',
+    subtitle: 'Bring FinOps discipline and AI token governance together in one unified cost ownership model.',
     content: {
       type: 'detail',
       serviceLabel: 'CLOUD FINOPS & AI TOKEN OPTIMIZATION',
-      heading: 'Cloud and AI consumption grow without clear ownership. Costs become unpredictable. We fix that.',
+      heading: 'Your cloud bill has line items nobody on your team can explain.',
       body: [
-        'We bring structure through FinOps practices — defining accountability, improving cost visibility, and aligning usage with business priorities. The result is predictable, optimized spend — where both cloud usage and AI consumption are continuously monitored, governed, and aligned to value.',
-        'As AI token consumption becomes a significant line item for enterprises, governance of that spend requires the same discipline as cloud infrastructure. We build both into a single, unified cost ownership model.',
+        'A resource provisioned for a project that pivoted. An environment spun up for testing that never came down. A model integration whose tokens kept flowing after the project moved on. We bring FinOps discipline and AI token governance together in a single practice — because the pattern is the same, and separating them means solving half the problem.',
+        '29% of enterprise cloud spend is wasted annually — a rate held between 27–32% every year since 2019. We build the visibility and ownership model that changes that permanently.',
       ],
     },
   },
   {
-    title: 'AI Model Governance',
-    subtitle: 'Govern the full lifecycle of AI workloads — from deployment to monitoring and control.',
+    title: 'Multi-Cloud Resilience Engineering',
+    subtitle: 'Architect for portability, failover, and resilience across AWS, Azure, and GCP.',
     content: {
       type: 'detail',
-      serviceLabel: 'AI MODEL GOVERNANCE',
-      heading: 'As AI adoption scales, managing access, usage, and compliance becomes critical infrastructure.',
+      serviceLabel: 'MULTI-CLOUD RESILIENCE ENGINEERING',
+      heading: 'One vendor\'s outage shouldn\'t be your outage.',
       body: [
-        'We enable governed cloud environments that support the full lifecycle of AI workloads — from deployment to monitoring and control. With governance embedded, organizations can scale AI confidently — ensuring compliance, reducing risk, and maintaining control over model usage and outcomes.',
-        'Shadow AI deployment is now the default state in most enterprises. Governance that used to be implicit in the deployment process now has to be explicit, tracked, and defensible at the altitude your board operates at.',
+        'Most multi-cloud environments grew organically — a workload here, an acquisition there. The result is an estate that runs across clouds without being designed for it. We architect for portability, failover, and resilience across AWS, Azure, and GCP — so your infrastructure can absorb disruption at the provider level without passing it to your business.',
+        '73% of organizations now run hybrid or multi-cloud environments. Most weren\'t designed for it from day one.',
       ],
     },
   },
   {
-    title: 'Autonomous Cloud Operations (AI/ML Ops)',
-    subtitle: 'Improve incident response and routine operations through automation and operational visibility.',
+    title: 'Autonomous Cloud Operations & AI/MLOps',
+    subtitle: 'Self-healing infrastructure, intelligent observability, and AI-assisted operations at scale.',
     content: {
       type: 'detail',
-      serviceLabel: 'AUTONOMOUS CLOUD OPERATIONS',
-      heading: 'Cloud operations that depend on manual processes are always one incident away from a problem.',
+      serviceLabel: 'AUTONOMOUS CLOUD OPERATIONS & AI/MLOPS',
+      heading: 'Your team didn\'t sign up to babysit infrastructure.',
       body: [
-        'We improve incident response and routine operations through automation, operational visibility, and structured workflows. Over time, operations become more predictable and efficient — reducing downtime, improving reliability, and allowing teams to focus on higher-value work instead of reactive fixes.',
-        'The goal is operations that self-heal where possible, escalate intelligently where needed, and give your team clear visibility into everything that matters.',
+        'Monitoring alerts that fire at 2am. Scaling decisions made manually. MLOps pipelines that require human intervention at every stage. We implement self-healing infrastructure, intelligent observability, and AI-assisted operations so your engineers focus on architecture and business logic — not keeping the lights on.',
+        'AIOps and MLOps convergence is now the primary DevOps investment priority for enterprises scaling AI workloads.',
       ],
     },
   },
   {
-    title: 'Cloud Security & Compliance',
-    subtitle: 'Security and compliance built into how cloud environments operate — not an afterthought.',
+    title: 'Cloud-Hosted AI Governance & Compliance',
+    subtitle: 'Model lifecycle controls, audit trails, and compliance architecture built into your cloud environment.',
     content: {
       type: 'detail',
-      serviceLabel: 'CLOUD SECURITY & COMPLIANCE',
-      heading: 'Security integrated into operations means you can scale confidently without introducing additional risk.',
+      serviceLabel: 'CLOUD-HOSTED AI GOVERNANCE & COMPLIANCE',
+      heading: 'Govern the models. Own the outcomes.',
       body: [
-        'We embed access control, policy enforcement, and compliance into day-to-day cloud operations — so security isn\'t a gate at the end of the release cycle, but a property of how the environment runs.',
-        'With security integrated into operations, organizations can maintain control, meet regulatory requirements, and scale confidently — without every new workload requiring a separate security review from scratch.',
+        'Regulatory pressure on AI is accelerating — the EU AI Act, state-level legislation, and sector-specific requirements are arriving faster than most governance frameworks were designed to absorb. We implement model lifecycle controls, audit trails, policy enforcement, and compliance architecture directly into your cloud environment.',
+        '47% of large enterprises now have a dedicated AI governance team or leader — up sharply as regulatory requirements moved from horizon to reality.',
+      ],
+    },
+  },
+  {
+    title: 'Cloud Security & Compliance for AI',
+    subtitle: 'Zero-trust architecture and AI-specific security patterns — defensible by design, not by documentation.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'CLOUD SECURITY & COMPLIANCE FOR AI',
+      heading: 'Be the one in the room who already knows the answer.',
+      body: [
+        'Security posture in AI-era cloud environments isn\'t just about perimeter controls. It\'s about zero-trust architecture, DevSecOps pipelines that enforce policy at every deployment, and AI-specific security patterns for inference endpoints and model access. Defensible by design, not by documentation.',
+        'Cloud security and AI-specific compliance controls rank as the top buyer concern in enterprise cloud engagements — above cost optimization and above performance.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Stabilize Before You Scale',                body: 'We start with current environments — stabilize performance, reduce operational friction, and improve reliability before introducing new layers or tools.' },
-  { title: 'Make Ownership Visible and Actionable',     body: 'Define clear accountability across teams so decisions on cost, performance, and reliability are taken with full context and the right authority.' },
-  { title: 'Govern Continuously, Not Periodically',     body: 'Governance is embedded into how environments are managed — so compliance and cost control are routine decisions, not reactive responses to audits.' },
-  { title: 'Build for What\'s Coming, Not Just What Is', body: 'Cloud environments that support today\'s workloads need to be ready for AI, data, and new business models. We build that readiness in from the start.' },
+  { title: 'Your team stays in the driver\'s seat.',        body: 'We work alongside your engineers — not instead of them. Architecture decisions, tooling choices, and operational patterns are built with your team\'s input, not handed down.' },
+  { title: 'Knowledge transfers as we build.',              body: 'Every session is a working session. Every optimization is explained. Your engineers leave each phase understanding what was built and why.' },
+  { title: 'We work within your existing cloud governance.', body: 'We assess what\'s already in place, strengthen it, and build on it — so your organization\'s processes stay intact while your capability grows.' },
+  { title: 'The optimization holds after we leave.',        body: 'We build the hygiene practices, not just the outcome. FinOps discipline, cost attribution, and governance patterns are operational habits your team carries forward.' },
 ];
 
 const proofCards = [
-  { tags: 'HEALTHCARE • CLOUD PLATFORM',      title: 'Cloud Platform Saves Millions in Clinical Trials',          excerpt: 'A cloud-based clinical trials system enabled real-time monitoring and early risk detection. With $70M+ trial costs and 80%+ failure rates, early intervention through cloud-enabled visibility helped avoid significant losses.' },
-  { tags: 'MARKETING • ANALYTICS & VOICE',    title: 'Cloud-Based Analytics and Voice-Driven Brand Insights',     excerpt: 'A cloud-based data visualization and voice-enabled experience was prototyped to help marketers access brand performance insights faster and more intuitively — reducing analysis time from days to minutes.' },
-  { tags: 'HEALTHCARE • ARCHITECTURE DESIGN', title: 'Proof of Concept Minimizes Risk at Dignity Health',         excerpt: 'A cloud-based reference architecture was designed and validated to reduce risk in a multi-million-dollar healthcare digital transformation initiative — before a single production line was written.' },
+  { tags: 'HEALTHCARE • CLINICAL TRIALS',      title: 'Cloud Platform Helps Save Millions in Clinical Trials',   excerpt: 'A cloud-based clinical trials system enabled real-time monitoring and early risk detection. With $70M+ trial costs and 80%+ failure rates, early intervention through cloud-enabled visibility helped avoid significant losses.' },
+  { tags: 'MARKETING • ANALYTICS & VOICE',     title: 'Cloud-Based Analytics and Voice-Driven Brand Insights',   excerpt: 'A cloud-based data visualization and voice-enabled experience was prototyped to help marketers access brand performance insights faster and more intuitively — reducing analysis time from days to minutes.' },
+  { tags: 'HEALTHCARE • ARCHITECTURE DESIGN',  title: 'Proof of Concept Minimizes Project Risk',                 excerpt: 'A cloud-based reference architecture was designed and validated to reduce risk in a multi-million-dollar healthcare digital transformation initiative — before a single production line was written.' },
 ];
 
 const painCards = [
-  { heading: '"Infrastructure is active, but there\'s limited clarity on performance."',             body: 'Systems are running, but nobody can say confidently whether they\'re performing as expected, what the dependencies are, or where the next failure is most likely to come from.' },
-  { heading: '"AI usage is growing, but token consumption isn\'t governed."',                        body: 'Usage is increasing faster than anyone planned for, costs are rising unpredictably, and there\'s no clear owner for the spend. Every month is a surprise at invoice time.' },
-  { heading: '"How do I add new capabilities without disrupting current operations?"',               body: 'Every time a new capability is introduced, the team holds its breath. The integration risk is real, the downtime tolerance is zero, and the runway for a measured rollout keeps getting shorter.' },
-  { heading: '"Systems scale, but reliability depends heavily on manual effort."',                   body: 'Incident response requires heroics. Failover procedures live in someone\'s head. The system works — but only because people are watching it around the clock.' },
-  { heading: '"Am I getting locked into vendor decisions that limit flexibility later?"',             body: 'Commitments that made sense at the time are now creating constraints. Moving workloads, switching tooling, or re-platforming feels expensive and risky in equal measure.' },
+  { heading: '"We budgeted for 20% cloud growth. The bill came in at 47%."',                    body: 'AI workloads don\'t scale linearly, and most budgeting tools weren\'t built for inference cost volatility. Visibility comes before governance.' },
+  { heading: '"We have 400 microservices. Three people understand the full picture."',           body: 'Distributed architecture distributes knowledge risk too. Modernization without documentation and observability creates a different kind of fragility.' },
+  { heading: '"We\'re on three clouds. None of them talk to each other the way we need."',      body: 'Multi-cloud through acquisition or organic growth rarely produces a coherent operating model. Resilience requires architecture, not just presence.' },
+  { heading: '"Our ML models are deployed. We have no idea what they\'re costing us to run."', body: 'Production AI without cost attribution is a liability that compounds with every model update. Token governance is an operational discipline, not a one-time audit.' },
 ];
 
 export default function CloudModernization() {
@@ -159,22 +158,22 @@ export default function CloudModernization() {
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Designed for control. Ready for scale.</p>
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>CLOUD CONSULTING AND SUPPORT</p>
               <FadeUp>
                 <h1 style={d1()}>
-                  Cloud environments that hold up{' '}
-                  <span style={{ color: red }}>as the business scales.</span>
+                  The cloud promised to simplify infrastructure and contain costs.{' '}
+                  <span style={{ color: red }}>Your last invoice told a different story.</span>
                 </h1>
               </FadeUp>
               <FadeUp delay={80}>
                 <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                  We help organizations design, manage, and improve cloud environments — strengthening reliability, bringing costs under control, and embedding governance. So systems run smoothly while supporting business needs, including future data and AI use cases.
+                  Complexity crept in quietly — through architectural decisions that made sense at the time, containerized environments that multiplied infrastructure overhead, and AI workloads nobody fully priced. We work alongside your team to untangle what's there, govern what's coming, and build infrastructure that actually earns its cost.
                 </p>
               </FadeUp>
               <FadeUp delay={120}>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  <Button variant="primary"   label="Talk to a CTO-on-Demand" href="#" />
-                  <Button variant="secondary" label="Explore Our Work"        href="#" />
+                  <Button variant="primary"   label="Show us the Bill"  href="#" />
+                  <Button variant="secondary" label="See How We Work"   href="#" />
                 </div>
               </FadeUp>
             </div>
@@ -192,7 +191,7 @@ export default function CloudModernization() {
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
-            {['TOYOTA FINANCIAL SERVICES', 'GE HealthCare', 'COMMONSPIRIT', 'BIO-RAD', 'ADAPTHEALTH'].map(name => (
+            {['CEFALY', 'ADAPTHEALTH', 'GLIDEWELL LABS', 'FIRST AMERICAN', 'WORD AND BROWN'].map(name => (
               <span key={name} style={{ fontFamily: sans, fontSize: 13, fontWeight: 700, color: '#888', filter: 'grayscale(100%)', opacity: .65 }}>{name}</span>
             ))}
           </div>
@@ -211,13 +210,13 @@ export default function CloudModernization() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
-                Cloud is scaling. Operations are{' '}
-                <span style={{ color: red }}>catching up.</span>
+                Your engineers followed every best practice. They didn't sign up for what it costs to maintain, scale{' '}
+                <span style={{ color: red }}>and keep it running.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'Cloud adoption is no longer the barrier — managing it effectively is. As environments grow, the focus has shifted to reliability, cost control, and governance so cloud supports business needs without adding operational complexity.',
-                  'Organizations continue to increase cloud spending, but lack clear ownership and cost discipline across environments. Multi-cloud and hybrid architectures are the norm, creating new operational complexity that most teams weren\'t structured to handle.',
+                  'The move from monolithic systems to microservices and containerized architectures wasn\'t a mistake — it was the right call, endorsed by every major platform and best-practice framework. What nobody fully modeled was the operational weight that came with it. More services meant more infrastructure to provision, monitor, patch, and govern. Complexity accumulated quietly, one well-intentioned architectural decision at a time.',
+                  'AI has added an entirely new layer to an environment already carrying more than it showed. Inference endpoints, vector databases, GPU compute, and token consumption don\'t behave like traditional workloads. We work alongside your team to bring visibility to what\'s running, governance to what\'s being added, and architecture that can carry both — without starting over.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
@@ -225,10 +224,10 @@ export default function CloudModernization() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '$70M+',  desc: 'Clinical trial costs managed through a cloud platform built for real-time monitoring and early risk detection.' },
-                { num: '35%',    desc: 'Average cloud spend reduction for enterprises that implement formal FinOps disciplines and cost ownership models.' },
-                { num: '80%',    desc: 'Of enterprise AI initiatives are blocked by cloud governance gaps — not model performance or data quality.' },
-                { num: 'Week 1', desc: 'When governance is embedded from the start, your board sees what\'s running, what it costs, and who\'s accountable.' },
+                { num: '29%',    desc: 'of enterprise cloud spend is wasted annually — a rate held between 27–32% every year since 2019, ticked up in 2026 as AI workloads added new cost complexity.' },
+                { num: '73%',    desc: 'of organizations run hybrid or multi-cloud — most weren\'t architecturally designed for it from the start.' },
+                { num: '84%',    desc: 'of enterprises report AI costs cutting gross margins — only 15% can forecast those costs within ±10%.' },
+                { num: 'Zero',   desc: 'Handoffs without knowledge transfer. Your team understands what we build before we leave.' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
@@ -265,13 +264,13 @@ export default function CloudModernization() {
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <Tag label="HOW WE WORK" />
               <h2 style={{ ...d2(), marginTop: 16 }}>
-                Our approach focuses on how cloud environments{' '}
-                <span style={{ color: red }}>operate day to day.</span>
+                We don't clean up your cloud and leave your team{' '}
+                <span style={{ color: red }}>no smarter than when we arrived.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'We focus on keeping systems reliable, costs predictable, and governance embedded into routine decisions — not bolt-on audits that happen once a quarter.',
-                  'Every engagement starts by understanding how your environment actually runs today — not how the architecture diagram says it should. From there, we build toward the kind of operational maturity that makes scaling predictable instead of nerve-wracking.',
+                  'The pattern is familiar: a consultant reduces the bill, optimizes the architecture, hands off runbooks — and six months later the costs are back. Not because the work was wrong. Because the capability didn\'t transfer. We build embedded into your team, not alongside it. Every FinOps practice, every governance layer, every automation — your engineers are in the room, learning as it happens.',
+                  'We\'ve maintained a 90%+ client retention rate not because engagements are sticky, but because the outcomes are. More than half our cloud engagements extend because clients want to go deeper, not because they have to.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
@@ -329,10 +328,10 @@ export default function CloudModernization() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h1 style={{ ...d1(), marginTop: 16 }}>
-            If cloud complexity is creating operational risk, we{' '}
+            If any of these feel recent, we{' '}
             <span style={{ color: red }}>should talk.</span>
           </h1>
-          <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
+          <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't edge cases. They're the conversations we have most often.</p>
           <div style={{ display: 'grid', gridTemplateColumns: cols2, gap: 24, marginTop: 48 }}>
             {painCards.map((card, i) => (
               <div key={i} style={{ background: '#F2F2F2', padding: '32px 28px', display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -345,12 +344,12 @@ export default function CloudModernization() {
 
           {/* CTA offer block */}
           <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Build a platform that holds as you scale.</h3>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Bring us your toughest cloud problem.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              Whether you are improving reliability, bringing cloud spend under control, or preparing for AI — we help you move forward with greater confidence and less operational risk. A focused conversation with our cloud leadership team costs nothing.
+              We'll invest two days understanding your environment — your architecture, your cost profile, your team's current capabilities — and come back within a week with a concrete approach. No proposal theater. No 200-slide assessment deck. Just clarity on what's actually happening and what to do about it.
             </p>
             <div>
-              <Button variant="primary" label="Talk to a CTO-on-Demand →" href="#" />
+              <Button variant="primary" label="Bring us your problems →" href="#" />
             </div>
           </div>
         </div>

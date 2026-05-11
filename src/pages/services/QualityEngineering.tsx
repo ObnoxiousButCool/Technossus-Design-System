@@ -31,92 +31,90 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'Independent Quality Assurance',
-    subtitle: 'Validate end-to-end system behavior through functional, non-functional, API, and regression testing.',
+    title: 'Quality Engineering & Independent Assurance',
+    subtitle: 'Objective validation across releases, environments, and system changes — designed around how you actually build.',
     content: {
       type: 'detail',
-      serviceLabel: 'INDEPENDENT QUALITY ASSURANCE',
-      heading: 'Objective validation matters most when the team that built the system is also the one reviewing it.',
+      serviceLabel: 'QUALITY ENGINEERING & INDEPENDENT ASSURANCE',
+      heading: 'Your release shouldn\'t feel like a bet every time.',
       body: [
-        'Independent quality assurance brings a consistent, unbiased perspective across releases, environments, and system changes — surfacing what\'s easy to miss when engineers are close to the code.',
-        'We work with your product and engineering teams to design test strategies around how you actually build: your stack, release cadence, and the business-critical paths where a failure would hurt most. Coverage gets built to hold across releases, not just pass the next one.',
+        'Objective validation matters most when the team that built the system is also the one reviewing it. Independent QA brings a consistent, unbiased perspective across releases, environments, and system changes. We design test strategies around how you actually build: your stack, release cadence, and the business-critical paths where a failure would hurt most.',
+        'Organizations with mature QE practices resolve production defects 6x faster and at 30x lower cost than teams catching the same issues post-release. — NIST',
       ],
-      quote: 'Organizations with mature QE practices resolve production defects 6x faster and at 30x lower cost than teams catching the same issues post-release. — NIST',
     },
   },
   {
-    title: 'Test Automation Engineering',
-    subtitle: 'Integrate automated testing into CI/CD pipelines to enable continuous validation and surface risks early.',
+    title: 'Continuous Quality & QAOps Engineering',
+    subtitle: 'Quality built into CI/CD pipelines — from design to release, risk surfaces early where it\'s cheapest to fix.',
     content: {
       type: 'detail',
-      serviceLabel: 'TEST AUTOMATION ENGINEERING',
-      heading: 'Quality built into the pipeline is quality that holds across every release.',
+      serviceLabel: 'CONTINUOUS QUALITY & QAOPS ENGINEERING',
+      heading: 'Quality that lives in the pipeline — from design to release.',
       body: [
-        'We integrate automated testing and intelligent agents into CI/CD pipelines to enable continuous validation — so risks surface early in the release cycle, when they cost the least to fix.',
-        'Automated functional, non-functional, API, and regression testing gets built to protect business-critical outcomes — not to maximize coverage numbers. The result is a test suite your team can maintain and trust.',
+        'Functional, non-functional, API, and regression testing shouldn\'t wait for the build to finish. Embedding quality into CI/CD pipelines means risk surfaces early, where it\'s cheapest to fix. We build Quality as Code: automated test suites integrated into the pipeline, risk-based coverage, and real-time observability at every stage.',
+        'Teams with QAOps-integrated pipelines report up to 40% fewer production incidents and measurable improvements in release frequency and defect escape rates. — World Quality Report',
       ],
-      quote: 'Defects found in production cost 100x more to fix than those found during design. Shift quality left — before the first commit. — IBM Research',
+    },
+  },
+  {
+    title: 'Performance, Resilience & Scalability',
+    subtitle: 'Validate system behavior under real load, resilience when dependencies fail, and behavior at scale.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'PERFORMANCE, RESILIENCE & SCALABILITY',
+      heading: 'Know how your system behaves before your users find out.',
+      body: [
+        'Staging environments don\'t tell the whole truth. Performance under real load, resilience when dependencies fail, and behavior at scale are questions staging can\'t fully answer. We validate system performance against real-world usage patterns — load and stress testing, chaos engineering for cloud-native environments, scalability benchmarking as traffic and data volumes grow.',
+        'Organizations that invest in performance and resilience engineering report 50–70% reduction in unplanned downtime and significantly lower cloud cost overruns at scale. — Gartner',
+      ],
     },
   },
   {
     title: 'Governance, Compliance & Trust Assurance',
-    subtitle: 'Ensure systems remain reliable, traceable, and compliant with WCAG, HIPAA, and audit requirements.',
+    subtitle: 'Compliance-as-code for HIPAA, FDA, SOC 2, WCAG, and the EU AI Act — built into delivery from the start.',
     content: {
       type: 'detail',
       serviceLabel: 'GOVERNANCE, COMPLIANCE & TRUST ASSURANCE',
-      heading: 'Compliance validation is most expensive when it\'s the last thing addressed before an audit.',
+      heading: 'The audit doesn\'t start when the auditor arrives.',
       body: [
-        'We build traceability and governance into quality practices from the start — so the documentation exists when it\'s needed, not when it\'s requested. Whether your context is FDA regulated, SOC 2, HIPAA, or accessibility standards, quality artifacts are built to hold up to scrutiny.',
-        'Systems remain reliable, traceable, and compliant at scale — with security, accessibility, and audit readiness embedded into how quality gets delivered.',
+        'In regulated industries — healthcare, fintech, pharma, government — compliance isn\'t a final checkpoint. HIPAA, PHI, PCI-DSS, FDA, GDPR, SOC 2, WCAG accessibility, and the EU AI Act each carry validation standards that have to be mapped into the test strategy from the start. We build compliance-as-code: Validation Master Plans, security and accessibility testing embedded in delivery, and documentation that holds up under scrutiny.',
+        'Compliance-related defects identified post-release cost 4–5x more to remediate than those caught during design and requirements validation. — NIST',
       ],
     },
   },
   {
-    title: 'Model Validation, Security & Performance Engineering',
-    subtitle: 'Validate model outputs, system security, and performance under real-world usage and load.',
+    title: 'AI-First & Responsible Quality Engineering',
+    subtitle: 'Validate model outputs, detect drift, test for bias, and build agentic test automation that adapts as systems evolve.',
     content: {
       type: 'detail',
-      serviceLabel: 'MODEL VALIDATION, SECURITY & PERFORMANCE ENGINEERING',
-      heading: 'AI models need quality engineering too — and it looks very different from traditional testing.',
+      serviceLabel: 'AI-FIRST & RESPONSIBLE QUALITY ENGINEERING',
+      heading: 'Your AI ships confident. Not because you hoped it was ready — because you tested it that way.',
       body: [
-        'Model outputs aren\'t deterministic. Traditional test suites don\'t catch hallucinations, fairness drift, or latency degradation under production load. We build evaluation frameworks for AI systems that reflect the risks that matter: accuracy, safety, consistency, and behavior at scale.',
-        'Performance testing is most valuable before the system is under pressure, not after users experience it. We design load, stress, and resilience tests that reflect real traffic patterns — so you know how the product behaves before the world does.',
-      ],
-    },
-  },
-  {
-    title: 'Probabilistic Testing',
-    subtitle: 'Test how systems behave under unpredictable inputs, edge cases, and changing conditions.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'PROBABILISTIC TESTING',
-      heading: 'The failures that hurt most are rarely the ones you planned your test cases around.',
-      body: [
-        'Probabilistic testing validates how systems behave under unpredictable inputs, edge cases, and changing conditions — not just the predefined scenarios your team already thought of.',
-        'From prompt regression suites to LLM evaluation pipelines and chaos engineering, we work alongside your team to build the infrastructure that gives confidence before deployment — and catches unexpected behavior after it.',
+        'AI systems don\'t fail the way conventional software fails. Model outputs drift. Behavior shifts under edge cases and adversarial inputs no predefined test scenario anticipated. Bias surfaces in production. We validate model outputs, detect drift early, test for bias and responsible AI compliance, and build agentic test automation that uses AI to generate cases, self-heal scripts, and adapt coverage as systems evolve.',
+        'Gartner predicts 75%+ of enterprises will incorporate GenAI-driven testing by 2026. Organizations with structured AI validation practices significantly outperform peers on production reliability.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Embed Quality into Delivery Pipelines', body: 'Quality is built into CI/CD through functional, API, regression, and non-functional testing — so validation happens continuously, not at the end of the sprint.' },
-  { title: 'Focus on What Actually Matters',        body: 'Validation is prioritized using risk signals, usage patterns, and change impact — so effort goes toward what protects real business outcomes, not just coverage numbers.' },
-  { title: 'Transfer Knowledge, Not Just Frameworks', body: 'Every engagement is designed to leave your team more capable — with automation frameworks, testing strategies, and quality practices they can own and evolve after we leave.' },
-  { title: 'Standards That Hold',                   body: 'Quality benchmarks are set at the start and maintained through delivery. They don\'t flex when timelines get tight, and they transfer cleanly to your team.' },
+  { title: 'Embedded From Day One.',     body: 'Quality strategy gets shaped alongside engineering and product before the first test case is written.' },
+  { title: 'Capability Transfers.',      body: 'Frameworks, tooling, and methodology are documented and handed over as working knowledge — not as artifacts nobody can explain.' },
+  { title: 'Alignment Before Delivery.', body: 'We work within what serves the product and business and get alignment on what needs to change before it becomes a problem.' },
+  { title: 'Standards That Hold.',       body: 'Quality benchmarks are set at the start and maintained through delivery. They don\'t flex when timelines get tight.' },
 ];
 
 const proofCards = [
-  { tags: 'FINTECH • PLATFORM MODERNIZATION', title: 'Architecting a High-Frequency Trading Engine for Global Markets',         excerpt: 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40% using event-driven microservices and localized data centers.' },
-  { tags: 'HEALTHCARE • QUALITY ENGINEERING', title: 'Rebuilding QA Confidence Across a Multi-Cloud Healthcare Platform',        excerpt: 'A regional health system was shipping monthly but losing trust with every release. We embedded QA from sprint zero and rebuilt their automation framework from the ground up.' },
-  { tags: 'AI • RESPONSIBLE QE',              title: 'Evaluation Frameworks for LLM-Powered Clinical Decision Support',          excerpt: 'A diagnostics company needed confidence in their AI model before going live with hospital partners. We built a full evaluation pipeline covering accuracy, safety, and latency.' },
+  { tags: 'FINANCIAL SERVICES • QE AUTOMATION',  title: '2x Faster Dashboard Validation',             excerpt: 'Automated validation across 20+ critical dashboards replaced manual checks at a global investment bank, improving data accuracy and enabling faster, more reliable decision-making.' },
+  { tags: 'FINANCIAL SERVICES • TEST AUTOMATION', title: '50% Faster Testing Cycles',                  excerpt: 'Automated 400+ Salesforce test scenarios to reduce testing effort, accelerate releases, and improve system reliability across critical workflows at a global investment bank.' },
+  { tags: 'MANUFACTURING • QUALITY ENGINEERING', title: 'From Manual Testing to Scalable Automation', excerpt: 'Introduced automated testing at Glidewell Labs without impacting active projects, reducing manual effort and enabling faster, more reliable releases.' },
 ];
 
 const painCards = [
-  { heading: 'We keep finding issues too late',                                                body: 'Testing happens at the end. The build is already done, the release is already scheduled, and the defects showing up now should have been caught three sprints ago.' },
-  { heading: 'Our automation suite exists. It just doesn\'t help.',                            body: 'The test infrastructure is there. Coverage numbers look reasonable on paper. But the suite is brittle, maintenance is constant, and half the team isn\'t sure what the tests are actually validating anymore.' },
-  { heading: 'We found out about the compliance gap at the wrong moment.',                     body: 'The audit window opened or the submission deadline arrived and the validation documentation wasn\'t where it needed to be.' },
-  { heading: 'We tested it thoroughly. So why doesn\'t it behave the way it did?',            body: 'The model passed every evaluation. Staging looked good. But in production, outputs drift, edge cases surface, and guardrails show gaps under real user behavior.' },
+  { heading: 'We keep finding issues too late.',                                     body: 'Testing happens at the end. The build is already done, the release is already scheduled, and the defects showing up now should have been caught three sprints ago.' },
+  { heading: 'Automation suite exists. It just doesn\'t help.',                     body: 'Coverage numbers look reasonable on paper. But the suite is brittle, maintenance is constant, and half the team isn\'t sure what the tests are actually validating anymore.' },
+  { heading: 'We found out about the compliance gap at the wrong moment.',           body: 'The audit window opened or the submission deadline arrived, and the validation documentation wasn\'t where it needed to be.' },
+  { heading: 'We tested it thoroughly. So why doesn\'t it behave the way it did?', body: 'The model passed every evaluation. Staging looked good. But in production, outputs drift, edge cases surface, and guardrails show gaps under real user behavior.' },
 ];
 
 export default function QualityEngineering() {
@@ -162,22 +160,22 @@ export default function QualityEngineering() {
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Move beyond testing. Build for quality.</p>
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>QUALITY ENGINEERING AND AUTOMATION</p>
               <FadeUp>
                 <h1 style={d1()}>
-                  Engineer quality into{' '}
-                  <span style={{ color: red }}>every release.</span>
+                  You know what's broken.{' '}
+                  <span style={{ color: red }}>The problem is what you don't know yet.</span>
                 </h1>
               </FadeUp>
               <FadeUp delay={80}>
                 <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                  Traditional testing is nearing its end. We help teams fast-track modern quality engineering — embedding continuous validation into delivery pipelines so every release is reliable, secure, and ready for real-world use.
+                  Most quality programs are built to catch what already went wrong. We work with your team to build the kind of intelligence that finds problems before your users do, and the kind of automation that holds up long after we're gone.
                 </p>
               </FadeUp>
               <FadeUp delay={120}>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  <Button variant="primary"   label="Talk to a Quality Expert" href="#" />
-                  <Button variant="secondary" label="See How We Work"          href="#how" />
+                  <Button variant="primary"   label="Show us the problem" href="#" />
+                  <Button variant="secondary" label="See How We Work"     href="#how" />
                 </div>
               </FadeUp>
             </div>
@@ -195,7 +193,7 @@ export default function QualityEngineering() {
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
-            {['TOYOTA FINANCIAL SERVICES', 'GE HealthCare', 'CHOICE ADMINISTRATORS', 'BIO THERANOSTICS'].map(name => (
+            {['HOULIHAN LOKEY', 'ASIAN PAINTS', 'MDx', 'WORD & BROWN'].map(name => (
               <span key={name} style={{ fontFamily: sans, fontSize: 13, fontWeight: 700, color: '#888', filter: 'grayscale(100%)', opacity: .65 }}>{name}</span>
             ))}
           </div>
@@ -226,10 +224,10 @@ export default function QualityEngineering() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '85%',  desc: 'of defects that reach production were detectable earlier in the cycle at a fraction of the cost to fix.', src: '— IBM Systems Sciences Institute' },
-                { num: '6×',   desc: 'more expensive to fix a defect post-release than to catch it during development.', src: '— NIST' },
-                { num: '30%',  desc: 'average release cycle reduction when QA is shifted left and automated pipelines replace manual regression.', src: '— Technossus Engagements' },
-                { num: '90%+', desc: 'of Technossus clients continue working with us after the first engagement — many for over a decade.', src: '— Technossus Internal' },
+                { num: '85%',              desc: 'of defects that reach production were detectable earlier in the cycle, at a fraction of the cost to fix.', src: '— IBM Systems Sciences Institute' },
+                { num: '26%',              desc: 'of organizations report test automation coverage declined over two years, even as release frequency increased.', src: '— World Quality Report' },
+                { num: '100s',             desc: 'of automation suites built and maintained across client teams — none handed over as shelf-ware.', src: '— Technossus Engagements' },
+                { num: 'Every engagement', desc: 'closes with your team owning the practice, not dependent on us to run it.', src: '— Technossus Internal' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <Stats value={s.num} label="" />
@@ -269,7 +267,7 @@ export default function QualityEngineering() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
                   'Every engagement is designed around transfer, not dependency. Quality strategies, automation frameworks, and validation practices get built collaboratively, with the people who will own them involved from the first conversation. When delivery closes, the capability stays.',
-                  'Bringing in outside expertise on quality creates a real tension for most teams — the fear that what gets built won\'t be understood, or that standards will slip the moment the engagement ends. Over 90% of Technossus clients continue working with us after the first engagement.',
+                  'Over 90% of Technossus clients continue working with us after the first engagement. Many have for over a decade. That\'s not a retention metric — it\'s what happens when a practice gets built right the first time.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
