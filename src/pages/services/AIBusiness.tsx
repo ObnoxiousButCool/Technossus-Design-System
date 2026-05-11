@@ -201,12 +201,11 @@ export default function AIBusiness() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── THE SHIFT ── */}
-      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
-        <Tag label="THE SHIFT" variant="dark" />
-      </div>
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
-        <CornerTL /><CornerBR />
-        <div style={inner}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px' }}>
+        <div style={{ marginBottom: isMobile ? 12 : 16 }}><Tag label="THE SHIFT" variant="dark" /></div>
+        <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+          <CornerTL /><CornerBR />
+          <div style={{ padding: isMobile ? '40px 24px' : isTablet ? '48px 40px' : '56px 68px' }}>
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
@@ -237,7 +236,8 @@ export default function AIBusiness() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </div>
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
@@ -296,25 +296,22 @@ export default function AIBusiness() {
   style={{
     maxWidth: 1440,
     margin: '0 auto',
-    marginBottom: isMobile ? 12 : 16,
     padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
-    background: '#fff',
   }}
 >
-  <Tag label="PROOF" variant="dark" />
-</div>
+  <div style={{ marginBottom: isMobile ? 12 : 16 }}><Tag label="PROOF" variant="dark" /></div>
 
-<section
-  style={{
-    background: dark1,
-    position: 'relative',
-    overflow: 'hidden',
-  }}
->
-  <CornerTL />
-  <CornerBR />
+  <section
+    style={{
+      background: dark1,
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
+    <CornerTL />
+    <CornerBR />
 
-  <div style={inner}>
+    <div style={{ padding: isMobile ? '40px 24px' : isTablet ? '48px 40px' : '56px 68px' }}>
     <div
       style={{
         display: 'flex',
@@ -441,8 +438,9 @@ export default function AIBusiness() {
         </article>
       ))}
     </div>
-  </div>
-</section>
+    </div>
+  </section>
+</div>
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
@@ -466,7 +464,7 @@ export default function AIBusiness() {
           </div>
 
           {/* Consulting offer block */}
-          <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {/* <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
             <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Win with AI. Start with the right use cases and a clear plan.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
               We help bring clarity and direction to your AI efforts — identifying meaningful use cases, aligning them with business priorities, and turning early experiments into scalable, real solutions. Your first AI use case, defined with us, at no cost.
@@ -475,19 +473,22 @@ export default function AIBusiness() {
             <div>
               <Button variant="primary" label="Get Your First AI Use Case Defined →" href="#" />
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* ── CTA BANNER ── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session →"
-        secondaryCta="Contact Us"
-      />
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px' }}>
+        <CTABanner
+          size="large"
+          label="LET'S WORK ON IT TOGETHER"
+          heading="Ready to accelerate your digital & AI journey?"
+          body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+          primaryCta="Schedule a Strategy Session →"
+          secondaryCta="Contact Us"
+          style={{ width: '100%', margin: 0 }}
+        />
+      </div>
 
       <div style={{ height: isMobile ? 48 : 80 }} />
     </>
