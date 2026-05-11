@@ -272,7 +272,7 @@ export default function Home() {
               <Stats value="250+" label="CONSULTANTS" />
               <Stats value="150+" label="GLOBAL CLIENTS" />
               <Stats value="15+"  label="YEARS EXPERIENCE" />
-              <Stats value="98+"  label="CLIENT RETENTION" />
+              <Stats value="98%"  label="CLIENT RETENTION" />
             </div>
 
             {/* Globe + arc composition — single inline SVG so image href resolves in DOM */}
@@ -367,11 +367,11 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
               {[
                 { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.' },
-                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.' },
-                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.' },
-                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.' },
                 { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.' },
                 { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.' },
+                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.' },
+                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.' },
+                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.' },
               ].map((card, i) => (
                 <Card
                   key={i}
@@ -425,9 +425,9 @@ export default function Home() {
             <FadeUp delay={60}>
               <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20, marginBottom: 36 }}>
                 {[
+                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.',                                        ctaLabel: 'Try in AI Studio' },
                   { category: 'FASTER PROCESSING',  title: 'Automate document workflows',        description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.',  ctaLabel: 'Try in AI Studio' },
                   { category: 'INTELLIGENT SEARCH', title: 'Surface insights from your data',    description: 'Connect your enterprise knowledge base to conversational AI that understands context, retrieves accurately, and scales across every team without custom pipelines.',                       ctaLabel: 'Try in AI Studio' },
-                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.',                                        ctaLabel: 'Try in AI Studio' },
                 ].map(card => (
                   <Card
                     key={card.category}
@@ -518,7 +518,7 @@ export default function Home() {
       <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
         <FadeUp duration={500}><Tag label="TECHNOSSUS" variant="dark" /></FadeUp>
       </div>
-      <section style={{ background: dark2, position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: dark2, position: 'relative', overflow: 'hidden', maxWidth: 1280, margin:"0px auto" }}>
         <CornerTL />
         <CornerBR />
         <div style={inner}>
