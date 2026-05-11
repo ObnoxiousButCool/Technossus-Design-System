@@ -6,7 +6,9 @@ import { CTABanner }  from '../../../components/CTABanner';
 import { Button }     from '../../../components/Button';
 import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
+import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
+import imgHero from '../../../assets/Website_Images/Services/Cloud consulting.png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
@@ -14,12 +16,16 @@ const red   = '#ED2939';
 const dark1 = '#1B1B1B';
 
 const CornerTL = () => (
-  <img src="/assets/icons/corner-topleft.svg" alt="" aria-hidden
-    style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 118, pointerEvents: 'none', zIndex: 2 }} />
+  <>
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 const CornerBR = () => (
-  <img src="/assets/icons/corner-bottomright.svg" alt="" aria-hidden
-    style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none', zIndex: 2 }} />
+  <>
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 
 const accordionItems: AccordionItem[] = [
@@ -175,7 +181,7 @@ export default function CloudModernization() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <div style={{ background: '#D4D4D4', width: '100%', height: isTablet ? 300 : 460 }} />
+                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>
@@ -197,11 +203,13 @@ export default function CloudModernization() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── THE SHIFT ── */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <Tag label="THE SHIFT" variant="dark" />
+      </div>
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="THE SHIFT" variant="light" />
-          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
                 Cloud is scaling. Operations are{' '}
@@ -286,11 +294,13 @@ export default function CloudModernization() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── SUCCESS STORIES ── */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <Tag label="PROOF" variant="dark" />
+      </div>
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="PROOF" variant="light" />
-          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
             <div>
               <h1 style={d1('#fff')}>Success <span style={{ color: red }}>stories.</span></h1>
               <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Real cloud outcomes from organizations that needed control as much as capability.</p>
@@ -300,7 +310,7 @@ export default function CloudModernization() {
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
             {proofCards.map((card, i) => (
               <article key={i} style={{ background: '#262626', border: '1px solid #343434', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ background: '#2A2A2A', height: 200, width: '100%' }} />
+                <PlaceholderBlock width="100%" height={200} style={{ background: '#2A2A2A' }} />
                 <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
                   <div style={{ fontFamily: sans, fontSize: 11, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', color: '#767676' }}>{card.tags}</div>
                   <h3 style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>{card.title}</h3>

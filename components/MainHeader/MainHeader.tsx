@@ -67,7 +67,6 @@ const defaultNavItems: NavItem[] = [
     children: [
       { label: 'Insights',     href: '/insights' },
       { label: 'Case Studies', href: '/case-studies' },
-      { label: 'Blog',         href: '/blog' },
     ],
   },
   { label: 'About Us',  href: '/about' },
@@ -138,6 +137,7 @@ export function MainHeader({
   const [mobileExpanded, setMobileExpanded] = useState<string | null>('Service Offerings');
   const [mobilePressed, setMobilePressed] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [ctaHovered, setCtaHovered] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const openTimerRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -381,8 +381,10 @@ export function MainHeader({
           {/* CTA button */}
           <a
             href={ctaHref}
+            onMouseEnter={() => setCtaHovered(true)}
+            onMouseLeave={() => setCtaHovered(false)}
             style={{
-              backgroundColor: location.pathname === ctaHref ? red : '#1E1E1E',
+              backgroundColor: ctaHovered ? red : '#1E1E1E',
               color: '#FFFFFF',
               fontFamily: sans,
               fontWeight: 600,
@@ -399,6 +401,7 @@ export function MainHeader({
               flexShrink: 0,
               width: 122,
               boxSizing: 'border-box',
+              transition: 'background-color 0.15s ease',
             }}
           >
             {ctaLabel}
@@ -421,6 +424,7 @@ export function MainHeader({
               right: 0,
               backgroundColor: '#FFFFFF',
               borderBottom: '1px solid #EEEEEE',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
               paddingTop: 48,
               paddingBottom: 63,
               opacity: dropdownVisible ? 1 : 0,

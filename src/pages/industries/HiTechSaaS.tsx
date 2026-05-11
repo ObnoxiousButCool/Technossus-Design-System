@@ -8,6 +8,7 @@ import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
+import imgHero from '../../../assets/Industries/HiTech.png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
@@ -15,12 +16,16 @@ const red   = '#ED2939';
 const dark1 = '#1B1B1B';
 
 const CornerTL = () => (
-  <img src="/assets/icons/corner-topleft.svg" alt="" aria-hidden
-    style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 118, pointerEvents: 'none', zIndex: 2 }} />
+  <>
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 const CornerBR = () => (
-  <img src="/assets/icons/corner-bottomright.svg" alt="" aria-hidden
-    style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none', zIndex: 2 }} />
+  <>
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 
 const whatWeDoItems: AccordionItem[] = [
@@ -235,7 +240,7 @@ export default function HiTechSaaS() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <div style={{ background: '#D4D4D4', width: '100%', height: isTablet ? 300 : 460 }} />
+                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>
@@ -257,11 +262,13 @@ export default function HiTechSaaS() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── THE SHIFT ── */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <Tag label="THE SHIFT" variant="dark" />
+      </div>
       <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="THE SHIFT" variant="light" />
-          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: isMobile ? undefined : '0 0 380px', minWidth: isMobile ? '100%' : 280, width: isMobile ? '100%' : undefined }}>
               <h2 style={d2('#fff')}>
                 Growth is the goal. But in SaaS, growth also exposes what your product{' '}
@@ -344,11 +351,13 @@ export default function HiTechSaaS() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── CASE STUDIES ── */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <Tag label="CASE STUDIES" variant="dark" />
+      </div>
       <section id="proof" style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
-          <Tag label="CASE STUDIES" variant="light" />
-          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
             <div>
               <h1 style={d1('#fff')}>The work speaks <span style={{ color: red }}>for itself.</span></h1>
               <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Real outcomes from HiTech and SaaS organizations we've partnered with.</p>
@@ -390,6 +399,7 @@ export default function HiTechSaaS() {
         primaryCta="Talk to a HiTech & SaaS Expert →"
         secondaryCta="Explore Our Solutions"
       />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }

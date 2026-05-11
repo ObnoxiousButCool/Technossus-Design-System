@@ -7,6 +7,8 @@ import { Button }      from '../../components/Button';
 import { Card }        from '../../components/Card';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { DecorativeOverlay, DecorativeImage } from '../../components/DecorativeMedia';
+import imgCollaborators from '../../assets/Website_images 2/Logo.png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -23,15 +25,8 @@ const imgHeroBg         = '/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png'
 const imgSearchAiStar   = '/assets/1396fbe0e7d98149afea22065d702750dbf4a387.svg';
 const imgSearchSend     = '/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg';
 
-// Stats section — globe / network visualization
-const imgStatsGlobe     = '/assets/174c99f8f6f7d0951c6bf317ea6eee19b0fe116e.png';
-const imgStatsNetwork   = '/assets/2af307f43a169f9425489c8ddda2bae8542408cb.svg';
-
-// Collaborator logos
-const imgLogoToyota     = '/assets/07257e50d6618362732217b05125eff67876481e.png';
-const imgLogoGE         = '/assets/2401c6977517bcd5d77ed42b90f5f4b022f8186c.png';
-const imgLogoChoice     = '/assets/91534fe0e36130e7166a22de186f19e1011c79f0.png';
-const imgLogoBio        = '/assets/e2af84967fea8470188b90cf7819b999289255d7.png';
+// Stats section — combined globe + network arc composition
+const imgStatsComposed  = '/assets/215811fe-eab7-431c-9d72-d65f9783311c.png';
 
 // Case Study
 const imgCaseStudy      = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
@@ -57,30 +52,16 @@ const imgCornerBR       = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg'
 
 // ─── Corner decorator components ──────────────────────────────────────────────
 const CornerTL = () => (
-  <img
-    src={imgCornerTL}
-    alt=""
-    aria-hidden
-    style={{
-      position: 'absolute', top: 0, left: 0,
-      width: 118, height: 118,
-      pointerEvents: 'none', zIndex: 2,
-      transform: 'rotate(180deg) scaleY(1)',
-    }}
-  />
+  <>
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 const CornerBR = () => (
-  <img
-    src={imgCornerBR}
-    alt=""
-    aria-hidden
-    style={{
-      position: 'absolute', bottom: 0, right: 0,
-      width: 118, height: 118,
-      pointerEvents: 'none', zIndex: 2,
-      transform: 'scaleY(-1)',
-    }}
-  />
+  <>
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -286,44 +267,19 @@ export default function Home() {
               <Stats value="250+" label="CONSULTANTS" />
               <Stats value="150+" label="GLOBAL CLIENTS" />
               <Stats value="15+"  label="YEARS EXPERIENCE" />
-              <Stats value="98+"  label="CLIENT RETENTION" />
+              <Stats value="98%"  label="CLIENT RETENTION" />
             </div>
 
-            {/* Globe / network visualization */}
+            {/* Globe + arc composition — single inline SVG so image href resolves in DOM */}
             {!isMobile && (
-              <div style={{
-                position: 'absolute',
-                right: isTablet ? -32 : -80,
-                top: -80,
-                width: 632,
-                height: 553,
-                pointerEvents: 'none',
-              }}>
-                <img
-                  src={imgStatsGlobe}
-                  alt=""
-                  aria-hidden
-                  style={{
-                    position: 'absolute',
-                    top: 0, left: 0,
-                    width: 608, height: 429,
-                    objectFit: 'cover',
-                    opacity: 0.25,
-                    mixBlendMode: 'color-dodge',
-                  }}
+              <DecorativeOverlay top={-80} right={isTablet ? -32 : -80} width={608} height={453}>
+                <DecorativeImage
+                  src={imgStatsComposed}
+                  top={0} left={0}
+                  width={608} height={453}
+                  objectFit="contain"
                 />
-                <img
-                  src={imgStatsNetwork}
-                  alt=""
-                  aria-hidden
-                  style={{
-                    position: 'absolute',
-                    top: 0, left: 127,
-                    width: 505, height: 553,
-                    objectFit: 'contain',
-                  }}
-                />
-              </div>
+              </DecorativeOverlay>
             )}
           </div>
         </div>
@@ -344,22 +300,11 @@ export default function Home() {
           }}>
             OUR COLLABORATORS
           </p>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: isMobile ? 24 : 96,
-            flexWrap: 'wrap',
-          }}>
-            <img src={imgLogoToyota} alt="Toyota Financial Services"
-              style={{ height: 42, width: 116, objectFit: 'contain', objectPosition: 'bottom' }} />
-            <img src={imgLogoGE}     alt="GE HealthCare"
-              style={{ height: 42, width: 189, objectFit: 'cover' }} />
-            <img src={imgLogoChoice} alt="Choice Administrators"
-              style={{ height: 35, width: 92,  objectFit: 'cover' }} />
-            <img src={imgLogoBio}    alt="Bio Theranostics"
-              style={{ height: 61, width: 134, objectFit: 'contain', objectPosition: 'bottom' }} />
-          </div>
+          <img
+            src={imgCollaborators}
+            alt="Our collaborators"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
         </div>
       </section>
 
@@ -406,11 +351,11 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
               {[
                 { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.' },
-                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.' },
-                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.' },
-                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.' },
                 { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.' },
                 { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.' },
+                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.' },
+                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.' },
+                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.' },
               ].map((card, i) => (
                 <Card
                   key={i}
@@ -464,9 +409,9 @@ export default function Home() {
             <FadeUp delay={60}>
               <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20, marginBottom: 36 }}>
                 {[
+                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.',                                        ctaLabel: 'Try in AI Studio' },
                   { category: 'FASTER PROCESSING',  title: 'Automate document workflows',        description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.',  ctaLabel: 'Try in AI Studio' },
                   { category: 'INTELLIGENT SEARCH', title: 'Surface insights from your data',    description: 'Connect your enterprise knowledge base to conversational AI that understands context, retrieves accurately, and scales across every team without custom pipelines.',                       ctaLabel: 'Try in AI Studio' },
-                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.',                                        ctaLabel: 'Try in AI Studio' },
                 ].map(card => (
                   <Card
                     key={card.category}
@@ -554,14 +499,15 @@ export default function Home() {
       </section>
 
       {/* ── WHY TECHNOSSUS ───────────────────────────────────────────────────── */}
-      <section style={{ background: dark2, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+        <FadeUp duration={500}><Tag label="TECHNOSSUS" variant="dark" /></FadeUp>
+      </div>
+      <section style={{ background: dark2, position: 'relative', overflow: 'hidden', maxWidth: 1280, margin:"0px auto" }}>
         <CornerTL />
         <CornerBR />
         <div style={inner}>
-          <FadeUp duration={500}><Tag label="TECHNOSSUS" /></FadeUp>
-
           <FadeUp>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16, marginBottom: 36 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 0, marginBottom: 36 }}>
               <h2 style={{
                 fontFamily: serif,
                 fontSize: shSize, lineHeight: shLine,
@@ -662,6 +608,7 @@ export default function Home() {
         primaryCta="Schedule a Strategy Session"
         secondaryCta="Contact Us"
       />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }

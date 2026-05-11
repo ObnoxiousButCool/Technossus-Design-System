@@ -6,7 +6,9 @@ import { CTABanner }  from '../../../components/CTABanner';
 import { Button }     from '../../../components/Button';
 import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
+import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
+import imgHero from '../../../assets/Website_Images/Services/AI Led Transformation.png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
@@ -14,12 +16,16 @@ const red   = '#ED2939';
 const dark1 = '#1B1B1B';
 
 const CornerTL = () => (
-  <img src="/assets/icons/corner-topleft.svg" alt="" aria-hidden
-    style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 118, pointerEvents: 'none', zIndex: 2 }} />
+  <>
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 const CornerBR = () => (
-  <img src="/assets/icons/corner-bottomright.svg" alt="" aria-hidden
-    style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none', zIndex: 2 }} />
+  <>
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, pointerEvents: 'none', zIndex: 2 }} />
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, pointerEvents: 'none', zIndex: 2 }} />
+  </>
 );
 
 const accordionItems: AccordionItem[] = [
@@ -174,7 +180,7 @@ export default function AIBusiness() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <div style={{ background: '#D4D4D4', width: '100%', height: isTablet ? 300 : 460 }} />
+                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>
@@ -196,11 +202,12 @@ export default function AIBusiness() {
       <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── THE SHIFT ── */}
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
-        <CornerTL /><CornerBR />
-        <div style={inner}>
-          <Tag label="THE SHIFT" variant="light" />
-          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 32, flexWrap: 'wrap' }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px' }}>
+        <div style={{ marginBottom: isMobile ? 12 : 16 }}><Tag label="THE SHIFT" variant="dark" /></div>
+        <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+          <CornerTL /><CornerBR />
+          <div style={{ padding: isMobile ? '40px 24px' : isTablet ? '48px 40px' : '56px 68px' }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
                 From AI adoption to{' '}
@@ -230,7 +237,8 @@ export default function AIBusiness() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </div>
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
@@ -239,8 +247,9 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SERVICE OFFERINGS" />
           <h2 style={{ ...d2(), marginTop: 16 }}>
-            Your strategy, configured across the delivery that makes it{' '}
-            <span style={{ color: red }}>land.</span>
+            Your strategy, configured across the delivery {' '}
+            <br />
+            <span style={{ color: red }}>that makes it land.</span>
           </h2>
           <div style={{ marginTop: 48 }}>
             <Accordion items={accordionItems} defaultActiveIndex={1} />
@@ -284,33 +293,156 @@ export default function AIBusiness() {
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
-      {/* ── SUCCESS STORIES ── */}
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
-        <CornerTL /><CornerBR />
-        <div style={inner}>
-          <Tag label="PROOF" variant="light" />
-          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
-            <div>
-              <h1 style={d1('#fff')}>Success <span style={{ color: red }}>stories.</span></h1>
-              <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
+{/* ── SUCCESS STORIES ── */}
+<div
+  style={{
+    maxWidth: 1440,
+    margin: '0 auto',
+    padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+  }}
+>
+  <div style={{ marginBottom: isMobile ? 12 : 16 }}><Tag label="PROOF" variant="dark" /></div>
+
+  <section
+    style={{
+      background: dark1,
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
+    <CornerTL />
+    <CornerBR />
+
+    <div style={{ padding: isMobile ? '40px 24px' : isTablet ? '48px 40px' : '56px 68px' }}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: isMobile ? 'flex-start' : 'flex-end',
+        flexDirection: isMobile ? 'column' : 'row',
+        justifyContent: 'space-between',
+        gap: 16,
+        marginBottom: 40,
+      }}
+    >
+      <div>
+        <h1 style={d1('#fff')}>
+          Success <span style={{ color: red }}>stories.</span>
+        </h1>
+
+        <p
+          style={{
+            fontFamily: sans,
+            fontSize: 15,
+            color: '#9B9B9B',
+            marginTop: 10,
+          }}
+        >
+          If any of these describe where your team is right now, we should talk.
+        </p>
+      </div>
+
+      <a
+        href="#"
+        style={{
+          fontFamily: sans,
+          fontSize: 14,
+          color: '#9B9B9B',
+          textDecoration: 'underline',
+          whiteSpace: 'nowrap',
+          flexShrink: 0,
+        }}
+      >
+        View All
+      </a>
+    </div>
+
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: cols3,
+        gap: 20,
+      }}
+    >
+      {proofCards.map((card, i) => (
+        <article
+          key={i}
+          style={{
+            background: '#262626',
+            border: '1px solid #343434',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <PlaceholderBlock width="100%" height={200} style={{ background: '#2A2A2A' }} />
+
+          <div
+            style={{
+              padding: '24px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 12,
+              flex: 1,
+            }}
+          >
+            <div
+              style={{
+                fontFamily: sans,
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: '.1em',
+                textTransform: 'uppercase',
+                color: '#767676',
+              }}
+            >
+              {card.tags}
             </div>
-            <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
+
+            <h3
+              style={{
+                fontFamily: sans,
+                fontSize: 18,
+                fontWeight: 700,
+                color: '#fff',
+                lineHeight: 1.4,
+                margin: 0,
+              }}
+            >
+              {card.title}
+            </h3>
+
+            <p
+              style={{
+                fontFamily: sans,
+                fontSize: 14,
+                lineHeight: 1.6,
+                color: '#9B9B9B',
+                flex: 1,
+                margin: 0,
+              }}
+            >
+              {card.excerpt}
+            </p>
+
+            <a
+              href="#"
+              style={{
+                fontFamily: sans,
+                fontSize: 14,
+                fontWeight: 700,
+                color: red,
+                textDecoration: 'underline',
+                marginTop: 8,
+              }}
+            >
+              See How We Work →
+            </a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
-            {proofCards.map((card, i) => (
-              <article key={i} style={{ background: '#262626', border: '1px solid #343434', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ background: '#2A2A2A', height: 200, width: '100%' }} />
-                <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
-                  <div style={{ fontFamily: sans, fontSize: 11, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', color: '#767676' }}>{card.tags}</div>
-                  <h3 style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>{card.title}</h3>
-                  <p style={{ fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: '#9B9B9B', flex: 1, margin: 0 }}>{card.excerpt}</p>
-                  <a href="#" style={{ fontFamily: sans, fontSize: 14, fontWeight: 700, color: red, textDecoration: 'underline', marginTop: 8 }}>See How We Work →</a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+        </article>
+      ))}
+    </div>
+    </div>
+  </section>
+</div>
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
@@ -334,7 +466,7 @@ export default function AIBusiness() {
           </div>
 
           {/* Consulting offer block */}
-          <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {/* <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
             <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Win with AI. Start with the right use cases and a clear plan.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
               We help bring clarity and direction to your AI efforts — identifying meaningful use cases, aligning them with business priorities, and turning early experiments into scalable, real solutions. Your first AI use case, defined with us, at no cost.
@@ -343,19 +475,22 @@ export default function AIBusiness() {
             <div>
               <Button variant="primary" label="Get Your First AI Use Case Defined →" href="#" />
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* ── CTA BANNER ── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session →"
-        secondaryCta="Contact Us"
-      />
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px' }}>
+        <CTABanner
+          size="large"
+          label="LET'S WORK ON IT TOGETHER"
+          heading="Ready to accelerate your digital & AI journey?"
+          body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+          primaryCta="Schedule a Strategy Session →"
+          secondaryCta="Contact Us"
+          style={{ width: '100%', margin: 0 }}
+        />
+      </div>
 
       <div style={{ height: isMobile ? 48 : 80 }} />
     </>

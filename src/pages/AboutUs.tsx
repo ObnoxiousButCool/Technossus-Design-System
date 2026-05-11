@@ -6,9 +6,17 @@ import { CTABanner }   from '../../components/CTABanner';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
+import imgRavnish from '../../assets/Website_Images/Leadership/Ravnish.png';
+import imgGiri    from '../../assets/Website_Images/Leadership/Giri.png';
+import imgKumar   from '../../assets/Website_Images/Leadership/Kumar.png';
+import imgSham    from '../../assets/Website_Images/Leadership/Sham.png';
+import imgZia     from '../../assets/Website_Images/Leadership/Zia.png';
+import imgBasudev from '../../assets/Website_Images/Leadership/Basudev.png';
+import imgSambit  from '../../assets/Website_Images/Leadership/Sambit.png';
+import imgDainish from '../../assets/Website_Images/Leadership/Dainish.png';
+import imgHeroBg  from '../../assets/Website_Images/Hero section/About Us.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
-const imgHeroBg       = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
 const imgMissionIcon  = '/assets/61200c7f88a68751add502d264dc727a8b8164b7.svg';
 const imgSubtractTL   = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
@@ -30,14 +38,14 @@ const pillars = [
 ];
 
 const leaders = [
-  { role: 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA', name: 'Zia Rahman',     bio: 'Drives technology and delivery at scale, playing a key role in building, shaping, and scaling systems, teams, and execution capabilities from the ground up.' },
-  { role: 'CHIEF EXECUTIVE OFFICER',              name: 'Sarah Mitchell',  bio: 'Leads company vision and strategy, driving enterprise partnerships and ensuring sustainable growth across all global markets.' },
-  { role: 'CHIEF TECHNOLOGY OFFICER',             name: 'Arjun Mehta',     bio: 'Architects our technology platform and leads engineering excellence, bringing over 20 years of enterprise software expertise.' },
-  { role: 'CHIEF OPERATING OFFICER',              name: 'Diana Reyes',     bio: 'Oversees operational efficiency and delivery excellence, ensuring every engagement exceeds client expectations.' },
-  { role: 'VP OF PRODUCT ENGINEERING',            name: 'Marcus Chen',     bio: 'Champions product-led thinking across all service lines, bridging business goals with technical solutions.' },
-  { role: 'VP OF DATA INTELLIGENCE',              name: 'Priya Nair',      bio: 'Leads our data and analytics practice, transforming raw data into actionable intelligence for enterprise clients.' },
-  { role: 'VP OF CLOUD MODERNIZATION',            name: 'Tobias Weiss',    bio: 'Guides clients through complex cloud migrations and modernization journeys with proven methodologies.' },
-  { role: 'VP OF DIGITAL EXPERIENCE',             name: 'Camille Dubois',  bio: 'Drives human-centered design across all product and service touchpoints, creating experiences that delight users.' },
+  { role: 'FOUNDER, MANAGING PARTNER, TECHNOSSUS USA',                       name: 'Ravnish Bhalla',    bio: '', photo: imgRavnish },
+  { role: 'MANAGING PARTNER, TECHNOSSUS USA',                                 name: 'Giri Kalluri',      bio: '', photo: imgGiri    },
+  { role: 'CEO & PRESIDENT, TECHNOSSUS INDIA',                                name: 'Kumar Gaurav',      bio: '', photo: imgKumar   },
+  { role: 'EXECUTIVE DIRECTOR, CLIENT SUCCESS GROUP, TECHNOSSUS USA',         name: 'Sham Ramakrishnan', bio: '', photo: imgSham    },
+  { role: 'VICE PRESIDENT, DIGITAL EXPERIENCE DESIGN, TECHNOSSUS INDIA',     name: 'Zia Rahman',        bio: '', photo: imgZia     },
+  { role: 'DIRECTOR SALES, TECHNOSSUS UK',                                    name: 'Basudev Pal',       bio: '', photo: imgBasudev },
+  { role: 'DIRECTOR GLOBAL COMPETENCY HEAD, TECHNOSSUS INDIA',               name: 'Sambit Mohanty',    bio: '', photo: imgSambit  },
+  { role: 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA',                             name: 'Dainish Hingwe',    bio: '', photo: imgDainish },
 ];
 
 const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red' }> = [
@@ -123,8 +131,10 @@ export default function AboutUs() {
         <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 24 }}>
           <FadeUp duration={500}><Tag label="OUR MISSION" /></FadeUp>
           <div style={{ position: 'relative', backgroundColor: dark1, padding: isMobile ? '32px 20px' : isTablet ? '40px 32px' : 56, display: 'flex', flexDirection: 'column', gap: 36, overflow: 'hidden' }}>
-            <img alt="" src={imgSubtractTL} style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 118, pointerEvents: 'none' }} />
-            <img alt="" src={imgSubtractBR} style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, pointerEvents: 'none' }} />
 
             <FadeUp>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 934, color: '#FFFFFF' }}>
@@ -173,7 +183,7 @@ export default function AboutUs() {
             {[leaders.slice(0, 4), leaders.slice(4)].map((row, ri) => (
               <div key={ri} style={{ display: 'grid', gridTemplateColumns: leadersGrid, gap: 16 }}>
                 {row.map((l) => (
-                  <Leader key={l.name} role={l.role} name={l.name} bio={l.bio} />
+                  <Leader key={l.name} role={l.role} name={l.name} bio={l.bio} photo={l.photo} />
                 ))}
               </div>
             ))}
@@ -244,6 +254,7 @@ export default function AboutUs() {
         primaryCta="Schedule a Strategy Session →"
         secondaryCta="Contact Us"
       />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }

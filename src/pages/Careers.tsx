@@ -7,9 +7,9 @@ import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
 import type { AccordionItem } from '../../components/Accordion';
+import imgHeroBg from '../../assets/Website_Images/Hero section/Careers page.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
-const imgHeroBg       = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
 const imgBento1       = '/assets/a2c5aedfd47c9d61a54070b6ef0abcd89a59217a.png';
 const imgBento2       = '/assets/b0f341860b2c6f76cfb4422ad266623aab2d1f6e.png';
@@ -226,7 +226,7 @@ export default function Careers() {
               </h2>
             </FadeUp>
           </div>
-          <Accordion items={accordionItems} defaultActiveIndex={2} />
+          <Accordion items={accordionItems} defaultActiveIndex={0} />
         </div>
       </section>
 
@@ -244,8 +244,10 @@ export default function Careers() {
             alignItems: isMobile ? 'flex-start' : 'center',
           }}>
             {/* Corner decorations */}
-            <img alt="" src={imgSubtractTL} style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 118, pointerEvents: 'none' }} />
-            <img alt="" src={imgSubtractBR} style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 118, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, pointerEvents: 'none' }} />
 
             {/* Left: text + button */}
             <div style={{ position: 'relative', flex: '1 0 0', display: 'flex', flexDirection: 'column', gap: 36, minWidth: 0 }}>
@@ -319,6 +321,7 @@ export default function Careers() {
         primaryCta="Schedule a Strategy Session →"
         secondaryCta="Contact Us"
       />
+      <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
 }
