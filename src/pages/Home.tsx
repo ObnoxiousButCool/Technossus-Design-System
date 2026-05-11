@@ -592,7 +592,7 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 24 }}>
             <Testimonial
               color="white"
-              quote={`"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team's responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues"`}
+              quote={`"Flawless rollout of New Relic with no downtime and no change window allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — 'Ridiculously Qualified Team.'"`}
               authorName="Jeffrey Harker"
               authorTitle="System Manager Cloud Engineering"
               authorImage={imgAuthorJeffrey}
@@ -606,9 +606,9 @@ export default function Home() {
             />
             <Testimonial
               color="white"
-              quote={`"Flawless rollout of New Relic with no downtime allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — 'Ridiculously Qualified Team.'"`}
-              authorName="Jeffrey Harker"
-              authorTitle="System Manager Cloud Engineering"
+              quote={`"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team's responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."`}
+              authorName="Tyler Zucchiatti"
+              authorTitle="Director, Software Development – Middleware & Integration"
               authorImage={imgAuthorJeffrey}
             />
           </div>

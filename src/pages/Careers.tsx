@@ -82,16 +82,16 @@ const accordionItems: AccordionItem[] = [
 
 const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red' }> = [
   {
-    quote: '"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team\'s responsiveness and attention to detail in building new features."',
+    quote: '"Flawless rollout of New Relic with no downtime and no change window allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — \'Ridiculously Qualified Team.\'"',
     name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white',
   },
   {
-    quote: '"Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner."',
+    quote: '"Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner. The team is knowledgeable, skilled, and go beyond to exceed expectations."',
     name: 'Anita Salgado', title: 'Senior Business Systems Analyst', color: 'red',
   },
   {
-    quote: '"Flawless rollout of New Relic with no downtime. Net savings on overall costs by delivering projects with half of the requested staff — Ridiculously Qualified Team."',
-    name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white',
+    quote: '"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team\'s responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."',
+    name: 'Tyler Zucchiatti', title: 'Director, Software Development – Middleware & Integration', color: 'white',
   },
 ];
 

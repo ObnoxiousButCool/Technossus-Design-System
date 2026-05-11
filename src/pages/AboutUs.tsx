@@ -30,28 +30,28 @@ const pillars = [
 ];
 
 const leaders = [
-  { role: 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA', name: 'Zia Rahman',     bio: 'Drives technology and delivery at scale, playing a key role in building, shaping, and scaling systems, teams, and execution capabilities from the ground up.' },
-  { role: 'CHIEF EXECUTIVE OFFICER',              name: 'Sarah Mitchell',  bio: 'Leads company vision and strategy, driving enterprise partnerships and ensuring sustainable growth across all global markets.' },
-  { role: 'CHIEF TECHNOLOGY OFFICER',             name: 'Arjun Mehta',     bio: 'Architects our technology platform and leads engineering excellence, bringing over 20 years of enterprise software expertise.' },
-  { role: 'CHIEF OPERATING OFFICER',              name: 'Diana Reyes',     bio: 'Oversees operational efficiency and delivery excellence, ensuring every engagement exceeds client expectations.' },
-  { role: 'VP OF PRODUCT ENGINEERING',            name: 'Marcus Chen',     bio: 'Champions product-led thinking across all service lines, bridging business goals with technical solutions.' },
-  { role: 'VP OF DATA INTELLIGENCE',              name: 'Priya Nair',      bio: 'Leads our data and analytics practice, transforming raw data into actionable intelligence for enterprise clients.' },
-  { role: 'VP OF CLOUD MODERNIZATION',            name: 'Tobias Weiss',    bio: 'Guides clients through complex cloud migrations and modernization journeys with proven methodologies.' },
-  { role: 'VP OF DIGITAL EXPERIENCE',             name: 'Camille Dubois',  bio: 'Drives human-centered design across all product and service touchpoints, creating experiences that delight users.' },
+  { role: 'FOUNDER, MANAGING PARTNER, TECHNOSSUS USA',               name: 'Ravnish Bhalla',      bio: 'Founder and enterprise technology leader guiding Technossus with a 360° client-impact approach to innovation, transformation, and long-term value creation.' },
+  { role: 'MANAGING PARTNER, TECHNOSSUS USA',                        name: 'Giri Kalluri',        bio: 'Co-founder and strategic growth leader driving enterprise transformation through AI-led innovation, cloud modernization, operational excellence, and global team leadership.' },
+  { role: 'CEO & PRESIDENT, TECHNOSSUS INDIA',                       name: 'Kumar Gaurav',        bio: 'Global consulting and sales leader driving scalable delivery, strategic partnerships, enterprise transformation, and measurable business outcomes for Technossus.' },
+  { role: 'EXECUTIVE DIRECTOR, CLIENT SUCCESS GROUP, TECHNOSSUS USA', name: 'Sham Ramakrishnan',  bio: 'Client success and global services leader building trusted partnerships by aligning sales, delivery, engineering, and support around predictable, high-value outcomes.' },
+  { role: 'VP, DIGITAL EXPERIENCE DESIGN, TECHNOSSUS INDIA',         name: 'Zia Rahman',          bio: 'Design leader shaping intuitive, scalable digital experiences through UX strategy, DesignOps, and AI-led product innovation.' },
+  { role: 'DIRECTOR SALES, TECHNOSSUS UK',                           name: 'Basudev Pal',         bio: 'Brings over two decades of experience in digital transformation and market expansion, shaping AI-led growth strategies and enterprise innovation across Europe.' },
+  { role: 'DIRECTOR GLOBAL COMPETENCY HEAD, TECHNOSSUS INDIA',       name: 'Sambit Mohanty',      bio: 'Leads global engineering and solution architecture, building scalable systems and driving AI-led capabilities across client environments.' },
+  { role: 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA',                    name: 'Dainish Hingwe',      bio: 'Drives technology and delivery at scale, playing a key role in building, shaping, and scaling systems, teams, and execution capabilities from the ground up.' },
 ];
 
 const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red' }> = [
   {
-    quote: '"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team\'s responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."',
+    quote: '"Flawless rollout of New Relic with no downtime and no change window allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — \'Ridiculously Qualified Team.\'"',
     name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white',
   },
   {
-    quote: '"Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner."',
+    quote: '"Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner. The team is knowledgeable, skilled, and go beyond to exceed expectations."',
     name: 'Anita Salgado', title: 'Senior Business Systems Analyst', color: 'red',
   },
   {
-    quote: '"Flawless rollout of New Relic with no downtime. Net savings on overall costs by delivering projects with half of the requested staff — Ridiculously Qualified Team."',
-    name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white',
+    quote: '"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team\'s responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."',
+    name: 'Tyler Zucchiatti', title: 'Director, Software Development – Middleware & Integration', color: 'white',
   },
 ];
 
