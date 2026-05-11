@@ -12,6 +12,12 @@ import imgCollaborators  from '../../assets/Website_images 2/Logo.png';
 import imgAuthorJeffrey  from '../../assets/testimonials/Jaffrey.png';
 import imgAuthorAnita    from '../../assets/testimonials/anita.png';
 import imgAuthorTyler    from '../../assets/testimonials/Tyler.png';
+import imgSvcAI          from '../../assets/Website_Images/Services/AI Led Transformation.png';
+import imgSvcCloud       from '../../assets/Website_Images/Services/Cloud consulting.png';
+import imgSvcData        from '../../assets/Website_Images/Services/Data Intelligence.png';
+import imgSvcDigital     from '../../assets/Website_Images/Services/Digital Exp..png';
+import imgSvcProduct     from '../../assets/Website_Images/Services/Product Eng. .png';
+import imgSvcQuality     from '../../assets/Website_Images/Services/Quality Eng..png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -351,18 +357,18 @@ export default function Home() {
           <FadeUp delay={60}>
             <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
               {[
-                { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.' },
-                { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.' },
-                { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.' },
-                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.' },
-                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.' },
-                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.' },
+                { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.',          image: imgSvcAI      },
+                { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.',                          image: imgSvcCloud   },
+                { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.',                     image: imgSvcData    },
+                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.',                  image: imgSvcDigital },
+                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.',                     image: imgSvcProduct },
+                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.',           image: imgSvcQuality },
               ].map((card, i) => (
                 <Card
                   key={i}
                   mode="light"
                   type="deliver"
-                  image={imgCardPhoto}
+                  image={card.image}
                   title={card.title}
                   description={card.description}
                 />
