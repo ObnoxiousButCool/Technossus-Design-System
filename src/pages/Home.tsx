@@ -135,8 +135,8 @@ export default function Home() {
                     fontWeight: 500, letterSpacing: '-0.02em',
                     color: '#fff', margin: 0,
                   }}>
-                    Hit the outcomes that matters,{' '}
-                    <span style={{ color: red }}>with precision.</span>
+                    Hit the outcomes that matter. ,{' '}
+                    <span style={{ color: red }}>Every time.</span>
                   </h1>
                 </FadeUp>
                 <FadeUp delay={80}>
@@ -146,7 +146,7 @@ export default function Home() {
                     fontWeight: 500, lineHeight: '24px',
                     color: '#fff', margin: 0,
                   }}>
-                    We help you what works, execute the precision, and turn the efforts into the measurable results faster.
+                   We identify what works, execute with precision, and turn effort into measurable results, faster.
                   </p>
                 </FadeUp>
               </div>
