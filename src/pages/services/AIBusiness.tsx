@@ -6,9 +6,10 @@ import { CTABanner }  from '../../../components/CTABanner';
 import { Button }     from '../../../components/Button';
 import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
-import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
 import imgHero from '../../../assets/Website_Images/Services/AI Led Transformation.png';
+
+const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
@@ -387,7 +388,7 @@ export default function AIBusiness() {
             flexDirection: 'column',
           }}
         >
-          <PlaceholderBlock width="100%" height={200} style={{ background: '#2A2A2A' }} />
+          <img src={imgCardPhoto} alt="" style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }} />
 
           <div
             style={{

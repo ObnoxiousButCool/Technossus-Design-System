@@ -8,7 +8,16 @@ import { Card }        from '../../components/Card';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
 import { DecorativeOverlay, DecorativeImage } from '../../components/DecorativeMedia';
-import imgCollaborators from '../../assets/Website_images 2/Logo.png';
+import imgCollaborators  from '../../assets/Website_images 2/Logo.png';
+import imgAuthorJeffrey  from '../../assets/testimonials/Jaffrey.png';
+import imgAuthorAnita    from '../../assets/testimonials/anita.png';
+import imgAuthorTyler    from '../../assets/testimonials/Tyler.png';
+import imgSvcAI          from '../../assets/Website_Images/Services/AI Led Transformation.png';
+import imgSvcCloud       from '../../assets/Website_Images/Services/Cloud consulting.png';
+import imgSvcData        from '../../assets/Website_Images/Services/Data Intelligence.png';
+import imgSvcDigital     from '../../assets/Website_Images/Services/Digital Exp..png';
+import imgSvcProduct     from '../../assets/Website_Images/Services/Product Eng. .png';
+import imgSvcQuality     from '../../assets/Website_Images/Services/Quality Eng..png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -42,9 +51,7 @@ const imgIconOutcome    = '/assets/ac8dbae3d6a4ef3869c92f062ba66c3ebc0095c2.svg'
 const imgIconScale      = '/assets/1842a7b6c6f7844a725781346897858a8c24e609.svg';
 const imgIconEnhance    = '/assets/be00e1883e0f4b7bbdff5b000b66f3f1cfa30930.svg';
 
-// Testimonial author images
-const imgAuthorJeffrey  = '/assets/e002c8497c961f13d2ce3906447a0b0b6dceca9a.png';
-const imgAuthorAnita    = '/assets/72a44557c520c7dbcc23c7fffb1534945709d41d.png';
+// Testimonial author images — imported at top of file
 
 // Corner decorators (Figma Subtract SVGs)
 const imgCornerTL       = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
@@ -350,18 +357,18 @@ export default function Home() {
           <FadeUp delay={60}>
             <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
               {[
-                { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.' },
-                { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.' },
-                { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.' },
-                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.' },
-                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.' },
-                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.' },
+                { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.',          image: imgSvcAI      },
+                { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.',                          image: imgSvcCloud   },
+                { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.',                     image: imgSvcData    },
+                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.',                  image: imgSvcDigital },
+                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.',                     image: imgSvcProduct },
+                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.',           image: imgSvcQuality },
               ].map((card, i) => (
                 <Card
                   key={i}
                   mode="light"
                   type="deliver"
-                  image={imgCardPhoto}
+                  image={card.image}
                   title={card.title}
                   description={card.description}
                 />
@@ -593,7 +600,7 @@ export default function Home() {
               quote={`"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team's responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."`}
               authorName="Tyler Zucchiatti"
               authorTitle="Director, Software Development – Middleware & Integration"
-              authorImage={imgAuthorJeffrey}
+              authorImage={imgAuthorTyler}
             />
           </div>
         </div>
