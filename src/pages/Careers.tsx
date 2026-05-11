@@ -7,9 +7,9 @@ import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
 import type { AccordionItem } from '../../components/Accordion';
+import imgHeroBg from '../../assets/Website_Images/Hero section/Careers page.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
-const imgHeroBg       = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
 const imgBento1       = '/assets/a2c5aedfd47c9d61a54070b6ef0abcd89a59217a.png';
 const imgBento2       = '/assets/b0f341860b2c6f76cfb4422ad266623aab2d1f6e.png';

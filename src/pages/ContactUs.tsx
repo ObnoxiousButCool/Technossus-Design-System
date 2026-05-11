@@ -5,9 +5,9 @@ import { CTABanner }      from '../../components/CTABanner';
 import { FadeUp }         from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint }  from '../../ts/breakpoints';
+import imgHeroBg from '../../assets/Website_Images/Hero section/Contact Us.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
-const imgHeroBg       = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
 const imgPhilosophyImg= '/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
 const imgUSA          = '/assets/35e377ed5891bac0f8a31896629116de4c517a53.png';

@@ -14,9 +14,9 @@ import imgZia     from '../../assets/Website_Images/Leadership/Zia.png';
 import imgBasudev from '../../assets/Website_Images/Leadership/Basudev.png';
 import imgSambit  from '../../assets/Website_Images/Leadership/Sambit.png';
 import imgDainish from '../../assets/Website_Images/Leadership/Dainish.png';
+import imgHeroBg  from '../../assets/Website_Images/Hero section/About Us.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
-const imgHeroBg       = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
 const imgMissionIcon  = '/assets/61200c7f88a68751add502d264dc727a8b8164b7.svg';
 const imgSubtractTL   = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
