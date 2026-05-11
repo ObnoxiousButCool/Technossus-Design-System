@@ -223,19 +223,9 @@ export default function ContactUs() {
               {locations.map((loc, i) => (
                 <div key={i} style={{ backgroundColor: dark1, display: 'flex', flexDirection: 'column' }}>
                   <img alt={loc.country} src={loc.image} style={{ width: '100%', height: isMobile ? 200 : 260, objectFit: 'cover', display: 'block' }} />
-                  <div style={{ border: `1px solid ${colors.text[700]}`, borderTop: 'none', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 20 }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: isMobile ? 18 : 24, lineHeight: '32px', color: '#FFFFFF', margin: 0 }}>{loc.country}</h3>
-                      <p style={{ fontFamily: sans, fontWeight: 600, fontSize: isMobile ? 13 : 15, lineHeight: '22px', color: colors.text[300], margin: 0 }}>{loc.company}</p>
-                      <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 12 : 14, lineHeight: '20px', color: colors.text[500], margin: 0 }}>{loc.city}</p>
-                    </div>
-                    <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 13 : 14, lineHeight: '22px', color: colors.text[400], margin: 0 }}>{loc.address}</p>
-                    <a
-                      href={loc.phoneTel}
-                      style={{ fontFamily: sans, fontWeight: 600, fontSize: isMobile ? 14 : 15, color: red, textDecoration: 'none', letterSpacing: '0.01em' }}
-                    >
-                      {loc.phone}
-                    </a>
+                  <div style={{ border: `1px solid ${colors.text[700]}`, borderTop: 'none', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: isMobile ? 18 : 24, lineHeight: '32px', color: '#FFFFFF', margin: 0 }}>{loc.country}</h3>
+                    <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 13 : 14, lineHeight: '22px', color: colors.text[400], margin: 0 }}>{loc.description}</p>
                   </div>
                 </div>
               ))}

@@ -297,7 +297,8 @@ export default function Healthcare() {
       <CTABanner
         size="large"
         label="LET'S WORK ON IT TOGETHER"
-        heading="Reduce complexity by fixing the disconnected systems beneath the care journey.="Technossus helps healthcare and life sciences organizations build systems that move faster, work smarter, and scale with less friction."
+        heading="Reduce complexity by fixing the disconnected systems beneath the care journey."
+        body="Technossus helps healthcare and life sciences organizations build systems that move faster, work smarter, and scale with less friction."
         primaryCta="Bring us your problems →"
         secondaryCta="Explore Solution"
       />
