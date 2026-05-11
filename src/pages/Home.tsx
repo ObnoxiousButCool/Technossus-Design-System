@@ -135,7 +135,7 @@ export default function Home() {
                     fontWeight: 500, letterSpacing: '-0.02em',
                     color: '#fff', margin: 0,
                   }}>
-                    Hit the outcomes that matter. ,{' '}
+                    Hit the outcomes that matter,{' '}
                     <span style={{ color: red }}>Every time.</span>
                   </h1>
                 </FadeUp>
