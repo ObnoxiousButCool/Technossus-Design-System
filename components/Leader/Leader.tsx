@@ -1,0 +1,110 @@
+import React, { useState } from 'react';
+
+// Asset URLs from Figma
+const imgPhotoDefault = '/assets/4a0fc133e1c62243f5802cc6bf49e291e4ce809e.png';
+const imgPhotoActive  = '/assets/f47b6d03ecad9a885a234fa94d706d5b28d344ee.png';
+const imgSubtractTL   = '/assets/a673075179a0266ec6df160cb442200db0abbd40.svg';
+const imgSubtractBR   = '/assets/327c85a8854e96b954593950f4410e8d5c52443a.svg';
+
+// Design tokens
+const sans = '"General Sans", system-ui, -apple-system, sans-serif';
+const red  = '#ED2939';
+
+export type LeaderState = 'Active' | 'Default';
+
+export interface LeaderProps {
+  state?: LeaderState;
+  role?: string;
+  name?: string;
+  bio?: string;
+  photo?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+export function Leader({
+  state = 'Default',
+  role = 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA',
+  name = 'Zia Rahman',
+  bio = 'Drives technology and delivery at scale, playing a key role in building, shaping, and scaling systems, teams, and execution capabilities from the ground up.',
+  photo,
+  className,
+  style,
+}: LeaderProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const isActive = state === 'Active' || isHovered;
+
+  return (
+    <div
+      className={className}
+      data-node-id={isActive ? '2203:10811' : '2203:10812'}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        backgroundColor: '#FFFFFF',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        position: 'relative',
+        width: '100%',
+        cursor: 'pointer',
+        ...style,
+      }}
+    >
+      {/* Photo with cross-fade between Default/Active */}
+      <div style={{ aspectRatio: '3/4', position: 'relative', flexShrink: 0, width: '100%', maxHeight: 336, overflow: 'hidden' }}>
+        <img
+          alt={name}
+          src={photo ?? imgPhotoDefault}
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none',
+            opacity: isActive ? 0 : 1,
+            transition: 'opacity 0.3s ease',
+          }}
+        />
+        <img
+          alt=""
+          src={photo ?? imgPhotoActive}
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none',
+            opacity: isActive ? 1 : 0,
+            transition: 'opacity 0.3s ease',
+          }}
+        />
+      </div>
+
+      {/* Body */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: 24, width: '100%', boxSizing: 'border-box' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'flex-start', width: '100%' }}>
+          <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, lineHeight: '20px', color: '#949494', margin: 0, width: '100%' }}>
+            {role}
+          </p>
+          <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 22, lineHeight: '30px', color: isActive ? red : '#383838', margin: 0, width: '100%', transition: 'color 0.2s ease' }}>
+            {name}
+          </p>
+          <p style={{ fontFamily: sans, fontWeight: 500, fontSize: 15, lineHeight: '24px', color: '#5C5C5C', margin: 0, width: '100%' }}>
+            {bio}
+          </p>
+        </div>
+      </div>
+
+      {/* Corner decorations (visible when active/hovered) */}
+      <div style={{ position: 'absolute', left: 0, top: -0.12, width: 62, height: 62, opacity: isActive ? 1 : 0, transition: 'opacity 0.2s ease', pointerEvents: 'none' }}>
+        <div style={{ transform: 'rotate(180deg) scaleY(-1)', flexShrink: 0 }}>
+          <div style={{ position: 'relative', width: 62, height: 62 }}>
+            <img alt="" src={imgSubtractTL} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+          </div>
+        </div>
+      </div>
+      <div style={{ position: 'absolute', right: 0, bottom: 274, width: 62, height: 62, opacity: isActive ? 1 : 0, transition: 'opacity 0.2s ease', pointerEvents: 'none' }}>
+        <div style={{ transform: 'scaleY(-1)', flexShrink: 0 }}>
+          <div style={{ position: 'relative', width: 62, height: 62 }}>
+            <img alt="" src={imgSubtractBR} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Leader;

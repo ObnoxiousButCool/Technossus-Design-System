@@ -2,9 +2,9 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "services-preview",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4321", "--directory", "."],
+      "name": "vite-dev",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "cd /Users/pranavmanchanda/Claude/.claude/worktrees/objective-wu-113819 && node_modules/.bin/vite --port 4321 --host"],
       "port": 4321
     }
   ]
