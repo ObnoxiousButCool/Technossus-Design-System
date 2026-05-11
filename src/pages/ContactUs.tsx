@@ -5,7 +5,7 @@ import { CTABanner }      from '../../components/CTABanner';
 import { FadeUp }         from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint }  from '../../ts/breakpoints';
-const imgHeroBg = '';
+import imgHeroBg from '../../assets/Website_Images/Hero section/Contact Us.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';

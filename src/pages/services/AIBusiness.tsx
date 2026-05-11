@@ -8,7 +8,7 @@ import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
-const imgHero = '';
+import imgHero from '../../../assets/Website_Images/Services/AI Led Transformation.png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';

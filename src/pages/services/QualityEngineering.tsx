@@ -9,7 +9,7 @@ import { Stats }      from '../../../components/Stats';
 import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
-const imgHero = '';
+import imgHero from '../../../assets/Website_Images/Services/Quality Eng..png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
