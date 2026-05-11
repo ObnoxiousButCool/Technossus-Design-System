@@ -67,7 +67,6 @@ const defaultNavItems: NavItem[] = [
     children: [
       { label: 'Insights',     href: '/insights' },
       { label: 'Case Studies', href: '/case-studies' },
-      { label: 'Blog',         href: '/blog' },
     ],
   },
   { label: 'About Us',  href: '/about' },
@@ -421,6 +420,7 @@ export function MainHeader({
               right: 0,
               backgroundColor: '#FFFFFF',
               borderBottom: '1px solid #EEEEEE',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
               paddingTop: 48,
               paddingBottom: 63,
               opacity: dropdownVisible ? 1 : 0,

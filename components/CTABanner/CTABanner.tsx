@@ -65,7 +65,7 @@ export function CTABanner({
         alignItems: 'flex-start',
         padding: isMobile ? '40px 24px' : isTablet ? '48px 40px' : '56px 68px',
         width: isMobile ? 'calc(100% - 40px)' : isTablet ? 'calc(100% - 80px)' : 'calc(100% - 160px)',
-        maxWidth: 1074,
+        maxWidth: 1280,
         minHeight: isMobile ? 'auto' : 375,
         margin: '0 auto',
         position: 'relative',
