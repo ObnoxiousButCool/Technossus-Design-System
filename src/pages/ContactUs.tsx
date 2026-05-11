@@ -25,10 +25,10 @@ const dark  = colors.brand.black;
 const dark1 = colors.background.dark1;
 
 const locations = [
-  { country: 'United States', description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgLocUSA      },
-  { country: 'United Kingdom', description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgLocUK       },
-  { country: 'Pune',           description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgLocPune     },
-  { country: 'Ludhiana',       description: "We have built the legacy's infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.", image: imgLocLudhiana },
+  { country: 'United States',  company: 'Technossus Inc.',    city: 'Irvine, California, USA',       address: 'Technossus USA, 5 Park Plaza, Suite 320, Irvine, 92614',                                             phone: '+1 (949) 555-0123',  image: imgLocUSA      },
+  { country: 'United Kingdom', company: 'Technossus UK Ltd.', city: 'London, United Kingdom',         address: 'The Hill Hub, 1a Highfield Road, Darford DA1 2JH, United Kingdom',                                  phone: '+44 20 5555 0123',   image: imgLocUK       },
+  { country: 'India',          company: 'Technossus Inc.',    city: 'Ludhiana, Punjab, India',         address: 'SCO-59, Phase-2, Dugri Ludhiana, Punjab 141002',                                                     phone: '+1 (949) 555-0123',  image: imgLocLudhiana },
+  { country: 'India',          company: 'Technossus Inc.',    city: 'Pune, Maharashtra, India',        address: '6th Floor, Tower-5, 1 Kharadi, opp. EON Free Zone MIDC, Knowledge Park, 411014',                    phone: '+1 (949) 555-0123',  image: imgLocPune     },
 ];
 
 export default function ContactUs() {
@@ -223,9 +223,16 @@ export default function ContactUs() {
               {locations.map((loc, i) => (
                 <div key={i} style={{ backgroundColor: dark1, display: 'flex', flexDirection: 'column' }}>
                   <img alt={loc.country} src={loc.image} style={{ width: '100%', height: isMobile ? 200 : 260, objectFit: 'cover', display: 'block' }} />
-                  <div style={{ border: `1px solid ${colors.text[700]}`, borderTop: 'none', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
-                    <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: isMobile ? 18 : 24, lineHeight: '32px', color: '#FFFFFF', margin: 0 }}>{loc.country}</h3>
-                    <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 13 : 14, lineHeight: '22px', color: colors.text[400], margin: 0 }}>{loc.description}</p>
+                  <div style={{ border: `1px solid ${colors.text[700]}`, borderTop: 'none', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                    <div>
+                      <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: isMobile ? 18 : 24, lineHeight: '32px', color: '#FFFFFF', margin: 0 }}>{loc.country}</h3>
+                      <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 13 : 14, lineHeight: '20px', color: colors.text[400], margin: 0 }}>{loc.company}</p>
+                    </div>
+                    <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 13 : 14, lineHeight: '20px', color: colors.text[500], margin: 0 }}>{loc.city}</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                      <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 12 : 13, lineHeight: '18px', color: colors.text[400], margin: 0 }}>{loc.address}</p>
+                      <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 12 : 13, lineHeight: '18px', color: colors.text[400], margin: 0 }}>{loc.phone}</p>
+                    </div>
                   </div>
                 </div>
               ))}
