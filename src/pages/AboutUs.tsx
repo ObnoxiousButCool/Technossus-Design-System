@@ -6,15 +6,15 @@ import { CTABanner }   from '../../components/CTABanner';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
-import imgRavnish from '../../assets/Website_Images/Leadership/Ravnish.png';
-import imgGiri    from '../../assets/Website_Images/Leadership/Giri.png';
-import imgKumar   from '../../assets/Website_Images/Leadership/Kumar.png';
-import imgSham    from '../../assets/Website_Images/Leadership/Sham.png';
-import imgZia     from '../../assets/Website_Images/Leadership/Zia.png';
-import imgBasudev from '../../assets/Website_Images/Leadership/Basudev.png';
-import imgSambit  from '../../assets/Website_Images/Leadership/Sambit.png';
-import imgDainish from '../../assets/Website_Images/Leadership/Dainish.png';
-import imgHeroBg  from '../../assets/Website_Images/Hero section/About Us.png';
+const imgRavnish = '';
+const imgGiri    = '';
+const imgKumar   = '';
+const imgSham    = '';
+const imgZia     = '';
+const imgBasudev = '';
+const imgSambit  = '';
+const imgDainish = '';
+const imgHeroBg  = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
