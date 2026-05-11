@@ -29,89 +29,105 @@ const CornerBR = () => (
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'Data Infrastructure & Productization',
-    subtitle: 'Scalable, governed data platforms that ensure consistent, clean, and decision-ready data across the enterprise.',
+    title: 'Conversational Analytics',
+    subtitle: 'Your leadership team asks a question and gets an answer in seconds — from your own data, in plain language.',
     content: {
       type: 'detail',
-      serviceLabel: 'DATA INFRASTRUCTURE & PRODUCTIZATION',
-      heading: 'Build the data foundation your decisions can actually rely on.',
+      serviceLabel: 'CONVERSATIONAL ANALYTICS',
+      heading: 'Speak to Your Data',
       body: [
-        'Modern enterprises generate large volumes of data, but the challenge is making it usable, consistent, and reliable for decision-making. We strengthen existing data ecosystems and design scalable, governed platforms — enabling seamless data migration and improving accessibility with minimal disruption.',
-        'We establish and enhance robust data pipelines that ingest, transform, and standardize data across systems — creating a single, consistent view. Beyond infrastructure, we enable data productization by treating data as a reusable asset across teams.',
+        'Your leadership team asks a question and gets an answer in seconds — from your own data, in plain language. No SQL. No ticket to the BI team. Your analysts stop fielding repetitive requests and focus on the strategic analysis that influences decisions. Contextual business stories, not just charts.',
+        'Organizations implementing conversational analytics report 60–70% reduction in ad-hoc requests — freeing data teams for higher-value work.',
       ],
     },
   },
   {
-    title: 'Analytics, Visualization & Insights',
-    subtitle: 'Intuitive dashboards and predictive insights that enable faster, more informed decisions.',
+    title: 'Data Engineering & Modernization',
+    subtitle: 'Automate the plumbing so your data team focuses on architecture, modeling, and the analysis that creates value.',
     content: {
       type: 'detail',
-      serviceLabel: 'ANALYTICS, VISUALIZATION & INSIGHTS',
-      heading: 'Turn your data into a single, aligned story your teams can act on.',
+      serviceLabel: 'DATA ENGINEERING & MODERNIZATION',
+      heading: 'Your Data Team on the Work That Matters',
       body: [
-        'We design intuitive dashboards and reporting solutions that provide a unified view of business performance. By standardizing metrics and aligning data models, we ensure a single version of truth — eliminating discrepancies and enabling consistent decision-making.',
-        'Insights are delivered in near real-time and embedded into business workflows, enabling users to interpret trends, identify issues, and take action quickly — without waiting for a data analyst to run a report.',
+        'Your data engineers spend 80% of their time on pipeline maintenance, ingestion troubleshooting, and ETL debugging. We help automate the plumbing — AI extracts semantic meaning from existing SQL and ETL logic, automates ingestion, and modernizes legacy pipelines — so your team focuses on architecture, modeling, and the analysis that creates value.',
+        'AI-automated data engineering reduces pipeline development time by 40–60%, shifting your most expensive talent from maintenance to innovation.',
       ],
     },
   },
   {
-    title: 'Next-Gen Data & Enterprise LLM Builds',
-    subtitle: 'AI and LLM solutions built on enterprise data for contextual, reliable, and business-relevant outputs.',
+    title: 'Data Governance & Compliance',
+    subtitle: 'Deploy governance that runs continuously — eliminating the manual configuration that makes most governance programs fail.',
     content: {
       type: 'detail',
-      serviceLabel: 'NEXT-GEN DATA & ENTERPRISE LLM BUILDS',
-      heading: 'AI that works with your data, not around it.',
+      serviceLabel: 'DATA GOVERNANCE & COMPLIANCE',
+      heading: 'Trust Your Data Enough to Bet On It',
       body: [
-        'We integrate internal data sources — documents, knowledge bases, and structured datasets — into AI workflows, supported by model-ready data pipelines. The result is AI that answers questions grounded in what your organization actually knows.',
-        'With built-in governance and monitoring, we ensure AI solutions remain controlled, consistent, and scalable — so the answers your teams get reflect reality, not hallucination.',
+        'Your governance program can\'t keep pace with your data. Classification is manual, lineage is incomplete, and quality rules are always six months behind. We help your team deploy governance that runs continuously — AI classifies data, enriches metadata with business context, and auto-applies governance rules — eliminating the heavy manual configuration that makes most governance programs fail.',
+        'Automated governance closes the gap between data growth and compliance coverage — critical for regulated industries where audit readiness isn\'t optional.',
       ],
     },
   },
   {
-    title: 'Data Annotation, Validation & Verification',
-    subtitle: 'High-quality, labeled, and verified data that powers reliable analytics and AI.',
+    title: 'Predictive Intelligence',
+    subtitle: 'Shift from dashboards that explain last quarter to intelligence that predicts next quarter.',
     content: {
       type: 'detail',
-      serviceLabel: 'DATA ANNOTATION, VALIDATION & VERIFICATION',
-      heading: 'Clean data isn\'t a nice-to-have. It\'s what separates useful AI from unreliable AI.',
+      serviceLabel: 'PREDICTIVE INTELLIGENCE',
+      heading: 'Know What\'s Coming, Not Just What Happened',
       body: [
-        'High-quality data is essential for both analytics and AI, yet many organizations struggle with incomplete, inconsistent, or unverified datasets. We establish scalable processes to label, categorize, and enrich data across structured, semi-structured, and unstructured formats.',
-        'Validation and verification mechanisms are embedded within data pipelines to detect errors, inconsistencies, and anomalies early — before they propagate into models, dashboards, or executive decisions.',
+        'Shift your team from dashboards that explain last quarter to intelligence that predicts next quarter — and recommends what to do about it. Predictive models trained on your data, validated by your domain experts, and owned by your team: demand forecasting, churn prediction, revenue projection, risk scoring, anomaly detection.',
+        'Companies using AI-driven forecasting outperform peers by 10–20% on key financial metrics. Predictive analytics has moved from advantage to necessity.',
       ],
     },
   },
   {
-    title: 'Augmented Decision Intelligence',
-    subtitle: 'Integrate data, analytics, and AI into the workflows where decisions actually happen.',
+    title: 'Unstructured Data',
+    subtitle: 'Unlock the 80% of enterprise data sitting in documents, emails, call transcripts, PDFs, and images.',
     content: {
       type: 'detail',
-      serviceLabel: 'AUGMENTED DECISION INTELLIGENCE',
-      heading: 'From reactive dashboards to proactive decision support.',
+      serviceLabel: 'UNSTRUCTURED DATA',
+      heading: 'Unlock the 80% You Haven\'t Been Able to Touch',
       body: [
-        'We integrate data, analytics, and AI into the environments where decisions are made — whether through dashboards, applications, or operational systems. By leveraging predictive analytics, recommendations, and AI-driven insights, we enable organizations to move from reactive to proactive decision-making.',
-        'The result isn\'t another dashboard that sits unused. It\'s decision support embedded where your teams already work — so the right signal reaches the right person at the right moment.',
+        'The vast majority of your enterprise data sits in documents, emails, call transcripts, PDFs, and images — invisible to traditional analytics. We help your team unlock it: sentiment analysis on customer calls, automated contract analysis, medical record intelligence, claims processing your analysts can query and explore.',
+        'What was cost-prohibitive is now achievable in weeks. The economics of unlocking unstructured data have changed by an order of magnitude.',
+      ],
+    },
+  },
+  {
+    title: 'Data Platform Optimization',
+    subtitle: 'Bridge the gap between the platform you invested in and the decisions your leadership was promised.',
+    content: {
+      type: 'detail',
+      serviceLabel: 'DATA PLATFORM OPTIMIZATION',
+      heading: 'Make the Investment You Already Made Actually Work',
+      body: [
+        'You bought the platform. You migrated the data. You hired the engineers. But your leadership still isn\'t getting the insights they were promised. We work with your team to bridge the gap — connecting your existing infrastructure to the decisions that matter, surfacing insights already hiding in your data, and turning your data platform from a cost center into a competitive advantage your leadership can see and measure.',
+        'Most enterprises extract business decisions from less than 40% of their data platform\'s capacity. The rest sits idle — paid for, but not connected to outcomes.',
       ],
     },
   },
 ];
 
 const howCards = [
-  { title: 'Business-First, Data-Driven Solutions',  body: 'Every solution is anchored in the outcomes leaders need to drive, ensuring data models, pipelines, and reporting layers directly support business priorities — not just technical best practices.' },
-  { title: 'Data Lineage and Governance',             body: 'We embed data quality, governance, and end-to-end data lineage into every layer, ensuring transparency, traceability, and trust across the data ecosystem.' },
-  { title: 'Bridging Technical and Business Teams',  body: 'Our focus is on making data usable and trusted in real business environments, bridging the gap between technical systems and the decision-making outcomes your teams need.' },
-  { title: 'Continuous Monitoring & Improvement',    body: 'Data quality isn\'t a project — it\'s an ongoing discipline. We embed monitoring into pipelines so data integrity is validated continuously, not just at deployment.' },
+  { title: 'Your data team stays in the driver\'s seat.', body: 'We augment your analysts\' and engineers\' capacity — we don\'t replace their expertise. They own the data strategy, the governance decisions, and the roadmap.' },
+  { title: 'Knowledge transfers as we build.',            body: 'Every practice we introduce — from conversational analytics to automated governance — becomes your team\'s capability, not a dependency on us.' },
+  { title: 'We work within your governance.',             body: 'Your compliance requirements, your data classification rules, your access controls. We don\'t ask you to bend your policies — we build within them.' },
+  { title: 'Quality and accuracy are non-negotiable.',    body: 'Data intelligence is only valuable if it\'s trustworthy. Every model, every pipeline, every insight is validated against your domain expertise before it reaches a decision-maker.' },
 ];
 
 const proofCards = [
-  { tags: 'HEALTHCARE • DATA UNIFICATION',       title: 'From Fragmented Data to Predictive, Decision-Ready Insights', excerpt: 'We unified MDxHealth\'s scattered data ecosystem to create a governed, single source of truth across clinical, operational, and financial workflows. Advanced predictive analytics enabled proactive decision-making.' },
-  { tags: 'HEALTHCARE • ANALYTICS PLATFORM',     title: 'CarePredictor: Turning Care Signals Into Earlier Action',       excerpt: 'Technossus supported CarePredictor in strengthening a healthcare platform that uses data-driven insights to identify patients at risk earlier, enabling timely interventions and better care outcomes.' },
-  { tags: 'ENTERPRISE • DATA PLATFORM',          title: 'Scalable Data Foundation for Enterprise AI Readiness',          excerpt: 'A large enterprise needed a reliable data foundation before scaling AI. We designed a governed data platform that unified disparate sources and enabled AI teams to build with confidence.' },
+  { tags: 'MDXHEALTH • DATA UNIFICATION',         title: 'From Fragmented Data to Predictive, Decision-Ready Insights',   excerpt: 'We unified MDxHealth\'s scattered data ecosystem to create a governed, single source of truth across clinical, operational, and financial workflows. Advanced predictive analytics enabled proactive decision-making, improving visibility into outcomes, risks, and performance trends.' },
+  { tags: 'CAREPREDICTOR • HEALTHCARE ANALYTICS', title: 'CarePredictor Helps Turn Care Signals Into Earlier Action',      excerpt: 'Technossus supported CarePredictor in strengthening a healthcare platform that uses data-driven insights to help care teams identify risks sooner and respond with more confidence. The work focused on improving reliability, usability, and decision support so technology could better serve the people delivering care.' },
+  { tags: 'JUPITER HOSPITAL • RECEIVABLES',       title: 'Improving Receivables Visibility & DSO Control',                excerpt: 'Jupiter Hospital lacked a consolidated, drill-down view of receivables and DSO across group, hospital, and account levels, limiting timely decision-making. Manual processes and absence of mapping to sales and account teams made it difficult to track performance against targets and take corrective actions.' },
 ];
 
 const painCards = [
-  { heading: '"Data is spread across systems, but our reports don\'t match."',     body: 'Teams spend more time reconciling numbers than making decisions. Every meeting starts with a debate about which number is right — and ends without resolving it.' },
-  { heading: '"Our AI initiatives keep failing to scale."',                        body: 'Early experiments show promise, but when the team tries to scale them, they hit a wall. The data isn\'t structured, complete, or trustworthy enough for production AI.' },
-  { heading: '"Decision-making is delayed because nobody trusts the data."',       body: 'Manual processes, inconsistent data, and too many one-off reports mean decisions wait on data validation instead of moving on insight.' },
+  { heading: 'You\'re sitting on years of data but your team still makes decisions on gut feel.',        body: 'Because getting to the insight takes too long. The data is there — the path to it isn\'t.' },
+  { heading: 'Your governance program is always six months behind your data growth.',                    body: 'And your next audit is making you nervous. Manual classification and incomplete lineage compound every quarter.' },
+  { heading: 'You have regulatory and compliance data in documents and PDFs that needs to be searchable and auditable.',  body: 'And right now it\'s not. Unstructured data is invisible to your analytics stack.' },
+  { heading: 'Your data engineers spend more time fixing pipelines than building anything new.',         body: 'And the backlog of analytics requests keeps growing. Maintenance is consuming the capacity meant for innovation.' },
+  { heading: 'Your BI team is buried in ad-hoc requests and your executives wait days for answers.',     body: 'Answers that should take seconds. Every question that requires a ticket slows the decision that depends on it.' },
+  { heading: 'You invested in Snowflake or Databricks but your leadership still can\'t answer basic business questions.', body: 'Without a week-long analyst cycle. The platform is ready. The path from question to answer isn\'t.' },
 ];
 
 export default function DataIntelligence() {
@@ -157,22 +173,22 @@ export default function DataIntelligence() {
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
-              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Data you can trust. Insights you can act on.</p>
+              <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Data Intelligence & Analytics</p>
               <FadeUp>
                 <h1 style={d1()}>
-                  Your data is speaking.{' '}
-                  <span style={{ color: red }}>Are you listening fast enough?</span>
+                  Your data is talking.{' '}
+                  <span style={{ color: red }}>You're just not hearing it fast enough.</span>
                 </h1>
               </FadeUp>
               <FadeUp delay={80}>
                 <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                  Data and Analytics only matter when they lead to clear, confident decisions. We unify, clean, and structure data so it tells a single, aligned story. Decisions move faster, and teams focus on acting — not reconciling.
+                  Decisions still take weeks because data lives in silos, reports look backward, and by the time the analysis arrives, the market has moved. We work with your team to close the gap between data collected and decision made — from months to minutes.
                 </p>
               </FadeUp>
               <FadeUp delay={120}>
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                  <Button variant="primary"   label="Talk to a Data Expert"  href="#" />
-                  <Button variant="secondary" label="Explore Our Work"       href="#" />
+                  <Button variant="primary"   label="Show us the problem"  href="#" />
+                  <Button variant="secondary" label="See How We Work"      href="#" />
                 </div>
               </FadeUp>
             </div>
@@ -209,13 +225,13 @@ export default function DataIntelligence() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <h2 style={d2('#fff')}>
-                Data is growing faster than{' '}
-                <span style={{ color: red }}>decision readiness.</span>
+                The cost of analyzing your data collapsed.{' '}
+                <span style={{ color: red }}>The cost of acting on it didn't.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'Organizations have moved beyond collecting data — the challenge today is making it usable for decisions. The shift is from descriptive dashboards to predictive, personalised, and decision-support capabilities.',
-                  'As expectations rise, teams need data that is aligned, governed, and ready to act on — so insight turns into action without friction. The bottleneck is no longer data volume. It\'s data trust.',
+                  'AI is what caused the collapse. Pipeline maintenance, report generation, SQL writing, metadata cataloging — the plumbing that once consumed 80% of your data team\'s time — can now be automated. The work that can\'t be automated is the work that matters most: which decision to make, when to make it, and how to make it trustworthy enough to stake the business on.',
+                  'You may have already invested in a modern data platform. The real work now is in the distance between what your platform can do and what your people are equipped to ask of it. We work alongside your team to close that distance, transferring capability as we deliver.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', margin: 0 }}>{p}</p>
                 ))}
@@ -223,10 +239,10 @@ export default function DataIntelligence() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
-                { num: '73%',   desc: 'Of organizations say data quality is a major barrier to realizing value from analytics and AI. — Gartner' },
-                { num: '2.5×',  desc: 'More revenue growth among organizations that treat data as a product and govern it at the enterprise level.' },
-                { num: '60%',   desc: 'Of AI project failures are attributed to data issues — not model problems. Clean data is the foundation.' },
-                { num: '< 1%',  desc: 'Of enterprise data is analyzed and acted upon. The opportunity isn\'t more collection — it\'s better utilization.' },
+                { num: '47%',    desc: 'Of CXOs say data readiness is their #1 challenge for AI initiatives.' },
+                { num: '80/20',  desc: 'Data teams spend 80% on plumbing, 20% on insight — we flip that ratio.' },
+                { num: '60–70%', desc: 'Reduction in ad-hoc requests when your team can query data directly.' },
+                { num: 'Zero',   desc: 'Handoffs without knowledge transfer. Your team learns as we build.' },
               ].map(s => (
                 <div key={s.num} style={{ background: '#262626', border: '1px solid #343434', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 28 : 36, lineHeight: 1, fontWeight: 600, color: red }}>{s.num}</div>
@@ -245,8 +261,8 @@ export default function DataIntelligence() {
         <div style={inner}>
           <Tag label="SERVICE OFFERINGS" />
           <h2 style={{ ...d2(), marginTop: 16 }}>
-            From raw data to trusted insights — configured for{' '}
-            <span style={{ color: red }}>how your business actually decides.</span>
+            Better decisions, faster insight,{' '}
+            <span style={{ color: red }}>stronger teams.</span>
           </h2>
           <div style={{ marginTop: 48 }}>
             <Accordion items={accordionItems} defaultActiveIndex={1} />
@@ -263,13 +279,13 @@ export default function DataIntelligence() {
             <div style={{ flex: 1, minWidth: isMobile ? '100%' : 320 }}>
               <Tag label="HOW WE WORK" />
               <h2 style={{ ...d2(), marginTop: 16 }}>
-                We focus on making data usable and trusted in{' '}
-                <span style={{ color: red }}>real business environments.</span>
+                We don't build a platform and{' '}
+                <span style={{ color: red }}>leave you dependent on it.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
                 {[
-                  'Every data engagement starts with the decision it needs to support — not the technology that will deliver it. We work with your business and data teams together, so the solutions we build are anchored in real outcomes, not technical milestones.',
-                  'Our approach bridges the gap between the people who manage data infrastructure and the people who make decisions with it. When the engagement ends, your team owns both the platform and the practice.',
+                  'We work embedded with your data team — transferring capability as we deliver. When the engagement ends, your analysts and engineers own the platform, understand the architecture, and can extend it without us.',
+                  'We know that new data capabilities create as many questions as answers for your team. Our approach is designed to bring your people along, not leave them behind. That\'s how we\'ve maintained 90%+ client retention.',
                 ].map((p, i) => (
                   <p key={i} style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{p}</p>
                 ))}
@@ -327,8 +343,7 @@ export default function DataIntelligence() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h1 style={{ ...d1(), marginTop: 16 }}>
-            If data problems are slowing your decisions, you're not{' '}
-            <span style={{ color: red }}>alone.</span>
+            Sound <span style={{ color: red }}>Familiar?</span>
           </h1>
           <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 12 }}>These aren't hypotheticals. They're the conversations we have most often.</p>
           <div style={{ display: 'grid', gridTemplateColumns: cols2, gap: 24, marginTop: 48 }}>
@@ -343,12 +358,13 @@ export default function DataIntelligence() {
 
           {/* CTA offer block */}
           <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Turn your data into a reliable business asset.</h3>
+            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Bring us your toughest data problem.</h3>
             <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              Whether you are strengthening your data foundation or scaling AI, we help you move forward with clarity, control, and measurable outcomes. Start with a focused conversation about where your data ecosystem needs the most attention.
+              We'll spend two days with your team — at no cost — understanding the challenge, evaluating the landscape, and coming back within a week with a concrete approach. No 50-page proposal. No six-month roadmap. A real solution to a real problem.
             </p>
-            <div>
-              <Button variant="primary" label="Schedule a Discussion →" href="#" />
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <Button variant="primary"   label="Bring us your problem →" href="#" />
+              <Button variant="secondary" label="Explore Solution"        href="#" />
             </div>
           </div>
         </div>
@@ -358,10 +374,10 @@ export default function DataIntelligence() {
       <CTABanner
         size="large"
         label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session →"
-        secondaryCta="Contact Us"
+        heading="Bring us your toughest data problem."
+        body="No six-month proposal. No 200-slide deck. Working intelligence, built with your team — and your data team will be stronger for the experience."
+        primaryCta="Bring us your problem →"
+        secondaryCta="Explore Solution"
       />
 
       <div style={{ height: isMobile ? 48 : 80 }} />
