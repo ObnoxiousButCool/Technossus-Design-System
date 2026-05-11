@@ -226,7 +226,7 @@ export default function Careers() {
               </h2>
             </FadeUp>
           </div>
-          <Accordion items={accordionItems} defaultActiveIndex={2} />
+          <Accordion items={accordionItems} defaultActiveIndex={0} />
         </div>
       </section>
 
