@@ -8,7 +8,10 @@ import { Card }        from '../../components/Card';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
 import { DecorativeOverlay, DecorativeImage } from '../../components/DecorativeMedia';
-import imgCollaborators from '../../assets/Website_images 2/Logo.png';
+import imgCollaborators  from '../../assets/Website_images 2/Logo.png';
+import imgAuthorJeffrey  from '../../assets/testimonials/Jaffrey.png';
+import imgAuthorAnita    from '../../assets/testimonials/anita.png';
+import imgAuthorTyler    from '../../assets/testimonials/Tyler.png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -42,9 +45,7 @@ const imgIconOutcome    = '/assets/ac8dbae3d6a4ef3869c92f062ba66c3ebc0095c2.svg'
 const imgIconScale      = '/assets/1842a7b6c6f7844a725781346897858a8c24e609.svg';
 const imgIconEnhance    = '/assets/be00e1883e0f4b7bbdff5b000b66f3f1cfa30930.svg';
 
-// Testimonial author images
-const imgAuthorJeffrey  = '/assets/e002c8497c961f13d2ce3906447a0b0b6dceca9a.png';
-const imgAuthorAnita    = '/assets/72a44557c520c7dbcc23c7fffb1534945709d41d.png';
+// Testimonial author images — imported at top of file
 
 // Corner decorators (Figma Subtract SVGs)
 const imgCornerTL       = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
@@ -591,9 +592,9 @@ export default function Home() {
             <Testimonial
               color="white"
               quote={`"Flawless rollout of New Relic with no downtime allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — 'Ridiculously Qualified Team.'"`}
-              authorName="Jeffrey Harker"
-              authorTitle="System Manager Cloud Engineering"
-              authorImage={imgAuthorJeffrey}
+              authorName="Tyler Zucchiatti"
+              authorTitle="Director, Software Development - Middleware & Integration"
+              authorImage={imgAuthorTyler}
             />
           </div>
         </div>

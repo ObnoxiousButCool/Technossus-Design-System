@@ -14,7 +14,10 @@ import imgZia     from '../../assets/Website_Images/Leadership/Zia.png';
 import imgBasudev from '../../assets/Website_Images/Leadership/Basudev.png';
 import imgSambit  from '../../assets/Website_Images/Leadership/Sambit.png';
 import imgDainish from '../../assets/Website_Images/Leadership/Dainish.png';
-import imgHeroBg  from '../../assets/Website_Images/Hero section/About Us.png';
+import imgHeroBg        from '../../assets/Website_Images/Hero section/About Us.png';
+import imgAuthorJeffrey from '../../assets/testimonials/Jaffrey.png';
+import imgAuthorAnita   from '../../assets/testimonials/anita.png';
+import imgAuthorTyler   from '../../assets/testimonials/Tyler.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
@@ -48,18 +51,18 @@ const leaders = [
   { role: 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA',                             name: 'Dainish Hingwe',    bio: '', photo: imgDainish },
 ];
 
-const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red' }> = [
+const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red'; image: string }> = [
   {
     quote: '"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team\'s responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."',
-    name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white',
+    name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white', image: imgAuthorJeffrey,
   },
   {
     quote: '"Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner."',
-    name: 'Anita Salgado', title: 'Senior Business Systems Analyst', color: 'red',
+    name: 'Anita Salgado', title: 'Senior Business Systems Analyst', color: 'red', image: imgAuthorAnita,
   },
   {
     quote: '"Flawless rollout of New Relic with no downtime. Net savings on overall costs by delivering projects with half of the requested staff — Ridiculously Qualified Team."',
-    name: 'Tyler Zucchiatti', title: 'Director, Software Development - Middleware & Integration', color: 'white',
+    name: 'Tyler Zucchiatti', title: 'Director, Software Development - Middleware & Integration', color: 'white', image: imgAuthorTyler,
   },
 ];
 
@@ -237,8 +240,9 @@ export default function AboutUs() {
                 key={i}
                 color={t.color}
                 quote={t.quote}
-                name={t.name}
-                title={t.title}
+                authorName={t.name}
+                authorTitle={t.title}
+                authorImage={t.image}
               />
             ))}
           </div>
