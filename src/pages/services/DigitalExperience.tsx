@@ -8,6 +8,7 @@ import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
+import imgHero from '../../../assets/Website_Images/Services/Digital Exp..png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
@@ -191,7 +192,7 @@ export default function DigitalExperience() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <PlaceholderBlock width="100%" height={isTablet ? 300 : 460} />
+                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>

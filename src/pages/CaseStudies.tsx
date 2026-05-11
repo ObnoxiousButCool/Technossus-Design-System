@@ -226,7 +226,7 @@ export default function CaseStudies() {
         <div style={inner}>
 
           {/* Tag */}
-          <Tag label="FEATURED CASE STUDIES" />
+          <Tag label="PROOF" />
 
           {/* Filter bar */}
           <div

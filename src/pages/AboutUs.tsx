@@ -6,9 +6,17 @@ import { CTABanner }   from '../../components/CTABanner';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
+import imgRavnish from '../../assets/Website_Images/Leadership/Ravnish.png';
+import imgGiri    from '../../assets/Website_Images/Leadership/Giri.png';
+import imgKumar   from '../../assets/Website_Images/Leadership/Kumar.png';
+import imgSham    from '../../assets/Website_Images/Leadership/Sham.png';
+import imgZia     from '../../assets/Website_Images/Leadership/Zia.png';
+import imgBasudev from '../../assets/Website_Images/Leadership/Basudev.png';
+import imgSambit  from '../../assets/Website_Images/Leadership/Sambit.png';
+import imgDainish from '../../assets/Website_Images/Leadership/Dainish.png';
+import imgHeroBg  from '../../assets/Website_Images/Hero section/About Us.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
-const imgHeroBg       = '/assets/dedded0b1d928a3885f126fb06d8645c5ff773d6.png';
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
 const imgMissionIcon  = '/assets/61200c7f88a68751add502d264dc727a8b8164b7.svg';
 const imgSubtractTL   = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
@@ -30,14 +38,14 @@ const pillars = [
 ];
 
 const leaders = [
-  { role: 'FOUNDER, MANAGING PARTNER, TECHNOSSUS USA',               name: 'Ravnish Bhalla',      bio: 'Founder and enterprise technology leader guiding Technossus with a 360° client-impact approach to innovation, transformation, and long-term value creation.' },
-  { role: 'MANAGING PARTNER, TECHNOSSUS USA',                        name: 'Giri Kalluri',        bio: 'Co-founder and strategic growth leader driving enterprise transformation through AI-led innovation, cloud modernization, operational excellence, and global team leadership.' },
-  { role: 'CEO & PRESIDENT, TECHNOSSUS INDIA',                       name: 'Kumar Gaurav',        bio: 'Global consulting and sales leader driving scalable delivery, strategic partnerships, enterprise transformation, and measurable business outcomes for Technossus.' },
-  { role: 'EXECUTIVE DIRECTOR, CLIENT SUCCESS GROUP, TECHNOSSUS USA', name: 'Sham Ramakrishnan',  bio: 'Client success and global services leader building trusted partnerships by aligning sales, delivery, engineering, and support around predictable, high-value outcomes.' },
-  { role: 'VP, DIGITAL EXPERIENCE DESIGN, TECHNOSSUS INDIA',         name: 'Zia Rahman',          bio: 'Design leader shaping intuitive, scalable digital experiences through UX strategy, DesignOps, and AI-led product innovation.' },
-  { role: 'DIRECTOR SALES, TECHNOSSUS UK',                           name: 'Basudev Pal',         bio: 'Brings over two decades of experience in digital transformation and market expansion, shaping AI-led growth strategies and enterprise innovation across Europe.' },
-  { role: 'DIRECTOR GLOBAL COMPETENCY HEAD, TECHNOSSUS INDIA',       name: 'Sambit Mohanty',      bio: 'Leads global engineering and solution architecture, building scalable systems and driving AI-led capabilities across client environments.' },
-  { role: 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA',                    name: 'Dainish Hingwe',      bio: 'Drives technology and delivery at scale, playing a key role in building, shaping, and scaling systems, teams, and execution capabilities from the ground up.' },
+  { role: 'FOUNDER, MANAGING PARTNER, TECHNOSSUS USA',                      name: 'Ravnish Bhalla',    bio: 'Founder and enterprise technology leader guiding Technossus with a 360° client-impact approach to innovation, transformation, and long-term value creation.',                                                                     photo: imgRavnish },
+  { role: 'MANAGING PARTNER, TECHNOSSUS USA',                                name: 'Giri Kalluri',      bio: 'Co-founder and strategic growth leader driving enterprise transformation through AI-led innovation, cloud modernization, operational excellence, and global team leadership.',                                                       photo: imgGiri    },
+  { role: 'CEO & PRESIDENT, TECHNOSSUS INDIA',                               name: 'Kumar Gaurav',      bio: 'Global consulting and sales leader driving scalable delivery, strategic partnerships, enterprise transformation, and measurable business outcomes for Technossus.',                                                                  photo: imgKumar   },
+  { role: 'EXECUTIVE DIRECTOR, CLIENT SUCCESS GROUP, TECHNOSSUS USA',        name: 'Sham Ramakrishnan', bio: 'Client success and global services leader building trusted partnerships by aligning sales, delivery, engineering, and support around predictable, high-value outcomes.',                                                            photo: imgSham    },
+  { role: 'VICE PRESIDENT, DIGITAL EXPERIENCE DESIGN, TECHNOSSUS INDIA',    name: 'Zia Rahman',        bio: 'Design leader shaping intuitive, scalable digital experiences through UX strategy, DesignOps, and AI-led product innovation.',                                                                                                    photo: imgZia     },
+  { role: 'DIRECTOR SALES, TECHNOSSUS UK',                                   name: 'Basudev Pal',       bio: 'Brings over two decades of experience in digital transformation and market expansion, shaping AI-led growth strategies and enterprise innovation across Europe.',                                                                  photo: imgBasudev },
+  { role: 'DIRECTOR GLOBAL COMPETENCY HEAD, TECHNOSSUS INDIA',              name: 'Sambit Mohanty',    bio: 'Leads global engineering and solution architecture, building scalable systems and driving AI-led capabilities across client environments.',                                                                                         photo: imgSambit  },
+  { role: 'EXECUTIVE DIRECTOR, TECHNOSSUS INDIA',                            name: 'Dainish Hingwe',    bio: 'Drives technology and delivery at scale, playing a key role in building, shaping, and scaling systems, teams, and execution capabilities from the ground up.',                                                                    photo: imgDainish },
 ];
 
 const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red' }> = [
@@ -175,7 +183,7 @@ export default function AboutUs() {
             {[leaders.slice(0, 4), leaders.slice(4)].map((row, ri) => (
               <div key={ri} style={{ display: 'grid', gridTemplateColumns: leadersGrid, gap: 16 }}>
                 {row.map((l) => (
-                  <Leader key={l.name} role={l.role} name={l.name} bio={l.bio} />
+                  <Leader key={l.name} role={l.role} name={l.name} bio={l.bio} photo={l.photo} />
                 ))}
               </div>
             ))}

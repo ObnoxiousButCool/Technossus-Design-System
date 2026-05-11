@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 // Asset URLs from Figma
 const imgPhotoDefault = '/assets/4a0fc133e1c62243f5802cc6bf49e291e4ce809e.png';
-const imgPhotoActive  = '/assets/f47b6d03ecad9a885a234fa94d706d5b28d344ee.png';
 const imgSubtractTL   = '/assets/a673075179a0266ec6df160cb442200db0abbd40.svg';
 const imgSubtractBR   = '/assets/327c85a8854e96b954593950f4410e8d5c52443a.svg';
 
@@ -51,24 +50,15 @@ export function Leader({
         ...style,
       }}
     >
-      {/* Photo with cross-fade between Default/Active */}
+      {/* Photo: grayscale by default, transitions to colour on hover */}
       <div style={{ aspectRatio: '3/4', position: 'relative', flexShrink: 0, width: '100%', maxHeight: 336, overflow: 'hidden' }}>
         <img
           alt={name}
           src={photo ?? imgPhotoDefault}
           style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none',
-            opacity: isActive ? 0 : 1,
-            transition: 'opacity 0.3s ease',
-          }}
-        />
-        <img
-          alt=""
-          src={photo ?? imgPhotoActive}
-          style={{
-            position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none',
-            opacity: isActive ? 1 : 0,
-            transition: 'opacity 0.3s ease',
+            filter: isActive ? 'grayscale(0%)' : 'grayscale(100%)',
+            transition: 'filter 250ms ease',
           }}
         />
       </div>

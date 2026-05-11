@@ -14,6 +14,7 @@ const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
 const red   = '#ED2939';
 const dark1 = '#1B1B1B';
+const imgHealthcareOfferings = '/assets/healthcare-offerings.png';
 
 const CornerTL = () => (
   <>
@@ -28,73 +29,6 @@ const CornerBR = () => (
   </>
 );
 
-const whatWeDoItems: AccordionItem[] = [
-  {
-    title: 'Unify Critical Platforms',
-    subtitle: 'Connect the systems healthcare teams rely on — labs, billing, analytics, workflows, and patient experiences.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'UNIFY CRITICAL PLATFORMS',
-      heading: 'Healthcare teams coordinate care more effectively when information flows seamlessly.',
-      body: [
-        'We connect the systems that healthcare teams rely on every day across lab operations, billing, analytics, workflows, and patient-facing experiences — enabling a single, connected environment with real-time data flow.',
-        'Better visibility across clinical, operational, and financial workflows enables faster, more confident decision-making. When a nurse, clinician, or administrator needs information, it\'s there — not somewhere else, not delayed, not wrong.',
-      ],
-    },
-  },
-  {
-    title: 'Modernize High-Friction Workflows',
-    subtitle: 'Redesign and automate workflows across care operations and revenue cycle management.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'MODERNIZE HIGH-FRICTION WORKFLOWS',
-      heading: 'Manual work in clinical and revenue workflows is one of the most expensive problems in healthcare.',
-      body: [
-        'We redesign and automate workflows across care operations and revenue cycle management, reducing manual effort, duplicated steps, and disconnected approvals while improving billing efficiency, claims processing, and overall cycle time.',
-        'This leads to faster payments, better cash flow visibility, and reduced revenue leakage. With intelligent decisioning embedded into processes, teams can manage exceptions more effectively and sustain financial performance at scale.',
-      ],
-    },
-  },
-  {
-    title: 'Build Decision-Ready Visibility',
-    subtitle: 'Analytics and AI-driven insights that help teams act faster and with greater confidence.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'BUILD DECISION-READY VISIBILITY',
-      heading: 'The right information, at the right moment, changes what\'s possible for care teams.',
-      body: [
-        'We create analytics and reporting systems that improve visibility across clinical, operational, and financial functions, supported by AI-driven insights that help teams act faster and with greater confidence.',
-        'This gives leaders and teams the clarity to make faster, better-informed decisions — improving coordination and overall performance across care delivery and operations.',
-      ],
-    },
-  },
-  {
-    title: 'Improve the Digital Care Experience',
-    subtitle: 'Patient portals, booking journeys, and digital touchpoints that are easier to use and simpler to manage.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'IMPROVE THE DIGITAL CARE EXPERIENCE',
-      heading: 'The patient experience is shaped by the digital systems around care as much as the care itself.',
-      body: [
-        'We design and engineer digital experiences that are easier for patients to navigate and simpler for teams to manage, with personalization and responsiveness built into the experience from the start.',
-        'We help design and deliver patient portals, booking journeys, internal tools, and digital touchpoints that are easier to use, simpler to manage, and more effective for both patients and care teams.',
-      ],
-    },
-  },
-  {
-    title: 'Engineer for Growth, Reliability, and Change',
-    subtitle: 'Systems built for performance, security, and scalability — with AI capabilities ready to scale.',
-    content: {
-      type: 'detail',
-      serviceLabel: 'ENGINEER FOR GROWTH, RELIABILITY & CHANGE',
-      heading: 'Healthcare technology cannot be fragile. Every downtime is a patient care risk.',
-      body: [
-        'We build systems for performance, security, and scalability, with AI-enhanced capabilities that support adaptability and continuous improvement. Reliability isn\'t a post-launch concern — it\'s a design requirement from day one.',
-        'We build systems that remain reliable, secure, and ready to scale — while incorporating AI and GenAI capabilities to support smarter automation, adaptive workflows, and continuous improvement, without adding unnecessary complexity.',
-      ],
-    },
-  },
-];
 
 const solutionItems: AccordionItem[] = [
   {
@@ -170,11 +104,6 @@ const featuredCards = [
   { tags: 'HEALTHCARE • ALM & GOVERNANCE',   title: 'ALM Expertise Drives Project Success',                                       excerpt: 'Technossus established enterprise-wide ALM processes, tools, and governance frameworks to enable structured execution and coordination across systems and vendors. This improved visibility and control, reduced delivery risks, and strengthened execution confidence in a complex, large-scale transformation program.' },
 ];
 
-const successCards = [
-  { tags: 'LIFE SCIENCES • LAB PLATFORM',    title: 'Unified Lab Platform Reduces Licensing Costs and Improves Throughput',  excerpt: 'Helix replaced three fragmented lab systems with one higher-performing LIMS, reducing licensing fees, eliminating manual labor through standardized integrations, and enabling greater testing throughput without adding staff.' },
-  { tags: 'HEALTHCARE • STREAMING DATA',     title: 'Streaming Analytics Enables Real-Time Visibility Across Patient Flow',   excerpt: 'A healthcare organization needed live visibility into patient data as it was generated. A streaming analytics platform now feeds clinical dashboards in real time, enabling immediate action on delays, risks, and operational bottlenecks.' },
-  { tags: 'HEALTHCARE • REVENUE CYCLE',      title: 'Revenue Cycle Automation Reduces Denials and Improves Cash Flow',        excerpt: 'Intelligent pre-submission validation catches errors before claims are submitted, routes exceptions automatically, and gives finance teams a real-time view from service to payment — improving collections and reducing revenue leakage.' },
-];
 
 export default function Healthcare() {
   const { isMobile, isTablet } = useBreakpoint();
@@ -319,81 +248,23 @@ export default function Healthcare() {
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
-      {/* ── WHAT WE DO ── */}
+      {/* ── HEALTHCARE OFFERINGS IMAGE ── */}
       <section style={{ background: '#fff' }}>
-        <div style={inner}>
-          <Tag label="WHAT WE DO" />
-          <h2 style={{ ...d2(), marginTop: 16 }}>
-            We help healthcare organizations move from disconnected operations{' '}
-            <span style={{ color: red }}>to connected delivery.</span>
-          </h2>
-          <p style={{ fontFamily: sans, fontSize: 16, color: '#5C5C5C', marginTop: 12, maxWidth: 720 }}>We don't just build software for healthcare. We solve the operating problems that software is supposed to solve.</p>
-          <div style={{ marginTop: 48 }}>
-            <Accordion items={whatWeDoItems} defaultActiveIndex={0} />
-          </div>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px 48px' : isTablet ? '0 32px 60px' : '0 80px 80px' }}>
+          <img src={imgHealthcareOfferings} alt="Healthcare offerings" style={{ width: '100%', display: 'block' }} />
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
-      {/* ── DHE FRAMEWORK ── */}
+      {/* ── PROOF ── */}
       <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
-        <Tag label="DIGITAL HEALTH ENGINEERING" variant="dark" />
-      </div>
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
-        <CornerTL /><CornerBR />
-        <div style={inner}>
-          <h2 style={{ ...d2('#fff'), marginTop: 0 }}>
-            The engineering foundation that powers every{' '}
-            <span style={{ color: red }}>digital health experience.</span>
-          </h2>
-          <p style={{ fontFamily: sans, fontSize: 16, color: '#9B9B9B', marginTop: 12, maxWidth: 720 }}>Connect care, better outcomes, scalable systems — across five experience layers, all built on one reliable foundation.</p>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: 20, marginTop: 40 }}>
-            {[
-              { label: 'DPx', title: 'Digital Patient Experience',   body: 'Intuitive, connected experiences across the care journey — from discovery to post-care engagement. Patient portals, booking journeys, and digital touchpoints that simplify search, scheduling, and registration.' },
-              { label: 'CPx', title: 'Care Provider Experience',     body: 'Systems that reduce friction and improve coordination for care teams. Ambulatory pre-visit solutions scaled across 200+ facilities, pharmacy automation, and provider data management tools.' },
-              { label: 'VHx', title: 'Virtual Health Experience',    body: 'Connected systems and workflows that address the full continuum of virtual care — improving patient experience, expanding service footprints, and enabling patient-centered navigation for vulnerable populations.' },
-              { label: 'DTx', title: 'Digital Therapeutics',         body: 'Digital therapeutics integrated into care delivery with scalable, compliant systems — including RPM-enabled solutions, automated patient education, and SMART FHIR integrations with EHR systems.' },
-              { label: 'DHE', title: 'Digital Health Engineering',   body: 'The foundation layer that powers all digital health experience layers — ensuring performance, security, scalability, and integration readiness across every touchpoint.' },
-            ].map(item => (
-              <div key={item.label} style={{ background: '#262626', border: '1px solid #343434', padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div style={{ fontFamily: serif, fontSize: 28, fontWeight: 700, color: red, lineHeight: 1 }}>{item.label}</div>
-                <h3 style={{ fontFamily: sans, fontSize: 16, fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>{item.title}</h3>
-                <p style={{ fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: '#9B9B9B', margin: 0 }}>{item.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
-      {/* ── SOLUTIONS ── */}
-      <section style={{ background: '#fff' }}>
-        <div style={inner}>
-          <Tag label="SOLUTIONS" />
-          <h2 style={{ ...d2(), marginTop: 16 }}>
-            Turning fragmented systems into intelligent{' '}
-            <span style={{ color: red }}>healthcare ecosystems.</span>
-          </h2>
-          <div style={{ marginTop: 48 }}>
-            <Accordion items={solutionItems} defaultActiveIndex={0} />
-          </div>
-        </div>
-      </section>
-
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
-      {/* ── FEATURED CASE STUDIES ── */}
-      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
-        <Tag label="FEATURED CASE STUDIES" variant="dark" />
+        <Tag label="PROOF" variant="dark" />
       </div>
       <section id="proof" style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
             <div>
-              <h1 style={d1('#fff')}>Featured case <span style={{ color: red }}>studies.</span></h1>
+              <h1 style={d1('#fff')}>Success <span style={{ color: red }}>stories.</span></h1>
               <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>Real outcomes from healthcare organizations we've partnered with.</p>
             </div>
             <a href="#" style={{ fontFamily: sans, fontSize: 14, color: '#9B9B9B', textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
@@ -408,21 +279,16 @@ export default function Healthcare() {
 
       <div style={{ height: isMobile ? 48 : 80 }} />
 
-      {/* ── SUCCESS STORIES ── */}
+      {/* ── SOLUTION ── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
-          <Tag label="SUCCESS STORIES" />
-          <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
-            <div>
-              <h1 style={d1()}>More from <span style={{ color: red }}>healthcare.</span></h1>
-              <p style={{ fontFamily: sans, fontSize: 15, color: '#5C5C5C', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
-            </div>
-            <a href="#" style={{ fontFamily: sans, fontSize: 14, color: red, textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
-            {successCards.map((card, i) => (
-              <Card key={i} mode="light" type="insights" tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
-            ))}
+          <Tag label="SOLUTION" />
+          <h2 style={{ ...d2(), marginTop: 16 }}>
+            Turning fragmented systems into intelligent{' '}
+            <span style={{ color: red }}>healthcare ecosystems.</span>
+          </h2>
+          <div style={{ marginTop: 48 }}>
+            <Accordion items={solutionItems} defaultActiveIndex={0} />
           </div>
         </div>
       </section>
