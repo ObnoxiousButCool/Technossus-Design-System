@@ -5,15 +5,15 @@ import { CTABanner }      from '../../components/CTABanner';
 import { FadeUp }         from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint }  from '../../ts/breakpoints';
-import imgHeroBg from '../../assets/Website_Images/Hero section/Contact Us.png';
+import imgHeroBg      from '../../assets/Website_Images/Hero section/Contact Us.png';
+import imgLocUSA      from '../../assets/Website_images 2/Location/USA.png';
+import imgLocUK       from '../../assets/Website_images 2/Location/UK.png';
+import imgLocPune     from '../../assets/Website_images 2/Location/Pune.png';
+import imgLocLudhiana from '../../assets/Website_images 2/Location/Ludhiana.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
 const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
 const imgPhilosophyImg= '/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
-const imgUSA          = '/assets/35e377ed5891bac0f8a31896629116de4c517a53.png';
-const imgUK           = '/assets/e002c8497c961f13d2ce3906447a0b0b6dceca9a.png';
-const imgIndia1       = '/assets/d7ae10b0cff18a8a95fedb06a8ef1ebb8a0fb077.png';
-const imgIndia2       = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 const imgSubtractTL   = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
 const imgSubtractBR   = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
 
@@ -25,10 +25,10 @@ const dark  = colors.brand.black;
 const dark1 = colors.background.dark1;
 
 const locations = [
-  { country: 'United States', description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgUSA },
-  { country: 'United Kingdom', description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgUK },
-  { country: 'India',          description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgIndia1 },
-  { country: 'India',          description: "We have built the legacy's infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven allows microservices and modern cloud architectures.", image: imgIndia2 },
+  { country: 'United States', description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgLocUSA      },
+  { country: 'United Kingdom', description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgLocUK       },
+  { country: 'Pune',           description: 'We have built the largest infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven microservices and modern cloud architectures.', image: imgLocPune     },
+  { country: 'Ludhiana',       description: "We have built the legacy's infrastructure of a Tier-1 financial institution, salvaging 40% using automation-driven allows microservices and modern cloud architectures.", image: imgLocLudhiana },
 ];
 
 export default function ContactUs() {
