@@ -10,6 +10,8 @@ import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
 import imgHero from '../../../assets/Industries/Healthcare.png';
 
+const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
+
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
 const red   = '#ED2939';
@@ -269,7 +271,7 @@ export default function Healthcare() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
             {featuredCards.map((card, i) => (
-              <Card key={i} mode="dark" type="insights" tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
+              <Card key={i} mode="dark" type="insights" image={imgCardPhoto} tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
             ))}
           </div>
         </div>

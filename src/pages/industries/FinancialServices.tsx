@@ -10,6 +10,8 @@ import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
 import imgHero from '../../../assets/Industries/BSFI.png';
 
+const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
+
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
 const red   = '#ED2939';
@@ -358,7 +360,7 @@ export default function FinancialServices() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
             {successCards.map((card, i) => (
-              <Card key={i} mode="light" type="insights" tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
+              <Card key={i} mode="light" type="insights" image={imgCardPhoto} tags={card.tags} title={card.title} excerpt={card.excerpt} ctaLabel="See How We Work" />
             ))}
           </div>
         </div>
