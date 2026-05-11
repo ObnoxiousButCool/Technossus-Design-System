@@ -59,7 +59,7 @@ const testimonials: Array<{ quote: string; name: string; title: string; color: '
   },
   {
     quote: '"Flawless rollout of New Relic with no downtime. Net savings on overall costs by delivering projects with half of the requested staff — Ridiculously Qualified Team."',
-    name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white',
+    name: 'Tyler Zucchiatti', title: 'Director, Software Development - Middleware & Integration', color: 'white',
   },
 ];
 
