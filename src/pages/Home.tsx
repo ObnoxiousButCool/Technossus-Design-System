@@ -8,6 +8,7 @@ import { Card }        from '../../components/Card';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
 import { DecorativeOverlay, DecorativeImage } from '../../components/DecorativeMedia';
+import imgCollaborators from '../../assets/Website_images 2/Logo.png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -26,12 +27,6 @@ const imgSearchSend     = '/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg'
 
 // Stats section — combined globe + network arc composition
 const imgStatsComposed  = '/assets/215811fe-eab7-431c-9d72-d65f9783311c.png';
-
-// Collaborator logos
-const imgLogoToyota     = '/assets/07257e50d6618362732217b05125eff67876481e.png';
-const imgLogoGE         = '/assets/2401c6977517bcd5d77ed42b90f5f4b022f8186c.png';
-const imgLogoChoice     = '/assets/91534fe0e36130e7166a22de186f19e1011c79f0.png';
-const imgLogoBio        = '/assets/e2af84967fea8470188b90cf7819b999289255d7.png';
 
 // Case Study
 const imgCaseStudy      = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
@@ -305,22 +300,11 @@ export default function Home() {
           }}>
             OUR COLLABORATORS
           </p>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: isMobile ? 24 : 96,
-            flexWrap: 'wrap',
-          }}>
-            <img src={imgLogoToyota} alt="Toyota Financial Services"
-              style={{ height: 42, width: 116, objectFit: 'contain', objectPosition: 'bottom' }} />
-            <img src={imgLogoGE}     alt="GE HealthCare"
-              style={{ height: 42, width: 189, objectFit: 'cover' }} />
-            <img src={imgLogoChoice} alt="Choice Administrators"
-              style={{ height: 35, width: 92,  objectFit: 'cover' }} />
-            <img src={imgLogoBio}    alt="Bio Theranostics"
-              style={{ height: 61, width: 134, objectFit: 'contain', objectPosition: 'bottom' }} />
-          </div>
+          <img
+            src={imgCollaborators}
+            alt="Our collaborators"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
         </div>
       </section>
 
