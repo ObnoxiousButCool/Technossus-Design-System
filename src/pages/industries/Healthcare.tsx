@@ -165,9 +165,9 @@ const solutionItems: AccordionItem[] = [
 ];
 
 const featuredCards = [
-  { tags: 'HEALTHCARE • MOBILE PLATFORM',    title: 'Mobile Platform Increases Company Value for Healthcare Benefits Provider', excerpt: 'A leading healthcare benefits provider needed a mobile strategy to extend services to brokers, employers, and end users. Technossus defined the mobile strategy and delivered a scalable platform with seamless data integration across insurers, brokers, and enterprise systems.' },
-  { tags: 'HEALTHCARE • CRM INTEGRATION',    title: 'CRM with Complex External Integrations Launches On Time',                 excerpt: 'A leading healthcare insurance provider needed a CRM integrating data from state and federal platforms under evolving regulatory requirements and a fixed go-live deadline. Delivered on time with real-time access to customer data and enrollment progress.' },
-  { tags: 'HEALTHCARE • ALM & GOVERNANCE',   title: 'ALM Expertise Drives Successful Large-Scale Digital Transformation',       excerpt: 'A major U.S. healthcare provider needed to coordinate a complex multi-vendor digital platform transformation. Technossus established enterprise-wide ALM processes and governance frameworks, improving visibility, reducing risk, and enabling structured execution.' },
+  { tags: 'HEALTHCARE • CRM INTEGRATION',    title: 'CRM Requires Complex External Integrations — Digital Healthcare ID Cards',  excerpt: 'Technossus delivered a scalable mobile platform enabling real-time access to digital healthcare ID cards, seamlessly integrated across insurers, brokers, and enterprise systems. This improved data accessibility and reduced manual effort, while increasing user adoption, customer retention, and overall brand value.' },
+  { tags: 'HEALTHCARE • CRM INTEGRATION',    title: 'CRM Requires Complex External Integrations — Unified Customer Data',        excerpt: 'Technossus delivered a unified CRM with real-time access to customer data, enrollment progress, and interaction history across multiple external platforms. This improved response times and productivity, ensured data accuracy, enhanced reporting visibility, and enabled a successful on-time launch despite high complexity.' },
+  { tags: 'HEALTHCARE • ALM & GOVERNANCE',   title: 'ALM Expertise Drives Project Success',                                       excerpt: 'Technossus established enterprise-wide ALM processes, tools, and governance frameworks to enable structured execution and coordination across systems and vendors. This improved visibility and control, reduced delivery risks, and strengthened execution confidence in a complex, large-scale transformation program.' },
 ];
 
 const successCards = [
@@ -222,13 +222,15 @@ export default function Healthcare() {
               <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>Healthcare & Life Sciences</p>
               <FadeUp>
                 <h1 style={d1()}>
-                  When healthcare systems fall short, care delivery feels the impact.{' '}
-                  <span style={{ color: red }}>We improve & manage both.</span>
+                  We care for those who care for others.{' '}
+                  <span style={{ color: red }}>Driving Change Across Healthcare</span>
                 </h1>
               </FadeUp>
               <FadeUp delay={80}>
                 <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 16, lineHeight: 1.7, color: '#5C5C5C', margin: 0, maxWidth: 560 }}>
-                  Most healthcare friction doesn't begin in the exam room, the lab, or the patient app. It begins in the gaps between them — a system that doesn't talk, a workflow that still depends on manual work, a report that arrives after the moment has passed. Technossus helps healthcare organizations connect the systems behind care, simplify the work around it, and build digital operations that can actually keep up.
+                  Healthcare friction doesn't start in the exam room. It starts in the gaps between systems. Disconnected tools, manual workflows, delayed insights. A patient journey that shouldn't be this hard.
+                  <br /><br />
+                  Technossus connects the systems behind care, simplifies the work around it. Because better operations are where better care begins.
                 </p>
               </FadeUp>
               <FadeUp delay={120}>
@@ -271,7 +273,7 @@ export default function Healthcare() {
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: isMobile ? undefined : '0 0 380px', minWidth: isMobile ? '100%' : 280, width: isMobile ? '100%' : undefined }}>
               <h2 style={d2('#fff')}>
-                Healthcare is facing a seismic shift. Operational readiness{' '}
+                Healthcare is facing a seismic shift. There is speed, but operational readiness{' '}
                 <span style={{ color: red }}>remains uneven.</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 28 }}>
@@ -286,10 +288,10 @@ export default function Healthcare() {
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 20, width: isMobile ? '100%' : undefined }}>
               <div style={{ display: 'grid', gridTemplateColumns: cols2, gap: 20 }}>
                 {[
-                  { title: 'Real-time care depends on real-time systems',  body: 'Clinical workflows are shifting from retrospective analysis to real-time decisioning. Systems must process patient data instantly across devices, platforms, and care settings — without latency or inconsistency.' },
+                  { title: 'Real-time care depends on real-time systems',  body: 'Clinical workflows are shifting from retrospective analysis to real-time decisioning. Systems must process patient data instantly without latency or inconsistency.' },
+                  { title: 'Reliable AI in clinical workflows',            body: 'AI solutions are moving from pilots into diagnostics, triage, and care recommendations. Ensuring accuracy and consistency in real clinical environments is now a critical challenge.' },
                   { title: 'Distributed care demands connected systems',   body: 'Healthcare is no longer centralized. Hospitals, remote monitoring devices, telehealth platforms, and third-party systems must work together seamlessly — but interoperability remains complex.' },
-                  { title: 'Reliable AI in clinical workflows',            body: 'AI solutions are moving from pilots into diagnostics, triage, and care recommendations. Ensuring model accuracy, explainability, and consistency in real clinical environments is now a critical challenge.' },
-                  { title: 'Cybersecurity is a patient safety issue',      body: 'Healthcare systems are often high-value targets. As systems become more connected, protecting patient data, ensuring uptime, and maintaining system integrity directly impacts care delivery.' },
+                  { title: 'Cybersecurity is a Patient Safety Issue',      body: 'Healthcare systems are high-value targets. As systems become more connected, protecting patient data, ensuring uptime, and maintaining system integrity directly impact care delivery.' },
                 ].map(card => (
                   <div key={card.title} style={{ background: '#262626', border: '1px solid #343434', padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 12 }}>
                     <h3 style={{ fontFamily: sans, fontSize: 16, fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>{card.title}</h3>
@@ -300,7 +302,7 @@ export default function Healthcare() {
               <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 1, background: '#343434' }}>
                 {[
                   { num: '85%',           desc: 'of healthcare leaders say administrative burden is limiting clinical capacity' },
-                  { num: 'Nearly 2 in 3', desc: 'patients sought care elsewhere when the wait felt too long' },
+                  { num: '2 in 3',        desc: 'patients sought care elsewhere when the wait felt too long' },
                   { num: '41.9%',         desc: 'of physicians reported at least one symptom of burnout in 2025' },
                   { num: '60%',           desc: 'of AI initiatives in healthcare fail to scale beyond pilot environments' },
                 ].map((s, i) => (
@@ -429,10 +431,10 @@ export default function Healthcare() {
       <CTABanner
         size="large"
         label="LET'S WORK ON IT TOGETHER"
-        heading="If your teams are still carrying the burden of disconnected systems, it's time to fix the layer beneath the care journey."
+        heading="If your teams are still carrying the burden of disconnected systems, manual workflows, and avoidable complexity — it is time to fix the layer beneath the care journey."
         body="Technossus helps healthcare and life sciences organizations build systems that move faster, work smarter, and scale with less friction."
-        primaryCta="Talk to Our Team →"
-        secondaryCta="Explore Our Work"
+        primaryCta="Bring us your problems →"
+        secondaryCta="Explore Solution"
       />
       <div style={{ height: isMobile ? 48 : 80 }} />
     </>
