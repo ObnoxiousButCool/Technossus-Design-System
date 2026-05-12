@@ -202,7 +202,7 @@ export function ContactFormPopUp({
         <div style={{ display: 'flex', gap: 12, alignItems: 'center', height: 40, width: '100%' }}>
           <Checkbox
             checked={form.consent}
-            onChange={(v) => setForm(f => ({ ...f, consent: v }))}
+            onChange={(v: boolean) => setForm(f => ({ ...f, consent: v }))}
             label="I agree to be contacted"
           />
           <p style={{ fontFamily: sans, fontWeight: 500, fontSize: 14, lineHeight: '20px', color: '#5C5C5C', margin: 0, flex: 1 }}>
