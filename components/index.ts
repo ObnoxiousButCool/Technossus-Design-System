@@ -17,7 +17,9 @@ export { Accordion }   from './Accordion';
 export { MainHeader }  from './MainHeader';
 export { MainFooter }  from './MainFooter';
 export { Leader }           from './Leader';
-export { TextInputField }   from './TextInputField';
+export { TextInputField }      from './TextInputField';
+export { Checkbox }            from './Checkbox';
+export { ContactFormPopUp }    from './ContactFormPopUp';
 export { DecorativeOverlay, DecorativeImage, PlaceholderBlock } from './DecorativeMedia';
 
 export type { CardProps }            from './Card';
@@ -34,4 +36,6 @@ export type { MainHeaderProps, NavItem }        from './MainHeader';
 export type { MainFooterProps, FooterLinkGroup } from './MainFooter';
 export type { LeaderProps, LeaderState }                      from './Leader';
 export type { TextInputFieldProps, TextInputFieldState }      from './TextInputField';
+export type { CheckboxProps }                                 from './Checkbox';
+export type { ContactFormPopUpProps, ContactFormData }        from './ContactFormPopUp';
 export type { DecorativeOverlayProps, DecorativeImageProps, PlaceholderBlockProps } from './DecorativeMedia';

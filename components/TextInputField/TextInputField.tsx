@@ -15,6 +15,8 @@ export interface TextInputFieldProps {
   type?: string;
   /** Optional error message shown below the field when state="Error" */
   errorMessage?: string;
+  /** Shows a red asterisk (*) after the label */
+  required?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -29,6 +31,7 @@ export function TextInputField({
   name,
   type = 'text',
   errorMessage,
+  required = false,
   className,
   style,
 }: TextInputFieldProps) {
@@ -59,7 +62,7 @@ export function TextInputField({
         ...style,
       }}
     >
-      {/* Label — red when error */}
+      {/* Label — red when error, asterisk when required */}
       <label
         style={{
           fontFamily: sans,
@@ -72,6 +75,7 @@ export function TextInputField({
         }}
       >
         {resolvedLabel}
+        {required && <span style={{ color: '#ED2939', marginLeft: 1 }}>*</span>}
       </label>
 
       {/* Input — red border when error */}
