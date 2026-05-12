@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Asset URLs from Figma
+// Asset URLs from Figma (node 2233-20140)
 const imgBracketLeft  = '/assets/a503f8db2ff38d97c46dcf929d8bac29e3db7723.svg';
 const imgBracketRight = '/assets/c1e94a65e8e3a307886bea2c5f20cbbca8d072df.svg';
 
@@ -11,6 +11,7 @@ export type TagVariant = 'dark' | 'light';
 
 export interface TagProps {
   label?: string;
+  /** 'dark' = black text (#1E1E1E), 'light' = white text (#FFFFFF) */
   variant?: TagVariant;
   className?: string;
   style?: React.CSSProperties;
@@ -41,7 +42,7 @@ export function Tag({ label = 'INTEGRATED CAPABILITIES', variant = 'dark', class
   };
 
   return (
-    <div className={className} style={containerStyle} data-node-id="8:630">
+    <div className={className} style={containerStyle} data-node-id={variant === 'light' ? '2233:20139' : '8:630'}>
       {/* Opening bracket */}
       <div style={{ width: 4.83, height: 16, position: 'relative', flexShrink: 0 }}>
         <img
