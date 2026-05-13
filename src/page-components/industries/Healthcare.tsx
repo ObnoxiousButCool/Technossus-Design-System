@@ -50,7 +50,7 @@ const solutionItems: AccordionItem[] = [
   },
   {
     title: 'Streaming Analytics Platform',
-    subtitle: 'Real-time visibility across patient care, operations, and systems — as data is generated, not hours later.',
+    subtitle: 'Enable real-time visibility across patient care, operations, and systems by streaming data as it is generated — not hours or days later.',
     content: {
       type: 'detail',
       serviceLabel: 'STREAMING ANALYTICS PLATFORM',
@@ -63,7 +63,7 @@ const solutionItems: AccordionItem[] = [
   },
   {
     title: 'Revenue Cycle Intelligence & Automation',
-    subtitle: 'Faster reimbursements, reduced claim denials, and improved revenue predictability.',
+    subtitle: 'Improve cash flow, reduce denials, and streamline revenue processes using data and automation.',
     content: {
       type: 'detail',
       serviceLabel: 'REVENUE CYCLE INTELLIGENCE',
