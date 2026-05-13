@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 
@@ -5,6 +7,7 @@ import { useBreakpoint } from '../../ts/breakpoints';
 const imgHeroPhoto     = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 const imgPhoto2Dark    = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
 const imgPhoto2Light   = '/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
+const imgFeaturedPhoto = '/assets/8b5b322290a3502aa74e1a09d670545080a3d3a8.png';
 const imgContainerSvg  = '/assets/f6fd2f419935273b9e66a4b9c11731de18271c48.svg';
 const imgIconSvg       = '/assets/da42ce3d86cd28e1121776ec014cdcdbe6f8208e.svg';
 const imgContainerSvg1 = '/assets/487c967a36fb2b5113f573275756c62f0ec9a2fb.svg';
@@ -97,14 +100,54 @@ interface CardLightLargeProps {
   style?: React.CSSProperties;
 }
 
+interface CardLightFeaturedProps {
+  mode: 'light'; type: 'featured';
+  /** Cover image shown on the right */
+  image?: string;
+  /** Red top badge, e.g. 'FEATURED BY TECHNOSSUS' */
+  badge?: string;
+  /** Category line, e.g. 'FINTECH • PLATFORM MODERNIZATION' */
+  category?: string;
+  title?: string;
+  description?: string;
+  /** Avatar initials, e.g. 'DR' */
+  authorInitials?: string;
+  authorName?: string;
+  authorRole?: string;
+  ctaLabel?: string;
+  onCta?: () => void;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+interface CardDarkAcceleratorsProps {
+  mode: 'dark'; type: 'accelerators';
+  /** Cover image at top of card */
+  image?: string;
+  /** Tech stack pill tags e.g. ['Pinecone', 'Kafka', 'Snowflake', 'dbt'] */
+  techTags?: string[];
+  /** Category label e.g. 'DATA & INFRASTRUCTURE' */
+  category?: string;
+  title?: string;
+  description?: string;
+  /** Floating badge top-left e.g. '• LIVE IN TAS' */
+  badge?: string;
+  ctaLabel?: string;
+  onCta?: () => void;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
 export type CardProps =
   | CardDarkSmallProps
   | CardDarkMediumProps
   | CardDarkLargeProps
   | CardDarkInsightsProps
+  | CardDarkAcceleratorsProps
   | CardLightInsightsProps
   | CardLightDeliverProps
-  | CardLightLargeProps;
+  | CardLightLargeProps
+  | CardLightFeaturedProps;
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -331,6 +374,191 @@ export function Card(props: CardProps) {
     );
   }
 
+  // ── Dark / Accelerators ──────────────────────────────────────────────────
+  if (props.mode === 'dark' && props.type === 'accelerators') {
+    return (
+      <div
+        className={props.className}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        data-node-id="2428-3068"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          backgroundColor: '#1E1E1E',
+          width: '100%',
+          boxSizing: 'border-box',
+          cursor: 'pointer',
+          position: 'relative',
+          transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+          boxShadow: isHovered ? '0 12px 32px rgba(0,0,0,0.25)' : 'none',
+          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+          willChange: 'transform',
+          ...props.style,
+        }}
+      >
+        {/* Cover image */}
+        <div style={{ height: 260, position: 'relative', flexShrink: 0, width: '100%', overflow: 'hidden', backgroundColor: '#2A2A2A' }}>
+          {props.image && (
+            <img
+              alt=""
+              src={props.image}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          )}
+
+          {/* Floating badge */}
+          {props.badge && (
+            <div
+              style={{
+                position: 'absolute',
+                top: 19,
+                left: 18.67,
+                backgroundColor: '#FFFFFF',
+                padding: '4px 10px',
+                display: 'inline-flex',
+                alignItems: 'center',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 12,
+                  lineHeight: '18px',
+                  color: red,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {props.badge}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Content */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 24,
+            padding: 24,
+            width: '100%',
+            boxSizing: 'border-box',
+            flex: 1,
+          }}
+        >
+          {/* Tech stack pills */}
+          {props.techTags && props.techTags.length > 0 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {props.techTags.map((tag) => (
+                <span
+                  key={tag}
+                  style={{
+                    fontFamily: sans,
+                    fontWeight: 500,
+                    fontSize: 13,
+                    lineHeight: '18px',
+                    color: '#858585',
+                    backgroundColor: '#181818',
+                    border: '1px solid #454545',
+                    height: 32,
+                    padding: '0 12px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
+            {/* Category */}
+            {props.category && (
+              <p
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 14,
+                  lineHeight: '20px',
+                  color: '#ADADAD',
+                  margin: 0,
+                  textTransform: 'uppercase',
+                }}
+              >
+                {props.category}
+              </p>
+            )}
+
+            {/* Title */}
+            <h3
+              style={{
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 20,
+                lineHeight: '28px',
+                color: '#FFFFFF',
+                margin: 0,
+              }}
+            >
+              {props.title ?? 'Intelligent Data Platform'}
+            </h3>
+
+            {/* Description */}
+            {props.description && (
+              <p
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 500,
+                  fontSize: 16,
+                  lineHeight: '24px',
+                  color: '#E1E0E0',
+                  margin: 0,
+                }}
+              >
+                {props.description}
+              </p>
+            )}
+          </div>
+
+          {/* CTA */}
+          <button
+            onClick={props.onCta}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 56,
+              width: 180,
+              padding: '16px 24px',
+              backgroundColor: 'transparent',
+              border: `1px solid ${red}`,
+              cursor: 'pointer',
+              flexShrink: 0,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 16,
+                lineHeight: '28px',
+                color: red,
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {props.ctaLabel ?? 'Try Now'}
+            </span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // ── Light / Insights ─────────────────────────────────────────────────────
   if (props.mode === 'light' && props.type === 'insights') {
     return (
@@ -463,6 +691,263 @@ export function Card(props: CardProps) {
         {!isMobile && (
           <div style={{ height: 400, position: 'relative', flexShrink: 0, width: 400, overflow: 'hidden' }}>
             <img alt="" src={props.image ?? imgPhoto2Light} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // ── Light / Featured ─────────────────────────────────────────────────────
+  if (props.mode === 'light' && props.type === 'featured') {
+    return (
+      <div
+        className={props.className}
+        data-node-id="2432-2780"
+        style={{
+          backgroundColor: '#F5F5F5',
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? 32 : 61,
+          alignItems: isMobile ? 'flex-start' : 'center',
+          overflow: 'hidden',
+          padding: isMobile ? '32px 24px' : '52px 48px',
+          width: '100%',
+          boxSizing: 'border-box',
+          ...props.style,
+        }}
+      >
+        {/* ── Left: content ── */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 24,
+            alignItems: 'flex-start',
+            flex: '1 0 0',
+            minWidth: 0,
+          }}
+        >
+          {/* Red badge */}
+          <div
+            style={{
+              backgroundColor: red,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '4px 8px',
+              flexShrink: 0,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 14,
+                lineHeight: '20px',
+                color: '#FFFFFF',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {props.badge ?? 'FEATURED BY TECHNOSSUS'}
+            </span>
+          </div>
+
+          {/* Text body */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 8,
+              alignItems: 'flex-start',
+              flex: '1 0 0',
+              width: '100%',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 8,
+                alignItems: 'flex-start',
+                width: '100%',
+                flexShrink: 0,
+              }}
+            >
+              {/* Category */}
+              <p
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 14,
+                  lineHeight: '20px',
+                  color: '#949494',
+                  margin: 0,
+                }}
+              >
+                {props.category ?? 'FINTECH • PLATFORM MODERNIZATION'}
+              </p>
+
+              {/* Title */}
+              <h3
+                style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 24,
+                  lineHeight: '32px',
+                  color: '#1E1E1E',
+                  margin: 0,
+                  width: '100%',
+                }}
+              >
+                {props.title ?? 'Why Prior Authorisation Is the Best First AI Use Case in Healthcare'}
+              </h3>
+            </div>
+
+            {/* Description */}
+            <p
+              style={{
+                fontFamily: sans,
+                fontWeight: 500,
+                fontSize: 16,
+                lineHeight: '24px',
+                color: '#5C5C5C',
+                margin: 0,
+                width: '100%',
+              }}
+            >
+              {props.description ?? 'Most health systems look to clinical decision support as their AI entry point. This paper argues that prior auth—with structured rules, clear metrics, and enormous admin burden—delivers the highest ROI for most organisations.'}
+            </p>
+          </div>
+
+          {/* Author row + CTA */}
+          <div
+            style={{
+              display: 'flex',
+              gap: 24,
+              alignItems: 'flex-end',
+              width: '100%',
+              flexShrink: 0,
+            }}
+          >
+            {/* Author */}
+            <div
+              style={{
+                display: 'flex',
+                flex: '1 0 0',
+                gap: 12,
+                alignItems: 'center',
+                minWidth: 0,
+              }}
+            >
+              {/* Avatar circle */}
+              <div
+                style={{
+                  backgroundColor: 'rgba(217,48,37,0.1)',
+                  borderRadius: 50,
+                  width: 40,
+                  height: 40,
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: sans,
+                    fontWeight: 600,
+                    fontSize: 16,
+                    lineHeight: '28px',
+                    color: '#D93025',
+                    textAlign: 'center',
+                  }}
+                >
+                  {props.authorInitials ?? 'DR'}
+                </span>
+              </div>
+
+              {/* Author text */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: sans,
+                    fontWeight: 600,
+                    fontSize: 16,
+                    lineHeight: '28px',
+                    color: '#1E1E1E',
+                  }}
+                >
+                  {props.authorName ?? 'Dr. Rohan Mehta'}
+                </span>
+                <span
+                  style={{
+                    fontFamily: sans,
+                    fontWeight: 500,
+                    fontSize: 14,
+                    lineHeight: '20px',
+                    color: '#5C5C5C',
+                  }}
+                >
+                  {props.authorRole ?? 'Chief Medical Informatics Officer · TAS Member'}
+                </span>
+              </div>
+            </div>
+
+            {/* READ MORE link */}
+            <button
+              onClick={props.onCta}
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 16,
+                lineHeight: '28px',
+                color: red,
+                textDecoration: 'underline',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+              }}
+            >
+              {props.ctaLabel ?? 'READ MORE'}
+            </button>
+          </div>
+        </div>
+
+        {/* ── Right: image ── */}
+        {!isMobile && (
+          <div
+            style={{
+              height: 381,
+              width: 540,
+              flexShrink: 0,
+              position: 'relative',
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              alt=""
+              src={props.image ?? imgFeaturedPhoto}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'bottom',
+                display: 'block',
+              }}
+            />
           </div>
         )}
       </div>

@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { ContactFormPopUp } from '../ContactFormPopUp';
 
 // Asset URLs from Figma
 const imgVector3      = '/assets/1a6054aabb553cb83405edfefb392e579bcc4d72.svg';
@@ -22,6 +25,12 @@ export interface CTABannerProps {
   secondaryCta?: string;
   onPrimary?: () => void;
   onSecondary?: () => void;
+  /**
+   * When set on size="large", clicking the primary CTA opens the
+   * ContactFormPopUp modal pre-filled with this topic string.
+   * If omitted the banner falls back to onPrimary.
+   */
+  contactFormTopic?: string;
   /** @deprecated use primaryCta + onPrimary */
   ctaLabel?: string;
   /** @deprecated */
@@ -39,6 +48,7 @@ export function CTABanner({
   secondaryCta,
   onPrimary,
   onSecondary,
+  contactFormTopic,
   ctaLabel,
   onCta,
   className = '',
@@ -47,8 +57,33 @@ export function CTABanner({
   const { isMobile, isTablet } = useBreakpoint();
   const [largePrimaryHovered, setLargePrimaryHovered] = useState(false);
   const [smallPrimaryHovered, setSmallPrimaryHovered] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
+
   const resolvedPrimary  = primaryCta ?? ctaLabel ?? 'Schedule a Strategy Session';
   const resolvedCallback = onPrimary  ?? onCta;
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (formOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [formOpen]);
+
+  // Large banner: always open the contact form popup.
+  // Small banner: call onPrimary as usual.
+  const handlePrimaryClick = () => {
+    if (size === 'large') {
+      setFormOpen(true);
+    } else {
+      resolvedCallback?.();
+    }
+  };
+
+  // Topic shown inside the popup — explicit prop, else falls back to the eyebrow label
+  const resolvedTopic = contactFormTopic ?? label ?? "LET'S WORK TOGETHER";
 
   /* ── Large variant ────────────────────────────────────────────────────────── */
   if (size === 'large') {
@@ -224,7 +259,7 @@ export function CTABanner({
           }}
         >
           <button
-            onClick={resolvedCallback}
+            onClick={handlePrimaryClick}
             onMouseEnter={() => setLargePrimaryHovered(true)}
             onMouseLeave={() => setLargePrimaryHovered(false)}
             style={{
@@ -276,6 +311,41 @@ export function CTABanner({
           )}
         </div>
       </div>
+
+      {/* ── Contact Form Modal ── */}
+      {formOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          onClick={(e) => { if (e.target === e.currentTarget) setFormOpen(false); }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0,0,0,0.6)',
+            backdropFilter: 'blur(4px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: 16,
+          }}
+        >
+          <ContactFormPopUp
+            topic={resolvedTopic}
+            onClose={() => setFormOpen(false)}
+            onSubmit={(data) => {
+              setFormOpen(false);
+              console.log('Contact form submitted:', data);
+            }}
+            style={{
+              maxWidth: '100%',
+              maxHeight: '90vh',
+              overflowY: 'auto',
+              boxShadow: '0 24px 64px rgba(0,0,0,0.4)',
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

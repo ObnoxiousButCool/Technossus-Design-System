@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 
 // Asset URLs from Figma

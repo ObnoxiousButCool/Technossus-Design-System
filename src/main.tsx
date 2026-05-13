@@ -1,13 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import '../css/variables.css';
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+/**
+ * Legacy entry retained for compatibility.
+ * The actual entry point for both dev and prod is src/entry-client.tsx.
+ * Vite's index.html now points to entry-client.tsx directly.
+ */
+export {};

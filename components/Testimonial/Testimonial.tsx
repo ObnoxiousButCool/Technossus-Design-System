@@ -104,7 +104,7 @@ export function Testimonial({
           style={{
             width: 48,
             height: 48,
-            borderRadius: isRed ? 0 : 1,
+            borderRadius: '50%',
             overflow: 'hidden',
             backgroundColor: '#FFFFFF',
             flexShrink: 0,
