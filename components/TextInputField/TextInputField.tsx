@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';

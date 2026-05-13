@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { useBreakpoint } from '../../ts/breakpoints';
 
 // Asset URLs from Figma
@@ -128,7 +130,7 @@ export function MainHeader({
   style,
 }: MainHeaderProps) {
   const { isMobile } = useBreakpoint();
-  const location = useLocation();
+  const pathname = usePathname();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [dropdownMounted, setDropdownMounted] = useState<string | null>(null);
   const [dropdownVisible, setDropdownVisible] = useState<string | null>(null);
@@ -176,7 +178,7 @@ export function MainHeader({
   }, [clearTimers]);
 
   const isItemActive = (item: NavItem): boolean => {
-    const path = location.pathname;
+    const path = pathname ?? '/';
     if (item.children) {
       return item.children.some(c => path.startsWith(c.href)) || path === item.href;
     }

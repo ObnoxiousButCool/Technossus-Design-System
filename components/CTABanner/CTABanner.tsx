@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
 import { ContactFormPopUp } from '../ContactFormPopUp';
