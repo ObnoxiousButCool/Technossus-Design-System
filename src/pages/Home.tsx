@@ -238,7 +238,7 @@ export default function Home() {
 
       {/* ── STATS ─────────────────────────────────────────────────────────────── */}
       <section style={{ background: '#fff', overflow: 'hidden' }}>
-        <div style={inner}>
+        <div style={{...inner, paddingBottom: 0}}>
           <FadeUp duration={500}><Tag label="STATISTICS" /></FadeUp>
           <FadeUp>
             <h2 style={{
@@ -307,11 +307,13 @@ export default function Home() {
           }}>
             OUR COLLABORATORS
           </p>
-          <img
-            src={imgCollaborators}
-            alt="Our collaborators"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-          />
+          <div style={{width: '100%'}}>
+            <img
+              src={imgCollaborators}
+              alt="Our collaborators"
+              style={{ display: 'block', maxWidth: isMobile ? '100%' : isTablet ? '100%' : 860, margin:"auto" }}
+            />
+          </div>
         </div>
       </section>
 
