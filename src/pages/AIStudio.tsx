@@ -50,10 +50,10 @@ const CornerBR = () => (
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const statsData = [
-  { value: '12+',  label: 'Enterprise AI Accelerators' },
-  { value: '230+', label: 'TAS Members Globally' },
-  { value: '94%',  label: 'PoC-to-Production Rate' },
-  { value: '4+',   label: 'Industry Verticals Covered' },
+  { value: '48+',  label: 'POCS SHAPED AND SHIPPED' },
+  { value: '12+',  label: 'LIVE DEMOS AVAILABLE' },
+  { value: '240+', label: 'STUDIO MEMBERS AND COLLABORATORS' },
+  { value: '4+',   label: 'INDUSTRIES REPRESENTED' },
 ];
 
 const whatIsItems = [
@@ -81,22 +81,22 @@ const whatIsItems = [
 
 const engagementFormats = [
   {
-    duration: '12–24 HOURS',
+    duration: '12-24 HOURS',
     title: 'Half-day or Full-Day',
-    description: 'Identify where AI can create the most meaningful value in your business. Walk away with a prioritised use case map and a clearer view of where to begin.',
+    description: 'Identify where AI can create the most meaningful value in your business. Walk away with a prioritized use case map and a clearer view of where to begin.',
   },
   {
-    duration: '1–3 DAYS',
+    duration: '1-3 DAYS',
     title: 'AI Design Sprint',
-    description: 'Go from a defined problem to a tested concept in days. Your team and ours work side-by-side to map, prototype, and pressure-test an AI-driven solution.',
+    description: 'Identify where AI can create the most meaningful value in your business. Walk away with a prioritized use case map and a clearer view of where to begin.',
   },
   {
-    duration: '1–2 WEEKS',
+    duration: '1-2 WEEKS',
     title: 'AI Build Sprint',
-    description: 'A focused build against a validated use case — production-quality output your engineers can own and extend from day one.',
+    description: 'Identify where AI can create the most meaningful value in your business. Walk away with a prioritized use case map and a clearer view of where to begin.',
   },
   {
-    duration: '2–4 WEEKS',
+    duration: '2-4 WEEKS',
     title: 'PoC Development',
     description: 'Build a stakeholder-ready proof of concept with defined business value, technical feasibility, and a path toward production.',
   },
@@ -180,10 +180,10 @@ const capabilities = [
 
 const quickPicks = [
   'AI Adoption Strategy',
-  'Predictive Analytics',
-  'AI Design Sprint',
-  'Accelerators',
-  'AI Governance',
+  'Modernize Platforms',
+  'Data Analytics',
+  'Healthcare IT',
+  'Product Engineering',
 ];
 
 // ─── Page ────────────────────────────────────────────────────────────────────
@@ -280,38 +280,39 @@ export default function AIStudio() {
               <h1
                 style={{
                   fontFamily: serif,
-                  fontWeight: 600,
-                  fontSize: isMobile ? 36 : isTablet ? 48 : 64,
-                  lineHeight: isMobile ? '44px' : isTablet ? '56px' : '72px',
+                  fontWeight: 500,
+                  fontSize: isMobile ? 36 : isTablet ? 40 : 48,
+                  lineHeight: isMobile ? '44px' : isTablet ? '52px' : '56px',
+                  letterSpacing: '-0.02em',
                   color: '#FFFFFF',
-                  margin: '0 0 20px',
+                  margin: '0 0 16px',
                 }}
               >
-                Where enterprise AI gets&nbsp;
-                <span style={{ color: red }}>built</span>.
+                Shape the{' '}
+                <span style={{ color: red }}>future of technology</span>
               </h1>
               <p
                 style={{
                   fontFamily: sans,
                   fontWeight: 500,
                   fontSize: isMobile ? 16 : 18,
-                  lineHeight: '28px',
-                  color: '#E1E0E0',
+                  lineHeight: '24px',
+                  color: '#FFFFFF',
                   margin: 0,
                 }}
               >
-                A structured environment for enterprise teams to explore, validate, and ship
-                AI with confidence. Browse accelerators, join a sprint, or connect with
-                practitioners doing it in production.
+                We're more than a company, we're a hub of innovation, collaboration, and
+                continuous learning. If you're passionate about technology and making real
+                impact, your next chapter starts here.
               </p>
             </div>
           </FadeUp>
 
           {/* CTA buttons */}
           <FadeUp delay={160}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 36 }}>
-              <Button variant="primary" label="Explore AI Studio" />
-              <Button variant="secondary" label="Book a Session" />
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 60 }}>
+              <Button variant="primary" label="Show us the problem" />
+              <Button variant="secondary" label="See How We Work" />
             </div>
           </FadeUp>
 
@@ -369,12 +370,13 @@ export default function AIStudio() {
       >
         <div style={inner}>
           <FadeUp>
-            <Tag label="ABOUT TAS" />
+            <Tag label="STATISTICS" />
           </FadeUp>
 
           <FadeUp delay={80}>
             <h2 style={{ ...sectionH2, marginTop: 16, marginBottom: 48, maxWidth: 860 }}>
-              Built for enterprise teams exploring AI with purpose.
+              Built for enterprise teams exploring{' '}
+              <span style={{ color: red }}>AI with purpose.</span>
             </h2>
           </FadeUp>
 
@@ -430,42 +432,60 @@ export default function AIStudio() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          WHAT IS AI STUDIO — 4-card feature grid
+          WHAT IS AI STUDIO — dark section, left-border cards
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="What is AI Studio"
-        style={{ backgroundColor: '#FFFFFF', paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: dark2, paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
       >
         <div style={inner}>
+          <FadeUp>
+            <Tag label="WHAT IS AI STUDIO" variant="light" style={{ marginBottom: 16 }} />
+          </FadeUp>
+
           <div
             style={{
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
-              gap: isMobile ? 48 : 80,
+              gap: isMobile ? 48 : 52,
               alignItems: 'flex-start',
+              backgroundColor: dark2,
+              padding: isMobile ? '32px 0 0' : '40px 0 0',
+              position: 'relative',
+              overflow: 'hidden',
             }}
           >
-            {/* Left — sticky heading */}
-            <FadeUp style={{ flexShrink: 0, maxWidth: isMobile ? '100%' : 520 }}>
-              <Tag label="AI STUDIO" />
-              <h2 style={{ ...sectionH2, marginTop: 16, marginBottom: 16 }}>
-                A place to explore, validate, and build enterprise AI with clarity.
+            {/* Corner decorators */}
+            {!isMobile && <CornerTL />}
+            {!isMobile && <CornerBR />}
+
+            {/* Left — heading + body */}
+            <FadeUp style={{ flexShrink: 0, maxWidth: isMobile ? '100%' : 560 }}>
+              <h2 style={{ ...sectionH2Dark, fontSize: isMobile ? 28 : 36, lineHeight: isMobile ? '36px' : '40px', marginBottom: 24 }}>
+                A place to explore, validate, and build{' '}
+                <span style={{ color: red }}>enterprise AI with clarity.</span>
               </h2>
-              <p style={sectionSubtitle}>
+              <p style={{ ...sectionSubtitleDark, fontSize: 16, lineHeight: '24px' }}>
                 Testing has always been the part of the delivery cycle that absorbs everyone
-                else's delays. AI is changing the economics of that gap — not by replacing
-                QA engineers, but by giving them leverage that matches the pace they're
-                being asked to work at. TAS is built on that principle, applied to the whole
-                enterprise AI journey.
+                else's delays and still gets blamed when something ships broken. Engineers
+                are moving faster than ever, and the gap between release velocity and quality
+                confidence is widening, not closing.
+              </p>
+              <p style={{ ...sectionSubtitleDark, fontSize: 16, lineHeight: '24px', marginTop: 10 }}>
+                AI is changing the economics of that gap. Not by replacing QA engineers, but
+                by giving them the kind of leverage that actually matches the pace they're
+                being asked to work at. We work alongside your team to build that leverage,
+                through automation that transfers, tooling your team can own, and a quality
+                practice that compounds instead of decaying.
               </p>
             </FadeUp>
 
-            {/* Right — numbered cards grid */}
+            {/* Right — numbered cards with left-border style */}
             <div
               style={{
                 display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-                gap: 2,
+                gap: 24,
                 flex: 1,
               }}
             >
@@ -473,19 +493,20 @@ export default function AIStudio() {
                 <FadeUp key={item.num} delay={i * 80}>
                   <article
                     style={{
-                      backgroundColor: '#F5F5F5',
-                      padding: '21px 21px 24px',
-                      position: 'relative',
-                      height: '100%',
+                      borderLeft: `1px solid #ADADAD`,
+                      paddingLeft: 21,
+                      paddingRight: 12,
+                      paddingTop: 12,
+                      paddingBottom: 12,
                       boxSizing: 'border-box',
                     }}
                   >
                     <span
                       style={{
-                        fontFamily: serif, fontWeight: 600,
-                        fontSize: 32, lineHeight: '40px',
+                        fontFamily: serif, fontWeight: 500,
+                        fontSize: 36, lineHeight: '40px',
                         color: red, display: 'block',
-                        marginBottom: 8,
+                        marginBottom: 12,
                       }}
                     >
                       {item.num}
@@ -494,7 +515,7 @@ export default function AIStudio() {
                       style={{
                         fontFamily: sans, fontWeight: 600,
                         fontSize: 20, lineHeight: '28px',
-                        color: '#1E1E1E', margin: '0 0 12px',
+                        color: '#FFFFFF', margin: '0 0 12px',
                       }}
                     >
                       {item.title}
@@ -502,8 +523,8 @@ export default function AIStudio() {
                     <p
                       style={{
                         fontFamily: sans, fontWeight: 500,
-                        fontSize: 15, lineHeight: '24px',
-                        color: '#5C5C5C', margin: 0,
+                        fontSize: 14, lineHeight: '20px',
+                        color: '#DEDEDE', margin: 0,
                       }}
                     >
                       {item.description}
@@ -517,31 +538,30 @@ export default function AIStudio() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          ENGAGEMENT FORMATS
+          ENGAGEMENT FORMATS — light section
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="Engagement formats"
-        style={{ backgroundColor: dark2, paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: '#FFFFFF', paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
       >
         <div style={inner}>
           {/* Header */}
           <FadeUp>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
-              <Tag label="TAS" variant="light" />
-              <Tag label="FORMAT" variant="light" />
+              <Tag label="1" />
+              <Tag label="INNOVATION LABS" />
             </div>
           </FadeUp>
 
           <FadeUp delay={80}>
-            <div style={{ marginBottom: isMobile ? 12 : 16 }}>
-              <h2 style={{ ...sectionH2Dark, maxWidth: 720 }}>
-                Bring a business challenge. Leave with a clearer path forward.
-              </h2>
-            </div>
+            <h2 style={{ ...sectionH2, maxWidth: 720, marginBottom: 8 }}>
+              Bring a business challenge. Leave with a{' '}
+              <span style={{ color: red }}>clearer path forward.</span>
+            </h2>
           </FadeUp>
 
           <FadeUp delay={120}>
-            <p style={{ ...sectionSubtitleDark, marginBottom: isMobile ? 40 : 64 }}>
+            <p style={{ ...sectionSubtitle, marginBottom: isMobile ? 40 : 64 }}>
               Whether you are exploring AI for the first time or ready to validate a specific
               use case, AI Studio gives your team practical formats to move from discussion
               to direction.
@@ -553,7 +573,7 @@ export default function AIStudio() {
             style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-              gap: 2,
+              gap: 24,
               marginBottom: isMobile ? 56 : 80,
             }}
           >
@@ -561,8 +581,7 @@ export default function AIStudio() {
               <FadeUp key={f.title} delay={i * 80}>
                 <article
                   style={{
-                    backgroundColor: '#171717',
-                    border: '1px solid #2A2A2A',
+                    backgroundColor: '#F5F5F5',
                     padding: 24,
                     boxSizing: 'border-box',
                     height: '100%',
@@ -572,7 +591,7 @@ export default function AIStudio() {
                     style={{
                       fontFamily: sans, fontWeight: 600,
                       fontSize: 13, lineHeight: '20px',
-                      color: red, letterSpacing: '0.06em',
+                      color: '#5C5C5C', letterSpacing: '0.06em',
                       textTransform: 'uppercase',
                       display: 'block',
                       marginBottom: 12,
@@ -584,7 +603,7 @@ export default function AIStudio() {
                     style={{
                       fontFamily: sans, fontWeight: 600,
                       fontSize: 20, lineHeight: '28px',
-                      color: '#FFFFFF', margin: '0 0 12px',
+                      color: '#1E1E1E', margin: '0 0 12px',
                     }}
                   >
                     {f.title}
@@ -593,7 +612,7 @@ export default function AIStudio() {
                     style={{
                       fontFamily: sans, fontWeight: 500,
                       fontSize: 15, lineHeight: '24px',
-                      color: '#E1E0E0', margin: 0,
+                      color: '#5C5C5C', margin: 0,
                     }}
                   >
                     {f.description}
@@ -605,7 +624,7 @@ export default function AIStudio() {
 
           {/* AI Use Cases heading */}
           <FadeUp>
-            <h2 style={{ ...sectionH2Dark, maxWidth: 720, marginBottom: isMobile ? 32 : 48 }}>
+            <h2 style={{ ...sectionH2, maxWidth: 720, marginBottom: isMobile ? 32 : 48 }}>
               AI Use Cases built for how your business operates
             </h2>
           </FadeUp>
@@ -620,13 +639,13 @@ export default function AIStudio() {
             }}
           >
             {[
-              { image: imgSvcAI,      tags: 'HEALTHCARE • AI AUTOMATION',      title: 'AI-Powered Prior Authorisation',       excerpt: 'Automated prior auth workflows that cut decision time from days to minutes, reducing admin burden across clinical operations.' },
-              { image: imgSvcData,    tags: 'FINANCIAL SERVICES • ANALYTICS',  title: 'Real-Time Risk & Fraud Detection',     excerpt: 'ML models trained on transaction patterns that surface anomalies as they happen — not hours later in a batch report.' },
-              { image: imgSvcCloud,   tags: 'HITECH & SAAS • AGENTS',          title: 'Autonomous Document Intelligence',     excerpt: 'Multi-agent pipelines that ingest, extract, classify, and route unstructured documents at enterprise scale.' },
+              { image: imgSvcAI,    tags: 'HEALTHCARE • AI AUTOMATION',     title: 'AI-Powered Prior Authorisation',     excerpt: 'Automated prior auth workflows that cut decision time from days to minutes, reducing admin burden across clinical operations.' },
+              { image: imgSvcData,  tags: 'FINANCIAL SERVICES • ANALYTICS', title: 'Real-Time Risk & Fraud Detection',   excerpt: 'ML models trained on transaction patterns that surface anomalies as they happen — not hours later in a batch report.' },
+              { image: imgSvcCloud, tags: 'HITECH & SAAS • AGENTS',         title: 'Autonomous Document Intelligence',   excerpt: 'Multi-agent pipelines that ingest, extract, classify, and route unstructured documents at enterprise scale.' },
             ].map((card, i) => (
               <FadeUp key={card.title} delay={i * 80}>
                 <Card
-                  mode="dark"
+                  mode="light"
                   type="insights"
                   image={card.image}
                   tags={card.tags}
@@ -661,8 +680,8 @@ export default function AIStudio() {
           {/* Header */}
           <FadeUp>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
-              <Tag label="TAS" variant="light" />
-              <Tag label="ACCELERATORS" variant="light" />
+              <Tag label="2" variant="light" />
+              <Tag label="ACCELERATION" variant="light" />
             </div>
           </FadeUp>
 
@@ -756,13 +775,15 @@ export default function AIStudio() {
           {/* Header */}
           <FadeUp>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
-              <Tag label="INSIGHTS" />
-              <Tag label="TAS EDITORIAL" />
+              <Tag label="3" />
+              <Tag label="COLLABORATE" />
             </div>
           </FadeUp>
 
           <FadeUp delay={80}>
-            <h2 style={{ ...sectionH2, marginBottom: 12 }}>Latest Insights</h2>
+            <h2 style={{ ...sectionH2, marginBottom: 12 }}>
+              Latest <span style={{ color: red }}>Insights</span>
+            </h2>
           </FadeUp>
 
           <FadeUp delay={120}>
@@ -888,14 +909,15 @@ export default function AIStudio() {
           {/* Header */}
           <FadeUp>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
-              <Tag label="TAS" />
-              <Tag label="DELIVERY FRAMEWORK" />
+              <Tag label="4" />
+              <Tag label="TAS DELIVERY FRAMEWORK" />
             </div>
           </FadeUp>
 
           <FadeUp delay={80}>
             <h2 style={{ ...sectionH2, maxWidth: 760, marginBottom: 16 }}>
-              From experiment to enterprise — a structured path to production AI.
+              From experiment to enterprise{' '}
+              <span style={{ color: red }}>a structured path to production AI.</span>
             </h2>
           </FadeUp>
 
@@ -971,22 +993,23 @@ export default function AIStudio() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="Enterprise AI capabilities"
-        style={{ backgroundColor: '#F5F5F5', paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: dark1, paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
       >
         <div style={inner}>
           {/* Header */}
           <FadeUp>
-            <Tag label="CAPABILITIES" style={{ marginBottom: 16 }} />
+            <Tag label="OUR AI CAPABILITIES" variant="light" style={{ marginBottom: 16 }} />
           </FadeUp>
 
           <FadeUp delay={80}>
-            <h2 style={{ ...sectionH2, maxWidth: 700, marginBottom: 16 }}>
-              The full enterprise AI stack — applied with intent.
+            <h2 style={{ ...sectionH2Dark, maxWidth: 700, marginBottom: 16 }}>
+              The full enterprise AI stack{' '}
+              <span style={{ color: red }}>applied with intent.</span>
             </h2>
           </FadeUp>
 
           <FadeUp delay={120}>
-            <p style={{ ...sectionSubtitle, marginBottom: isMobile ? 40 : 64 }}>
+            <p style={{ ...sectionSubtitleDark, marginBottom: isMobile ? 40 : 64 }}>
               Every capability inside TAS is grounded in real enterprise use — applied where
               it creates measurable value, not just because it's possible.
             </p>
@@ -997,7 +1020,7 @@ export default function AIStudio() {
             style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-              border: '1px solid #E0E0E0',
+              border: '1px solid #2A2A2A',
             }}
           >
             {capabilities.map((cap, i) => {
@@ -1010,10 +1033,10 @@ export default function AIStudio() {
                   <article
                     style={{
                       padding: isMobile ? '28px 20px' : '40px 24px',
-                      borderRight: isMobile ? 'none' : isTablet ? (col % 2 === 0 ? '1px solid #E0E0E0' : 'none') : col < 3 ? '1px solid #E0E0E0' : 'none',
-                      borderBottom: isLastRow ? 'none' : '1px solid #E0E0E0',
+                      borderRight: isMobile ? 'none' : isTablet ? (col % 2 === 0 ? '1px solid #2A2A2A' : 'none') : col < 3 ? '1px solid #2A2A2A' : 'none',
+                      borderBottom: isLastRow ? 'none' : '1px solid #2A2A2A',
                       boxSizing: 'border-box',
-                      backgroundColor: '#FFFFFF',
+                      backgroundColor: '#0A0A10',
                     }}
                   >
                     <div
@@ -1031,7 +1054,7 @@ export default function AIStudio() {
                       style={{
                         fontFamily: sans, fontWeight: 600,
                         fontSize: 18, lineHeight: '26px',
-                        color: '#1E1E1E', margin: '0 0 8px',
+                        color: '#FFFFFF', margin: '0 0 8px',
                       }}
                     >
                       {cap.title}
@@ -1040,7 +1063,7 @@ export default function AIStudio() {
                       style={{
                         fontFamily: sans, fontWeight: 500,
                         fontSize: 14, lineHeight: '22px',
-                        color: '#5C5C5C', margin: 0,
+                        color: '#E1E0E0', margin: 0,
                       }}
                     >
                       {cap.description}
