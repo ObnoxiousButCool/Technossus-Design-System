@@ -1,4 +1,5 @@
 import React from 'react';
+import { SEOHead, organizationSchema, websiteSchema } from '../components/SEOHead';
 import { Tag }         from '../../components/Tag';
 import { Stats }       from '../../components/Stats';
 import { Testimonial } from '../../components/Testimonial';
@@ -91,6 +92,14 @@ export default function Home() {
 
   return (
     <>
+      <SEOHead
+        title="Technossus — Enterprise AI, Cloud & Digital Transformation"
+        description="Technossus partners with enterprise teams to design, build, and ship AI-led solutions — from strategy to production. Explore our services, AI Studio, and case studies."
+        canonicalPath="/"
+        keywords="enterprise AI, digital transformation, cloud modernization, AI strategy, product engineering, Technossus"
+        jsonLd={[organizationSchema, websiteSchema]}
+      />
+
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section style={{ background: dark1 }}>
 

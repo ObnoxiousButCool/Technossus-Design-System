@@ -8,7 +8,7 @@ import { Chips }      from '../../components/Chips';
 import { SearchBar }  from '../../components/SearchBar';
 import { FadeUp }     from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
-import { useSEO }     from '../../ts/useSEO';
+import { SEOHead, breadcrumbSchema } from '../components/SEOHead';
 
 import imgCollaborators from '../../assets/Website_images 2/Logo.png';
 import imgSvcAI         from '../../assets/Website_Images/Services/AI Led Transformation.png';
@@ -192,43 +192,6 @@ export default function AIStudio() {
   const { isMobile, isTablet } = useBreakpoint();
   const [searchQuery, setSearchQuery] = useState('');
 
-  // ── SEO ─────────────────────────────────────────────────────────────────
-  useSEO({
-    title: 'AI Studio (TAS) | Enterprise AI Innovation Lab — Technossus',
-    description:
-      'The Technossus AI Studio (TAS) is a structured environment where enterprise teams explore, validate, and build AI with clarity. Browse accelerators, book a sprint, and go from idea to production.',
-    keywords:
-      'AI Studio, TAS, enterprise AI, AI accelerators, AI design sprint, LLM, RAG, Technossus, AI PoC, AI governance, responsible AI',
-    ogTitle: 'AI Studio (TAS) — Where Enterprise AI Gets Built | Technossus',
-    ogDescription:
-      'Explore pre-built AI accelerators, book structured engagement formats, and join a community of enterprise practitioners building AI that reaches production.',
-    ogUrl: 'https://newtechnossus-v2.vercel.app/ai-studio',
-    canonicalUrl: 'https://newtechnossus-v2.vercel.app/ai-studio',
-    jsonLd: {
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      name: 'AI Studio (TAS) — Technossus',
-      description:
-        'A structured environment for enterprise teams to explore, validate, and build AI. Pre-built accelerators, engagement sprints, and a practitioner community.',
-      url: 'https://newtechnossus-v2.vercel.app/ai-studio',
-      publisher: {
-        '@type': 'Organization',
-        name: 'Technossus',
-        url: 'https://newtechnossus-v2.vercel.app',
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://newtechnossus-v2.vercel.app/assets/logos/logo-dark.svg',
-        },
-      },
-      breadcrumb: {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://newtechnossus-v2.vercel.app' },
-          { '@type': 'ListItem', position: 2, name: 'AI Studio', item: 'https://newtechnossus-v2.vercel.app/ai-studio' },
-        ],
-      },
-    },
-  });
 
   const px = isMobile ? 24 : isTablet ? 40 : 80;
   const inner: React.CSSProperties = {
@@ -271,6 +234,17 @@ export default function AIStudio() {
 
   return (
     <>
+      <SEOHead
+        title="AI Studio (TAS) | Enterprise AI Innovation Lab — Technossus"
+        description="The Technossus AI Studio is a structured environment where enterprise teams explore, validate, and build AI with clarity. Browse accelerators, book a sprint, and go from idea to production."
+        canonicalPath="/ai-studio"
+        keywords="AI Studio, TAS, enterprise AI, AI accelerators, AI design sprint, LLM, RAG, Technossus, AI PoC, AI governance"
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', url: 'https://newtechnossus-v2.vercel.app' },
+          { name: 'AI Studio', url: 'https://newtechnossus-v2.vercel.app/ai-studio' },
+        ])}
+      />
+
       {/* ═══════════════════════════════════════════════════════════════════
           HERO
       ═══════════════════════════════════════════════════════════════════ */}

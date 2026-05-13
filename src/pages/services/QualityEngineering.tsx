@@ -9,6 +9,7 @@ import { Stats }      from '../../../components/Stats';
 import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../../components/SEOHead';
 import imgHero from '../../../assets/Website_Images/Services/Quality Eng..png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -150,6 +151,13 @@ export default function QualityEngineering() {
 
   return (
     <>
+      <SEOHead
+        title="Quality Engineering & Automation — Technossus"
+        description="Accelerate releases with confidence. Technossus builds AI-augmented QA automation, testing frameworks, and observability pipelines."
+        canonicalPath="/services/quality-engineering"
+        keywords="quality engineering, test automation, QA, software testing, observability"
+        jsonLd={breadcrumbSchema([{name:'Home',url:'https://newtechnossus-v2.vercel.app'},{name:'Services',url:'https://newtechnossus-v2.vercel.app/services'},{name:'Quality Engineering',url:'https://newtechnossus-v2.vercel.app/services/quality-engineering'}])}
+      />
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>

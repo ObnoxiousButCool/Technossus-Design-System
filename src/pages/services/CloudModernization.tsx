@@ -9,6 +9,7 @@ import { useBreakpoint } from '../../../ts/breakpoints';
 import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
 import imgHero from '../../../assets/Website_Images/Services/Cloud consulting.png';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../../components/SEOHead';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
@@ -149,6 +150,13 @@ export default function CloudModernization() {
 
   return (
     <>
+      <SEOHead
+        title="Cloud & Product Modernization — Technossus"
+        description="Lift, refactor, and run smarter. Technossus modernizes legacy infrastructure with cloud-native architecture, Kubernetes, and DevOps transformation."
+        canonicalPath="/services/cloud-product-modernization"
+        keywords="cloud modernization, Kubernetes, DevOps, cloud-native, infrastructure modernization"
+        jsonLd={breadcrumbSchema([{name:'Home',url:'https://newtechnossus-v2.vercel.app'},{name:'Services',url:'https://newtechnossus-v2.vercel.app/services'},{name:'Cloud Modernization',url:'https://newtechnossus-v2.vercel.app/services/cloud-product-modernization'}])}
+      />
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>

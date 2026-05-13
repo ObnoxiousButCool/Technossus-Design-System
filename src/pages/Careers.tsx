@@ -7,6 +7,7 @@ import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
 import type { AccordionItem } from '../../components/Accordion';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../components/SEOHead';
 import imgHeroBg from '../../assets/Website_Images/Hero section/Careers page.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
@@ -112,6 +113,13 @@ export default function Careers() {
 
   return (
     <>
+      <SEOHead
+        title="Careers at Technossus — Shape the Future of Technology"
+        description="Join Technossus and work on enterprise AI and cloud engineering. Explore open roles and build something meaningful."
+        canonicalPath="/careers"
+        keywords="Technossus careers, tech jobs, AI engineer jobs, enterprise software careers"
+        jsonLd={breadcrumbSchema([{ name: 'Home', url: 'https://newtechnossus-v2.vercel.app' }, { name: 'Careers', url: 'https://newtechnossus-v2.vercel.app/careers' }])}
+      />
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         <img

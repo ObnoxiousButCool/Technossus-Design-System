@@ -8,6 +8,7 @@ import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../../components/SEOHead';
 import imgHero from '../../../assets/Website_Images/Services/Data Intelligence.png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -164,6 +165,13 @@ export default function DataIntelligence() {
 
   return (
     <>
+      <SEOHead
+        title="Data Intelligence & Analytics — Technossus"
+        description="Turn your enterprise data into a decision engine. Technossus builds data platforms, ML models, and real-time analytics pipelines."
+        canonicalPath="/services/data-intelligence-analytics"
+        keywords="data intelligence, enterprise analytics, ML pipelines, data platform, predictive analytics"
+        jsonLd={[breadcrumbSchema([{name:'Home',url:'https://newtechnossus-v2.vercel.app'},{name:'Services',url:'https://newtechnossus-v2.vercel.app/services'},{name:'Data Intelligence',url:'https://newtechnossus-v2.vercel.app/services/data-intelligence-analytics'}]), serviceSchema({name:'Data Intelligence & Analytics',description:'Data platform engineering and ML for enterprise decision-making.',url:'https://newtechnossus-v2.vercel.app/services/data-intelligence-analytics'})]}
+      />
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>

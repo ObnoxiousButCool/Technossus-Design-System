@@ -9,6 +9,7 @@ import { useBreakpoint } from '../../../ts/breakpoints';
 import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
 import imgHero from '../../../assets/Website_Images/Services/Digital Exp..png';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../../components/SEOHead';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
@@ -162,6 +163,13 @@ export default function DigitalExperience() {
 
   return (
     <>
+      <SEOHead
+        title="Digital Experience Design — Technossus"
+        description="Reimagine your product, UX, and brand. Technossus designs and engineers digital experiences that delight users and drive business outcomes."
+        canonicalPath="/services/digital-experience-design"
+        keywords="digital experience design, UX design, product design, enterprise UX"
+        jsonLd={breadcrumbSchema([{name:'Home',url:'https://newtechnossus-v2.vercel.app'},{name:'Services',url:'https://newtechnossus-v2.vercel.app/services'},{name:'Digital Experience Design',url:'https://newtechnossus-v2.vercel.app/services/digital-experience-design'}])}
+      />
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>

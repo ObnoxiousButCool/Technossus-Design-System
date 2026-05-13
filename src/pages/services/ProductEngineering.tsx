@@ -9,6 +9,7 @@ import { useBreakpoint } from '../../../ts/breakpoints';
 import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
 import imgHero from '../../../assets/Website_Images/Services/Product Eng. .png';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../../components/SEOHead';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
@@ -175,6 +176,13 @@ export default function ProductEngineering() {
 
   return (
     <>
+      <SEOHead
+        title="Product Engineering — Technossus"
+        description="Ship full-stack enterprise products at startup speed. Technossus builds scalable software with modern cloud architecture and DevOps practices."
+        canonicalPath="/services/product-engineering"
+        keywords="product engineering, software development, full-stack engineering, enterprise software"
+        jsonLd={breadcrumbSchema([{name:'Home',url:'https://newtechnossus-v2.vercel.app'},{name:'Services',url:'https://newtechnossus-v2.vercel.app/services'},{name:'Product Engineering',url:'https://newtechnossus-v2.vercel.app/services/product-engineering'}])}
+      />
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>

@@ -6,6 +6,7 @@ import { CTABanner }   from '../../components/CTABanner';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../components/SEOHead';
 import imgRavnish from '../../assets/Website_Images/Leadership/Ravnish.png';
 import imgGiri    from '../../assets/Website_Images/Leadership/Giri.png';
 import imgKumar   from '../../assets/Website_Images/Leadership/Kumar.png';
@@ -91,6 +92,13 @@ export default function AboutUs() {
 
   return (
     <>
+      <SEOHead
+        title="About Technossus — Our Story, Team & Mission"
+        description="Learn about Technossus — a technology company helping enterprises adopt AI and modern engineering. Meet our leadership and understand what drives us."
+        canonicalPath="/about"
+        keywords="about Technossus, enterprise technology company, AI consulting, leadership team"
+        jsonLd={breadcrumbSchema([{ name: 'Home', url: 'https://newtechnossus-v2.vercel.app' }, { name: 'About Us', url: 'https://newtechnossus-v2.vercel.app/about' }])}
+      />
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         <img

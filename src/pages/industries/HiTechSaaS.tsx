@@ -9,6 +9,7 @@ import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
 import imgHero from '../../../assets/Industries/HiTech.png';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../../components/SEOHead';
 
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 
@@ -211,6 +212,13 @@ export default function HiTechSaaS() {
 
   return (
     <>
+      <SEOHead
+        title="AI & Technology for HiTech & SaaS — Technossus"
+        description="Technossus helps HiTech and SaaS companies embed AI into their products — co-pilots, intelligent search, and agentic automation for B2B platforms."
+        canonicalPath="/industries/hitech-saas"
+        keywords="HiTech AI, SaaS AI features, co-pilot, B2B product AI, software company AI"
+        jsonLd={breadcrumbSchema([{name:'Home',url:'https://newtechnossus-v2.vercel.app'},{name:'Industries',url:'https://newtechnossus-v2.vercel.app/industries'},{name:'HiTech SaaS',url:'https://newtechnossus-v2.vercel.app/industries/hitech-saas'}])}
+      />
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>

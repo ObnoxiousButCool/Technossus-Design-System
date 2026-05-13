@@ -5,6 +5,7 @@ import { CTABanner } from '../../components/CTABanner';
 import { Button } from '../../components/Button';
 import { FadeUp } from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../components/SEOHead';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -135,6 +136,13 @@ export default function CaseStudies() {
 
   return (
     <>
+      <SEOHead
+        title="Case Studies — Enterprise AI & Technology Results | Technossus"
+        description="Explore real-world results from Technossus engagements — AI automation, cloud modernization, and digital transformation across industries."
+        canonicalPath="/case-studies"
+        keywords="Technossus case studies, AI results, enterprise technology outcomes, digital transformation case study"
+        jsonLd={breadcrumbSchema([{ name: 'Home', url: 'https://newtechnossus-v2.vercel.app' }, { name: 'Case Studies', url: 'https://newtechnossus-v2.vercel.app/case-studies' }])}
+      />
       {/* ── HERO ──────────────────────────────────────────────────────────────── */}
       <section style={{ background: '#fff' }}>
         <div

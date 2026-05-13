@@ -7,6 +7,7 @@ import { Button }     from '../../../components/Button';
 import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../../components/SEOHead';
 import imgHero from '../../../assets/Website_Images/Services/AI Led Transformation.png';
 
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
@@ -163,6 +164,13 @@ export default function AIBusiness() {
 
   return (
     <>
+      <SEOHead
+        title="AI Led Business Transformation — Technossus"
+        description="Technossus helps enterprises design and deploy AI-driven operating models — from strategy and agentic automation to GenAI and governance."
+        canonicalPath="/services/ai-business-transformation"
+        keywords="AI business transformation, enterprise AI strategy, agentic automation, GenAI, LLM consulting"
+        jsonLd={[breadcrumbSchema([{name:'Home',url:'https://newtechnossus-v2.vercel.app'},{name:'Services',url:'https://newtechnossus-v2.vercel.app/services'},{name:'AI Business Transformation',url:'https://newtechnossus-v2.vercel.app/services/ai-business-transformation'}]), serviceSchema({name:'AI Led Business Transformation',description:'End-to-end AI strategy and implementation for enterprise teams.',url:'https://newtechnossus-v2.vercel.app/services/ai-business-transformation'})]}
+      />
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>
@@ -500,7 +508,7 @@ export default function AIBusiness() {
           label="LET'S WORK ON IT TOGETHER"
           heading="Ready to accelerate your digital & AI journey?"
           body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-          primaryCta="Schedule a Strategy Session →"
+          primaryCta="Talk to Expert →"
           secondaryCta="Contact Us"
           style={{ width: '100%', margin: 0 }}
         />

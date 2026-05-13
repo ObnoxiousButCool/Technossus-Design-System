@@ -9,6 +9,7 @@ import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
 import imgHero from '../../../assets/Industries/BSFI.png';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../../components/SEOHead';
 
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 
@@ -185,6 +186,13 @@ export default function FinancialServices() {
 
   return (
     <>
+      <SEOHead
+        title="AI & Technology for Financial Services — Technossus"
+        description="Technossus builds AI-powered fraud detection, risk analytics, and intelligent automation for banks, insurers, and fintech companies."
+        canonicalPath="/industries/financial-services"
+        keywords="financial services AI, fintech, fraud detection, risk analytics, banking technology"
+        jsonLd={breadcrumbSchema([{name:'Home',url:'https://newtechnossus-v2.vercel.app'},{name:'Industries',url:'https://newtechnossus-v2.vercel.app/industries'},{name:'Financial Services',url:'https://newtechnossus-v2.vercel.app/industries/financial-services'}])}
+      />
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>

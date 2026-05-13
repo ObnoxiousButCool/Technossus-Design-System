@@ -2,13 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/logos/logo-dark.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Technossus</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/logos/logo-dark.svg" />
+
+    <!--head-tags-->
+
+    <!-- Preconnect for font performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,400;0,8..144,500;0,8..144,600;0,8..144,700;1,8..144,400;1,8..144,600&display=swap" rel="stylesheet" />
-    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+    <!-- Roboto Serif -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,400;0,8..144,500;0,8..144,600;0,8..144,700;1,8..144,400;1,8..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- General Sans (Fontshare) -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       body { font-family: "General Sans", system-ui, -apple-system, sans-serif; background: #fff; color: #1E1E1E; }
@@ -18,7 +30,7 @@
     </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>

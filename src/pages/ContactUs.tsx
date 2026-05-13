@@ -5,6 +5,7 @@ import { CTABanner }      from '../../components/CTABanner';
 import { FadeUp }         from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint }  from '../../ts/breakpoints';
+import { SEOHead, breadcrumbSchema, serviceSchema } from '../components/SEOHead';
 import imgHeroBg      from '../../assets/Website_Images/Hero section/Contact Us.png';
 import imgLocUSA      from '../../assets/Website_images 2/Location/USA.png';
 import imgLocUK       from '../../assets/Website_images 2/Location/UK.png';
@@ -53,6 +54,13 @@ export default function ContactUs() {
 
   return (
     <>
+      <SEOHead
+        title="Contact Technossus — Get in Touch with Our Team"
+        description="Reach out to Technossus for enterprise AI, cloud, and digital transformation enquiries. Offices in the US, UK, and India."
+        canonicalPath="/contact"
+        keywords="contact Technossus, enterprise AI consultation, get in touch, Technossus offices"
+        jsonLd={breadcrumbSchema([{ name: 'Home', url: 'https://newtechnossus-v2.vercel.app' }, { name: 'Contact', url: 'https://newtechnossus-v2.vercel.app/contact' }])}
+      />
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         <img
