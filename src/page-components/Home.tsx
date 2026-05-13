@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Tag }         from '../../components/Tag';
 import { Stats }       from '../../components/Stats';
 import { Testimonial } from '../../components/Testimonial';
@@ -76,8 +77,20 @@ const CornerBR = () => (
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
   const { isMobile, isTablet } = useBreakpoint();
+  const sectionGap = isMobile ? 48 : isTablet ? 60 : 80;
 
   const inner: React.CSSProperties = {
+    maxWidth: 1440,
+    margin: '0 auto',
+    padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+  };
+
+  const sectionBlock = (background = '#fff'): React.CSSProperties => ({
+    background,
+    marginTop: sectionGap,
+  });
+
+  const panelInner: React.CSSProperties = {
     maxWidth: 1440,
     margin: '0 auto',
     padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
@@ -88,13 +101,16 @@ export default function Home() {
 
   const shSize = isMobile ? 24 : isTablet ? 30 : 36;
   const shLine = isMobile ? '32px' : isTablet ? '38px' : '40px';
+  const statsImageWidth = isTablet ? 420 : 608;
+  const statsImageHeight = isTablet ? 313 : 453;
 
   const cols3 = isMobile ? '1fr' : isTablet ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
 
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
-      <section style={{ background: dark1 }}>
+      <section style={{ background: '#fff' }}>
+        <div style={inner}>
 
         {/* Hero image + headline */}
         <div style={{
@@ -104,15 +120,14 @@ export default function Home() {
           overflow: 'hidden',
         }}>
           {/* Background photo */}
-          <img
+          <Image
             src={imgHeroBg}
             alt=""
             aria-hidden
-            style={{
-              position: 'absolute', top: 0, left: 0,
-              width: '100%', height: '100%',
-              objectFit: 'cover', objectPosition: 'center',
-            }}
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
           {/* Dark gradient overlay */}
           <div style={{
@@ -186,7 +201,7 @@ export default function Home() {
               boxSizing: 'border-box',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <img src={imgSearchAiStar} alt="" style={{ width: 20, height: 20, flexShrink: 0 }} />
+                <Image src={imgSearchAiStar} alt="" width={20} height={20} style={{ flexShrink: 0 }} />
                 <span style={{
                   fontFamily: sans, fontSize: 16, fontWeight: 500,
                   color: '#949494', lineHeight: '24px',
@@ -199,7 +214,7 @@ export default function Home() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0,
               }}>
-                <img src={imgSearchSend} alt="Send" style={{ width: 24, height: 24 }} />
+                <Image src={imgSearchSend} alt="Send" width={24} height={24} />
               </div>
             </div>
 
@@ -207,7 +222,7 @@ export default function Home() {
             {!isMobile && (
               <>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <span style={{ flex: 1, height: 1, background: '#383838' }} />
+                  {/* <span style={{ flex: 1, height: 1, background: '#383838' }} /> */}
                   <span style={{
                     fontFamily: sans, fontSize: 18, fontWeight: 500,
                     color: '#ADADAD', whiteSpace: 'nowrap', lineHeight: '24px',
@@ -218,7 +233,7 @@ export default function Home() {
                 </div>
                 <div style={{
                   display: 'flex', alignItems: 'center',
-                  justifyContent: 'center', gap: 16, flexWrap: 'wrap',
+                  gap: 16, flexWrap: 'wrap',
                 }}>
                   {['AI Adoption Strategy', 'Modernize Platforms', 'Data Analytics', 'Healthcare IT', 'Product Engineering'].map(chip => (
                     <button key={chip} style={{
@@ -236,12 +251,13 @@ export default function Home() {
             )}
           </div>
         </div>
+        </div>
       </section>
 
       {/* ── STATS ─────────────────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff', overflow: 'hidden' }}>
-        <div style={{...inner, paddingBottom: 0}}>
-          <FadeUp duration={500}><Tag label="STATISTICS" /></FadeUp>
+      <section style={{ ...sectionBlock('#fff'), overflow: 'hidden' }}>
+        <div style={inner}>
+          {/* <FadeUp duration={500}><Tag label="STATISTICS" /></FadeUp> */}
           <FadeUp>
             <h2 style={{
               fontFamily: serif,
@@ -260,7 +276,7 @@ export default function Home() {
             alignItems: 'flex-start',
             marginTop: 67,
             position: 'relative',
-            minHeight: isMobile ? undefined : 453,
+            minHeight: isMobile ? undefined : 320,
           }}>
             {/* Stats grid */}
             <div style={{
@@ -281,11 +297,11 @@ export default function Home() {
 
             {/* Globe + arc composition — single inline SVG so image href resolves in DOM */}
             {!isMobile && (
-              <DecorativeOverlay top={-80} right={isTablet ? -32 : -80} width={608} height={453}>
+              <DecorativeOverlay top={isTablet ? -40 : -80} right={0} width={statsImageWidth} height={statsImageHeight}>
                 <DecorativeImage
                   src={imgStatsComposed}
                   top={0} left={0}
-                  width={608} height={453}
+                  width={statsImageWidth} height={statsImageHeight}
                   objectFit="contain"
                 />
               </DecorativeOverlay>
@@ -298,7 +314,7 @@ export default function Home() {
       <section style={{ background: '#fff' }}>
         <div style={{
           maxWidth: 1440, margin: '0 auto',
-          padding: isMobile ? '24px 16px' : '10px 80px 32px',
+          padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', gap: 16,
         }}>
@@ -309,18 +325,24 @@ export default function Home() {
           }}>
             OUR COLLABORATORS
           </p>
-          <div style={{width: '100%'}}>
-            <img
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Image
               src={imgCollaborators}
               alt="Our collaborators"
-              style={{ display: 'block', maxWidth: isMobile ? '100%' : isTablet ? '100%' : 860, margin:"auto" }}
+              sizes={isMobile || isTablet ? '100vw' : '860px'}
+              style={{
+                display: 'block',
+                width: '100%',
+                maxWidth: isMobile ? '100%' : isTablet ? '100%' : 860,
+                height: 'auto',
+              }}
             />
           </div>
         </div>
       </section>
 
       {/* ── FEATURED CASE STUDY ──────────────────────────────────────────────── */}
-      <section style={{ background: '#fff' }}>
+      <section style={sectionBlock('#fff')}>
         <div style={inner}>
           <FadeUp duration={500}><Tag label="FEATURED CASE STUDY" /></FadeUp>
           <FadeUp delay={60}>
@@ -345,7 +367,7 @@ export default function Home() {
       </section>
 
       {/* ── WHAT WE DELIVER ──────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff' }}>
+      <section style={sectionBlock('#fff')}>
         <div style={inner}>
           <FadeUp duration={500}><Tag label="INTEGRATED CAPABILITIES" /></FadeUp>
           <FadeUp>
@@ -383,7 +405,7 @@ export default function Home() {
       </section>
 
       {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff' }}>
+      <section style={sectionBlock('#fff')}>
         <div style={inner}>
           <FadeUp duration={500}><Tag label="AI SOLUTIONS AND ACCELERATORS" /></FadeUp>
           <div style={{
@@ -449,7 +471,7 @@ export default function Home() {
       </section>
 
       {/* ── LATEST INSIGHTS ──────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff' }}>
+      <section style={sectionBlock('#fff')}>
         <div style={inner}>
           <FadeUp duration={500}><Tag label="INSIGHTS" /></FadeUp>
           <FadeUp>
@@ -510,13 +532,12 @@ export default function Home() {
       </section>
 
       {/* ── WHY TECHNOSSUS ───────────────────────────────────────────────────── */}
-      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
-        <FadeUp duration={500}><Tag label="TECHNOSSUS" variant="dark" /></FadeUp>
-      </div>
-      <section style={{ background: dark2, position: 'relative', overflow: 'hidden', maxWidth: 1280, margin:"0px auto" }}>
-        <CornerTL />
-        <CornerBR />
+      <section style={sectionBlock('#fff')}>
         <div style={inner}>
+          <div style={{ background: dark2, position: 'relative', overflow: 'hidden', width: '100%' }}>
+            <CornerTL />
+            <CornerBR />
+            <div style={panelInner}>
           <FadeUp>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 0, marginBottom: 36 }}>
               <h2 style={{
@@ -550,18 +571,20 @@ export default function Home() {
                 key={card.title}
                 mode="dark"
                 type="small"
-                icon={<img src={card.icon} alt="" style={{ width: 'auto', height: 28 }} />}
+                icon={<Image src={card.icon} alt="" width={28} height={28} style={{ width: 'auto', height: 28 }} />}
                 title={card.title}
                 description={card.description}
               />
             ))}
           </div>
           </FadeUp>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── TESTIMONIALS ─────────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff' }}>
+      <section style={sectionBlock('#fff')}>
         <div style={inner}>
           <FadeUp duration={500}><Tag label="TESTIMONIALS" /></FadeUp>
 
@@ -611,14 +634,19 @@ export default function Home() {
       </section>
 
       {/* ── CTA BANNER LARGE ─────────────────────────────────────────────────── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey ?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session"
-        secondaryCta="Contact Us"
-      />
+      <section style={sectionBlock('#fff')}>
+        <div style={inner}>
+          <CTABanner
+            size="large"
+            label="LET'S WORK ON IT TOGETHER"
+            heading="Ready to accelerate your digital & AI journey ?"
+            body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+            primaryCta="Schedule a Strategy Session"
+            secondaryCta="Contact Us"
+            style={{ width: '100%', maxWidth: 'none' }}
+          />
+        </div>
+      </section>
       <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );

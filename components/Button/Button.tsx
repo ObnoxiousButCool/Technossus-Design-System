@@ -42,7 +42,6 @@ export function Button({
       alignItems: 'center',
       justifyContent: 'center',
       gap: 8,
-      height: 56,
       padding: '16px 24px',
       backgroundColor: red,
       color: '#FFFFFF',
