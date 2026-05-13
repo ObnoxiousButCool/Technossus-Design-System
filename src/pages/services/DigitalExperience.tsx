@@ -31,7 +31,7 @@ const CornerBR = () => (
 const accordionItems: AccordionItem[] = [
   {
     title: 'Experience Strategy & Transformation',
-    subtitle: 'An executable framework that maps experience gaps to growth, retention, and adoption metrics.',
+    subtitle: 'Align every experience decision to a business outcome.',
     content: {
       type: 'detail',
       serviceLabel: 'EXPERIENCE STRATEGY & TRANSFORMATION',
@@ -44,7 +44,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Product Ideation & Co-Design',
-    subtitle: 'Pressure-test the idea before the roadmap commits to it — with Generative AI as a co-creator.',
+    subtitle: 'Pressure-test the idea before the roadmap commits to it.',
     content: {
       type: 'detail',
       serviceLabel: 'PRODUCT IDEATION & CO-DESIGN',
@@ -57,7 +57,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Digital Experience V&V',
-    subtitle: 'WCAG, ADA compliance review, usability testing, and AI-UX pattern validation in a single engagement.',
+    subtitle: "Don't let accessibility debt become a compliance crisis.",
     content: {
       type: 'detail',
       serviceLabel: 'DIGITAL EXPERIENCE V&V',
@@ -70,7 +70,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Omnichannel Customer Experience',
-    subtitle: 'Design across channels with a unified experience model — shared patterns, consistent language, visual identity at every touchpoint.',
+    subtitle: 'Meet your customer where they are and make it feel like the same company.',
     content: {
       type: 'detail',
       serviceLabel: 'OMNICHANNEL CUSTOMER EXPERIENCE',

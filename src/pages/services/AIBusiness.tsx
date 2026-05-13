@@ -32,7 +32,7 @@ const CornerBR = () => (
 const accordionItems: AccordionItem[] = [
   {
     title: 'AI Strategy & Readiness',
-    subtitle: 'Map where AI creates durable value, sequence use cases by impact, and align the organization around what\'s being built.',
+    subtitle: 'Know where AI fits  and the pace your organization can actually absorb it.',
     content: {
       type: 'detail',
       serviceLabel: 'AI STRATEGY & READINESS',
@@ -45,7 +45,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Decision Intelligence',
-    subtitle: 'Predictive models and live data pipelines embedded into the workflows your leaders actually make decisions in.',
+    subtitle: 'Decisions that land where your strategy said they would.',
     content: {
       type: 'detail',
       serviceLabel: 'DECISION INTELLIGENCE',
@@ -58,7 +58,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Agentic Automation',
-    subtitle: 'AI agents that understand context, make decisions within guardrails, and coordinate work without constant human intervention.',
+    subtitle: 'Work that coordinates itself,until it needs a human decision.',
     content: {
       type: 'detail',
       serviceLabel: 'AGENTIC AUTOMATION',
@@ -71,7 +71,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Enterprise Generative AI',
-    subtitle: 'Copilots and assistants trained on your data, governed by your policy, and measured against the productivity lift they deliver.',
+    subtitle: 'Gen-AI tools your teams actually use,because they actually help.',
     content: {
       type: 'detail',
       serviceLabel: 'ENTERPRISE GENERATIVE AI',
@@ -84,7 +84,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'AI Governance, Risk & Data Security',
-    subtitle: 'Policy frameworks, model registries, usage guardrails, and audit trails wired into the deployment path.',
+    subtitle: 'Board-defensible AI. From policy to production.',
     content: {
       type: 'detail',
       serviceLabel: 'AI GOVERNANCE, RISK & DATA SECURITY',
@@ -97,7 +97,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Innovation Labs & Prototyping',
-    subtitle: 'A working prototype in two weeks — to test whether an idea is worth scaling before you bet the strategy on it.',
+    subtitle: 'See it working,before you bet the strategy on it.',
     content: {
       type: 'detail',
       serviceLabel: 'INNOVATION LABS & PROTOTYPING',

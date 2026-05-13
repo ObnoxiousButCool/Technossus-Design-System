@@ -252,7 +252,7 @@ function ItemRow({
         display: 'flex',
         gap: 24,
         alignItems: 'center',
-        padding: '20px 16px',
+        padding: '10px 16px',
         backgroundColor: isActive ? '#F5F5F5' : 'transparent',
         borderLeft: isActive ? `4px solid ${red}` : '4px solid transparent',
         border: 'none',

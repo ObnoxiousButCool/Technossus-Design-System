@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Tag }            from '../Tag';
 import { TextInputField } from '../TextInputField';
 import { Checkbox }       from '../Checkbox';
@@ -7,6 +8,27 @@ import { Checkbox }       from '../Checkbox';
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
 const red   = '#ED2939';
+
+export const areaOfInterestByRoute: Record<string, string> = {
+  '/': 'Home',
+  '/services/ai-business-transformation': 'AI-Led Business Transformation',
+  '/services/data-intelligence-analytics': 'Data Intelligence & Analytics',
+  '/services/digital-experience-design': 'Digital Experience Design',
+  '/services/product-engineering': 'Product Engineering',
+  '/services/quality-engineering': 'Quality Engineering',
+  '/services/cloud-product-modernization': 'Cloud & Product Modernization',
+  '/industries/healthcare': 'Healthcare & Life Sciences',
+  '/industries/financial-services': 'Financing options',
+  '/industries/hitech-saas': 'HiTech & SaaS',
+  '/about': 'About Technossus',
+  '/contact': 'Contact Us',
+  '/careers': 'Careers',
+  '/case-studies': 'Case Studies',
+};
+
+function getDefaultAreaOfInterest(pathname: string, topic: string) {
+  return areaOfInterestByRoute[pathname] ?? topic;
+}
 
 export interface ContactFormPopUpProps {
   /** Pre-fills the topic tag and Area of Interest field */
@@ -33,11 +55,14 @@ export function ContactFormPopUp({
   className,
   style,
 }: ContactFormPopUpProps) {
+  const { pathname } = useLocation();
+  const defaultAreaOfInterest = getDefaultAreaOfInterest(pathname, topic);
+
   const [form, setForm] = useState<ContactFormData>({
     name: '',
     email: '',
     phone: '',
-    areaOfInterest: topic !== 'AI-LED BUSINESS TRANSFORMATION' ? topic : 'AI-Led Business Transformation',
+    areaOfInterest: defaultAreaOfInterest,
     message: '',
     consent: false,
   });
@@ -162,7 +187,7 @@ export function ContactFormPopUp({
             />
             <TextInputField
               label="Area of Interest"
-              placeholder="AI-Led Business Transformation"
+              placeholder="Area of Interest"
               value={form.areaOfInterest}
               onChange={(v) => setForm(f => ({ ...f, areaOfInterest: v }))}
               style={{ flex: 1 }}
