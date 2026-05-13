@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 // Asset URLs from Figma (node 2398-3002)
