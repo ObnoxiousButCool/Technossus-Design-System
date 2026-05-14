@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { useBreakpoint } from '../../ts/breakpoints';
 import { resolveImageSrc, type ImageSource } from '../../ts/imageSrc';
 
@@ -938,17 +939,14 @@ export function Card(props: CardProps) {
               overflow: 'hidden',
             }}
           >
-            <img
+            <Image
               alt=""
-              src={resolveImageSrc(props.image) ?? imgFeaturedPhoto}
+              src={resolveImageSrc(props.image) ?? imgPhoto2Light}
+              fill
+              sizes="540px"
               style={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
                 objectFit: 'cover',
                 objectPosition: 'bottom',
-                display: 'block',
               }}
             />
           </div>

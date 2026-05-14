@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Tag } from '../../components/Tag';
 import { Stats } from '../../components/Stats';
@@ -80,6 +81,7 @@ const CornerBR = () => (
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
+  const router = useRouter();
   const { isMobile, isTablet } = useBreakpoint();
   const sectionGap = isMobile ? 48 : isTablet ? 60 : 80;
 
@@ -115,7 +117,7 @@ export default function Home() {
       accent: 'future of technology',
       subheading: 'We’re more than a company, we’re a hub of innovation, collaboration, and continuous learning. If you’re passionate about technology and making real impact, your next chapter starts here. ',
       cta: 'Show us the problem ',
-      href: '/services',
+      href: '/services/ai-business-transformation',
       image: imgHomeFuture,
     },
     {
@@ -123,7 +125,7 @@ export default function Home() {
       accent: 'holding you back',
       subheading: 'Move beyond legacy constraints to a scalable, future-ready foundation, enabling faster innovation and reliable business outcomes',
       cta: 'Explore solutions',
-      href: '/services',
+      href: '/services/product-engineering',
       image: imgHomeModernize,
     },
     {
@@ -131,15 +133,15 @@ export default function Home() {
       accent: ' not just pilots',
       subheading: 'Move beyond experimentation to real-world implementation, delivering measurable business outcomes at scale',
       cta: 'Start Planning',
-      href: '/contact',
+      href: '/ai-studio',
       image: imgHomeAI,
     },
     {
-      heading: 'Hit the outcomes that matters,',
-      accent: ' with precision.',
-      subheading: 'We help you what works, execute the precision, and turn the effortys into the measurable results faster.',
+      heading: 'Built with precision, delivered at',
+      accent: ' speed and scale',
+      subheading: 'From strategy to execution, we build, scale, and get it right the first time — delivering at speed to drive measurable outcomes',
       cta: 'Explore Solutions',
-      href: '/contact',
+      href: '/services/product-engineering',
       image: imgHeroBg,
     },
   ];
@@ -332,7 +334,7 @@ export default function Home() {
               {!isMobile && (
                 <>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                    {/* <span style={{ flex: 1, height: 1, background: '#383838' }} /> */}
+                    <span style={{ flex: 1, height: 1, background: '#383838' }} />
                     <span style={{
                       fontFamily: sans, fontSize: 18, fontWeight: 500,
                       color: '#ADADAD', whiteSpace: 'nowrap', lineHeight: '24px',
@@ -343,6 +345,7 @@ export default function Home() {
                   </div>
                   <div style={{
                     display: 'flex', alignItems: 'center',
+                    justifyContent: 'center',
                     gap: 16, flexWrap: 'wrap',
                   }}>
                     {['AI Adoption Strategy', 'Modernize Platforms', 'Data Analytics', 'Healthcare IT', 'Product Engineering'].map(chip => (
@@ -472,6 +475,8 @@ DENIALS 11% → 9% ON $4B REVENUE"
                 ]}
                 primaryLabel="View Case Study"
                 secondaryLabel="View All"
+                onPrimary={() => router.push('/case-studies')}
+                onSecondary={() => router.push('/case-studies')}
               />
             </div>
           </FadeUp>
@@ -567,6 +572,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
                     title={card.title}
                     description={card.description}
                     ctaLabel={card.ctaLabel}
+                    onCta={() => router.push('/ai-studio')}
                   />
                 ))}
               </div>
@@ -577,6 +583,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
               heading="Explore these in a working environment"
               body="Test, validate, and experience what's possible inside AI Studio."
               primaryCta="Explore AI Studio"
+              onPrimary={() => router.push('/ai-studio')}
             />
           </div>
         </div>
@@ -610,7 +617,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
                   Thinking and perspectives from our domain experts.
                 </p>
               </div>
-              <a href="#" style={{
+              <a href="/case-studies" style={{
                 fontFamily: sans, fontSize: 16, fontWeight: 600,
                 color: red, textDecoration: 'underline',
                 whiteSpace: 'nowrap', flexShrink: 0, lineHeight: '28px',
@@ -755,6 +762,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
             body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
             primaryCta="Schedule a Strategy Session"
             secondaryCta="Contact Us"
+            onSecondary={() => router.push('/contact')}
             style={{ width: '100%', maxWidth: 'none' }}
           />
         </div>

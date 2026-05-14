@@ -46,12 +46,12 @@ const defaultNavItems: NavItem[] = [
     label: 'Services',
     href: '/services',
     children: [
-      { label: 'AI Led Business Transformation',  href: '/services/ai-business-transformation',  description: 'Engineering the new operating model.' },
-      { label: 'Cloud & Product Modernization',   href: '/services/cloud-product-modernization', description: 'Lift, refactor, and run smarter.' },
-      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence-analytics', description: 'Turn into a decision engine.' },
-      { label: 'Digital Experience Design',       href: '/services/digital-experience-design',   description: 'Reimagine product, UX and brand.' },
-      { label: 'Product Engineering',             href: '/services/product-engineering',         description: 'Ship full-stack at startup speed.' },
-      { label: 'Quality Engineering & Automation', href: '/services/quality-engineering',        description: 'Test, observe, accelerate releases.' },
+      { label: 'AI Led Business Transformation',  href: '/services/ai-business-transformation' },
+      { label: 'Cloud & Product Modernization',   href: '/services/cloud-product-modernization' },
+      { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence-analytics' },
+      { label: 'Digital Experience Design',       href: '/services/digital-experience-design' },
+      { label: 'Product Engineering',             href: '/services/product-engineering' },
+      { label: 'Quality Engineering & Automation', href: '/services/quality-engineering' },
     ],
   },
   {
