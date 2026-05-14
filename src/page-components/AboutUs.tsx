@@ -57,15 +57,15 @@ const leaders = [
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red'; image: any }> = [
   {
-    quote: '"Flawless rollout of New Relic with no downtime and no change window allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — \'Ridiculously Qualified Team.\'"',
+    quote: '“Flawless rollout of New Relic with no downtime and no change window allows CommonSpirit Health deep understanding of consumer experience. Not savings on overall costs by delivering projects with half of the requested staff – ‘Ridiculously Qualified Team.”',
     name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white', image: imgAuthorJeffrey,
   },
   {
-    quote: '"Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner. The team is knowledgeable, skilled, and go beyond to exceed expectations."',
+    quote: '“Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner. The team is knowledgeable, skilled, and go beyond to exceed expectations.”',
     name: 'Anita Salgado', title: 'Senior Business Systems Analyst', color: 'red', image: imgAuthorAnita,
   },
   {
-    quote: '"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team\'s responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."',
+    quote: '“We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team’s responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues”',
     name: 'Tyler Zucchiatti', title: 'Director, Software Development – Middleware & Integration', color: 'white', image: imgAuthorTyler,
   },
 ];
@@ -86,7 +86,7 @@ export default function AboutUs() {
   const h2LineHeight   = isMobile ? '32px' : isTablet ? '36px' : '40px';
 
   const leadersGrid = isMobile
-    ? 'repeat(2, 1fr)'
+    ? '1fr'
     : isTablet
     ? 'repeat(2, 1fr)'
     : 'repeat(4, 1fr)';
