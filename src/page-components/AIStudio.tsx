@@ -194,7 +194,7 @@ export default function AIStudio() {
   const [searchQuery, setSearchQuery] = useState('');
 
 
-  const px = isMobile ? 16 : isTablet ? 32 : 80;
+  const px = isMobile ? 12 : isTablet ? 32 : 80;
   const sectionPaddingY = isMobile ? 48 : isTablet ? 60 : 80;
   const inner: React.CSSProperties = {
     maxWidth: 1440,
@@ -203,7 +203,7 @@ export default function AIStudio() {
     paddingRight: px,
     boxSizing: 'border-box',
   };
-  const darkPanelPadding = isMobile ? '40px 24px' : isTablet ? '48px 32px' : 56;
+  const darkPanelPadding = isMobile ? '32px 16px' : isTablet ? '48px 32px' : 56;
 
   // ── Section label styles ─────────────────────────────────────────────────
   const sectionH2: React.CSSProperties = {
@@ -236,7 +236,7 @@ export default function AIStudio() {
   };
 
   return (
-    <>
+    <main style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* ═══════════════════════════════════════════════════════════════════
           HERO
       ═══════════════════════════════════════════════════════════════════ */}
@@ -260,7 +260,7 @@ export default function AIStudio() {
         <div style={{ ...inner, position: 'relative', zIndex: 1, paddingTop: sectionPaddingY, paddingBottom: 0 }}>
           {/* Eyebrow */}
           <FadeUp>
-            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 32 }}>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 32, flexWrap: 'wrap' }}>
               <Tag label="TAS" variant="light" />
               <Tag label="AI STUDIO" variant="light" />
             </div>
@@ -302,9 +302,9 @@ export default function AIStudio() {
 
           {/* CTA buttons */}
           <FadeUp delay={160}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 60 }}>
-              <Button variant="primary" label="Show us the problem" />
-              <Button variant="secondary" label="See How We Work" />
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: isMobile ? 32 : 60, width: isMobile ? '100%' : undefined }}>
+              <Button variant="primary" label="Show us the problem" style={isMobile ? { width: '100%' } : undefined} />
+              <Button variant="secondary" label="See How We Work" style={isMobile ? { width: '100%' } : undefined} />
             </div>
           </FadeUp>
 
@@ -321,7 +321,7 @@ export default function AIStudio() {
               {/* Quick picks */}
               <div style={{ marginTop: 20 }}>
                 {/* Divider with label */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                <div style={{ display: isMobile ? 'none' : 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
                   <div style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.12)' }} />
                   <span
                     style={{
@@ -337,7 +337,7 @@ export default function AIStudio() {
                 </div>
 
                 {/* Chips */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: isMobile ? 'flex-start' : 'center', gap: isMobile ? 8 : 12 }}>
                   {quickPicks.map((pick) => (
                     <Chips
                       key={pick}
@@ -377,13 +377,13 @@ export default function AIStudio() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : `repeat(4, 1fr)`,
-                gap: isMobile ? 32 : 24,
-                marginBottom: 64,
+                gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : `repeat(4, 1fr)`,
+                gap: isMobile ? 20 : 24,
+                marginBottom: isMobile ? 40 : 64,
               }}
             >
               {statsData.map((s) => (
-                <Stats key={s.value} value={s.value} label={s.label} />
+                <Stats key={s.value} value={s.value} label={s.label} style={isMobile ? { whiteSpace: 'normal' } : undefined} />
               ))}
             </div>
           </FadeUp>
@@ -406,7 +406,7 @@ export default function AIStudio() {
               <div
                 style={{
                   backgroundColor: '#FFFFFF',
-                  padding: isMobile ? '24px 16px' : '24px 40px',
+                  padding: isMobile ? '20px 12px' : '24px 40px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -439,28 +439,28 @@ export default function AIStudio() {
           <div
             style={{
               display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
-              gap: isMobile ? 48 : 52,
+              flexDirection: isMobile || isTablet ? 'column' : 'row',
+              gap: isMobile ? 32 : isTablet ? 36 : 52,
               alignItems: 'flex-start',
               backgroundColor: dark2,
-              padding: isMobile ? '32px 0 0' : '40px 0 0',
+              padding: isMobile ? '24px 0 0' : '40px 0 0',
               position: 'relative',
               overflow: 'hidden',
             }}
           >
             {/* Left — heading + body */}
-            <FadeUp style={{ flexShrink: 0, maxWidth: isMobile ? '100%' : 560 }}>
+            <FadeUp style={{ flexShrink: 0, maxWidth: isMobile || isTablet ? '100%' : 560 }}>
               <h2 style={{ ...sectionH2Dark, fontSize: isMobile ? 28 : 36, lineHeight: isMobile ? '36px' : '40px', marginBottom: 24 }}>
                 A place to explore, validate, and build{' '}
                 <span style={{ color: red }}>enterprise AI with clarity.</span>
               </h2>
-              <p style={{ ...sectionSubtitleDark, fontSize: 16, lineHeight: '24px' }}>
+              <p style={{ ...sectionSubtitleDark, fontSize: isMobile ? 15 : 16, lineHeight: isMobile ? '22px' : '24px' }}>
                 Testing has always been the part of the delivery cycle that absorbs everyone
                 else's delays and still gets blamed when something ships broken. Engineers
                 are moving faster than ever, and the gap between release velocity and quality
                 confidence is widening, not closing.
               </p>
-              <p style={{ ...sectionSubtitleDark, fontSize: 16, lineHeight: '24px', marginTop: 10 }}>
+              <p style={{ ...sectionSubtitleDark, fontSize: isMobile ? 15 : 16, lineHeight: isMobile ? '22px' : '24px', marginTop: 10 }}>
                 AI is changing the economics of that gap. Not by replacing QA engineers, but
                 by giving them the kind of leverage that actually matches the pace they're
                 being asked to work at. We work alongside your team to build that leverage,
@@ -474,8 +474,9 @@ export default function AIStudio() {
               style={{
                 display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-                gap: 24,
-                flex: 1,
+                gap: isMobile ? 16 : 24,
+                flex: isMobile || isTablet ? undefined : 1,
+                width: isMobile || isTablet ? '100%' : undefined,
               }}
             >
               {whatIsItems.map((item, i) => (
@@ -483,8 +484,8 @@ export default function AIStudio() {
                   <article
                     style={{
                       borderLeft: `1px solid #ADADAD`,
-                      paddingLeft: 21,
-                      paddingRight: 12,
+                      paddingLeft: isMobile ? 16 : 21,
+                      paddingRight: isMobile ? 0 : 12,
                       paddingTop: 12,
                       paddingBottom: 12,
                       boxSizing: 'border-box',
@@ -537,7 +538,7 @@ export default function AIStudio() {
         <div style={inner}>
           {/* Header */}
           <FadeUp>
-            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16, flexWrap: 'wrap' }}>
               <Tag label="1" />
               <Tag label="INNOVATION LABS" />
             </div>
@@ -563,7 +564,7 @@ export default function AIStudio() {
             style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-              gap: 24,
+              gap: isMobile ? 16 : 24,
               marginBottom: isMobile ? 56 : 80,
             }}
           >
@@ -656,6 +657,7 @@ export default function AIStudio() {
               heading="Not sure which format is right for you?"
               body="Tell us your challenge and we'll recommend the right starting point."
               primaryCta="Talk to an Expert"
+              fullWidthMobileAction
             />
           </FadeUp>
         </div>
@@ -672,7 +674,7 @@ export default function AIStudio() {
           <div style={{ backgroundColor: '#0A0A0F', padding: darkPanelPadding, boxSizing: 'border-box', overflow: 'hidden' }}>
           {/* Header */}
           <FadeUp>
-            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16, flexWrap: 'wrap' }}>
               <Tag label="2" variant="light" />
               <Tag label="ACCELERATION" variant="light" />
             </div>
@@ -696,7 +698,7 @@ export default function AIStudio() {
             style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
-              gap: 24,
+              gap: isMobile ? 16 : 24,
               marginBottom: isMobile ? 40 : 64,
             }}
           >
@@ -752,6 +754,7 @@ export default function AIStudio() {
               heading="Looking for an accelerator built for your stack?"
               body="Our solutions library is growing weekly. Tell us what you need and we'll flag when it's ready."
               primaryCta="Request an Accelerator"
+              fullWidthMobileAction
             />
           </FadeUp>
           </div>
@@ -768,7 +771,7 @@ export default function AIStudio() {
         <div style={inner}>
           {/* Header */}
           <FadeUp>
-            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16, flexWrap: 'wrap' }}>
               <Tag label="3" />
               <Tag label="COLLABORATE" />
             </div>
@@ -801,7 +804,11 @@ export default function AIStudio() {
               authorName="Dr. Rohan Mehta"
               authorRole="Chief Medical Informatics Officer · TAS Member"
               ctaLabel="READ MORE"
-              style={{ marginBottom: 64, padding: isMobile ? '32px 24px' : '0px 0px', }}
+              stackOnTablet
+              style={{
+                marginBottom: isMobile ? 40 : 64,
+                padding: isMobile ? '32px 16px' : isTablet ? '32px 24px' : '0px 0px',
+              }}
               
             />
           </FadeUp>
@@ -809,13 +816,13 @@ export default function AIStudio() {
           <div
             style={{
               backgroundColor: dark2,
-              padding: isMobile ? '40px 24px' : isTablet ? '48px 32px' : 56,
+              padding: darkPanelPadding,
               position: 'relative',
               overflow: 'hidden',
             }}
           >
-          {!isMobile && <CornerTL />}
-          {!isMobile && <CornerBR />}
+          {!isMobile && !isTablet && <CornerTL />}
+          {!isMobile && !isTablet && <CornerBR />}
 
           {/* From the Community heading */}
           <FadeUp>
@@ -829,7 +836,7 @@ export default function AIStudio() {
             style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
-              gap: 24,
+              gap: isMobile ? 16 : 24,
               marginBottom: isMobile ? 40 : 64,
             }}
           >
@@ -858,10 +865,10 @@ export default function AIStudio() {
               style={{
                 backgroundColor: '#0A0A0F',
                 border: '1px solid #2A2A2A',
-                padding: isMobile ? 24 : 40,
+                padding: isMobile ? 20 : isTablet ? 28 : 40,
                 display: 'flex',
-                flexDirection: isMobile ? 'column' : 'row',
-                alignItems: isMobile ? 'flex-start' : 'center',
+                flexDirection: isMobile || isTablet ? 'column' : 'row',
+                alignItems: isMobile || isTablet ? 'stretch' : 'center',
                 justifyContent: 'space-between',
                 gap: 24,
                 position: 'relative',
@@ -880,7 +887,7 @@ export default function AIStudio() {
                   pointerEvents: 'none',
                 }}
               />
-              <div style={{ maxWidth: 680 }}>
+              <div style={{ maxWidth: 680, minWidth: 0 }}>
                 <h3
                   style={{
                     fontFamily: sans, fontWeight: 600,
@@ -895,9 +902,9 @@ export default function AIStudio() {
                   pieces are editorially featured and distributed to the full TAS community.
                 </p>
               </div>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', flexShrink: 0 }}>
-                <Button variant="primary" label="Submit an Article" />
-                <Button variant="secondary" label="Become a TAS Member" />
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', flexShrink: 0, width: isMobile || isTablet ? '100%' : undefined }}>
+                <Button variant="primary" label="Submit an Article" style={isMobile || isTablet ? { width: '100%' } : undefined} />
+                <Button variant="secondary" label="Become a TAS Member" style={isMobile || isTablet ? { width: '100%' } : undefined} />
               </div>
             </div>
           </FadeUp>
@@ -944,6 +951,7 @@ export default function AIStudio() {
               gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
               gap: 0,
               border: '1px solid #E5E5E5',
+              overflow: 'hidden',
             }}
           >
             {deliverySteps.map((step, i) => {
@@ -955,7 +963,7 @@ export default function AIStudio() {
                     style={{
                       padding: isMobile ? '28px 20px' : '32px 28px',
                       borderRight: (isMobile || isTablet) ? 'none' : col < 2 ? '1px solid #E5E5E5' : 'none',
-                      borderBottom: isLastRow ? 'none' : '1px solid #E5E5E5',
+                      borderBottom: isMobile ? (i < deliverySteps.length - 1 ? '1px solid #E5E5E5' : 'none') : isTablet ? (i < deliverySteps.length - 2 ? '1px solid #E5E5E5' : 'none') : isLastRow ? 'none' : '1px solid #E5E5E5',
                       boxSizing: 'border-box',
                     }}
                   >
@@ -1029,6 +1037,7 @@ export default function AIStudio() {
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
               border: '1px solid #2A2A2A',
+              overflow: 'hidden',
             }}
           >
             {capabilities.map((cap, i) => {
@@ -1042,7 +1051,7 @@ export default function AIStudio() {
                     style={{
                       padding: isMobile ? '28px 20px' : '40px 24px',
                       borderRight: isMobile ? 'none' : isTablet ? (col % 2 === 0 ? '1px solid #2A2A2A' : 'none') : col < 3 ? '1px solid #2A2A2A' : 'none',
-                      borderBottom: isLastRow ? 'none' : '1px solid #2A2A2A',
+                      borderBottom: isMobile ? (i < capabilities.length - 1 ? '1px solid #2A2A2A' : 'none') : isTablet ? (i < capabilities.length - 2 ? '1px solid #2A2A2A' : 'none') : isLastRow ? 'none' : '1px solid #2A2A2A',
                       boxSizing: 'border-box',
                       backgroundColor: '#0A0A10',
                     }}
@@ -1098,10 +1107,11 @@ export default function AIStudio() {
           primaryCta="Schedule a Strategy Session"
           secondaryCta="Explore Accelerators"
           contactFormTopic="AI Studio Enquiry"
+          centerOnMobile
           style={{ width: '100%', maxWidth: 'none' }}
         />
         </div>
       </section>
-    </>
+    </main>
   );
 }

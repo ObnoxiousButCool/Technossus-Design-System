@@ -109,6 +109,8 @@ interface CardLightFeaturedProps {
   mode: 'light'; type: 'featured';
   /** Cover image shown on the right */
   image?: CardImageSource;
+  /** Stack the content and image vertically on tablet layouts. */
+  stackOnTablet?: boolean;
   /** Red top badge, e.g. 'FEATURED BY TECHNOSSUS' */
   badge?: string;
   /** Category line, e.g. 'FINTECH • PLATFORM MODERNIZATION' */
@@ -704,6 +706,8 @@ export function Card(props: CardProps) {
 
   // ── Light / Featured ─────────────────────────────────────────────────────
   if (props.mode === 'light' && props.type === 'featured') {
+    const shouldStack = isMobile || (isTablet && props.stackOnTablet);
+
     return (
       <div
         className={props.className}
@@ -711,9 +715,9 @@ export function Card(props: CardProps) {
         style={{
           backgroundColor: '#F5F5F5',
           display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          gap: isMobile ? 32 : 61,
-          alignItems: isMobile ? 'flex-start' : 'center',
+          flexDirection: shouldStack ? 'column' : 'row',
+          gap: shouldStack ? 32 : 61,
+          alignItems: shouldStack ? 'flex-start' : 'center',
           overflow: 'hidden',
           padding: isMobile ? '32px 24px' : '52px 48px',
           width: '100%',
@@ -728,8 +732,9 @@ export function Card(props: CardProps) {
             flexDirection: 'column',
             gap: 24,
             alignItems: 'flex-start',
-            flex: '1 0 0',
+            flex: shouldStack ? 'none' : '1 0 0',
             minWidth: 0,
+            width: shouldStack ? '100%' : undefined,
           }}
         >
           {/* Red badge */}
@@ -933,8 +938,8 @@ export function Card(props: CardProps) {
         {!isMobile && (
           <div
             style={{
-              height: 381,
-              width: 540,
+              height: isTablet && props.stackOnTablet ? 320 : 381,
+              width: isTablet && props.stackOnTablet ? '100%' : 540,
               flexShrink: 0,
               position: 'relative',
               overflow: 'hidden',
@@ -944,7 +949,7 @@ export function Card(props: CardProps) {
               alt=""
               src={resolveImageSrc(props.image) ?? imgPhoto2Light}
               fill
-              sizes="540px"
+              sizes={isTablet && props.stackOnTablet ? '100vw' : '540px'}
               style={{
                 objectFit: 'cover',
                 objectPosition: 'bottom',

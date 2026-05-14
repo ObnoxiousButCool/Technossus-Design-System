@@ -269,6 +269,8 @@ export function MainHeader({
         top: 0,
         zIndex: 1000,
         width: '100%',
+        maxWidth: '100%',
+        overflowX: 'hidden',
         boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.07)' : 'none',
         transition: 'box-shadow 0.3s ease',
         ...style,
@@ -287,6 +289,7 @@ export function MainHeader({
             paddingLeft: 96,
             paddingRight: 96,
             width: '100%',
+            maxWidth: '100%',
             boxSizing: 'border-box',
             position: 'relative',
           }}
@@ -495,6 +498,7 @@ export function MainHeader({
             backgroundColor: '#FFFFFF',
             zIndex: 998,
             overflowY: 'auto',
+            overflowX: 'hidden',
             display: 'flex',
             flexDirection: 'column',
             gap: 32,
@@ -505,6 +509,7 @@ export function MainHeader({
             paddingRight: 20,
             borderBottom: '1px solid #E5E7EB',
             width: '100%',
+            maxWidth: '100%',
             boxSizing: 'border-box',
           }}
         >
@@ -537,6 +542,7 @@ export function MainHeader({
                       onClick={() => setMobileExpanded(isExpanded ? null : item.label)}
                       style={{
                         width: '100%',
+                        minWidth: 0,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
@@ -558,7 +564,10 @@ export function MainHeader({
                           fontSize: 20,
                           lineHeight: '28px',
                           color: dark,
-                          whiteSpace: 'nowrap',
+                          whiteSpace: 'normal',
+                          textAlign: 'left',
+                          overflowWrap: 'anywhere',
+                          minWidth: 0,
                         }}
                       >
                         {item.label === 'Services' ? 'Service Offerings' : item.label}
@@ -593,7 +602,8 @@ export function MainHeader({
                               lineHeight: '24px',
                               color: mobilePressed === child.label ? red : dark,
                               textDecoration: 'none',
-                              whiteSpace: 'nowrap',
+                              whiteSpace: 'normal',
+                              overflowWrap: 'anywhere',
                               backgroundColor: mobilePressed === child.label ? '#F5F5F5' : 'transparent',
                               transition: 'color 0.1s ease, background-color 0.1s ease',
                             }}
@@ -633,12 +643,14 @@ export function MainHeader({
                     <span
                       style={{
                         flex: '1 0 0',
+                        minWidth: 0,
                         fontFamily: sans,
                         fontWeight: 600,
                         fontSize: 20,
                         lineHeight: '28px',
                         color: mobilePressed === item.label ? red : dark,
                         textDecoration: 'none',
+                        overflowWrap: 'anywhere',
                         transition: 'color 0.1s ease',
                       }}
                     >
