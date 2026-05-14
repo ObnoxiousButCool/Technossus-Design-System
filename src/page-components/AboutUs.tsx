@@ -27,7 +27,7 @@ const imgArrowForward = '/assets/8a747203f958377d346e5cba2f8ebb5af2b3712b.svg';
 const imgMissionIcon  = '/assets/61200c7f88a68751add502d264dc727a8b8164b7.svg';
 const imgSubtractTL   = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
 const imgSubtractBR   = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
-const imgHistory      = '/assets/530970c90fed204526d7d1dd49d291d623489c6c.png';
+const imgHistory      = '/assets/history-image.png';
 
 // ── Local tokens ──────────────────────────────────────────────────────────────
 const sans  = fontFamily.sans;
@@ -254,14 +254,19 @@ export default function AboutUs() {
       </section>
 
       {/* ── CTA BANNER ───────────────────────────────────────────────────────── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session →"
-        secondaryCta="Contact Us"
-      />
+      <section>
+        <div style={{ ...px, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 96px' }}>
+          <CTABanner
+            size="large"
+            label="LET'S WORK ON IT TOGETHER"
+            heading="Ready to accelerate your digital & AI journey?"
+            body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+            primaryCta="Schedule a Strategy Session →"
+            secondaryCta="Contact Us"
+            style={{ width: '100%', maxWidth: 'none' }}
+          />
+        </div>
+      </section>
       <div style={{ height: isMobile ? 48 : 80 }} />
     </>
   );
