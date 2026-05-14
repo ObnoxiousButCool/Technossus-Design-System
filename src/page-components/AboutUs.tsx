@@ -135,7 +135,7 @@ export default function AboutUs() {
 
       {/* ── OUR MISSION ──────────────────────────────────────────────────────── */}
       <section>
-        <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 24, padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 96px 0px 96px' }}>
           <FadeUp duration={500}><Tag label="OUR MISSION" /></FadeUp>
           <div style={{ position: 'relative', backgroundColor: dark1, padding: isMobile ? '32px 20px' : isTablet ? '40px 32px' : 56, display: 'flex', flexDirection: 'column', gap: 36, overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, pointerEvents: 'none' }} />
@@ -175,7 +175,7 @@ export default function AboutUs() {
 
       {/* ── EXECUTIVE LEADERSHIP ─────────────────────────────────────────────── */}
       <section>
-        <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 36 }}>
+        <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 36,  padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 96px 0px 96px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <FadeUp duration={500}><Tag label="EXECUTIVE LEADERSHIP" /></FadeUp>
             <FadeUp>
@@ -201,7 +201,7 @@ export default function AboutUs() {
 
       {/* ── OUR HISTORY ──────────────────────────────────────────────────────── */}
       <section>
-        <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 16, padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 96px 0px 96px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <FadeUp duration={500}><Tag label="OUR HISTORY" /></FadeUp>
             <FadeUp>
