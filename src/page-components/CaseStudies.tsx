@@ -26,11 +26,12 @@ interface CaseStudy {
   service: string;
   title: string;
   excerpt: string;
+  slug?: string;
 }
 
 const caseStudies: CaseStudy[] = [
   // Healthcare
-  { tags: 'HEALTHCARE • MOBILE PLATFORM',    industry: 'Healthcare',         service: 'Product Engineering',            title: 'Mobile Platform Increases Company Value for Healthcare Benefits Provider',         excerpt: 'A leading healthcare benefits provider needed a mobile strategy to extend services to brokers, employers, and end users. Technossus delivered a scalable platform with seamless data integration across insurers, brokers, and enterprise systems.' },
+  { tags: 'HEALTHCARE • MOBILE PLATFORM',    industry: 'Healthcare',         service: 'Product Engineering',            title: 'Mobile Platform Increases Company Value for Healthcare Benefits Provider',         excerpt: 'A leading healthcare benefits provider needed a mobile strategy to extend services to brokers, employers, and end users. Technossus delivered a scalable platform with seamless data integration across insurers, brokers, and enterprise systems.', slug: 'healthcare-mobile-platform' },
   { tags: 'HEALTHCARE • CRM INTEGRATION',    industry: 'Healthcare',         service: 'Product Engineering',            title: 'CRM with Complex External Integrations Launches On Time',                         excerpt: 'A leading healthcare insurance provider needed a CRM integrating data from state and federal platforms under evolving regulatory requirements and a fixed go-live deadline. Delivered on time with real-time access to customer data.' },
   { tags: 'HEALTHCARE • ALM & GOVERNANCE',   industry: 'Healthcare',         service: 'Quality Engineering',            title: 'ALM Expertise Drives Successful Large-Scale Digital Transformation',               excerpt: 'A major U.S. healthcare provider needed to coordinate a complex multi-vendor digital platform transformation. Technossus established enterprise-wide ALM processes and governance frameworks, improving visibility and reducing risk.' },
   { tags: 'LIFE SCIENCES • LAB PLATFORM',    industry: 'Healthcare',         service: 'Product Engineering',            title: 'Unified Lab Platform Reduces Licensing Costs and Improves Throughput',             excerpt: 'Helix replaced three fragmented lab systems with one higher-performing LIMS, reducing licensing fees, eliminating manual labor through standardized integrations, and enabling greater testing throughput without adding staff.' },
@@ -546,6 +547,30 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
 
         {/* CTA */}
         <div style={{ marginTop: 8 }}>
+          {cs.slug ? (
+            <a
+              href={`/case-studies/${cs.slug}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: 56,
+                width: 180,
+                background: 'transparent',
+                border: `1px solid ${red}`,
+                color: red,
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 16,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                boxSizing: 'border-box',
+                textDecoration: 'none',
+              }}
+            >
+              View case study
+            </a>
+          ) : (
           <button
             style={{
               display: 'inline-flex',
@@ -566,6 +591,7 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
           >
             View case study
           </button>
+          )}
         </div>
       </div>
     </div>

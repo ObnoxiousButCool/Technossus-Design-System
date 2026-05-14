@@ -1,0 +1,585 @@
+'use client';
+
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { Breadcrumb } from '../../components/Breadcrumb';
+import { Tag }        from '../../components/Tag';
+import { Button }     from '../../components/Button';
+import { Card }       from '../../components/Card';
+import { Stats }      from '../../components/Stats';
+import { CTABanner }  from '../../components/CTABanner';
+import { FadeUp }     from '../../components/Animate/FadeUp';
+import { useBreakpoint } from '../../ts/breakpoints';
+
+// ─── Design tokens ────────────────────────────────────────────────────────────
+const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
+const serif = '"Roboto Serif", Georgia, serif';
+const red   = '#ED2939';
+const dark1 = '#1E1E1E';
+
+// ─── Corner bracket decorations (Figma: 118×10 + 10×118, red) ────────────────
+const CornerTL = () => (
+  <>
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 118, height: 10, background: red, zIndex: 2, pointerEvents: 'none' }} />
+    <div style={{ position: 'absolute', top: 0, left: 0, width: 10, height: 118, background: red, zIndex: 2, pointerEvents: 'none' }} />
+  </>
+);
+const CornerBR = () => (
+  <>
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 118, height: 10, background: red, zIndex: 2, pointerEvents: 'none' }} />
+    <div style={{ position: 'absolute', bottom: 0, right: 0, width: 10, height: 118, background: red, zIndex: 2, pointerEvents: 'none' }} />
+  </>
+);
+
+// ─── Check icon (solution capabilities) ──────────────────────────────────────
+const CheckIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <circle cx="12" cy="12" r="11" stroke="#383838" strokeWidth="1.5" />
+    <path d="M7.5 12.5L10.5 15.5L16.5 9.5" stroke="#383838" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+// ─── Data shape ───────────────────────────────────────────────────────────────
+export interface CaseStudyData {
+  slug: string;
+  tagLine: string;
+  title: string;
+  heroImage: string;
+
+  clientName: string;
+  clientDescription: string;
+
+  challengeHeading: string;
+  challengeBody: string;
+
+  solutionHeading: string;
+  solutionBody: string;
+  solutionCapabilities: string[];
+
+  impactHeading: string;
+  impactDescription: string;
+  impactContextLabel?: string;
+  impactContextBody?: string;
+  impactCards: { title: string; body: string }[];
+  industryStats: { value: string; label: string }[];
+
+  relatedCaseStudies: {
+    tags: string;
+    title: string;
+    excerpt: string;
+    image: string;
+    slug: string;
+  }[];
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
+export default function CaseStudyDetail({ data }: { data: CaseStudyData }) {
+  const { isMobile, isTablet } = useBreakpoint();
+  const isDesktop = !isMobile && !isTablet;
+  const router = useRouter();
+
+  const padS = isMobile ? 24 : 32;
+  const padL = isMobile ? 24 : 56;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
+      <section style={{ background: '#fff' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box' }}>
+
+          {/* Breadcrumb row */}
+          <div style={{ padding: `8px ${isMobile ? '16px' : isTablet ? '32px' : '0px'}`, boxSizing: 'border-box' }}>
+            <Breadcrumb
+              items={[
+                { label: 'Home',         href: '/' },
+                { label: 'Case Studies', href: '/case-studies' },
+                { label: data.tagLine.split('•')[0].trim(), active: true },
+              ]}
+            />
+          </div>
+
+          {/* Hero content: left text | right image */}
+          <div style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: isDesktop ? 80 : isTablet ? 40 : 24,
+            minHeight: isMobile ? 'auto' : 540,
+            padding: isMobile ? '0 16px 40px' : isTablet ? '0 32px 48px' : 0,
+            boxSizing: 'border-box',
+          }}>
+            <div style={{
+              flex: isDesktop ? '0 0 657px' : isTablet ? '0 0 55%' : '1 1 auto',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              gap: 16,
+              padding: isMobile ? '32px 0 0' : isTablet ? '40px 32px' : 0,
+              boxSizing: 'border-box',
+            }}>
+              <FadeUp>
+                <p style={{
+                  fontFamily: sans,
+                  fontWeight: 600,
+                  fontSize: 16,
+                  lineHeight: '16px',
+                  color: '#363636',
+                  margin: 0,
+                }}>
+                  {data.tagLine}
+                </p>
+              </FadeUp>
+              <FadeUp delay={60}>
+                <h1 style={{
+                  fontFamily: serif,
+                  fontWeight: 500,
+                  fontSize: isMobile ? 28 : isTablet ? 38 : 48,
+                  lineHeight: isMobile ? '36px' : isTablet ? '48px' : '56px',
+                  letterSpacing: isMobile ? 0 : -0.96,
+                  color: dark1,
+                  margin: 0,
+                }}>
+                  {data.title}
+                </h1>
+              </FadeUp>
+            </div>
+
+            {!isMobile && (
+              <div style={{ flex: 1, minHeight: isTablet ? 360 : 540, overflow: 'hidden' }}>
+                <img
+                  src={data.heroImage}
+                  alt={data.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <div style={{ height: 80 }} />
+
+      {/* ── CLIENT & CHALLENGE ────────────────────────────────────────────── */}
+      <section>
+        <div style={{
+          maxWidth: 1440,
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          boxSizing: 'border-box',
+        }}>
+          {/* Client panel */}
+          <div style={{
+            flex: isDesktop ? '0 0 539px' : isMobile ? '1 1 auto' : '0 0 38%',
+            background: '#F4F4F4',
+            padding: padS,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 24,
+            boxSizing: 'border-box',
+          }}>
+            <Tag label="CLIENT" />
+            <FadeUp>
+              <h2 style={{
+                fontFamily: serif,
+                fontWeight: 600,
+                fontSize: isMobile ? 22 : 32,
+                lineHeight: isMobile ? '28px' : '36px',
+                color: dark1,
+                margin: 0,
+              }}>
+                {data.clientName}
+              </h2>
+            </FadeUp>
+            <p style={{
+              fontFamily: sans,
+              fontWeight: 500,
+              fontSize: 16,
+              lineHeight: '24px',
+              color: '#5B5B5B',
+              margin: 0,
+            }}>
+              {data.clientDescription}
+            </p>
+          </div>
+
+          {/* Challenge panel */}
+          <div style={{
+            flex: 1,
+            background: '#fff',
+            padding: padS,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 24,
+            boxSizing: 'border-box',
+          }}>
+            <Tag label="CHALLENGES" />
+            <FadeUp>
+              <h2 style={{
+                fontFamily: serif,
+                fontWeight: 600,
+                fontSize: isMobile ? 22 : 32,
+                lineHeight: isMobile ? '28px' : '36px',
+                color: red,
+                margin: 0,
+              }}>
+                {data.challengeHeading}
+              </h2>
+            </FadeUp>
+            <p style={{
+              fontFamily: sans,
+              fontWeight: 500,
+              fontSize: 16,
+              lineHeight: '24px',
+              color: '#5B5B5B',
+              margin: 0,
+            }}>
+              {data.challengeBody}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div style={{ height: 48 }} />
+
+      {/* ── SOLUTION ──────────────────────────────────────────────────────── */}
+      <section style={{ background: '#fff' }}>
+        <div style={{
+          maxWidth: 1440,
+          margin: '0 auto',
+          padding: padS,
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 24,
+        }}>
+          <Tag label="SOLUTION" />
+
+          <FadeUp>
+            <h2 style={{
+              fontFamily: serif,
+              fontWeight: 600,
+              fontSize: isMobile ? 22 : 32,
+              lineHeight: isMobile ? '28px' : '36px',
+              color: red,
+              margin: 0,
+            }}>
+              {data.solutionHeading}
+            </h2>
+          </FadeUp>
+
+          {/* Body + capabilities card */}
+          <div style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: 24,
+            alignItems: 'flex-start',
+          }}>
+            <p style={{
+              flex: 1,
+              fontFamily: sans,
+              fontWeight: 500,
+              fontSize: 16,
+              lineHeight: '24px',
+              color: '#5B5B5B',
+              margin: 0,
+              alignSelf: 'center',
+            }}>
+              {data.solutionBody}
+            </p>
+
+            {/* Capabilities card */}
+            <div style={{
+              flex: isDesktop ? '0 0 676px' : isMobile ? '1 1 auto' : '0 0 50%',
+              background: '#F4F4F4',
+              padding: 24,
+              boxSizing: 'border-box',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 20,
+            }}>
+              <p style={{
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 20,
+                lineHeight: '28px',
+                color: dark1,
+                margin: 0,
+              }}>
+                Key solution capabilities included:
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                {data.solutionCapabilities.map((cap, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                    <CheckIcon />
+                    <span style={{
+                      fontFamily: sans,
+                      fontWeight: 500,
+                      fontSize: 16,
+                      lineHeight: '24px',
+                      color: '#383838',
+                    }}>
+                      {cap}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div style={{ height: 48 }} />
+
+      {/* ── IMPACT ────────────────────────────────────────────────────────── */}
+      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+        <CornerTL />
+        <CornerBR />
+        <div style={{
+          maxWidth: 1440,
+          margin: '0 auto',
+          padding: padL,
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 36,
+        }}>
+          {/* Top: heading + cards */}
+          <div style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: 24,
+            alignItems: 'flex-start',
+          }}>
+            {/* Left column */}
+            <div style={{
+              flex: isDesktop ? '0 0 600px' : isMobile ? '1 1 auto' : '0 0 46%',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 24,
+            }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <FadeUp>
+                  <h2 style={{
+                    fontFamily: serif,
+                    fontWeight: 600,
+                    fontSize: isMobile ? 24 : 32,
+                    lineHeight: '36px',
+                    color: '#fff',
+                    margin: 0,
+                  }}>
+                    {data.impactHeading}
+                  </h2>
+                </FadeUp>
+                <p style={{
+                  fontFamily: sans,
+                  fontWeight: 500,
+                  fontSize: 16,
+                  lineHeight: '24px',
+                  color: '#E0DFDF',
+                  margin: 0,
+                }}>
+                  {data.impactDescription}
+                </p>
+              </div>
+
+              {(data.impactContextLabel || data.impactContextBody) && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  {data.impactContextLabel && (
+                    <p style={{
+                      fontFamily: sans,
+                      fontWeight: 600,
+                      fontSize: 20,
+                      lineHeight: '28px',
+                      color: '#fff',
+                      margin: 0,
+                    }}>
+                      {data.impactContextLabel}
+                    </p>
+                  )}
+                  {data.impactContextBody && (
+                    <p style={{
+                      fontFamily: sans,
+                      fontWeight: 500,
+                      fontSize: 14,
+                      lineHeight: '20px',
+                      color: '#ADADAD',
+                      margin: 0,
+                    }}>
+                      {data.impactContextBody}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Right column — impact cards */}
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+              {data.impactCards.map((card, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && <div style={{ height: 1, background: '#5B5B5B' }} />}
+                  <div style={{ padding: 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                    <div style={{ width: 48, height: 3, background: red }} />
+                    <p style={{
+                      fontFamily: sans,
+                      fontWeight: 600,
+                      fontSize: 20,
+                      lineHeight: '28px',
+                      color: red,
+                      margin: 0,
+                    }}>
+                      {card.title}
+                    </p>
+                    <p style={{
+                      fontFamily: sans,
+                      fontWeight: 500,
+                      fontSize: 14,
+                      lineHeight: '20px',
+                      color: '#949494',
+                      margin: 0,
+                    }}>
+                      {card.body}
+                    </p>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+          {/* Industry stats — using Stats component */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : `repeat(${data.industryStats.length}, 1fr)`,
+            gap: 20,
+          }}>
+            {data.industryStats.map((s, i) => (
+              <div key={i} style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                padding: 24,
+                boxSizing: 'border-box',
+              }}>
+                <Stats
+                  value={s.value}
+                  label={s.label}
+                  style={{ whiteSpace: 'normal' }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div style={{ height: 48 }} />
+
+      {/* ── RELATED CASE STUDIES ──────────────────────────────────────────── */}
+      {data.relatedCaseStudies.length > 0 && (
+        <section>
+          {/* PROOF tag sits above the dark box on white background */}
+          <div style={{
+            maxWidth: 1440,
+            margin: '0 auto',
+            padding: `0 ${padL}px 16px`,
+            boxSizing: 'border-box',
+          }}>
+            <Tag label="PROOF" />
+          </div>
+
+          <div style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+            <CornerTL />
+            <CornerBR />
+            <div style={{
+              maxWidth: 1440,
+              margin: '0 auto',
+              padding: padL,
+              boxSizing: 'border-box',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 36,
+            }}>
+              {/* Header: title + View All button */}
+              <div style={{
+                display: 'flex',
+                flexDirection: isMobile ? 'column' : 'row',
+                alignItems: isMobile ? 'flex-start' : 'center',
+                justifyContent: 'space-between',
+                gap: 8,
+              }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <h2 style={{
+                    fontFamily: serif,
+                    fontWeight: 500,
+                    fontSize: isMobile ? 28 : 36,
+                    lineHeight: '40px',
+                    color: red,
+                    margin: 0,
+                  }}>
+                    Success stories.
+                  </h2>
+                  <p style={{
+                    fontFamily: sans,
+                    fontWeight: 500,
+                    fontSize: 18,
+                    lineHeight: '24px',
+                    color: '#fff',
+                    margin: 0,
+                  }}>
+                    If any of these describe where your team is right now, we should talk.
+                  </p>
+                </div>
+
+                {/* View All — Button secondary, white text override on dark bg */}
+                <Button
+                  variant="secondary"
+                  label="View All"
+                  href="/case-studies"
+                  style={{
+                    height: 28,
+                    padding: '0 16px',
+                    fontSize: 16,
+                    background: '#fff',
+                    color: red,
+                    border: 'none',
+                    flexShrink: 0,
+                  }}
+                />
+              </div>
+
+              {/* Cards grid — Card dark/insights */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2,1fr)' : 'repeat(3,1fr)',
+                gap: 20,
+              }}>
+                {data.relatedCaseStudies.map((cs, i) => (
+                  <Card
+                    key={i}
+                    mode="dark"
+                    type="insights"
+                    image={cs.image}
+                    tags={cs.tags}
+                    title={cs.title}
+                    excerpt={cs.excerpt}
+                    ctaLabel="See How We Work"
+                    onCta={() => router.push(`/case-studies/${cs.slug}`)}
+                    style={{ height: '100%' }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── CTA BANNER ────────────────────────────────────────────────────── */}
+      <CTABanner
+        size="large"
+        label="LET'S WORK ON IT TOGETHER"
+        heading="Ready to accelerate your digital & AI journey?"
+        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+        primaryCta="Schedule a Strategy Session"
+        secondaryCta="Contact Us"
+      />
+    </div>
+  );
+}
