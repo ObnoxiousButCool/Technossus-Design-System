@@ -107,24 +107,31 @@ export default function Home() {
   const cols3 = isMobile ? '1fr' : isTablet ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
   const heroSlides = [
     {
-      heading: 'Hit the outcomes that matter,',
-      accent: 'Every time.',
-      subheading: 'We identify what works, execute with precision, and turn effort into measurable results, faster.',
-      cta: 'Explore Solutions',
+      heading: 'Shape the ',
+      accent: 'future of technology',
+      subheading: 'We’re more than a company, we’re a hub of innovation, collaboration, and continuous learning. If you’re passionate about technology and making real impact, your next chapter starts here. ',
+      cta: 'Show us the problem ',
       href: '/services',
     },
     {
-      heading: 'Build momentum where it counts,',
-      accent: 'Every sprint.',
-      subheading: 'Dummy carousel copy for testing: align teams, remove delivery friction, and keep progress visible from idea to impact.',
-      cta: 'See What Works',
+      heading: 'Modernize what’s ',
+      accent: 'holding you back',
+      subheading: 'Move beyond legacy constraints to a scalable, future-ready foundation, enabling faster innovation and reliable business outcomes',
+      cta: 'Explore solutions',
       href: '/services',
     },
     {
-      heading: 'Move from effort to evidence,',
-      accent: 'Every launch.',
-      subheading: 'Dummy carousel copy for testing: connect strategy, execution, and measurement so each release proves business value.',
+      heading: 'Scale AI with Purpose,',
+      accent: ' not just pilots',
+      subheading: 'Move beyond experimentation to real-world implementation, delivering measurable business outcomes at scale',
       cta: 'Start Planning',
+      href: '/contact',
+    },
+    {
+      heading: 'Hit the outcomes that matters,',
+      accent: ' with precision.',
+      subheading: 'We help you what works, execute the precision, and turn the effortys into the measurable results faster.',
+      cta: 'Explore Solutions',
       href: '/contact',
     },
   ];
