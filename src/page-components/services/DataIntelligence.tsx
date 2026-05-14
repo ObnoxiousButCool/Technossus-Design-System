@@ -10,6 +10,7 @@ import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
+import { resolveImageSrc } from '../../../ts/imageSrc';
 import imgHero from '../../../assets/Website_Images/Services/Data Intelligence.png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -33,7 +34,7 @@ const CornerBR = () => (
 const accordionItems: AccordionItem[] = [
   {
     title: 'Conversational Analytics',
-    subtitle: 'Your leadership team asks a question and gets an answer in seconds — from your own data, in plain language.',
+    subtitle: 'Speak to Your Data',
     content: {
       type: 'detail',
       serviceLabel: 'CONVERSATIONAL ANALYTICS',
@@ -46,7 +47,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Data Engineering & Modernization',
-    subtitle: 'Automate the plumbing so your data team focuses on architecture, modeling, and the analysis that creates value.',
+    subtitle: 'Your Data Team on the Work That Matters',
     content: {
       type: 'detail',
       serviceLabel: 'DATA ENGINEERING & MODERNIZATION',
@@ -59,7 +60,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Data Governance & Compliance',
-    subtitle: 'Deploy governance that runs continuously — eliminating the manual configuration that makes most governance programs fail.',
+    subtitle: 'Trust Your Data Enough to Bet On It',
     content: {
       type: 'detail',
       serviceLabel: 'DATA GOVERNANCE & COMPLIANCE',
@@ -72,7 +73,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Predictive Intelligence',
-    subtitle: 'Shift from dashboards that explain last quarter to intelligence that predicts next quarter.',
+    subtitle: "Know What's Coming, Not Just What Happened",
     content: {
       type: 'detail',
       serviceLabel: 'PREDICTIVE INTELLIGENCE',
@@ -85,7 +86,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Unstructured Data',
-    subtitle: 'Unlock the 80% of enterprise data sitting in documents, emails, call transcripts, PDFs, and images.',
+    subtitle: "Unlock the 80% You Haven't Been Able to Touch",
     content: {
       type: 'detail',
       serviceLabel: 'UNSTRUCTURED DATA',
@@ -98,7 +99,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Data Platform Optimization',
-    subtitle: 'Bridge the gap between the platform you invested in and the decisions your leadership was promised.',
+    subtitle: "Make the Investment You Already Made Actually Work",
     content: {
       type: 'detail',
       serviceLabel: 'DATA PLATFORM OPTIMIZATION',
@@ -197,7 +198,7 @@ export default function DataIntelligence() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
+                <img src={resolveImageSrc(imgHero)} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>

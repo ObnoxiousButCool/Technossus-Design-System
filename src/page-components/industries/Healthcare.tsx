@@ -10,6 +10,7 @@ import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
+import { resolveImageSrc } from '../../../ts/imageSrc';
 import imgHero from '../../../assets/Industries/Healthcare.png';
 
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
@@ -50,7 +51,7 @@ const solutionItems: AccordionItem[] = [
   },
   {
     title: 'Streaming Analytics Platform',
-    subtitle: 'Real-time visibility across patient care, operations, and systems — as data is generated, not hours later.',
+    subtitle: 'Enable real-time visibility across patient care, operations, and systems by streaming data as it is generated — not hours or days later.',
     content: {
       type: 'detail',
       serviceLabel: 'STREAMING ANALYTICS PLATFORM',
@@ -63,7 +64,7 @@ const solutionItems: AccordionItem[] = [
   },
   {
     title: 'Revenue Cycle Intelligence & Automation',
-    subtitle: 'Faster reimbursements, reduced claim denials, and improved revenue predictability.',
+    subtitle: 'Improve cash flow, reduce denials, and streamline revenue processes using data and automation.',
     content: {
       type: 'detail',
       serviceLabel: 'REVENUE CYCLE INTELLIGENCE',
@@ -175,7 +176,7 @@ export default function Healthcare() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
+                <img src={resolveImageSrc(imgHero)} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>

@@ -9,6 +9,7 @@ import { Button }     from '../../../components/Button';
 import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
+import { resolveImageSrc } from '../../../ts/imageSrc';
 import imgHero from '../../../assets/Website_Images/Services/AI Led Transformation.png';
 
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
@@ -34,7 +35,7 @@ const CornerBR = () => (
 const accordionItems: AccordionItem[] = [
   {
     title: 'AI Strategy & Readiness',
-    subtitle: 'Map where AI creates durable value, sequence use cases by impact, and align the organization around what\'s being built.',
+    subtitle: 'Know where AI fits  and the pace your organization can actually absorb it.',
     content: {
       type: 'detail',
       serviceLabel: 'AI STRATEGY & READINESS',
@@ -47,7 +48,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Decision Intelligence',
-    subtitle: 'Predictive models and live data pipelines embedded into the workflows your leaders actually make decisions in.',
+    subtitle: 'Decisions that land where your strategy said they would.',
     content: {
       type: 'detail',
       serviceLabel: 'DECISION INTELLIGENCE',
@@ -60,7 +61,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Agentic Automation',
-    subtitle: 'AI agents that understand context, make decisions within guardrails, and coordinate work without constant human intervention.',
+    subtitle: 'Work that coordinates itself,until it needs a human decision.',
     content: {
       type: 'detail',
       serviceLabel: 'AGENTIC AUTOMATION',
@@ -73,7 +74,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Enterprise Generative AI',
-    subtitle: 'Copilots and assistants trained on your data, governed by your policy, and measured against the productivity lift they deliver.',
+    subtitle: 'Gen-AI tools your teams actually use,because they actually help.',
     content: {
       type: 'detail',
       serviceLabel: 'ENTERPRISE GENERATIVE AI',
@@ -86,7 +87,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'AI Governance, Risk & Data Security',
-    subtitle: 'Policy frameworks, model registries, usage guardrails, and audit trails wired into the deployment path.',
+    subtitle: 'Board-defensible AI. From policy to production.',
     content: {
       type: 'detail',
       serviceLabel: 'AI GOVERNANCE, RISK & DATA SECURITY',
@@ -99,7 +100,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Innovation Labs & Prototyping',
-    subtitle: 'A working prototype in two weeks — to test whether an idea is worth scaling before you bet the strategy on it.',
+    subtitle: 'See it working,before you bet the strategy on it.',
     content: {
       type: 'detail',
       serviceLabel: 'INNOVATION LABS & PROTOTYPING',
@@ -196,7 +197,7 @@ export default function AIBusiness() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
+                <img src={resolveImageSrc(imgHero)} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>

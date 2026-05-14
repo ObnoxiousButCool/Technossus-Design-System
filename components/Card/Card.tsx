@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { resolveImageSrc, type ImageSource } from '../../ts/imageSrc';
 
 // Asset URLs from Figma
 const imgHeroPhoto     = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
@@ -16,6 +17,8 @@ const imgArrowForward  = '/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
 const red   = '#ED2939';
+
+type CardImageSource = ImageSource;
 
 // ─── Prop types ──────────────────────────────────────────────────────────────
 
@@ -32,7 +35,7 @@ interface CardDarkSmallProps {
 
 interface CardDarkMediumProps {
   mode: 'dark'; type: 'medium';
-  icon?: string;
+  icon?: CardImageSource;
   category?: string;
   title?: string;
   description?: string;
@@ -48,7 +51,7 @@ interface CardDarkLargeProps {
   heading?: string;
   body?: string;
   stats?: StatItem[];
-  image?: string;
+  image?: CardImageSource;
   onPrimary?: () => void;
   onSecondary?: () => void;
   primaryLabel?: string;
@@ -59,7 +62,7 @@ interface CardDarkLargeProps {
 
 interface CardDarkInsightsProps {
   mode: 'dark'; type: 'insights';
-  image?: string;
+  image?: CardImageSource;
   tags?: string;
   title?: string;
   excerpt?: string;
@@ -71,7 +74,7 @@ interface CardDarkInsightsProps {
 
 interface CardLightInsightsProps {
   mode: 'light'; type: 'insights';
-  image?: string;
+  image?: CardImageSource;
   tags?: string;
   title?: string;
   excerpt?: string;
@@ -83,7 +86,7 @@ interface CardLightInsightsProps {
 
 interface CardLightDeliverProps {
   mode: 'light'; type: 'deliver';
-  image?: string;
+  image?: CardImageSource;
   title?: string;
   description?: string;
   onArrow?: () => void;
@@ -95,7 +98,7 @@ interface CardLightLargeProps {
   mode: 'light'; type: 'large';
   heading?: string;
   body?: string[];
-  image?: string;
+  image?: CardImageSource;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -103,7 +106,7 @@ interface CardLightLargeProps {
 interface CardLightFeaturedProps {
   mode: 'light'; type: 'featured';
   /** Cover image shown on the right */
-  image?: string;
+  image?: CardImageSource;
   /** Red top badge, e.g. 'FEATURED BY TECHNOSSUS' */
   badge?: string;
   /** Category line, e.g. 'FINTECH • PLATFORM MODERNIZATION' */
@@ -123,7 +126,7 @@ interface CardLightFeaturedProps {
 interface CardDarkAcceleratorsProps {
   mode: 'dark'; type: 'accelerators';
   /** Cover image at top of card */
-  image?: string;
+  image?: CardImageSource;
   /** Tech stack pill tags e.g. ['Pinecone', 'Kafka', 'Snowflake', 'dbt'] */
   techTags?: string[];
   /** Category label e.g. 'DATA & INFRASTRUCTURE' */
@@ -227,7 +230,7 @@ export function Card(props: CardProps) {
       >
         <div style={{ backgroundColor: '#262626', width: 64, height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           {props.icon ? (
-            <img alt="" src={props.icon} style={{ width: 24, height: 30, objectFit: 'contain' }} />
+            <img alt="" src={resolveImageSrc(props.icon)} style={{ width: 24, height: 30, objectFit: 'contain' }} />
           ) : (
             <img alt="" src={imgContainerSvg1} style={{ width: 24, height: 30, display: 'block', objectFit: 'contain' }} />
           )}
@@ -317,7 +320,7 @@ export function Card(props: CardProps) {
 
         {!isMobile && (
           <div style={{ height: 400, position: 'relative', flexShrink: 0, width: 400, overflow: 'hidden' }}>
-            <img alt="" src={props.image ?? imgPhoto2Dark} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img alt="" src={resolveImageSrc(props.image) ?? imgPhoto2Dark} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         )}
       </div>
@@ -347,7 +350,7 @@ export function Card(props: CardProps) {
         }}
       >
         <div style={{ height: 220, position: 'relative', flexShrink: 0, width: '100%', overflow: 'hidden', backgroundColor: '#2A2A2A' }}>
-          {props.image && <img alt="" src={props.image} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
+          {props.image && <img alt="" src={resolveImageSrc(props.image)} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
           {!props.image && <img alt="" src={imgHeroPhoto} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
         </div>
 
@@ -403,7 +406,7 @@ export function Card(props: CardProps) {
           {props.image && (
             <img
               alt=""
-              src={props.image}
+              src={resolveImageSrc(props.image)}
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
             />
           )}
@@ -582,7 +585,7 @@ export function Card(props: CardProps) {
         }}
       >
         <div style={{ height: 220, position: 'relative', flexShrink: 0, width: '100%', overflow: 'hidden', backgroundColor: '#D4D4D4' }}>
-          {props.image && <img alt="" src={props.image} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
+          {props.image && <img alt="" src={resolveImageSrc(props.image)} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 24, width: '100%', boxSizing: 'border-box', flex: 1 }}>
@@ -631,7 +634,7 @@ export function Card(props: CardProps) {
         }}
       >
         <div style={{ height: 220, position: 'relative', flexShrink: 0, width: '100%', overflow: 'hidden', backgroundColor: '#D4D4D4' }}>
-          {props.image && <img alt="" src={props.image} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
+          {props.image && <img alt="" src={resolveImageSrc(props.image)} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 24, width: '100%', boxSizing: 'border-box', flex: 1 }}>
@@ -690,7 +693,7 @@ export function Card(props: CardProps) {
 
         {!isMobile && (
           <div style={{ height: 400, position: 'relative', flexShrink: 0, width: 400, overflow: 'hidden' }}>
-            <img alt="" src={props.image ?? imgPhoto2Light} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img alt="" src={resolveImageSrc(props.image) ?? imgPhoto2Light} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         )}
       </div>
@@ -937,7 +940,7 @@ export function Card(props: CardProps) {
           >
             <img
               alt=""
-              src={props.image ?? imgFeaturedPhoto}
+              src={resolveImageSrc(props.image) ?? imgFeaturedPhoto}
               style={{
                 position: 'absolute',
                 inset: 0,

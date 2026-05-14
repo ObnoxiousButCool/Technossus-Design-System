@@ -11,6 +11,7 @@ import { Stats }      from '../../../components/Stats';
 import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
+import { resolveImageSrc } from '../../../ts/imageSrc';
 import imgHero from '../../../assets/Website_Images/Services/Quality Eng..png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -34,7 +35,7 @@ const CornerBR = () => (
 const accordionItems: AccordionItem[] = [
   {
     title: 'Quality Engineering & Independent Assurance',
-    subtitle: 'Objective validation across releases, environments, and system changes — designed around how you actually build.',
+    subtitle: "Your release shouldn't feel like a bet every time.",
     content: {
       type: 'detail',
       serviceLabel: 'QUALITY ENGINEERING & INDEPENDENT ASSURANCE',
@@ -47,7 +48,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Continuous Quality & QAOps Engineering',
-    subtitle: 'Quality built into CI/CD pipelines — from design to release, risk surfaces early where it\'s cheapest to fix.',
+    subtitle: 'Quality that lives in the pipeline, from design to release.',
     content: {
       type: 'detail',
       serviceLabel: 'CONTINUOUS QUALITY & QAOPS ENGINEERING',
@@ -60,7 +61,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Performance, Resilience & Scalability',
-    subtitle: 'Validate system behavior under real load, resilience when dependencies fail, and behavior at scale.',
+    subtitle: 'Ship version one. Then build the product it needs to become.',
     content: {
       type: 'detail',
       serviceLabel: 'PERFORMANCE, RESILIENCE & SCALABILITY',
@@ -73,7 +74,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Governance, Compliance & Trust Assurance',
-    subtitle: 'Compliance-as-code for HIPAA, FDA, SOC 2, WCAG, and the EU AI Act — built into delivery from the start.',
+    subtitle: 'The product works. Now make it work like it was built today.',
     content: {
       type: 'detail',
       serviceLabel: 'GOVERNANCE, COMPLIANCE & TRUST ASSURANCE',
@@ -86,7 +87,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'AI-First & Responsible Quality Engineering',
-    subtitle: 'Validate model outputs, detect drift, test for bias, and build agentic test automation that adapts as systems evolve.',
+    subtitle: 'Keep the business logic. Lose the technical debt holding it hostage.',
     content: {
       type: 'detail',
       serviceLabel: 'AI-FIRST & RESPONSIBLE QUALITY ENGINEERING',
@@ -183,7 +184,7 @@ export default function QualityEngineering() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
+                <img src={resolveImageSrc(imgHero)} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>

@@ -7,6 +7,7 @@ import { CTABanner }      from '../../components/CTABanner';
 import { FadeUp }         from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint }  from '../../ts/breakpoints';
+import { resolveImageSrc } from '../../ts/imageSrc';
 import imgHeroBg      from '../../assets/Website_Images/Hero section/Contact Us.png';
 import imgLocUSA      from '../../assets/Website_images 2/Location/USA.png';
 import imgLocUK       from '../../assets/Website_images 2/Location/UK.png';
@@ -59,7 +60,7 @@ export default function ContactUs() {
       <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         <img
           alt=""
-          src={imgHeroBg}
+          src={resolveImageSrc(imgHeroBg)}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(89.97deg, rgba(1,1,1,0.91) 36.4%, rgba(1,1,1,0) 108.78%)' }} />
@@ -224,7 +225,7 @@ export default function ContactUs() {
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: 20 }}>
               {locations.map((loc, i) => (
                 <div key={i} style={{ backgroundColor: dark1, display: 'flex', flexDirection: 'column' }}>
-                  <img alt={loc.country} src={loc.image} style={{ width: '100%', height: isMobile ? 200 : 260, objectFit: 'cover', display: 'block' }} />
+                  <img alt={loc.country} src={resolveImageSrc(loc.image)} style={{ width: '100%', height: isMobile ? 200 : 260, objectFit: 'cover', display: 'block' }} />
                   <div style={{ border: `1px solid ${colors.text[700]}`, borderTop: 'none', padding: isMobile ? 16 : 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
                     <div>
                       <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: isMobile ? 18 : 24, lineHeight: '32px', color: '#FFFFFF', margin: 0 }}>{loc.country}</h3>

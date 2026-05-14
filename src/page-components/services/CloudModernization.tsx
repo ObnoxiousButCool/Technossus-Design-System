@@ -10,6 +10,7 @@ import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import { PlaceholderBlock } from '../../../components/DecorativeMedia';
 import type { AccordionItem } from '../../../components/Accordion';
+import { resolveImageSrc } from '../../../ts/imageSrc';
 import imgHero from '../../../assets/Website_Images/Services/Cloud consulting.png';
 
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -33,7 +34,7 @@ const CornerBR = () => (
 const accordionItems: AccordionItem[] = [
   {
     title: 'Cloud FinOps & AI Token Optimization',
-    subtitle: 'Bring FinOps discipline and AI token governance together in one unified cost ownership model.',
+    subtitle: 'Your cloud bill has line items nobody on your team can explain.',
     content: {
       type: 'detail',
       serviceLabel: 'CLOUD FINOPS & AI TOKEN OPTIMIZATION',
@@ -46,7 +47,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Multi-Cloud Resilience Engineering',
-    subtitle: 'Architect for portability, failover, and resilience across AWS, Azure, and GCP.',
+    subtitle: "One vendor's outage shouldn't be your outage.",
     content: {
       type: 'detail',
       serviceLabel: 'MULTI-CLOUD RESILIENCE ENGINEERING',
@@ -59,7 +60,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Autonomous Cloud Operations & AI/MLOps',
-    subtitle: 'Self-healing infrastructure, intelligent observability, and AI-assisted operations at scale.',
+    subtitle: "Your team didn't sign up to babysit infrastructure.",
     content: {
       type: 'detail',
       serviceLabel: 'AUTONOMOUS CLOUD OPERATIONS & AI/MLOPS',
@@ -72,7 +73,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Cloud-Hosted AI Governance & Compliance',
-    subtitle: 'Model lifecycle controls, audit trails, and compliance architecture built into your cloud environment.',
+    subtitle: 'Govern the models. Own the outcomes.',
     content: {
       type: 'detail',
       serviceLabel: 'CLOUD-HOSTED AI GOVERNANCE & COMPLIANCE',
@@ -85,7 +86,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: 'Cloud Security & Compliance for AI',
-    subtitle: 'Zero-trust architecture and AI-specific security patterns — defensible by design, not by documentation.',
+    subtitle: 'Be the one in the room who already knows the answer.',
     content: {
       type: 'detail',
       serviceLabel: 'CLOUD SECURITY & COMPLIANCE FOR AI',
@@ -182,7 +183,7 @@ export default function CloudModernization() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
+                <img src={resolveImageSrc(imgHero)} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>

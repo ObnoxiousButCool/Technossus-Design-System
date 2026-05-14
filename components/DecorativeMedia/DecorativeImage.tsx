@@ -1,4 +1,5 @@
 import React from 'react';
+import { resolveImageSrc, type ImageSource } from '../../ts/imageSrc';
 
 /**
  * DecorativeImage
@@ -10,7 +11,7 @@ import React from 'react';
  * Supports opacity, blend modes, and object-fit for faded/blended graphics.
  */
 export interface DecorativeImageProps {
-  src: string;
+  src: ImageSource;
   width?: number | string;
   height?: number | string;
   top?: number | string;
@@ -39,7 +40,7 @@ export function DecorativeImage({
 }: DecorativeImageProps) {
   return (
     <img
-      src={src}
+      src={resolveImageSrc(src)}
       alt=""
       aria-hidden
       style={{
