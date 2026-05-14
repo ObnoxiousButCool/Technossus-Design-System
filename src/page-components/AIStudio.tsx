@@ -431,11 +431,11 @@ export default function AIStudio() {
         style={{ backgroundColor: '#FFFFFF', paddingTop: sectionPaddingY, paddingBottom: sectionPaddingY }}
       >
         <div style={inner}>
-          <div style={{ backgroundColor: dark2, padding: darkPanelPadding, boxSizing: 'border-box', overflow: 'hidden' }}>
-          <FadeUp>
-            <Tag label="WHAT IS AI STUDIO" variant="light" style={{ marginBottom: 16 }} />
+           <FadeUp>
+            <Tag label="WHAT IS AI STUDIO" style={{ marginBottom: 16 }} />
           </FadeUp>
 
+          <div style={{ backgroundColor: dark2, padding: darkPanelPadding, boxSizing: 'border-box', overflow: 'hidden' }}>
           <div
             style={{
               display: 'flex',

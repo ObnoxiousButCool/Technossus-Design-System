@@ -101,6 +101,7 @@ export default function Home() {
     margin: '0 auto',
     padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
   };
+  const darkPanelPadding = isMobile ? '40px 24px' : isTablet ? '48px 32px' : 56;
 
   const h1Size = isMobile ? 28 : isTablet ? 36 : 48;
   const h1Line = isMobile ? '36px' : isTablet ? '44px' : '56px';
@@ -524,16 +525,14 @@ DENIALS 11% → 9% ON $4B REVENUE"
       {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
-          <FadeUp duration={500}><Tag label="AI SOLUTIONS AND ACCELERATORS" /></FadeUp>
+          <FadeUp duration={500}><Tag label="AI SOLUTIONS AND ACCELERATORS" style={{marginBottom: 16}} /></FadeUp>
           <div style={{
-            marginTop: 16,
-            position: 'relative',
+            backgroundColor: '#0A0A0F',
+            padding: darkPanelPadding,
+            boxSizing: 'border-box',
             overflow: 'hidden',
-            backgroundColor: dark2,
-            padding: isMobile ? '48px 24px' : isTablet ? '60px 32px' : 56,
           }}>
-            <CornerTL />
-            <CornerBR />
+            
 
             <FadeUp>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 36 }}>
