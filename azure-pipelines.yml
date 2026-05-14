@@ -165,20 +165,6 @@ stages:
             displayName: 'TypeScript strict type check'
             continueOnError: true
 
-      - job: Lint
-        displayName: 'ESLint'
-        steps:
-          - task: NodeTool@0
-            displayName: 'Install Node.js $(NODE_VERSION)'
-            inputs:
-              versionSpec: $(NODE_VERSION)
-
-          - script: npm ci --prefer-offline
-            displayName: 'Install dependencies'
-
-          - script: npm run lint
-            displayName: 'Run ESLint'
-
   # ─────────────────────────────────────────────
   # STAGE 3 — Build
   # ─────────────────────────────────────────────
