@@ -20,6 +20,9 @@ const imgBento3       = '/assets/fba5208f46ffc48029fdd0a7b3697e305c66419c.png';
 const imgHiringPerson = '/assets/841d1956c23918ec138a2eef41ff5a34b6b981e1.png';
 const imgSubtractTL   = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
 const imgSubtractBR   = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
+const imgJeffreyHarker = 'https://randomuser.me/api/portraits/men/32.jpg';
+const imgAnitaSalgado  = 'https://randomuser.me/api/portraits/women/44.jpg';
+const imgTylerZucchiatti = 'https://randomuser.me/api/portraits/men/75.jpg';
 
 // ── Local tokens ──────────────────────────────────────────────────────────────
 const sans  = fontFamily.sans;
@@ -83,18 +86,18 @@ const accordionItems: AccordionItem[] = [
   },
 ];
 
-const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red' }> = [
+const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red'; authorImage: string }> = [
   {
     quote: '"Flawless rollout of New Relic with no downtime and no change window allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — \'Ridiculously Qualified Team.\'"',
-    name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white',
+    name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white', authorImage: imgJeffreyHarker,
   },
   {
     quote: '"Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner. The team is knowledgeable, skilled, and go beyond to exceed expectations."',
-    name: 'Anita Salgado', title: 'Senior Business Systems Analyst', color: 'red',
+    name: 'Anita Salgado', title: 'Senior Business Systems Analyst', color: 'red', authorImage: imgAnitaSalgado,
   },
   {
     quote: '"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team\'s responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."',
-    name: 'Tyler Zucchiatti', title: 'Director, Software Development – Middleware & Integration', color: 'white',
+    name: 'Tyler Zucchiatti', title: 'Director, Software Development – Middleware & Integration', color: 'white', authorImage: imgTylerZucchiatti,
   },
 ];
 
@@ -104,7 +107,13 @@ export default function Careers() {
   const px = {
     maxWidth: 1440,
     margin: '0 auto',
-    padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 96px',
+    padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+  };
+
+  const heroPx = {
+    maxWidth: 1440,
+    margin: '0 auto',
+    padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 96px',
   };
 
   const heroFontSize   = isMobile ? 28 : isTablet ? 36 : 48;
@@ -115,6 +124,7 @@ export default function Careers() {
 
   return (
     <>
+      <main style={{ display: 'flex', flexDirection: 'column', gap: 80 }}>
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         <img
@@ -123,9 +133,10 @@ export default function Careers() {
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(89.97deg, rgba(1,1,1,0.91) 36.4%, rgba(1,1,1,0) 108.78%)' }} />
-        <div style={{ position: 'relative', ...px, minHeight: isMobile ? 400 : 560, display: 'flex', alignItems: 'center' }}>
+        <div style={{ position: 'relative', ...heroPx, minHeight: isMobile ? 400 : 560, display: 'flex', alignItems: 'center' }}>
           <div style={{ maxWidth: 711, display: 'flex', flexDirection: 'column', gap: isMobile ? 32 : 60 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <FadeUp duration={500}><Tag label="CAREERS AT TECHNOSSUS" variant="light" /></FadeUp>
               <FadeUp>
                 <p style={{ fontFamily: serif, fontWeight: 500, fontSize: heroFontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
                   <span style={{ color: '#FFFFFF' }}>Shape the </span>
@@ -155,8 +166,15 @@ export default function Careers() {
 
       {/* ── LIFE AT TECHNOSSUS / BENTO PHOTO GRID ────────────────────────────── */}
       <section style={{ backgroundColor: '#FFFFFF' }}>
-        <div style={{ ...px, paddingTop: isMobile ? 48 : isTablet ? 60 : 80, paddingBottom: isMobile ? 48 : isTablet ? 60 : 80, display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <FadeUp duration={500}><Tag label="LIFE AT TECHNOSSUS" /></FadeUp>
+        <div style={{ ...px, display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div>
+            <FadeUp duration={500}><Tag label="LIFE AT TECHNOSSUS" /></FadeUp>
+            <FadeUp>
+              <p style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
+                <span>Collaboration. Innovation. Growth.</span>
+              </p>
+            </FadeUp>
+          </div>
           {isMobile ? (
             /* Mobile: stacked */
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -235,7 +253,7 @@ export default function Careers() {
 
       {/* ── WE ARE HIRING ────────────────────────────────────────────────────── */}
       <section>
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ ...px }}>
           <div style={{
             position: 'relative',
             overflow: 'hidden',
@@ -309,6 +327,7 @@ export default function Careers() {
                 quote={t.quote}
                 name={t.name}
                 title={t.title}
+                authorImage={t.authorImage}
               />
             ))}
           </div>
@@ -316,6 +335,8 @@ export default function Careers() {
       </section>
 
       {/* ── CTA BANNER ───────────────────────────────────────────────────────── */}
+      <section>
+        <div style={{ ...px }}>
       <CTABanner
         size="large"
         label="LET'S WORK ON IT TOGETHER"
@@ -323,8 +344,12 @@ export default function Careers() {
         body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
         primaryCta="Schedule a Strategy Session →"
         secondaryCta="Contact Us"
+        style={{ width: '100%', maxWidth: 'none' }}
       />
-      <div style={{ height: isMobile ? 48 : 80 }} />
+        </div>
+      </section>
+      </main>
+      <div style={{ height: 80 }} />
     </>
   );
 }
