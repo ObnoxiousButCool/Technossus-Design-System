@@ -1,4 +1,4 @@
-import type { CaseStudyData } from '../page-components/CaseStudyDetail';
+import type { CaseStudyData } from './CaseStudyDetail';
 
 export const caseStudyData: Record<string, CaseStudyData> = {
   'clinical-trial-platform': {
