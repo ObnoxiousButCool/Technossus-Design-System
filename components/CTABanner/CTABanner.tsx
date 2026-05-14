@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { ContactFormPopUp } from '../ContactFormPopUp';
 
 // Asset URLs from Figma
 const imgVector3      = '/assets/1a6054aabb553cb83405edfefb392e579bcc4d72.svg';
@@ -22,6 +25,12 @@ export interface CTABannerProps {
   secondaryCta?: string;
   onPrimary?: () => void;
   onSecondary?: () => void;
+  /**
+   * When set on size="large", clicking the primary CTA opens the
+   * ContactFormPopUp modal pre-filled with this topic string.
+   * If omitted the banner falls back to onPrimary.
+   */
+  contactFormTopic?: string;
   /** @deprecated use primaryCta + onPrimary */
   ctaLabel?: string;
   /** @deprecated */
@@ -39,6 +48,7 @@ export function CTABanner({
   secondaryCta,
   onPrimary,
   onSecondary,
+  contactFormTopic,
   ctaLabel,
   onCta,
   className = '',
@@ -47,192 +57,298 @@ export function CTABanner({
   const { isMobile, isTablet } = useBreakpoint();
   const [largePrimaryHovered, setLargePrimaryHovered] = useState(false);
   const [smallPrimaryHovered, setSmallPrimaryHovered] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
+
   const resolvedPrimary  = primaryCta ?? ctaLabel ?? 'Schedule a Strategy Session';
   const resolvedCallback = onPrimary  ?? onCta;
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (formOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [formOpen]);
+
+  // Large banner: always open the contact form popup.
+  // Small banner: call onPrimary as usual.
+  const handlePrimaryClick = () => {
+    if (size === 'large') {
+      setFormOpen(true);
+    } else {
+      resolvedCallback?.();
+    }
+  };
+
+  // Topic shown inside the popup — explicit prop, else falls back to the eyebrow label
+  const resolvedTopic = contactFormTopic ?? label ?? "LET'S WORK TOGETHER";
+
   /* ── Large variant ────────────────────────────────────────────────────────── */
   if (size === 'large') {
-    return (
-      <div
-        className={className}
-        data-node-id="8:90"
-        style={{
-          backgroundColor: '#050510',
-          display: 'flex',
-          justifyContent: 'center',
-          overflow: 'hidden',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          padding: isMobile ? '48px 20px' : isTablet ? '64px 40px' : 80,
-          width: '100%',
-          position: 'relative',
-          boxSizing: 'border-box',
-          ...style,
-        }}
-      >
-        {/* Background wave pattern */}
-        <div
-          style={{
-            position: 'absolute',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            left: -2.41,
-            top: -1.74,
-            width: '100%',
-            height: 160,
-            overflow: 'hidden',
-            pointerEvents: 'none',
-          }}
-        >
-          <div style={{ transform: 'rotate(-90deg) scaleY(-1)', flexShrink: 0 }}>
-            <div style={{ height: 1251.717, position: 'relative', width: 159.569 }}>
-              <div style={{ position: 'absolute', top: 0, right: '0.31%', bottom: 0, left: 0 }}>
-                <img alt="" src={imgVector3} style={{ display: 'block', width: '100%', height: '100%' }} />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Hero image — hidden on mobile */}
-        {!isMobile && (
+  return (
+    <div
+      className={className}
+      data-node-id="8:90"
+      style={{
+        backgroundColor: '#050510',
+        display: 'flex',
+        justifyContent: 'center',
+        overflow: 'visible',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        padding: isMobile ? '40px 24px' : isTablet ? '48px 40px' : '56px 68px',
+        width: isMobile ? 'calc(100% - 40px)' : isTablet ? 'calc(100% - 80px)' : 'calc(100% - 160px)',
+        maxWidth: 1280,
+        minHeight: isMobile ? 'auto' : 375,
+        margin: '0 auto',
+        position: 'relative',
+        boxSizing: 'border-box',
+        ...style,
+      }}
+    >
+      {/* Red frame */}
+      {!isMobile && (
+        <>
           <div
             style={{
               position: 'absolute',
-              height: isTablet ? 320 : 456,
+              top: -16,
+              left: 0,
               right: 0,
-              top: 8,
-              width: isTablet ? '40%' : '53%',
+              height: 16,
+              backgroundColor: red,
               pointerEvents: 'none',
+              zIndex: 0,
             }}
-          >
-            <img
-              alt=""
-              src={imgImage108}
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          </div>
-        )}
+          />
 
-        {/* Content */}
+          <div
+            style={{
+              position: 'absolute',
+              top: -16,
+              left: 0,
+              width: 16,
+              height: 112,
+              backgroundColor: red,
+              pointerEvents: 'none',
+              zIndex: 0,
+            }}
+          />
+
+          <div
+            style={{
+              position: 'absolute',
+              top: -16,
+              right: 0,
+              width: 16,
+              height: 136,
+              backgroundColor: red,
+              pointerEvents: 'none',
+              zIndex: 0,
+            }}
+          />
+        </>
+      )}
+
+      {/* Hero image — hidden on mobile */}
+      {!isMobile && (
+        <div
+          style={{
+            position: 'absolute',
+            height: '100%',
+            right: 0,
+            top: 0,
+            width: isTablet ? '42%' : '47%',
+            pointerEvents: 'none',
+            zIndex: 1,
+            overflow: 'hidden',
+          }}
+        >
+          <img
+            alt=""
+            src={imgImage108}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              objectPosition: 'right bottom',
+              display: 'block',
+            }}
+          />
+        </div>
+      )}
+
+      {/* Content */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 24,
+          alignItems: 'flex-start',
+          position: 'relative',
+          zIndex: 2,
+          width: isMobile ? '100%' : isTablet ? '58%' : '52%',
+          maxWidth: 540,
+        }}
+      >
+        {/* Eyebrow */}
+        <div
+          style={{
+            fontFamily: sans,
+            fontWeight: 600,
+            fontSize: 14,
+            lineHeight: '20px',
+            color: '#FFFFFF',
+            textTransform: 'uppercase',
+          }}
+        >
+          {label ?? "LET'S WORK ON IT TOGETHER"}
+        </div>
+
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 32,
+            gap: 14,
             alignItems: 'flex-start',
-            position: 'relative',
-            width: isMobile ? '100%' : isTablet ? '60%' : '50%',
-            maxWidth: 640,
+            width: '100%',
           }}
         >
-          {/* Eyebrow */}
-          <div
+          <h2
             style={{
-              fontFamily: sans,
+              fontFamily: serif,
               fontWeight: 600,
-              fontSize: 14,
-              lineHeight: '28px',
+              fontSize: isMobile ? 28 : isTablet ? 30 : 32,
+              lineHeight: isMobile ? '34px' : '36px',
               color: '#FFFFFF',
+              margin: 0,
+              width: '100%',
             }}
           >
-            {label ?? "LET'S WORK ON IT TOGETHER"}
-          </div>
+            {heading}
+          </h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start', width: '100%' }}>
-            <h2
+          {body && (
+            <p
               style={{
-                fontFamily: serif,
-                fontWeight: 600,
-                fontSize: isMobile ? 24 : isTablet ? 28 : 32,
-                lineHeight: isMobile ? '32px' : '36px',
-                color: '#FFFFFF',
+                fontFamily: sans,
+                fontWeight: 500,
+                fontSize: isMobile ? 15 : 16,
+                lineHeight: isMobile ? '22px' : '24px',
+                color: '#F5F5F5',
                 margin: 0,
                 width: '100%',
               }}
             >
-              {heading}
-            </h2>
-            {body && (
-              <p
-                style={{
-                  fontFamily: sans,
-                  fontWeight: 500,
-                  fontSize: isMobile ? 15 : 18,
-                  lineHeight: '24px',
-                  color: '#F5F5F5',
-                  margin: 0,
-                  width: '100%',
-                }}
-              >
-                {body}
-              </p>
-            )}
-          </div>
+              {body}
+            </p>
+          )}
+        </div>
 
-          {/* CTA buttons */}
-          <div
+        {/* CTA buttons */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 14,
+            alignItems: 'flex-start',
+          }}
+        >
+          <button
+            onClick={handlePrimaryClick}
+            onMouseEnter={() => setLargePrimaryHovered(true)}
+            onMouseLeave={() => setLargePrimaryHovered(false)}
             style={{
               display: 'flex',
-              flexWrap: 'wrap',
-              gap: 12,
-              alignItems: 'flex-start',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 48,
+              minWidth: 228,
+              padding: '12px 22px',
+              backgroundColor: largePrimaryHovered ? '#D42030' : red,
+              color: '#FFFFFF',
+              fontFamily: sans,
+              fontWeight: 600,
+              fontSize: 14,
+              lineHeight: '20px',
+              border: 'none',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              transform: largePrimaryHovered ? 'scale(1.01)' : 'scale(1)',
+              transition: 'background-color 0.2s ease, transform 0.15s ease',
             }}
           >
+            {resolvedPrimary}
+          </button>
+
+          {secondaryCta && (
             <button
-              onClick={resolvedCallback}
-              onMouseEnter={() => setLargePrimaryHovered(true)}
-              onMouseLeave={() => setLargePrimaryHovered(false)}
+              onClick={onSecondary}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: 56,
-                padding: '16px 24px',
-                backgroundColor: largePrimaryHovered ? '#D42030' : red,
-                color: '#FFFFFF',
+                height: 48,
+                minWidth: 116,
+                padding: '12px 22px',
+                backgroundColor: 'transparent',
+                color: red,
                 fontFamily: sans,
                 fontWeight: 600,
-                fontSize: 16,
-                lineHeight: '28px',
-                border: 'none',
+                fontSize: 14,
+                lineHeight: '20px',
+                border: `1px solid ${red}`,
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
-                transform: largePrimaryHovered ? 'scale(1.01)' : 'scale(1)',
-                transition: 'background-color 0.2s ease, transform 0.15s ease',
               }}
             >
-              {resolvedPrimary}
+              {secondaryCta}
             </button>
-
-            {secondaryCta && (
-              <button
-                onClick={onSecondary}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: 56,
-                  padding: '16px 24px',
-                  backgroundColor: 'transparent',
-                  color: red,
-                  fontFamily: sans,
-                  fontWeight: 600,
-                  fontSize: 16,
-                  lineHeight: '28px',
-                  border: `1px solid ${red}`,
-                  cursor: 'pointer',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {secondaryCta}
-              </button>
-            )}
-          </div>
+          )}
         </div>
       </div>
-    );
-  }
+
+      {/* ── Contact Form Modal ── */}
+      {formOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          onClick={(e) => { if (e.target === e.currentTarget) setFormOpen(false); }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0,0,0,0.6)',
+            backdropFilter: 'blur(4px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: 16,
+          }}
+        >
+          <ContactFormPopUp
+            topic={resolvedTopic}
+            onClose={() => setFormOpen(false)}
+            onSubmit={(data) => {
+              setFormOpen(false);
+              console.log('Contact form submitted:', data);
+            }}
+            style={{
+              maxWidth: '100%',
+              maxHeight: '90vh',
+              overflowY: 'auto',
+              boxShadow: '0 24px 64px rgba(0,0,0,0.4)',
+            }}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
 
   /* ── Small variant ────────────────────────────────────────────────────────── */
   return (

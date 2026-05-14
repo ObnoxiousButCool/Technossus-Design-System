@@ -15,12 +15,14 @@ import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Careers from './pages/Careers';
 import CaseStudies from './pages/CaseStudies';
+import AIStudio from './pages/AIStudio';
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/ai-studio" element={<AIStudio />} />
         <Route path="/services/ai-business-transformation" element={<AIBusiness />} />
         <Route path="/services/data-intelligence-analytics" element={<DataIntelligence />} />
         <Route path="/services/digital-experience-design" element={<DigitalExperience />} />

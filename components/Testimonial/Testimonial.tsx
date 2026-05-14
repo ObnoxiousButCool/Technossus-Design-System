@@ -1,5 +1,6 @@
 import React from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { resolveImageSrc, type ImageSource } from '../../ts/imageSrc';
 
 // Asset URLs from Figma
 const imgQuoteRed   = '/assets/0998def33f700c7cb3694e6d19602e37485c5521.svg';
@@ -19,7 +20,7 @@ export interface TestimonialProps {
   title?: string;
   authorName?: string;
   authorTitle?: string;
-  authorImage?: string;
+  authorImage?: ImageSource;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -104,7 +105,7 @@ export function Testimonial({
           style={{
             width: 48,
             height: 48,
-            borderRadius: isRed ? 0 : 1,
+            borderRadius: '50%',
             overflow: 'hidden',
             backgroundColor: '#FFFFFF',
             flexShrink: 0,
@@ -112,7 +113,7 @@ export function Testimonial({
           }}
         >
           {authorImage ? (
-            <img src={authorImage} alt={resolvedName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={resolveImageSrc(authorImage)} alt={resolvedName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           ) : (
             <div style={{ width: '100%', height: '100%', backgroundColor: '#D0D0D0' }} />
           )}

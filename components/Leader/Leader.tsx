@@ -1,10 +1,10 @@
+'use client';
+
 import React, { useState } from 'react';
+import { resolveImageSrc, type ImageSource } from '../../ts/imageSrc';
 
 // Asset URLs from Figma
 const imgPhotoDefault = '/assets/4a0fc133e1c62243f5802cc6bf49e291e4ce809e.png';
-const imgPhotoActive  = '/assets/f47b6d03ecad9a885a234fa94d706d5b28d344ee.png';
-const imgSubtractTL   = '/assets/a673075179a0266ec6df160cb442200db0abbd40.svg';
-const imgSubtractBR   = '/assets/327c85a8854e96b954593950f4410e8d5c52443a.svg';
 
 // Design tokens
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -17,7 +17,7 @@ export interface LeaderProps {
   role?: string;
   name?: string;
   bio?: string;
-  photo?: string;
+  photo?: ImageSource;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -51,24 +51,15 @@ export function Leader({
         ...style,
       }}
     >
-      {/* Photo with cross-fade between Default/Active */}
+      {/* Photo: grayscale by default, transitions to colour on hover */}
       <div style={{ aspectRatio: '3/4', position: 'relative', flexShrink: 0, width: '100%', maxHeight: 336, overflow: 'hidden' }}>
         <img
           alt={name}
-          src={photo ?? imgPhotoDefault}
+          src={resolveImageSrc(photo) ?? imgPhotoDefault}
           style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none',
-            opacity: isActive ? 0 : 1,
-            transition: 'opacity 0.3s ease',
-          }}
-        />
-        <img
-          alt=""
-          src={photo ?? imgPhotoActive}
-          style={{
-            position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none',
-            opacity: isActive ? 1 : 0,
-            transition: 'opacity 0.3s ease',
+            filter: isActive ? 'grayscale(0%)' : 'grayscale(100%)',
+            transition: 'filter 250ms ease',
           }}
         />
       </div>
@@ -88,21 +79,6 @@ export function Leader({
         </div>
       </div>
 
-      {/* Corner decorations (visible when active/hovered) */}
-      <div style={{ position: 'absolute', left: 0, top: -0.12, width: 62, height: 62, opacity: isActive ? 1 : 0, transition: 'opacity 0.2s ease', pointerEvents: 'none' }}>
-        <div style={{ transform: 'rotate(180deg) scaleY(-1)', flexShrink: 0 }}>
-          <div style={{ position: 'relative', width: 62, height: 62 }}>
-            <img alt="" src={imgSubtractTL} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
-          </div>
-        </div>
-      </div>
-      <div style={{ position: 'absolute', right: 0, bottom: 274, width: 62, height: 62, opacity: isActive ? 1 : 0, transition: 'opacity 0.2s ease', pointerEvents: 'none' }}>
-        <div style={{ transform: 'scaleY(-1)', flexShrink: 0 }}>
-          <div style={{ position: 'relative', width: 62, height: 62 }}>
-            <img alt="" src={imgSubtractBR} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

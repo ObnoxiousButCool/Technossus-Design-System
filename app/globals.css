@@ -1,0 +1,36 @@
+/* Technossus design-system CSS — must precede all other rules */
+@import '../css/variables.css';
+@import '../css/typography.css';
+@import '../css/grid.css';
+@import '../css/responsive.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base reset (previously in index.html <style>) */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "General Sans", system-ui, -apple-system, sans-serif;
+  background: #fff;
+  color: #1E1E1E;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

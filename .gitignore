@@ -1,4 +1,8 @@
 node_modules/
 dist/
+dist-server/
+.next/
 .DS_Store
 *.local
+.claude/
+.vercel
