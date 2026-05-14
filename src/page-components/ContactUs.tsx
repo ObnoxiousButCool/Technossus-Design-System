@@ -36,7 +36,8 @@ const locations = [
 
 export default function ContactUs() {
   const { isMobile, isTablet } = useBreakpoint();
-  const [form, setForm] = useState({ name: '', email: '', company: '', topic: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', interest: '', message: '' });
+  const [consent, setConsent] = useState(false);
 
   const px = {
     maxWidth: 1440,
@@ -145,51 +146,94 @@ export default function ContactUs() {
           </div>
           </FadeUp>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 32 }}>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+
+            {/* Row 1: Your Name + Work Email */}
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 24 }}>
               <TextInputField
                 label="Your Name"
                 placeholder="Jane Doe"
                 value={form.name}
                 onChange={(v) => setForm(f => ({ ...f, name: v }))}
-                state="Filled"
+                required
               />
               <TextInputField
-                label="Email"
-                placeholder="JaneDoe@example.com"
+                label="Work Email"
+                placeholder="jane@company.com"
                 type="email"
                 value={form.email}
                 onChange={(v) => setForm(f => ({ ...f, email: v }))}
-                state="Filled"
-              />
-            </div>
-            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 32 }}>
-              <TextInputField
-                label="Company (Optional)"
-                placeholder="Atlassian"
-                value={form.company}
-                onChange={(v) => setForm(f => ({ ...f, company: v }))}
-                state="Filled"
-              />
-              <TextInputField
-                label="What's this about?"
-                placeholder="What's this about"
-                value={form.topic}
-                onChange={(v) => setForm(f => ({ ...f, topic: v }))}
+                required
               />
             </div>
 
+            {/* Row 2: Phone Number + Area of Interest */}
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 24 }}>
+              <TextInputField
+                label="Phone Number"
+                placeholder="+1 (949) 000-0000"
+                type="tel"
+                value={form.phone}
+                onChange={(v) => setForm(f => ({ ...f, phone: v }))}
+              />
+              <TextInputField
+                label="Area of Interest"
+                state="Dropdown"
+                selectedValue={form.interest}
+                onSelectChange={(v) => setForm(f => ({ ...f, interest: v }))}
+                options={[
+                  { value: 'ai-transformation',     label: 'AI-Led Business Transformation' },
+                  { value: 'data-analytics',         label: 'Data Intelligence & Analytics' },
+                  { value: 'digital-experience',     label: 'Digital Experience Design' },
+                  { value: 'product-engineering',    label: 'Product Engineering' },
+                  { value: 'quality-engineering',    label: 'Quality Engineering' },
+                  { value: 'cloud-modernization',    label: 'Cloud & Product Modernization' },
+                ]}
+              />
+            </div>
+
+            {/* Row 3: Full-width textarea */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
               <label style={{ fontFamily: sans, fontWeight: 600, fontSize: 14, lineHeight: '20px', color: dark }}>
-                Your Message
+                How Can We Help You?
               </label>
               <textarea
-                placeholder="Write your message"
+                placeholder="Briefly describe what you'd like to discuss or achieve..."
                 value={form.message}
                 onChange={(e) => setForm(f => ({ ...f, message: e.target.value }))}
-                rows={6}
-                style={{ fontFamily: sans, fontWeight: 500, fontSize: 16, lineHeight: '24px', color: dark, backgroundColor: '#FFFFFF', border: '1px solid #ADADAD', borderRadius: 2, padding: '18px 16px', width: '100%', boxSizing: 'border-box', outline: 'none', resize: 'vertical' }}
+                style={{
+                  fontFamily: sans, fontWeight: 500, fontSize: 16, lineHeight: '24px',
+                  color: dark, backgroundColor: '#FFFFFF', border: '1px solid #ADADAD',
+                  borderRadius: 2, padding: '18px 16px', width: '100%',
+                  boxSizing: 'border-box', outline: 'none', resize: 'vertical',
+                  minHeight: 142,
+                }}
               />
+            </div>
+
+            {/* Consent row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <button
+                type="button"
+                onClick={() => setConsent(c => !c)}
+                aria-checked={consent}
+                role="checkbox"
+                style={{
+                  width: 24, height: 24, flexShrink: 0, cursor: 'pointer',
+                  border: `2px solid ${red}`, borderRadius: 2,
+                  background: consent ? red : '#fff', padding: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}
+              >
+                {consent && (
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+                    <path d="M1 5L5 9L13 1" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
+              </button>
+              <span style={{ fontFamily: sans, fontWeight: 500, fontSize: 14, lineHeight: '20px', color: '#5B5B5B' }}>
+                I agree to be contacted by a Technossus representative regarding this request. Your data is never sold or shared.
+              </span>
             </div>
 
             <button
