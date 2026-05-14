@@ -88,7 +88,8 @@ export default function Home() {
   const inner: React.CSSProperties = {
     maxWidth: 1440,
     margin: '0 auto',
-    padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+    padding: isMobile ? '0 12px' : isTablet ? '0 32px' : '0 80px',
+    boxSizing: 'border-box',
   };
 
   const sectionBlock = (background = '#fff'): React.CSSProperties => ({
@@ -99,9 +100,9 @@ export default function Home() {
   const panelInner: React.CSSProperties = {
     maxWidth: 1440,
     margin: '0 auto',
-    padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
+    padding: isMobile ? '40px 12px' : isTablet ? '60px 32px' : '80px 80px',
   };
-  const darkPanelPadding = isMobile ? '40px 24px' : isTablet ? '48px 32px' : 56;
+  const darkPanelPadding = isMobile ? '32px 16px' : isTablet ? '48px 32px' : 56;
 
   const h1Size = isMobile ? 28 : isTablet ? 36 : 48;
   const h1Line = isMobile ? '36px' : isTablet ? '44px' : '56px';
@@ -112,6 +113,18 @@ export default function Home() {
   const statsImageHeight = isTablet ? 313 : 453;
 
   const cols3 = isMobile ? '1fr' : isTablet ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
+  const mobileGutter = 12;
+  const fullBleedStyle: React.CSSProperties = isMobile
+    ? {
+        width: `calc(100% + ${mobileGutter * 2}px)`,
+        maxWidth: 'none',
+        marginLeft: -mobileGutter,
+      }
+    : {
+        width: '100vw',
+        maxWidth: '100vw',
+        marginLeft: 'calc(50% - 50vw)',
+      };
   const heroSlides = [
     {
       heading: 'Shape the ',
@@ -194,9 +207,9 @@ export default function Home() {
   }, [heroCarouselApi, startHeroAutoplay, stopHeroAutoplay]);
 
   return (
-    <>
+    <main style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff' }}>
+      <section style={{ background: '#fff', overflow: 'hidden' }}>
         <div style={inner}>
 
           {/* Hero image + headline */}
@@ -210,9 +223,8 @@ export default function Home() {
             onBlurCapture={startHeroAutoplay}
             style={{
               position: 'relative',
-              width: '100vw',
-              marginLeft: 'calc(50% - 50vw)',
-              height: isMobile ? 360 : isTablet ? 420 : 463,
+              ...fullBleedStyle,
+              height: isMobile ? 430 : isTablet ? 420 : 463,
               overflow: 'hidden',
             }}>
             <div ref={heroCarouselRef} style={{ overflow: 'hidden', width: '100%', height: '100%' }}>
@@ -250,7 +262,7 @@ export default function Home() {
                       position: 'absolute', top: 0, left: '50%',
                       transform: 'translateX(-50%)',
                       width: '100%', maxWidth: 1440, height: '100%',
-                      padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '110px 98px',
+                      padding: isMobile ? '56px 12px' : isTablet ? '60px 32px' : '110px 98px',
                       zIndex: 2,
                       display: 'flex', alignItems: 'flex-start',
                       boxSizing: 'border-box',
@@ -295,9 +307,8 @@ export default function Home() {
           {/* ── Smart Search ── */}
           <div style={{
             background: '#010101',
-            width: '100vw',
-            marginLeft: 'calc(50% - 50vw)',
-            padding: isMobile ? '24px 16px' : isTablet ? '24px 32px' : '32px 24px',
+            ...fullBleedStyle,
+            padding: isMobile ? '24px 12px' : isTablet ? '24px 32px' : '32px 24px',
             display: 'flex', flexDirection: 'column', gap: 24,
             boxSizing: 'border-box',
           }}>
@@ -310,20 +321,22 @@ export default function Home() {
               {/* AI Search bar */}
               <div style={{
                 background: '#fff',
-                height: 65,
-                borderRadius: 9999,
+                minHeight: isMobile ? 58 : 65,
+                borderRadius: isMobile ? 24 : 9999,
                 border: '1px solid #F5F5F5',
                 boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.05)',
                 display: 'flex', alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '0 17px 0 25px',
+                gap: 12,
+                padding: isMobile ? '12px 12px 12px 16px' : '0 17px 0 25px',
                 boxSizing: 'border-box',
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
                   <Image src={imgSearchAiStar} alt="" width={20} height={20} style={{ flexShrink: 0 }} />
                   <span style={{
-                    fontFamily: sans, fontSize: 16, fontWeight: 500,
-                    color: '#949494', lineHeight: '24px',
+                    fontFamily: sans, fontSize: isMobile ? 13 : 16, fontWeight: 500,
+                    color: '#949494', lineHeight: isMobile ? '18px' : '24px',
+                    overflowWrap: 'anywhere',
                   }}>
                     Ask about services, industries, solutions, or case studies
                   </span>
@@ -394,7 +407,7 @@ export default function Home() {
             flexDirection: isMobile ? 'column' : 'row',
             gap: isMobile ? 40 : 0,
             alignItems: 'flex-start',
-            marginTop: 67,
+            marginTop: isMobile ? 32 : 67,
             position: 'relative',
             minHeight: isMobile ? undefined : 320,
           }}>
@@ -404,15 +417,15 @@ export default function Home() {
               background: '#F9F9F9',
               padding: 24,
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '32px 76px',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+              gap: isMobile ? 24 : '32px 76px',
               width: isMobile ? '100%' : undefined,
               boxSizing: 'border-box',
             }}>
-              <Stats value="250+" label="CONSULTANTS" />
-              <Stats value="150+" label="GLOBAL CLIENTS" />
-              <Stats value="15+" label="YEARS EXPERIENCE" />
-              <Stats value="98%" label="CLIENT RETENTION" />
+              <Stats value="250+" label="CONSULTANTS" style={isMobile ? { whiteSpace: 'normal' } : undefined} />
+              <Stats value="150+" label="GLOBAL CLIENTS" style={isMobile ? { whiteSpace: 'normal' } : undefined} />
+              <Stats value="15+" label="YEARS EXPERIENCE" style={isMobile ? { whiteSpace: 'normal' } : undefined} />
+              <Stats value="98%" label="CLIENT RETENTION" style={isMobile ? { whiteSpace: 'normal' } : undefined} />
             </div>
 
             {/* Globe + arc composition — single inline SVG so image href resolves in DOM */}
@@ -433,7 +446,7 @@ export default function Home() {
       <section style={{ background: '#fff' }}>
         <div style={{
           maxWidth: 1440, margin: '0 auto',
-          padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+          padding: isMobile ? '0 12px' : isTablet ? '0 32px' : '0 80px',
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', gap: 16,
         }}>
@@ -485,8 +498,8 @@ export default function Home() {
                   <span style={{ color: red }}>enterprise systems with clarity</span>
                 </h2>
                 <p style={{
-                  fontFamily: sans, fontSize: 18, fontWeight: 500,
-                  color: '#F9FAFB', lineHeight: '24px', margin: 0,
+                  fontFamily: sans, fontSize: isMobile ? 15 : 18, fontWeight: 500,
+                  color: '#F9FAFB', lineHeight: isMobile ? '22px' : '24px', margin: 0,
                 }}>
                   Test real AI systems before you commit to build. Validate outcomes, not assumptions.
                 </p>
@@ -494,7 +507,7 @@ export default function Home() {
             </FadeUp>
 
             <FadeUp delay={60}>
-              <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20, marginBottom: 36 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: isMobile ? 16 : 20, marginBottom: 36 }}>
                 {[
                   { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.', ctaLabel: 'Try in AI Studio' },
                   { category: 'FASTER PROCESSING', title: 'Automate document workflows', description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.', ctaLabel: 'Try in AI Studio' },
@@ -521,6 +534,7 @@ export default function Home() {
               body="Test, validate, and experience what's possible inside AI Studio."
               primaryCta="Explore AI Studio"
               onPrimary={() => router.push('/ai-studio')}
+              fullWidthMobileAction
             />
           </div>
         </div>
@@ -541,7 +555,7 @@ export default function Home() {
             </h2>
           </FadeUp>
           <FadeUp delay={60}>
-            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: isMobile ? 16 : 16, marginTop: 36 }}>
               {[
                 { title: 'AI Led Transformation', description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.', image: imgSvcAI },
                 { title: 'Cloud & Product Modernization', description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.', image: imgSvcCloud },
@@ -578,6 +592,7 @@ export default function Home() {
 $1.5M+ ANNUAL LABOR SAVINGS 
 DENIALS 11% → 9% ON $4B REVENUE"
                 image={imgCaseStudy}
+                hideImageOnTablet
                 stats={[
                   { value: '$50M+', label: 'TOTAL COST SAVING' },
                   { value: '20,000+', label: 'ORDERS PLACED SUCCESSFULLY' },
@@ -614,8 +629,8 @@ DENIALS 11% → 9% ON $4B REVENUE"
                   Latest <span style={{ color: red }}>insights.</span>
                 </h2>
                 <p style={{
-                  fontFamily: sans, fontSize: 18, fontWeight: 500,
-                  color: '#5C5C5C', lineHeight: '24px', margin: 0,
+                  fontFamily: sans, fontSize: isMobile ? 15 : 18, fontWeight: 500,
+                  color: '#5C5C5C', lineHeight: isMobile ? '22px' : '24px', margin: 0,
                 }}>
                   Thinking and perspectives from our domain experts.
                 </p>
@@ -631,7 +646,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
           </FadeUp>
 
           <FadeUp delay={60}>
-            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 32 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: isMobile ? 16 : 32 }}>
               {[
                 { tags: 'FINTECH • PLATFORM MODERNIZATION', title: 'Architecting a High-Frequency Trading Engine for Global Markets', excerpt: 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40% using event-driven microservices and localized data centers.' },
                 { tags: 'HEALTHCARE • AI AUTOMATION', title: 'Automating Prior Auth with AI: 60% Faster Approvals in Clinical Workflows', excerpt: 'A payer-provider integration that cut prior authorization turnaround from days to hours by embedding AI decision layers into existing clinical systems.' },
@@ -657,8 +672,8 @@ DENIALS 11% → 9% ON $4B REVENUE"
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
           <div style={{ background: dark2, position: 'relative', overflow: 'hidden', width: '100%' }}>
-            <CornerTL />
-            <CornerBR />
+            {!isMobile && <CornerTL />}
+            {!isMobile && <CornerBR />}
             <div style={panelInner}>
               <FadeUp>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 0, marginBottom: 36 }}>
@@ -670,8 +685,8 @@ DENIALS 11% → 9% ON $4B REVENUE"
                     Why Technossus
                   </h2>
                   <p style={{
-                    fontFamily: sans, fontSize: 18, fontWeight: 500,
-                    color: '#fff', lineHeight: '24px', margin: 0,
+                    fontFamily: sans, fontSize: isMobile ? 15 : 18, fontWeight: 500,
+                    color: '#fff', lineHeight: isMobile ? '22px' : '24px', margin: 0,
                   }}>
                     We don't just build software; we engineer competitive advantages through technological precision.
                   </p>
@@ -679,7 +694,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
               </FadeUp>
 
               <FadeUp delay={60}>
-                <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 24 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: isMobile ? 16 : 24 }}>
                   {[
                     { icon: imgIconOutcome, title: 'Embedded Delivery', description: "We work as an extension of your team , your governance, your cadence, your decisions. Engineers are embedded in your delivery, not parachuted in to disappear." },
                     { icon: imgIconScale, title: 'Built to Hand Off', description: "When the engagement ends, your team owns the architecture. Capability transfers as we build — which is how we've maintained 90%+ client retention across 15+ years." },
@@ -719,15 +734,15 @@ DENIALS 11% → 9% ON $4B REVENUE"
                 Hear what our clients have to say.
               </h2>
               <p style={{
-                fontFamily: sans, fontSize: 18, fontWeight: 500,
-                color: '#5C5C5C', lineHeight: '24px', margin: 0,
+                fontFamily: sans, fontSize: isMobile ? 15 : 18, fontWeight: 500,
+                color: '#5C5C5C', lineHeight: isMobile ? '22px' : '24px', margin: 0,
               }}>
                 Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
               </p>
             </div>
           </FadeUp>
 
-          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: isMobile ? 16 : 24 }}>
             <Testimonial
               color="white"
               quote={`"Flawless rollout of New Relic with no downtime and no change window allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — 'Ridiculously Qualified Team.'"`}
@@ -764,11 +779,12 @@ DENIALS 11% → 9% ON $4B REVENUE"
             primaryCta="Schedule a Strategy Session"
             secondaryCta="Contact Us"
             onSecondary={() => router.push('/contact')}
+            centerOnMobile
             style={{ width: '100%', maxWidth: 'none' }}
           />
         </div>
       </section>
       <div style={{ height: isMobile ? 48 : 80 }} />
-    </>
+    </main>
   );
 }

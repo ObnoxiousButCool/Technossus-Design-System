@@ -37,6 +37,8 @@ export interface CTABannerProps {
   ctaLabel?: string;
   /** @deprecated */
   onCta?: () => void;
+  centerOnMobile?: boolean;
+  fullWidthMobileAction?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -53,6 +55,8 @@ export function CTABanner({
   contactFormTopic,
   ctaLabel,
   onCta,
+  centerOnMobile = false,
+  fullWidthMobileAction = false,
   className = "",
   style,
 }: CTABannerProps) {
@@ -65,6 +69,8 @@ export function CTABanner({
   const resolvedPrimary =
     primaryCta ?? ctaLabel ?? "Schedule a Strategy Session";
   const resolvedCallback = onPrimary ?? onCta;
+  const shouldCenterMobile = isMobile && centerOnMobile;
+  const shouldStretchSmallMobile = isMobile && fullWidthMobileAction;
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -107,9 +113,9 @@ export function CTABanner({
           justifyContent: "center",
           overflow: "visible",
           flexDirection: "column",
-          alignItems: "flex-start",
+          alignItems: shouldCenterMobile ? "center" : "flex-start",
           padding: isMobile
-            ? "40px 24px"
+            ? shouldCenterMobile ? "36px 16px" : "40px 24px"
             : isTablet
               ? "48px 40px"
               : "56px 68px",
@@ -205,12 +211,13 @@ export function CTABanner({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 24,
-            alignItems: "flex-start",
+            gap: shouldCenterMobile ? 20 : 24,
+            alignItems: shouldCenterMobile ? "center" : "flex-start",
             position: "relative",
             zIndex: 2,
             width: isMobile ? "100%" : isTablet ? "58%" : "52%",
             maxWidth: 540,
+            textAlign: shouldCenterMobile ? "center" : "left",
           }}
         >
           {/* Eyebrow */}
@@ -232,7 +239,7 @@ export function CTABanner({
               display: "flex",
               flexDirection: "column",
               gap: 14,
-              alignItems: "flex-start",
+              alignItems: shouldCenterMobile ? "center" : "flex-start",
               width: "100%",
             }}
           >
@@ -273,7 +280,9 @@ export function CTABanner({
               display: "flex",
               flexWrap: "wrap",
               gap: 14,
-              alignItems: "flex-start",
+              alignItems: shouldCenterMobile ? "stretch" : "flex-start",
+              justifyContent: shouldCenterMobile ? "center" : "flex-start",
+              width: shouldCenterMobile ? "100%" : undefined,
             }}
           >
             <button
@@ -285,7 +294,8 @@ export function CTABanner({
                 alignItems: "center",
                 justifyContent: "center",
                 height: 48,
-                minWidth: 228,
+                width: shouldCenterMobile ? "100%" : undefined,
+                minWidth: shouldCenterMobile ? 0 : 228,
                 padding: "12px 22px",
                 backgroundColor: largePrimaryHovered ? "#D42030" : red,
                 color: "#FFFFFF",
@@ -311,7 +321,8 @@ export function CTABanner({
                   alignItems: "center",
                   justifyContent: "center",
                   height: 48,
-                  minWidth: 116,
+                  width: shouldCenterMobile ? "100%" : undefined,
+                  minWidth: shouldCenterMobile ? 0 : 116,
                   padding: "12px 22px",
                   backgroundColor: "transparent",
                   color: red,
@@ -383,8 +394,8 @@ export function CTABanner({
         justifyContent: "center",
         overflow: "hidden",
         gap: isMobile ? 20 : 24,
-        alignItems: isMobile ? "flex-start" : "center",
-        padding: isMobile ? "32px 20px" : isTablet ? "40px 32px" : 49,
+        alignItems: shouldStretchSmallMobile ? "stretch" : isMobile ? "flex-start" : "center",
+        padding: isMobile ? shouldStretchSmallMobile ? "28px 16px" : "32px 20px" : isTablet ? "40px 32px" : 49,
         width: "100%",
         position: "relative",
         boxSizing: "border-box",
@@ -407,7 +418,7 @@ export function CTABanner({
       />
 
       {/* Text content */}
-      <div style={{ flex: "1 0 0", position: "relative", minWidth: 0 }}>
+      <div style={{ flex: shouldStretchSmallMobile ? "none" : "1 0 0", position: "relative", minWidth: 0, width: shouldStretchSmallMobile ? "100%" : undefined }}>
         <div
           style={{
             display: "flex",
