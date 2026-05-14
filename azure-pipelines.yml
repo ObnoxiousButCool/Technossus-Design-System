@@ -1,0 +1,212 @@
+# ============================================================
+# CI Pipeline — Technossus Website V2 (Web / Next.js)
+# Azure Pipelines | Node.js 20 | next build
+#
+# Stages:
+#   1. audit     — dependency security scan + config flag review
+#   2. quality   — TypeScript type check + ESLint
+#   3. build     — next build + artifact publish
+# ============================================================
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+      - release/*
+
+pr:
+  branches:
+    include:
+      - main
+      - develop
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  NODE_VERSION: '20.x'
+  # Fail npm audit at this severity and above (high | critical | moderate | low)
+  NPM_AUDIT_LEVEL: 'high'
+
+# ─────────────────────────────────────────────
+# STAGE 1 — Audit
+# ─────────────────────────────────────────────
+stages:
+  - stage: Audit
+    displayName: '1 · Dependency & Config Audit'
+    jobs:
+      - job: DependencySecurityAudit
+        displayName: 'npm audit (vulnerability scan)'
+        steps:
+          - task: NodeTool@0
+            displayName: 'Install Node.js $(NODE_VERSION)'
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: npm ci --prefer-offline
+            displayName: 'Install dependencies (clean install)'
+
+          # Fails the job when high/critical vulnerabilities are found.
+          # Remove --audit-level flag or set to 'none' to report-only.
+          - script: npm audit --audit-level=$(NPM_AUDIT_LEVEL)
+            displayName: 'Scan npm dependencies for vulnerabilities'
+            continueOnError: false
+
+      - job: ConfigAudit
+        displayName: 'Configuration flag audit'
+        steps:
+          - checkout: self
+
+          # ── next.config.mjs ─────────────────────────────────────────
+          - script: |
+              echo "──────────────────────────────────────────────────────"
+              echo "Auditing next.config.mjs"
+              echo "──────────────────────────────────────────────────────"
+
+              ISSUES=0
+
+              if grep -q "ignoreBuildErrors.*true" next.config.mjs 2>/dev/null; then
+                echo "##vso[task.logissue type=warning]next.config.mjs: typescript.ignoreBuildErrors is TRUE — TypeScript errors are silently suppressed during next build. Consider removing this flag once TS errors are resolved."
+                ISSUES=$((ISSUES + 1))
+              fi
+
+              if grep -q "ignoreDuringBuilds.*true" next.config.mjs 2>/dev/null; then
+                echo "##vso[task.logissue type=warning]next.config.mjs: eslint.ignoreDuringBuilds is TRUE — ESLint errors will not block builds."
+                ISSUES=$((ISSUES + 1))
+              fi
+
+              if grep -qE "hostname:\s*['\"]?\*\*['\"]?" next.config.mjs 2>/dev/null; then
+                echo "##vso[task.logissue type=warning]next.config.mjs: images.remotePatterns uses wildcard hostname '**' — scope this to known domains in production."
+                ISSUES=$((ISSUES + 1))
+              fi
+
+              echo "next.config.mjs audit complete — $ISSUES issue(s) found."
+            displayName: 'Audit next.config.mjs'
+
+          # ── tsconfig.json ────────────────────────────────────────────
+          - script: |
+              echo "──────────────────────────────────────────────────────"
+              echo "Auditing tsconfig.json"
+              echo "──────────────────────────────────────────────────────"
+
+              ISSUES=0
+
+              if grep -qE '"noUnusedLocals"\s*:\s*false' tsconfig.json 2>/dev/null; then
+                echo "##vso[task.logissue type=warning]tsconfig.json: noUnusedLocals is FALSE — unused variables will not be reported."
+                ISSUES=$((ISSUES + 1))
+              fi
+
+              if grep -qE '"noUnusedParameters"\s*:\s*false' tsconfig.json 2>/dev/null; then
+                echo "##vso[task.logissue type=warning]tsconfig.json: noUnusedParameters is FALSE — unused function parameters will not be reported."
+                ISSUES=$((ISSUES + 1))
+              fi
+
+              if ! grep -q '"strict"\s*:\s*true' tsconfig.json 2>/dev/null; then
+                echo "##vso[task.logissue type=warning]tsconfig.json: strict mode is not explicitly enabled."
+                ISSUES=$((ISSUES + 1))
+              fi
+
+              echo "tsconfig.json audit complete — $ISSUES issue(s) found."
+            displayName: 'Audit tsconfig.json'
+
+          # ── vercel.json ──────────────────────────────────────────────
+          - script: |
+              echo "──────────────────────────────────────────────────────"
+              echo "Auditing vercel.json"
+              echo "──────────────────────────────────────────────────────"
+
+              if [ ! -f vercel.json ]; then
+                echo "vercel.json not found — skipping."
+                exit 0
+              fi
+
+              ISSUES=0
+
+              # Warn if no Content-Security-Policy header is configured
+              if ! grep -q "Content-Security-Policy" vercel.json 2>/dev/null; then
+                echo "##vso[task.logissue type=warning]vercel.json: No Content-Security-Policy header defined."
+                ISSUES=$((ISSUES + 1))
+              fi
+
+              # Warn if no X-Frame-Options header is configured
+              if ! grep -q "X-Frame-Options" vercel.json 2>/dev/null; then
+                echo "##vso[task.logissue type=warning]vercel.json: No X-Frame-Options header defined."
+                ISSUES=$((ISSUES + 1))
+              fi
+
+              echo "vercel.json audit complete — $ISSUES issue(s) found."
+            displayName: 'Audit vercel.json security headers'
+
+  # ─────────────────────────────────────────────
+  # STAGE 2 — Code Quality
+  # ─────────────────────────────────────────────
+  - stage: Quality
+    displayName: '2 · Code Quality'
+    dependsOn: Audit
+    condition: succeeded()
+    jobs:
+      - job: TypeCheck
+        displayName: 'TypeScript type check (tsc --noEmit)'
+        steps:
+          - task: NodeTool@0
+            displayName: 'Install Node.js $(NODE_VERSION)'
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: npm ci --prefer-offline
+            displayName: 'Install dependencies'
+
+          # NOTE: next.config.mjs has ignoreBuildErrors: true which suppresses
+          # TS errors during `next build`. Running tsc directly ensures errors
+          # are still surfaced in CI even while that flag remains in place.
+          # Set continueOnError: false once all type errors are resolved.
+          - script: npx tsc --noEmit
+            displayName: 'TypeScript strict type check'
+            continueOnError: true
+
+      - job: Lint
+        displayName: 'ESLint'
+        steps:
+          - task: NodeTool@0
+            displayName: 'Install Node.js $(NODE_VERSION)'
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: npm ci --prefer-offline
+            displayName: 'Install dependencies'
+
+          - script: npm run lint
+            displayName: 'Run ESLint'
+
+  # ─────────────────────────────────────────────
+  # STAGE 3 — Build
+  # ─────────────────────────────────────────────
+  - stage: Build
+    displayName: '3 · Build'
+    dependsOn: Quality
+    condition: succeeded()
+    jobs:
+      - job: NextBuild
+        displayName: 'next build'
+        steps:
+          - task: NodeTool@0
+            displayName: 'Install Node.js $(NODE_VERSION)'
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: npm ci --prefer-offline
+            displayName: 'Install dependencies'
+
+          - script: npm run build
+            displayName: 'Build Next.js application'
+            env:
+              NODE_ENV: production
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish .next build artifact'
+            inputs:
+              pathToPublish: '.next'
+              artifactName: 'nextjs-build'
+              publishLocation: Container
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
