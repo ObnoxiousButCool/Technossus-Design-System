@@ -21,7 +21,7 @@ trigger: none
 
 resources:
   pipelines:
-    - pipeline: CI
+    - pipeline: Technossus-WebsiteV2-Web
       # Must match the pipeline name shown in Azure DevOps Pipelines list.
       # Rename the CI pipeline to "Technossus-WebsiteV2-Web CI" in the portal
       # or update this value to match whatever name you chose.
