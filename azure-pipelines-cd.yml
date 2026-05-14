@@ -59,6 +59,9 @@ stages:
           - script: npm ci --prefer-offline
             displayName: 'Install dependencies (clean install)'
 
+          - script: npm i sharp
+            displayName: 'Install sharp (Next.js image optimisation)'
+
           - script: npm run build
             displayName: 'Build Next.js application'
             env:
