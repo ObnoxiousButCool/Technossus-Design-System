@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { useBreakpoint } from '../../ts/breakpoints';
 import { ContactFormPopUp } from '../ContactFormPopUp';
+import { getContactFormTopicForRoute } from './contactFormTopics';
 
 // Asset URLs from Figma
 const imgVector3      = '/assets/1a6054aabb553cb83405edfefb392e579bcc4d72.svg';
@@ -55,6 +57,7 @@ export function CTABanner({
   style,
 }: CTABannerProps) {
   const { isMobile, isTablet } = useBreakpoint();
+  const pathname = usePathname();
   const [largePrimaryHovered, setLargePrimaryHovered] = useState(false);
   const [smallPrimaryHovered, setSmallPrimaryHovered] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
@@ -83,7 +86,7 @@ export function CTABanner({
   };
 
   // Topic shown inside the popup — explicit prop, else falls back to the eyebrow label
-  const resolvedTopic = contactFormTopic ?? label ?? "LET'S WORK TOGETHER";
+  const resolvedTopic = contactFormTopic ?? getContactFormTopicForRoute(pathname) ?? label ?? "LET'S WORK TOGETHER";
 
   /* ── Large variant ────────────────────────────────────────────────────────── */
   if (size === 'large') {

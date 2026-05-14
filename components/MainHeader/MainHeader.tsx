@@ -47,19 +47,19 @@ const defaultNavItems: NavItem[] = [
     href: '/services',
     children: [
       { label: 'AI Led Business Transformation',  href: '/services/ai-business-transformation',  description: 'Engineering the new operating model.' },
+      { label: 'Cloud & Product Modernization',   href: '/services/cloud-product-modernization', description: 'Lift, refactor, and run smarter.' },
       { label: 'Data Intelligence & Analytics',   href: '/services/data-intelligence-analytics', description: 'Turn into a decision engine.' },
       { label: 'Digital Experience Design',       href: '/services/digital-experience-design',   description: 'Reimagine product, UX and brand.' },
       { label: 'Product Engineering',             href: '/services/product-engineering',         description: 'Ship full-stack at startup speed.' },
       { label: 'Quality Engineering & Automation', href: '/services/quality-engineering',        description: 'Test, observe, accelerate releases.' },
-      { label: 'Cloud & Product Modernization',   href: '/services/cloud-product-modernization', description: 'Lift, refactor, and run smarter.' },
     ],
   },
   {
     label: 'Industries',
     href: '/industries',
     children: [
-      { label: 'Healthcare',         href: '/industries/healthcare' },
       { label: 'Financial Services', href: '/industries/financial-services' },
+      { label: 'Healthcare',         href: '/industries/healthcare' },
       { label: 'HiTech / SaaS',      href: '/industries/hitech-saas' },
     ],
   },

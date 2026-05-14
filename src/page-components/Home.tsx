@@ -2,63 +2,67 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Tag }         from '../../components/Tag';
-import { Stats }       from '../../components/Stats';
+import useEmblaCarousel from 'embla-carousel-react';
+import { Tag } from '../../components/Tag';
+import { Stats } from '../../components/Stats';
 import { Testimonial } from '../../components/Testimonial';
-import { CTABanner }   from '../../components/CTABanner';
-import { Button }      from '../../components/Button';
-import { Card }        from '../../components/Card';
-import { FadeUp }      from '../../components/Animate/FadeUp';
+import { CTABanner } from '../../components/CTABanner';
+import { Button } from '../../components/Button';
+import { Card } from '../../components/Card';
+import { FadeUp } from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
 import { DecorativeOverlay, DecorativeImage } from '../../components/DecorativeMedia';
-import imgCollaborators  from '../../assets/Website_images 2/Logo.png';
-import imgAuthorJeffrey  from '../../assets/testimonials/Jaffrey.png';
-import imgAuthorAnita    from '../../assets/testimonials/anita.png';
-import imgAuthorTyler    from '../../assets/testimonials/Tyler.png';
-import imgSvcAI          from '../../assets/Website_Images/Services/AI Led Transformation.png';
-import imgSvcCloud       from '../../assets/Website_Images/Services/Cloud consulting.png';
-import imgSvcData        from '../../assets/Website_Images/Services/Data Intelligence.png';
-import imgSvcDigital     from '../../assets/Website_Images/Services/Digital Exp..png';
-import imgSvcProduct     from '../../assets/Website_Images/Services/Product Eng. .png';
-import imgSvcQuality     from '../../assets/Website_Images/Services/Quality Eng..png';
+import imgCollaborators from '../../assets/Website_images 2/Logo.png';
+import imgAuthorJeffrey from '../../assets/testimonials/Jaffrey.png';
+import imgAuthorAnita from '../../assets/testimonials/anita.png';
+import imgAuthorTyler from '../../assets/testimonials/Tyler.png';
+import imgSvcAI from '../../assets/Website_Images/Services/AI Led Transformation.png';
+import imgSvcCloud from '../../assets/Website_Images/Services/Cloud consulting.png';
+import imgSvcData from '../../assets/Website_Images/Services/Data Intelligence.png';
+import imgSvcDigital from '../../assets/Website_Images/Services/Digital Exp..png';
+import imgSvcProduct from '../../assets/Website_Images/Services/Product Eng. .png';
+import imgSvcQuality from '../../assets/Website_Images/Services/Quality Eng..png';
+import imgHomeFuture from '../../assets/Website_Images/Home page/home3.png';
+import imgHomeModernize from '../../assets/Website_Images/Home page/home2.png';
+import imgHomeAI from '../../assets/Website_Images/Home page/home1.png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
-const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
+const sans = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
-const red   = '#ED2939';
+const red = '#ED2939';
 const dark1 = '#1B1B1B';
 const dark2 = '#1E1E1E';
 
 // ─── Figma asset URLs ─────────────────────────────────────────────────────────
 // Hero
-const imgHeroBg         = '/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png';
+const imgHeroBg = '/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png';
 
 // Search bar icons
-const imgSearchAiStar   = '/assets/1396fbe0e7d98149afea22065d702750dbf4a387.svg';
-const imgSearchSend     = '/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg';
+const imgSearchAiStar = '/assets/1396fbe0e7d98149afea22065d702750dbf4a387.svg';
+const imgSearchSend = '/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg';
 
 // Stats section — combined globe + network arc composition
-const imgStatsComposed  = '/assets/215811fe-eab7-431c-9d72-d65f9783311c.png';
+const imgStatsComposed = '/assets/215811fe-eab7-431c-9d72-d65f9783311c.png';
 
 // Case Study
-const imgCaseStudy      = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
+const imgCaseStudy = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
 
 // What We Deliver + Insights card image
-const imgCardPhoto      = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
+const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 
 // AI Studio medium card icon (document)
-const imgDocumentIcon   = '/assets/e242e8576977e4f3d29c4be05ad738619168755a.svg';
+const imgDocumentIcon = '/assets/e242e8576977e4f3d29c4be05ad738619168755a.svg';
 
 // Why Technossus card icons
-const imgIconOutcome    = '/assets/ac8dbae3d6a4ef3869c92f062ba66c3ebc0095c2.svg';
-const imgIconScale      = '/assets/1842a7b6c6f7844a725781346897858a8c24e609.svg';
-const imgIconEnhance    = '/assets/be00e1883e0f4b7bbdff5b000b66f3f1cfa30930.svg';
+const imgIconOutcome = '/assets/ac8dbae3d6a4ef3869c92f062ba66c3ebc0095c2.svg';
+const imgIconScale = '/assets/1842a7b6c6f7844a725781346897858a8c24e609.svg';
+const imgIconEnhance = '/assets/be00e1883e0f4b7bbdff5b000b66f3f1cfa30930.svg';
 
 // Testimonial author images — imported at top of file
 
 // Corner decorators (Figma Subtract SVGs)
-const imgCornerTL       = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
-const imgCornerBR       = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
+const imgCornerTL = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
+const imgCornerBR = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
 
 // ─── Corner decorator components ──────────────────────────────────────────────
 const CornerTL = () => (
@@ -105,6 +109,86 @@ export default function Home() {
   const statsImageHeight = isTablet ? 313 : 453;
 
   const cols3 = isMobile ? '1fr' : isTablet ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
+  const heroSlides = [
+    {
+      heading: 'Shape the ',
+      accent: 'future of technology',
+      subheading: 'We’re more than a company, we’re a hub of innovation, collaboration, and continuous learning. If you’re passionate about technology and making real impact, your next chapter starts here. ',
+      cta: 'Show us the problem ',
+      href: '/services',
+      image: imgHomeFuture,
+    },
+    {
+      heading: 'Modernize what’s ',
+      accent: 'holding you back',
+      subheading: 'Move beyond legacy constraints to a scalable, future-ready foundation, enabling faster innovation and reliable business outcomes',
+      cta: 'Explore solutions',
+      href: '/services',
+      image: imgHomeModernize,
+    },
+    {
+      heading: 'Scale AI with Purpose,',
+      accent: ' not just pilots',
+      subheading: 'Move beyond experimentation to real-world implementation, delivering measurable business outcomes at scale',
+      cta: 'Start Planning',
+      href: '/contact',
+      image: imgHomeAI,
+    },
+    {
+      heading: 'Hit the outcomes that matters,',
+      accent: ' with precision.',
+      subheading: 'We help you what works, execute the precision, and turn the effortys into the measurable results faster.',
+      cta: 'Explore Solutions',
+      href: '/contact',
+      image: imgHeroBg,
+    },
+  ];
+  const [heroCarouselRef, heroCarouselApi] = useEmblaCarousel({
+    align: 'start',
+    loop: true,
+  });
+  const heroAutoplayRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
+  const reduceMotionRef = React.useRef(false);
+
+  const stopHeroAutoplay = React.useCallback(() => {
+    if (!heroAutoplayRef.current) return;
+
+    clearInterval(heroAutoplayRef.current);
+    heroAutoplayRef.current = null;
+  }, []);
+
+  const startHeroAutoplay = React.useCallback(() => {
+    if (!heroCarouselApi || reduceMotionRef.current || heroAutoplayRef.current) return;
+
+    heroAutoplayRef.current = setInterval(() => {
+      if (document.hidden) return;
+
+      heroCarouselApi.scrollNext();
+    }, 4500);
+  }, [heroCarouselApi]);
+
+  React.useEffect(() => {
+    if (!heroCarouselApi || typeof window === 'undefined') return undefined;
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncMotionPreference = () => {
+      reduceMotionRef.current = motionQuery.matches;
+
+      if (motionQuery.matches) {
+        stopHeroAutoplay();
+      } else {
+        startHeroAutoplay();
+      }
+    };
+
+    syncMotionPreference();
+    motionQuery.addEventListener('change', syncMotionPreference);
+
+    return () => {
+      motionQuery.removeEventListener('change', syncMotionPreference);
+      stopHeroAutoplay();
+    };
+  }, [heroCarouselApi, startHeroAutoplay, stopHeroAutoplay]);
 
   return (
     <>
@@ -112,145 +196,171 @@ export default function Home() {
       <section style={{ background: '#fff' }}>
         <div style={inner}>
 
-        {/* Hero image + headline */}
-        <div style={{
-          position: 'relative',
-          width: '100%',
-          height: isMobile ? 360 : isTablet ? 420 : 463,
-          overflow: 'hidden',
-        }}>
-          {/* Background photo */}
-          <Image
-            src={imgHeroBg}
-            alt=""
-            aria-hidden
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
-          {/* Dark gradient overlay */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.2) 100%)',
-          }} />
+          {/* Hero image + headline */}
+          <div
+            className="home-hero-carousel"
+            role="region"
+            aria-label="Featured Technossus messages"
+            onMouseEnter={stopHeroAutoplay}
+            onMouseLeave={startHeroAutoplay}
+            onFocusCapture={stopHeroAutoplay}
+            onBlurCapture={startHeroAutoplay}
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: isMobile ? 360 : isTablet ? 420 : 463,
+              overflow: 'hidden',
+            }}>
+            <div ref={heroCarouselRef} style={{ overflow: 'hidden', width: '100%', height: '100%' }}>
+              <div className="home-hero-carousel-track" style={{
+                display: 'flex',
+                height: '100%',
+                touchAction: 'pan-y pinch-zoom',
+              }}>
+                {heroSlides.map((slide, index) => (
+                  <div key={`${slide.heading}-${index}`} style={{
+                    position: 'relative',
+                    height: '100%',
+                    flex: '0 0 100%',
+                    minWidth: 0,
+                    overflow: 'hidden',
+                  }}>
+                    {/* Background photo */}
+                    <Image
+                      src={slide.image}
+                      alt=""
+                      aria-hidden
+                      fill
+                      priority={index === 0}
+                      sizes="100vw"
+                      style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    />
+                    {/* Dark gradient overlay */}
+                    <div style={{
+                      position: 'absolute', inset: 0,
+                      background: 'linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.2) 100%)',
+                    }} />
 
-          {/* Content */}
-          <div style={{
-            position: 'absolute', top: 0, left: '50%',
-            transform: 'translateX(-50%)',
-            width: '100%', maxWidth: 1440, height: '100%',
-            padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '110px 98px',
-            zIndex: 2,
-            display: 'flex', alignItems: 'flex-start',
-            boxSizing: 'border-box',
-          }}>
-            <div style={{ maxWidth: 565, display: 'flex', flexDirection: 'column', gap: 43 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <FadeUp>
-                  <h1 style={{
-                    fontFamily: serif,
-                    fontSize: h1Size, lineHeight: h1Line,
-                    fontWeight: 500, letterSpacing: '-0.02em',
-                    color: '#fff', margin: 0,
-                  }}>
-                    Hit the outcomes that matter,{' '}
-                    <span style={{ color: red }}>Every time.</span>
-                  </h1>
-                </FadeUp>
-                <FadeUp delay={80}>
-                  <p style={{
-                    fontFamily: sans,
-                    fontSize: isMobile ? 14 : 18,
-                    fontWeight: 500, lineHeight: '24px',
-                    color: '#fff', margin: 0,
-                  }}>
-                   We identify what works, execute with precision, and turn effort into measurable results, faster.
-                  </p>
-                </FadeUp>
+                    {/* Content */}
+                    <div style={{
+                      position: 'absolute', top: 0, left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '100%', maxWidth: 1440, height: '100%',
+                      padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '110px 98px',
+                      zIndex: 2,
+                      display: 'flex', alignItems: 'flex-start',
+                      boxSizing: 'border-box',
+                    }}>
+                      <div style={{ maxWidth: 565, display: 'flex', flexDirection: 'column', gap: isMobile ? 28 : 43 }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                          <FadeUp>
+                            <h1 style={{
+                              fontFamily: serif,
+                              fontSize: h1Size, lineHeight: h1Line,
+                              fontWeight: 500, letterSpacing: 0,
+                              color: '#fff', margin: 0,
+                            }}>
+                              {slide.heading}{' '}
+                              <span style={{ color: red }}>{slide.accent}</span>
+                            </h1>
+                          </FadeUp>
+                          <FadeUp delay={80}>
+                            <p style={{
+                              fontFamily: sans,
+                              fontSize: isMobile ? 14 : 18,
+                              fontWeight: 500, lineHeight: '24px',
+                              color: '#fff', margin: 0,
+                            }}>
+                              {slide.subheading}
+                            </p>
+                          </FadeUp>
+                        </div>
+                        <FadeUp delay={120}>
+                          <div>
+                            <Button variant="primary" label={slide.cta} href={slide.href} />
+                          </div>
+                        </FadeUp>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <FadeUp delay={120}>
-                <div>
-                  <Button variant="primary" label="Explore Solutions" href="/services" />
-                </div>
-              </FadeUp>
             </div>
           </div>
-        </div>
 
-        {/* ── Smart Search ── */}
-        <div style={{
-          background: '#010101',
-          padding: isMobile ? '24px 16px' : isTablet ? '24px 32px' : '32px 24px',
-          display: 'flex', flexDirection: 'column', gap: 24,
-        }}>
+          {/* ── Smart Search ── */}
           <div style={{
-            maxWidth: 1392, margin: '0 auto', width: '100%',
+            background: '#010101',
+            padding: isMobile ? '24px 16px' : isTablet ? '24px 32px' : '32px 24px',
             display: 'flex', flexDirection: 'column', gap: 24,
           }}>
-            {/* AI Search bar */}
             <div style={{
-              background: '#fff',
-              height: 65,
-              borderRadius: 9999,
-              border: '1px solid #F5F5F5',
-              boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.05)',
-              display: 'flex', alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '0 17px 0 25px',
-              boxSizing: 'border-box',
+              maxWidth: 1392, margin: '0 auto', width: '100%',
+              display: 'flex', flexDirection: 'column', gap: 24,
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <Image src={imgSearchAiStar} alt="" width={20} height={20} style={{ flexShrink: 0 }} />
-                <span style={{
-                  fontFamily: sans, fontSize: 16, fontWeight: 500,
-                  color: '#949494', lineHeight: '24px',
-                }}>
-                  Ask about services, industries, solutions, or case studies
-                </span>
-              </div>
+              {/* AI Search bar */}
               <div style={{
-                background: dark2, borderRadius: 22, padding: 8,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                flexShrink: 0,
+                background: '#fff',
+                height: 65,
+                borderRadius: 9999,
+                border: '1px solid #F5F5F5',
+                boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.05)',
+                display: 'flex', alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '0 17px 0 25px',
+                boxSizing: 'border-box',
               }}>
-                <Image src={imgSearchSend} alt="Send" width={24} height={24} />
-              </div>
-            </div>
-
-            {/* Quick picks */}
-            {!isMobile && (
-              <>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  {/* <span style={{ flex: 1, height: 1, background: '#383838' }} /> */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Image src={imgSearchAiStar} alt="" width={20} height={20} style={{ flexShrink: 0 }} />
                   <span style={{
-                    fontFamily: sans, fontSize: 18, fontWeight: 500,
-                    color: '#ADADAD', whiteSpace: 'nowrap', lineHeight: '24px',
+                    fontFamily: sans, fontSize: 16, fontWeight: 500,
+                    color: '#949494', lineHeight: '24px',
                   }}>
-                    Quick picks to get you started
+                    Ask about services, industries, solutions, or case studies
                   </span>
-                  <span style={{ flex: 1, height: 1, background: '#383838' }} />
                 </div>
                 <div style={{
-                  display: 'flex', alignItems: 'center',
-                  gap: 16, flexWrap: 'wrap',
+                  background: dark2, borderRadius: 22, padding: 8,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
                 }}>
-                  {['AI Adoption Strategy', 'Modernize Platforms', 'Data Analytics', 'Healthcare IT', 'Product Engineering'].map(chip => (
-                    <button key={chip} style={{
-                      display: 'inline-flex', alignItems: 'center',
-                      height: 48, padding: '0 20px', borderRadius: 37,
-                      background: '#383838', border: 'none',
-                      fontFamily: sans, fontSize: 16, fontWeight: 500,
-                      color: '#fff', cursor: 'pointer', lineHeight: '24px',
-                    }}>
-                      {chip}
-                    </button>
-                  ))}
+                  <Image src={imgSearchSend} alt="Send" width={24} height={24} />
                 </div>
-              </>
-            )}
+              </div>
+
+              {/* Quick picks */}
+              {!isMobile && (
+                <>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                    {/* <span style={{ flex: 1, height: 1, background: '#383838' }} /> */}
+                    <span style={{
+                      fontFamily: sans, fontSize: 18, fontWeight: 500,
+                      color: '#ADADAD', whiteSpace: 'nowrap', lineHeight: '24px',
+                    }}>
+                      Quick picks to get you started
+                    </span>
+                    <span style={{ flex: 1, height: 1, background: '#383838' }} />
+                  </div>
+                  <div style={{
+                    display: 'flex', alignItems: 'center',
+                    gap: 16, flexWrap: 'wrap',
+                  }}>
+                    {['AI Adoption Strategy', 'Modernize Platforms', 'Data Analytics', 'Healthcare IT', 'Product Engineering'].map(chip => (
+                      <button key={chip} style={{
+                        display: 'inline-flex', alignItems: 'center',
+                        height: 48, padding: '0 20px', borderRadius: 37,
+                        background: '#383838', border: 'none',
+                        fontFamily: sans, fontSize: 16, fontWeight: 500,
+                        color: '#fff', cursor: 'pointer', lineHeight: '24px',
+                      }}>
+                        {chip}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -291,8 +401,8 @@ export default function Home() {
             }}>
               <Stats value="250+" label="CONSULTANTS" />
               <Stats value="150+" label="GLOBAL CLIENTS" />
-              <Stats value="15+"  label="YEARS EXPERIENCE" />
-              <Stats value="98%"  label="CLIENT RETENTION" />
+              <Stats value="15+" label="YEARS EXPERIENCE" />
+              <Stats value="98%" label="CLIENT RETENTION" />
             </div>
 
             {/* Globe + arc composition — single inline SVG so image href resolves in DOM */}
@@ -351,14 +461,16 @@ export default function Home() {
                 mode="dark"
                 type="large"
                 category="HEALTHCARE"
-                heading="Automating Home Care Operations for Unprecedented Efficiency."
-                body="Transformed high-volume operational workflows with RPA and Smart Rules, eliminating manual bottlenecks across order entry, billing, and insurance, while enabling seamless management of thousands of daily transactions."
+                heading="Home Care Operations, Automated at Scale."
+                body="Transformed authorization, billing, and supply reorder workflows for a national home care leader, clearing manual bottlenecks across order entry and insurance while moving millions of transactions cleanly.
+$1.5M+ ANNUAL LABOR SAVINGS 
+DENIALS 11% → 9% ON $4B REVENUE"
                 image={imgCaseStudy}
                 stats={[
-                  { value: '$50M+',   label: 'TOTAL COST SAVING' },
+                  { value: '$50M+', label: 'TOTAL COST SAVING' },
                   { value: '20,000+', label: 'ORDERS PLACED SUCCESSFULLY' },
                 ]}
-                primaryLabel="View All Case Study"
+                primaryLabel="View Case Study"
                 secondaryLabel="View All"
               />
             </div>
@@ -383,12 +495,12 @@ export default function Home() {
           <FadeUp delay={60}>
             <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
               {[
-                { title: 'AI Led Transformation',                       description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.',          image: imgSvcAI      },
-                { title: 'Cloud & Product Modernization',               description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.',                          image: imgSvcCloud   },
-                { title: 'Data Intelligence & Analytics',               description: 'Turn raw data into decision-grade intelligence with real-time pipelines, semantic layers, and AI-powered insight delivery.',                     image: imgSvcData    },
-                { title: 'Digital Experience Design',                   description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.',                  image: imgSvcDigital },
-                { title: 'Product Engineering & Sustained Operations',  description: 'End-to-end software lifecycle management, from rapid prototyping to mission-critical maintenance and DevOps optimization.',                     image: imgSvcProduct },
-                { title: 'Quality Engineering & Verification',          description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.',           image: imgSvcQuality },
+                { title: 'AI Led Transformation', description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.', image: imgSvcAI },
+                { title: 'Cloud & Product Modernization', description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.', image: imgSvcCloud },
+                { title: 'Data Intelligence & Analytics', description: 'Closing the gap between data and decision with conversational analytics, predictive intelligence, governance, and unstructured data.', image: imgSvcData },
+                { title: 'Digital Experience Design', description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.', image: imgSvcDigital },
+                { title: 'Product Engineering & Sustained Operations', description: 'From first prototype to scaled platform, we support discovery, integration, modernization, and continuous delivery with your team.', image: imgSvcProduct },
+                { title: 'Quality Engineering & Verification', description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.', image: imgSvcQuality },
               ].map((card, i) => (
                 <Card
                   key={i}
@@ -442,9 +554,9 @@ export default function Home() {
             <FadeUp delay={60}>
               <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20, marginBottom: 36 }}>
                 {[
-                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.',                                        ctaLabel: 'Try in AI Studio' },
-                  { category: 'FASTER PROCESSING',  title: 'Automate document workflows',        description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.',  ctaLabel: 'Try in AI Studio' },
-                  { category: 'INTELLIGENT SEARCH', title: 'Surface insights from your data',    description: 'Connect your enterprise knowledge base to conversational AI that understands context, retrieves accurately, and scales across every team without custom pipelines.',                       ctaLabel: 'Try in AI Studio' },
+                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.', ctaLabel: 'Try in AI Studio' },
+                  { category: 'FASTER PROCESSING', title: 'Automate document workflows', description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.', ctaLabel: 'Try in AI Studio' },
+                  { category: 'INTELLIGENT SEARCH', title: 'Surface insights from your data', description: 'Connect your enterprise knowledge base to conversational AI that understands context, retrieves accurately, and scales across every team without custom pipelines.', ctaLabel: 'Try in AI Studio' },
                 ].map(card => (
                   <Card
                     key={card.category}
@@ -511,9 +623,9 @@ export default function Home() {
           <FadeUp delay={60}>
             <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 32 }}>
               {[
-                { tags: 'FINTECH • PLATFORM MODERNIZATION', title: 'Architecting a High-Frequency Trading Engine for Global Markets',           excerpt: 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40% using event-driven microservices and localized data centers.' },
-                { tags: 'HEALTHCARE • AI AUTOMATION',       title: 'Automating Prior Auth with AI: 60% Faster Approvals in Clinical Workflows', excerpt: 'A payer-provider integration that cut prior authorization turnaround from days to hours by embedding AI decision layers into existing clinical systems.' },
-                { tags: 'DATA ENGINEERING • ANALYTICS',     title: 'Building a Real-Time Analytics Platform for Enterprise Decision Intelligence', excerpt: 'How we replaced a batch-heavy data warehouse with a streaming architecture that delivers insights 14x faster across 12 business units.' },
+                { tags: 'FINTECH • PLATFORM MODERNIZATION', title: 'Architecting a High-Frequency Trading Engine for Global Markets', excerpt: 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40% using event-driven microservices and localized data centers.' },
+                { tags: 'HEALTHCARE • AI AUTOMATION', title: 'Automating Prior Auth with AI: 60% Faster Approvals in Clinical Workflows', excerpt: 'A payer-provider integration that cut prior authorization turnaround from days to hours by embedding AI decision layers into existing clinical systems.' },
+                { tags: 'DATA ENGINEERING • ANALYTICS', title: 'Building a Real-Time Analytics Platform for Enterprise Decision Intelligence', excerpt: 'How we replaced a batch-heavy data warehouse with a streaming architecture that delivers insights 14x faster across 12 business units.' },
               ].map((card, i) => (
                 <Card
                   key={i}
@@ -523,7 +635,7 @@ export default function Home() {
                   tags={card.tags}
                   title={card.title}
                   excerpt={card.excerpt}
-                  ctaLabel="See How We Work"
+                  ctaLabel="Read More"
                 />
               ))}
             </div>
@@ -538,46 +650,46 @@ export default function Home() {
             <CornerTL />
             <CornerBR />
             <div style={panelInner}>
-          <FadeUp>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 0, marginBottom: 36 }}>
-              <h2 style={{
-                fontFamily: serif,
-                fontSize: shSize, lineHeight: shLine,
-                fontWeight: 500, margin: 0,
-              }}>
-                <span style={{ color: '#fff' }}>Why </span>
-                <span style={{ color: red }}>Technossus</span>
-              </h2>
-              <p style={{
-                fontFamily: sans, fontSize: 18, fontWeight: 500,
-                color: '#fff', lineHeight: '24px', margin: 0,
-              }}>
-                We don't just build software; we engineer competitive advantages through technological precision.
-              </p>
-            </div>
-          </FadeUp>
+              <FadeUp>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 0, marginBottom: 36 }}>
+                  <h2 style={{
+                    fontFamily: serif,
+                    fontSize: shSize, lineHeight: shLine,
+                    fontWeight: 500, margin: 0,
+                  }}>
+                    <span style={{ color: '#fff' }}>Why </span>
+                    <span style={{ color: red }}>Technossus</span>
+                  </h2>
+                  <p style={{
+                    fontFamily: sans, fontSize: 18, fontWeight: 500,
+                    color: '#fff', lineHeight: '24px', margin: 0,
+                  }}>
+                    We don't just deliver software, we engineer outcomes your team can defend, scale, and own.
+                  </p>
+                </div>
+              </FadeUp>
 
-          <FadeUp delay={60}>
-          <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 24 }}>
-            {[
-              { icon: imgIconOutcome, title: 'Outcome Driven',      description: 'Our systems are meticulously designed to scale operations and unlock new growth opportunities, ensuring measurable impact on your bottom line.' },
-              { icon: imgIconScale,   title: 'Scale AI',            description: 'Rapidly scale your business operations through high-performance engineering that integrates advanced AI models into your existing enterprise infrastructure.' },
-              { icon: imgIconScale,   title: 'Speed To Market',     description: 'Accelerate your product roadmap and launch faster with AI-powered engineering cycles that significantly reduce time-to-market while maintaining quality.' },
-              { icon: imgIconEnhance, title: 'Enhance Experience',  description: 'We engineer intuitive, high-performance digital products that elevate user engagement and foster long-term brand loyalty through seamless experiences.' },
-              { icon: imgIconScale,   title: 'Integrated Approach', description: 'Our methodology bridges the gap between high-level product strategy, user-centric design, and robust technical engineering for unified results.' },
-              { icon: imgIconScale,   title: 'Simplify Complexity', description: 'We build architectures designed to manage massive scale and inherent technical complexity while ensuring security and adaptability for evolving needs.' },
-            ].map(card => (
-              <Card
-                key={card.title}
-                mode="dark"
-                type="small"
-                icon={<Image src={card.icon} alt="" width={28} height={28} style={{ width: 'auto', height: 28 }} />}
-                title={card.title}
-                description={card.description}
-              />
-            ))}
-          </div>
-          </FadeUp>
+              <FadeUp delay={60}>
+                <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 24 }}>
+                  {[
+                    { icon: imgIconOutcome, title: 'Embedded Delivery', description: "We work as an extension of your team , your governance, your cadence, your decisions. Engineers are embedded in your delivery, not parachuted in to disappear." },
+                    { icon: imgIconScale, title: 'Built to Hand Off', description: "When the engagement ends, your team owns the architecture. Capability transfers as we build — which is how we've maintained 90%+ client retention across 15+ years." },
+                    { icon: imgIconScale, title: 'Weeks, Not Quarters', description: 'AI-accelerated engineering compresses idea to evidence into weeks. Speed comes from eliminating waste, not from skipping what matters , your quality bar stays intact.' },
+                    { icon: imgIconEnhance, title: 'Consulting Meets Engineering', description: 'We own the intersection of consultative thinking and expert engineering , strategy you can act on, and systems your team can defend in front of a board.' },
+                    { icon: imgIconScale, title: 'Outcomes That Land', description: "Investment accountability is part of delivery. What you approved is what gets built, and every decision traces back to the outcome it was meant to shape." },
+                    { icon: imgIconScale, title: 'Simplify Complexity', description: 'We build architectures designed to manage massive scale and inherent technical complexity while ensuring security and adaptability for evolving needs.' },
+                  ].map(card => (
+                    <Card
+                      key={card.title}
+                      mode="dark"
+                      type="small"
+                      icon={<Image src={card.icon} alt="" width={28} height={28} style={{ width: 'auto', height: 28 }} />}
+                      title={card.title}
+                      description={card.description}
+                    />
+                  ))}
+                </div>
+              </FadeUp>
             </div>
           </div>
         </div>
@@ -589,22 +701,22 @@ export default function Home() {
           <FadeUp duration={500}><Tag label="TESTIMONIALS" /></FadeUp>
 
           <FadeUp>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16, marginBottom: 48 }}>
-            <h2 style={{
-              fontFamily: serif,
-              fontSize: shSize, lineHeight: shLine,
-              fontWeight: 500, color: '#010101', margin: 0,
-            }}>
-              Hear what{' '}
-              <span style={{ color: red }}>our clients have to say.</span>
-            </h2>
-            <p style={{
-              fontFamily: sans, fontSize: 18, fontWeight: 500,
-              color: '#5C5C5C', lineHeight: '24px', margin: 0,
-            }}>
-              Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
-            </p>
-          </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16, marginBottom: 48 }}>
+              <h2 style={{
+                fontFamily: serif,
+                fontSize: shSize, lineHeight: shLine,
+                fontWeight: 500, color: '#010101', margin: 0,
+              }}>
+                Hear what{' '}
+                <span style={{ color: red }}>our clients have to say.</span>
+              </h2>
+              <p style={{
+                fontFamily: sans, fontSize: 18, fontWeight: 500,
+                color: '#5C5C5C', lineHeight: '24px', margin: 0,
+              }}>
+                Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
+              </p>
+            </div>
           </FadeUp>
 
           <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 24 }}>
