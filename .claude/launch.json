@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "vite-dev",
+      "name": "next-dev",
       "runtimeExecutable": "/bin/bash",
-      "runtimeArgs": ["-c", "cd /Users/pranavmanchanda/Claude/.claude/worktrees/objective-wu-113819 && node_modules/.bin/vite --port 4321 --host"],
-      "port": 4321
+      "runtimeArgs": ["-c", "cd /Users/pranavmanchanda/Claude/.claude/worktrees/clever-thompson-32b1b1 && node_modules/.bin/next dev -p 3001"],
+      "port": 3001
     }
   ]
 }
