@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import CaseStudyDetail from '../../../src/page-components/CaseStudyDetail';
-import { caseStudyData } from '../../../src/data/caseStudies';
+import CaseStudyDetail from '../../../src/page-components/case-study/CaseStudyDetail';
+import { caseStudyData } from '../../../src/page-components/case-study/data';
 
 interface Props {
   params: Promise<{ slug: string }>;

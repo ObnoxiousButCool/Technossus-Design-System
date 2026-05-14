@@ -18,7 +18,7 @@ import imgSvcData       from '../../assets/Website_Images/Services/Data Intellig
 import imgSvcCloud      from '../../assets/Website_Images/Services/Cloud consulting.png';
 import imgSvcDigital    from '../../assets/Website_Images/Services/Digital Exp..png';
 import imgSvcProduct    from '../../assets/Website_Images/Services/Product Eng. .png';
-import imgFeaturedPhoto from '../../assets/Website_Images/Services/AI Led Transformation.png';
+import imgFeaturedPhoto from '../../assets/Website_Images/Services/Ai-studio-image.png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans   = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -32,7 +32,6 @@ const imgHeroBg      = '/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png';
 const imgCornerSvgTL = '/assets/d3bd3c494981fc117beb9354c38eaf44f6d42039.svg';
 const imgCornerSvgBR = '/assets/e35ee95a68b0f29bf73fcd76e8285772bff083b1.svg';
 const imgCardPhoto   = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
-const imgFeatPhotoBg = '/assets/8b5b322290a3502aa74e1a09d670545080a3d3a8.png';
 const imgArrow       = '/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
 
 // ─── Red corner decorators ────────────────────────────────────────────────────
@@ -195,7 +194,8 @@ export default function AIStudio() {
   const [searchQuery, setSearchQuery] = useState('');
 
 
-  const px = isMobile ? 24 : isTablet ? 40 : 80;
+  const px = isMobile ? 16 : isTablet ? 32 : 80;
+  const sectionPaddingY = isMobile ? 48 : isTablet ? 60 : 80;
   const inner: React.CSSProperties = {
     maxWidth: 1440,
     margin: '0 auto',
@@ -203,6 +203,7 @@ export default function AIStudio() {
     paddingRight: px,
     boxSizing: 'border-box',
   };
+  const darkPanelPadding = isMobile ? '40px 24px' : isTablet ? '48px 32px' : 56;
 
   // ── Section label styles ─────────────────────────────────────────────────
   const sectionH2: React.CSSProperties = {
@@ -256,7 +257,7 @@ export default function AIStudio() {
           }}
         />
 
-        <div style={{ ...inner, position: 'relative', zIndex: 1, paddingTop: isMobile ? 64 : 96, paddingBottom: 0 }}>
+        <div style={{ ...inner, position: 'relative', zIndex: 1, paddingTop: sectionPaddingY, paddingBottom: 0 }}>
           {/* Eyebrow */}
           <FadeUp>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 32 }}>
@@ -309,7 +310,7 @@ export default function AIStudio() {
 
           {/* Smart Search */}
           <FadeUp delay={240}>
-            <div style={{ marginTop: isMobile ? 48 : 64, paddingBottom: isMobile ? 40 : 56 }}>
+            <div style={{ marginTop: isMobile ? 40 : 56, paddingBottom: sectionPaddingY }}>
               <SearchBar
                 placeholder="Ask about AI use cases, accelerators, industries, or sprints…"
                 value={searchQuery}
@@ -357,7 +358,7 @@ export default function AIStudio() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="Why TAS — stats"
-        style={{ backgroundColor: '#F5F5F5', paddingTop: isMobile ? 56 : 80, paddingBottom: isMobile ? 56 : 80 }}
+        style={{ backgroundColor: '#F5F5F5', paddingTop: sectionPaddingY, paddingBottom: sectionPaddingY }}
       >
         <div style={inner}>
           <FadeUp>
@@ -427,9 +428,10 @@ export default function AIStudio() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="What is AI Studio"
-        style={{ backgroundColor: dark2, paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: '#FFFFFF', paddingTop: sectionPaddingY, paddingBottom: sectionPaddingY }}
       >
         <div style={inner}>
+          <div style={{ backgroundColor: dark2, padding: darkPanelPadding, boxSizing: 'border-box', overflow: 'hidden' }}>
           <FadeUp>
             <Tag label="WHAT IS AI STUDIO" variant="light" style={{ marginBottom: 16 }} />
           </FadeUp>
@@ -446,10 +448,6 @@ export default function AIStudio() {
               overflow: 'hidden',
             }}
           >
-            {/* Corner decorators */}
-            {!isMobile && <CornerTL />}
-            {!isMobile && <CornerBR />}
-
             {/* Left — heading + body */}
             <FadeUp style={{ flexShrink: 0, maxWidth: isMobile ? '100%' : 560 }}>
               <h2 style={{ ...sectionH2Dark, fontSize: isMobile ? 28 : 36, lineHeight: isMobile ? '36px' : '40px', marginBottom: 24 }}>
@@ -526,6 +524,7 @@ export default function AIStudio() {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -533,7 +532,7 @@ export default function AIStudio() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="Engagement formats"
-        style={{ backgroundColor: '#FFFFFF', paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: '#FFFFFF'}}
       >
         <div style={inner}>
           {/* Header */}
@@ -594,7 +593,8 @@ export default function AIStudio() {
                     style={{
                       fontFamily: sans, fontWeight: 600,
                       fontSize: 20, lineHeight: '28px',
-                      color: '#1E1E1E', margin: '0 0 12px',
+                      color: red,
+                      margin: '0 0 12px',
                     }}
                   >
                     {f.title}
@@ -616,7 +616,8 @@ export default function AIStudio() {
           {/* AI Use Cases heading */}
           <FadeUp>
             <h2 style={{ ...sectionH2, maxWidth: 720, marginBottom: isMobile ? 32 : 48 }}>
-              AI Use Cases built for how your business operates
+              AI Use Cases built for how 
+              <span style={{ color: red }}> your business operates</span>
             </h2>
           </FadeUp>
 
@@ -630,9 +631,9 @@ export default function AIStudio() {
             }}
           >
             {[
-              { image: imgSvcAI,    tags: 'HEALTHCARE • AI AUTOMATION',     title: 'AI-Powered Prior Authorisation',     excerpt: 'Automated prior auth workflows that cut decision time from days to minutes, reducing admin burden across clinical operations.' },
-              { image: imgSvcData,  tags: 'FINANCIAL SERVICES • ANALYTICS', title: 'Real-Time Risk & Fraud Detection',   excerpt: 'ML models trained on transaction patterns that surface anomalies as they happen — not hours later in a batch report.' },
-              { image: imgSvcCloud, tags: 'HITECH & SAAS • AGENTS',         title: 'Autonomous Document Intelligence',   excerpt: 'Multi-agent pipelines that ingest, extract, classify, and route unstructured documents at enterprise scale.' },
+              { image: imgSvcAI,    tags: 'HEALTHCARE • AI AUTOMATION',     title: 'Intelligent Care Journey Orchestration',     excerpt: 'Streamline patient coordination across appointments, follow-ups, and provider workflows through real-time AI-driven orchestration.' },
+              { image: imgSvcData,  tags: 'FINANCIAL SERVICES • ANALYTICS', title: 'Enterprise Financial Intelligence Platform ',   excerpt: 'Subhead:Transform invoices, receipts, and vendor records into structured financial intelligence with AI-powered automation and ERP integration.' },
+              { image: imgSvcCloud, tags: 'HITECH & SAAS • AGENTS',         title: 'AI-Powered Conversation Intelligence',   excerpt: 'Analyze sales and support interactions at scale to improve customer experience, agent performance, and operational visibility.' },
             ].map((card, i) => (
               <FadeUp key={card.title} delay={i * 80}>
                 <Card
@@ -665,9 +666,10 @@ export default function AIStudio() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="AI Solutions and Accelerators"
-        style={{ backgroundColor: '#0A0A0F', paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: '#FFFFFF', paddingTop: sectionPaddingY, paddingBottom: sectionPaddingY }}
       >
         <div style={inner}>
+          <div style={{ backgroundColor: '#0A0A0F', padding: darkPanelPadding, boxSizing: 'border-box', overflow: 'hidden' }}>
           {/* Header */}
           <FadeUp>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
@@ -752,6 +754,7 @@ export default function AIStudio() {
               primaryCta="Request an Accelerator"
             />
           </FadeUp>
+          </div>
         </div>
       </section>
 
@@ -760,7 +763,7 @@ export default function AIStudio() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="Latest insights"
-        style={{ backgroundColor: '#F5F5F5', paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: '#F5F5F5', paddingTop: sectionPaddingY, paddingBottom: sectionPaddingY }}
       >
         <div style={inner}>
           {/* Header */}
@@ -778,7 +781,7 @@ export default function AIStudio() {
           </FadeUp>
 
           <FadeUp delay={120}>
-            <p style={{ ...sectionSubtitle, marginBottom: isMobile ? 40 : 56 }}>
+            <p style={{ ...sectionSubtitle, marginBottom: isMobile ? 10 : 0 }}>
               Articles, research, case studies, and perspectives from TAS members. Featured
               pieces selected by the Technossus editorial team.
             </p>
@@ -789,7 +792,7 @@ export default function AIStudio() {
             <Card
               mode="light"
               type="featured"
-              image={imgFeatPhotoBg}
+              image={imgFeaturedPhoto}
               badge="FEATURED BY TECHNOSSUS"
               category="HEALTHCARE • AI STRATEGY"
               title="Why Prior Authorisation Is the Best First AI Use Case in Healthcare"
@@ -798,13 +801,25 @@ export default function AIStudio() {
               authorName="Dr. Rohan Mehta"
               authorRole="Chief Medical Informatics Officer · TAS Member"
               ctaLabel="READ MORE"
-              style={{ marginBottom: 64 }}
+              style={{ marginBottom: 64, padding: isMobile ? '32px 24px' : '0px 0px', }}
+              
             />
           </FadeUp>
 
+          <div
+            style={{
+              backgroundColor: dark2,
+              padding: isMobile ? '40px 24px' : isTablet ? '48px 32px' : 56,
+              position: 'relative',
+              overflow: 'hidden',
+            }}
+          >
+          {!isMobile && <CornerTL />}
+          {!isMobile && <CornerBR />}
+
           {/* From the Community heading */}
           <FadeUp>
-            <h2 style={{ ...sectionH2, fontSize: isMobile ? 24 : 32, lineHeight: '40px', marginBottom: isMobile ? 32 : 48 }}>
+            <h2 style={{ ...sectionH2Dark, fontSize: isMobile ? 24 : 32, lineHeight: '40px', marginBottom: isMobile ? 32 : 48 }}>
               From the Community
             </h2>
           </FadeUp>
@@ -825,7 +840,7 @@ export default function AIStudio() {
             ].map((card, i) => (
               <FadeUp key={card.title} delay={i * 80}>
                 <Card
-                  mode="light"
+                  mode="dark"
                   type="insights"
                   image={card.image}
                   tags={card.tags}
@@ -841,9 +856,9 @@ export default function AIStudio() {
           <FadeUp>
             <div
               style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #E5E5E5',
-                padding: isMobile ? 32 : 48,
+                backgroundColor: '#0A0A0F',
+                border: '1px solid #2A2A2A',
+                padding: isMobile ? 24 : 40,
                 display: 'flex',
                 flexDirection: isMobile ? 'column' : 'row',
                 alignItems: isMobile ? 'flex-start' : 'center',
@@ -870,12 +885,12 @@ export default function AIStudio() {
                   style={{
                     fontFamily: sans, fontWeight: 600,
                     fontSize: isMobile ? 20 : 24, lineHeight: '32px',
-                    color: '#1E1E1E', margin: '0 0 8px',
+                    color: '#FFFFFF', margin: '0 0 8px',
                   }}
                 >
                   Have something worth sharing?
                 </h3>
-                <p style={{ ...sectionSubtitle, margin: 0 }}>
+                <p style={{ ...sectionSubtitleDark, margin: 0 }}>
                   TAS members can submit articles, research, and case studies. Selected
                   pieces are editorially featured and distributed to the full TAS community.
                 </p>
@@ -886,6 +901,7 @@ export default function AIStudio() {
               </div>
             </div>
           </FadeUp>
+          </div>
         </div>
       </section>
 
@@ -894,7 +910,7 @@ export default function AIStudio() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="TAS Delivery Framework"
-        style={{ backgroundColor: '#FFFFFF', paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: '#FFFFFF', paddingTop: sectionPaddingY, paddingBottom: sectionPaddingY }}
       >
         <div style={inner}>
           {/* Header */}
@@ -984,9 +1000,10 @@ export default function AIStudio() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         aria-label="Enterprise AI capabilities"
-        style={{ backgroundColor: dark1, paddingTop: isMobile ? 56 : 96, paddingBottom: isMobile ? 56 : 96 }}
+        style={{ backgroundColor: '#FFFFFF' }}
       >
         <div style={inner}>
+          <div style={{ backgroundColor: dark1, padding: darkPanelPadding, boxSizing: 'border-box', overflow: 'hidden' }}>
           {/* Header */}
           <FadeUp>
             <Tag label="OUR AI CAPABILITIES" variant="light" style={{ marginBottom: 16 }} />
@@ -1064,13 +1081,15 @@ export default function AIStudio() {
               );
             })}
           </div>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
           LARGE CTA BANNER
       ═══════════════════════════════════════════════════════════════════ */}
-      <section aria-label="Get started with AI Studio">
+      <section aria-label="Get started with AI Studio" style={{ backgroundColor: '#FFFFFF' }}>
+        <div style={{ ...inner, paddingTop: sectionPaddingY, paddingBottom: sectionPaddingY }}>
         <CTABanner
           size="large"
           label="LET'S BUILD SOMETHING"
@@ -1079,7 +1098,9 @@ export default function AIStudio() {
           primaryCta="Schedule a Strategy Session"
           secondaryCta="Explore Accelerators"
           contactFormTopic="AI Studio Enquiry"
+          style={{ width: '100%', maxWidth: 'none' }}
         />
+        </div>
       </section>
     </>
   );
