@@ -88,16 +88,16 @@ const accordionItems: AccordionItem[] = [
 
 const testimonials: Array<{ quote: string; name: string; title: string; color: 'white' | 'red'; authorImage: string }> = [
   {
-    quote: '"Flawless rollout of New Relic with no downtime and no change window allows CommonSpirit Health deep understanding of consumer experience. Net savings on overall costs by delivering projects with half of the requested staff — \'Ridiculously Qualified Team.\'"',
-    name: 'Jeffrey Harker', title: 'System Manager Cloud Engineering', color: 'white', authorImage: imgJeffreyHarker,
+    quote: 'Working at Technossus has given me the opportunity to solve meaningful challenges while continuously growing my technical and leadership skills. The collaborative environment here truly encourages innovation and ownership.',
+    name: 'Pooja Thite', title: 'Consultant- Software Development (Level I) | Technical', color: 'white', authorImage: imgJeffreyHarker,
   },
   {
-    quote: '"Technossus has been a game-changer for AdaptHealth. Their dedication to quality and commitment to continuous improvement is unmatched. Their adaptability and willingness to learn make them the perfect partner. The team is knowledgeable, skilled, and go beyond to exceed expectations."',
-    name: 'Anita Salgado', title: 'Senior Business Systems Analyst', color: 'red', authorImage: imgAnitaSalgado,
+    quote: 'Technossus empowers its teams to think beyond conventional solutions. Every project brings new opportunities to learn, innovate, and create real business impact for clients across industries.',
+    name: 'Aman', title: 'Senior Management Trainee | Functional', color: 'red', authorImage: imgAnitaSalgado,
   },
   {
-    quote: '"We are very pleased with the quality of service the Technossus team has provided to the BTX lab. The lab sincerely appreciates the team\'s responsiveness and attention to detail in building new features into our LIMS and for the resolution of production issues."',
-    name: 'Tyler Zucchiatti', title: 'Director, Software Development – Middleware & Integration', color: 'white', authorImage: imgTylerZucchiatti,
+    quote: 'What stands out most about Technossus is the people. It’s a place where expertise, teamwork, and ambition come together, creating an environment where you’re supported to do your best work every day.',
+    name: 'Kuldeep Thakur', title: 'Intern-Software Development | Technical', color: 'white', authorImage: imgTylerZucchiatti,
   },
 ];
 
@@ -152,12 +152,12 @@ export default function Careers() {
             <FadeUp delay={120}>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <button style={{ display: 'flex', alignItems: 'center', gap: 8, height: 56, padding: '16px 24px', backgroundColor: red, border: 'none', cursor: 'pointer', fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: '#FFFFFF' }}>
-                Show us the problem
+                Send Us Your Resume
                 <img alt="" src={imgArrowForward} style={{ width: 24, height: 24 }} />
               </button>
-              <button style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 56, padding: '16px 24px', backgroundColor: 'transparent', border: `1px solid ${red}`, cursor: 'pointer', fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: red }}>
+              {/* <button style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 56, padding: '16px 24px', backgroundColor: 'transparent', border: `1px solid ${red}`, cursor: 'pointer', fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: red }}>
                 See how we work
-              </button>
+              </button> */}
             </div>
             </FadeUp>
           </div>
@@ -311,7 +311,7 @@ export default function Careers() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0 }}>
                   <span style={{ color: '#010101' }}>Hear what </span>
-                  <span style={{ color: red }}>our clients have to say.</span>
+                  <span style={{ color: red }}> our Team Says.</span>
                 </h2>
                 <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: colors.text[700], margin: 0 }}>
                   Real experiences, trusted partnerships, and measurable impact from the businesses we've helped transform.
@@ -339,10 +339,10 @@ export default function Careers() {
         <div style={{ ...px }}>
       <CTABanner
         size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session →"
+        label="LET'S WORK TOGETHER"
+        heading="Together, we can break boundaries and build what’s next with confidence"
+        body="Join our talent community to stay updated on future openings that match your skill set and interests."
+        primaryCta="Join Us"
         secondaryCta="Contact Us"
         style={{ width: '100%', maxWidth: 'none' }}
       />
