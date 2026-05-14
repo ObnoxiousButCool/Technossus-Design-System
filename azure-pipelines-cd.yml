@@ -21,11 +21,12 @@ trigger: none
 
 resources:
   pipelines:
-    - pipeline: Technossus-WebsiteV2-Web
-      # Must match the pipeline name shown in Azure DevOps Pipelines list.
-      # Rename the CI pipeline to "Technossus-WebsiteV2-Web CI" in the portal
-      # or update this value to match whatever name you chose.
-      source: 'Technossus-WebsiteV2-Web CI'
+    - pipeline: web_ci
+      # 'project' and 'source' must exactly match the Azure DevOps project name
+      # and pipeline name respectively. Azure DevOps defaults the pipeline name
+      # to the repo name when you first create a pipeline.
+      project: 'Technossus-WebsiteV2'
+      source: 'Technossus-WebsiteV2-Web'
       trigger:
         branches:
           include:
