@@ -9,6 +9,7 @@ import { Button }     from '../../../components/Button';
 import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
+import { resolveImageSrc } from '../../../ts/imageSrc';
 import imgHero from '../../../assets/Website_Images/Services/AI Led Transformation.png';
 
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
@@ -196,7 +197,7 @@ export default function AIBusiness() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
+                <img src={resolveImageSrc(imgHero)} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>

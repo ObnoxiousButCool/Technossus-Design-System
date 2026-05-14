@@ -9,6 +9,7 @@ import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
 import type { AccordionItem } from '../../components/Accordion';
+import { resolveImageSrc } from '../../ts/imageSrc';
 import imgHeroBg from '../../assets/Website_Images/Hero section/Careers page.png';
 
 // ── Figma asset URLs ──────────────────────────────────────────────────────────
@@ -118,7 +119,7 @@ export default function Careers() {
       <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         <img
           alt=""
-          src={imgHeroBg}
+          src={resolveImageSrc(imgHeroBg)}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(89.97deg, rgba(1,1,1,0.91) 36.4%, rgba(1,1,1,0) 108.78%)' }} />

@@ -8,6 +8,7 @@ import { CTABanner }   from '../../components/CTABanner';
 import { FadeUp }      from '../../components/Animate/FadeUp';
 import { colors, fontFamily } from '../../ts/tokens';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { resolveImageSrc } from '../../ts/imageSrc';
 import imgRavnish from '../../assets/Website_Images/Leadership/Ravnish.png';
 import imgGiri    from '../../assets/Website_Images/Leadership/Giri.png';
 import imgKumar   from '../../assets/Website_Images/Leadership/Kumar.png';
@@ -98,7 +99,7 @@ export default function AboutUs() {
       <section style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         <img
           alt=""
-          src={imgHeroBg}
+          src={resolveImageSrc(imgHeroBg)}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(89.97deg, rgba(1,1,1,0.91) 36.4%, rgba(1,1,1,0) 108.78%)' }} />

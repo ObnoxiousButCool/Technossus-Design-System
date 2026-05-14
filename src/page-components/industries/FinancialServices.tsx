@@ -10,6 +10,7 @@ import { FadeUp }     from '../../../components/Animate/FadeUp';
 import { Card }       from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
+import { resolveImageSrc } from '../../../ts/imageSrc';
 import imgHero from '../../../assets/Industries/BSFI.png';
 
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
@@ -218,7 +219,7 @@ export default function FinancialServices() {
             </div>
             {!isMobile && (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', minHeight: isTablet ? 300 : 460 }}>
-                <img src={imgHero} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
+                <img src={resolveImageSrc(imgHero)} alt="" style={{ width: '100%', height: isTablet ? 300 : 460, objectFit: 'cover', display: 'block' }} />
               </div>
             )}
           </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { resolveImageSrc, type ImageSource } from '../../ts/imageSrc';
 
 // Asset URLs from Figma
 const imgPhotoDefault = '/assets/4a0fc133e1c62243f5802cc6bf49e291e4ce809e.png';
@@ -16,7 +17,7 @@ export interface LeaderProps {
   role?: string;
   name?: string;
   bio?: string;
-  photo?: string;
+  photo?: ImageSource;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -54,7 +55,7 @@ export function Leader({
       <div style={{ aspectRatio: '3/4', position: 'relative', flexShrink: 0, width: '100%', maxHeight: 336, overflow: 'hidden' }}>
         <img
           alt={name}
-          src={photo ?? imgPhotoDefault}
+          src={resolveImageSrc(photo) ?? imgPhotoDefault}
           style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none',
             filter: isActive ? 'grayscale(0%)' : 'grayscale(100%)',

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { resolveImageSrc, type ImageSource } from '../../ts/imageSrc';
 
 // Asset URLs from Figma
 const imgHeroPhoto     = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
@@ -17,10 +18,7 @@ const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
 const serif = '"Roboto Serif", Georgia, serif';
 const red   = '#ED2939';
 
-type CardImageSource = string | { src: string };
-
-const resolveImageSrc = (source?: CardImageSource) =>
-  typeof source === 'string' ? source : source?.src;
+type CardImageSource = ImageSource;
 
 // ─── Prop types ──────────────────────────────────────────────────────────────
 

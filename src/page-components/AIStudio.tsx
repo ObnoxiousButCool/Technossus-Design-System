@@ -10,6 +10,7 @@ import { Chips }      from '../../components/Chips';
 import { SearchBar }  from '../../components/SearchBar';
 import { FadeUp }     from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
+import { resolveImageSrc } from '../../ts/imageSrc';
 
 import imgCollaborators from '../../assets/Website_images 2/Logo.png';
 import imgSvcAI         from '../../assets/Website_Images/Services/AI Led Transformation.png';
@@ -411,7 +412,7 @@ export default function AIStudio() {
                 }}
               >
                 <img
-                  src={imgCollaborators}
+                  src={resolveImageSrc(imgCollaborators)}
                   alt="Technossus enterprise collaborators — Microsoft, AWS, Google, and more"
                   style={{ width: '100%', maxWidth: 960, height: 'auto', display: 'block' }}
                 />
