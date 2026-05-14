@@ -375,10 +375,10 @@ export default function Home() {
             <h2 style={{
               fontFamily: serif,
               fontSize: shSize, lineHeight: shLine,
-              fontWeight: 500, color: '#1E1E1E',
+              fontWeight: 500, color: red,
               marginTop: 16, marginBottom: 0,
             }}>
-              Trusted by <span style={{ color: red }}>leaders.</span>
+              Trusted by leaders.
             </h2>
           </FadeUp>
 
@@ -524,7 +524,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
       {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
-          <FadeUp duration={500}><Tag label="AI SOLUTIONS AND ACCELERATORS" /></FadeUp>
+          <FadeUp duration={500}><Tag label="AI STUDIO" /></FadeUp>
           <div style={{
             marginTop: 16,
             position: 'relative',
@@ -543,15 +543,14 @@ DENIALS 11% → 9% ON $4B REVENUE"
                   fontWeight: 500, color: '#fff',
                   maxWidth: 731, margin: 0,
                 }}>
-                  See AI in action, before you build at{' '}
-                  <span style={{ color: red }}>Technossus AI Studio</span>
-                  {' - TAS'}
+                  Explore, validate, and build{' '}
+                  <span style={{ color: red }}>enterprise systems with clarity</span>
                 </h2>
                 <p style={{
                   fontFamily: sans, fontSize: 18, fontWeight: 500,
                   color: '#F9FAFB', lineHeight: '24px', margin: 0,
                 }}>
-                  Explore real AI systems you can test before committing to build.
+                  Test real AI systems before you commit to build. Validate outcomes, not assumptions.
                 </p>
               </div>
             </FadeUp>
@@ -662,16 +661,15 @@ DENIALS 11% → 9% ON $4B REVENUE"
                   <h2 style={{
                     fontFamily: serif,
                     fontSize: shSize, lineHeight: shLine,
-                    fontWeight: 500, margin: 0,
+                    fontWeight: 500, color: red, margin: 0,
                   }}>
-                    <span style={{ color: '#fff' }}>Why </span>
-                    <span style={{ color: red }}>Technossus</span>
+                    Why Technossus
                   </h2>
                   <p style={{
                     fontFamily: sans, fontSize: 18, fontWeight: 500,
                     color: '#fff', lineHeight: '24px', margin: 0,
                   }}>
-                    We don't just deliver software, we engineer outcomes your team can defend, scale, and own.
+                    We don't just build software; we engineer competitive advantages through technological precision.
                   </p>
                 </div>
               </FadeUp>
@@ -712,10 +710,9 @@ DENIALS 11% → 9% ON $4B REVENUE"
               <h2 style={{
                 fontFamily: serif,
                 fontSize: shSize, lineHeight: shLine,
-                fontWeight: 500, color: '#010101', margin: 0,
+                fontWeight: 500, color: red, margin: 0,
               }}>
-                Hear what{' '}
-                <span style={{ color: red }}>our clients have to say.</span>
+                Hear what our clients have to say.
               </h2>
               <p style={{
                 fontFamily: sans, fontSize: 18, fontWeight: 500,
@@ -758,7 +755,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
           <CTABanner
             size="large"
             label="LET'S WORK ON IT TOGETHER"
-            heading="Ready to accelerate your digital & AI journey ?"
+            heading="Ready to accelerate your digital & AI journey?"
             body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
             primaryCta="Schedule a Strategy Session"
             secondaryCta="Contact Us"
