@@ -270,7 +270,8 @@ export function MainHeader({
         zIndex: 1000,
         width: '100%',
         maxWidth: '100%',
-        overflowX: 'hidden',
+        overflowX: isMobile ? 'hidden' : 'visible',
+        overflowY: 'visible',
         boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.07)' : 'none',
         transition: 'box-shadow 0.3s ease',
         ...style,
@@ -334,12 +335,12 @@ export function MainHeader({
                           cursor: 'pointer',
                           padding: '8px 0',
                           fontFamily: sans,
-                          fontWeight: highlight ? 600 : 500,
+                          fontWeight: 500,
                           fontSize: 14,
                           lineHeight: '20px',
                           color: highlight ? red : dark,
                           whiteSpace: 'nowrap',
-                          transition: 'color 0.15s ease, font-weight 0.15s ease',
+                          transition: 'color 0.15s ease',
                         }}
                       >
                         {item.label}
@@ -367,7 +368,7 @@ export function MainHeader({
                     onMouseLeave={() => setHoveredNav(null)}
                     style={{
                       fontFamily: sans,
-                      fontWeight: highlight ? 600 : 500,
+                      fontWeight: 500,
                       fontSize: 14,
                       lineHeight: '20px',
                       color: highlight ? red : dark,
