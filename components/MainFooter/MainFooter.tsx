@@ -167,7 +167,7 @@ export function MainFooter({ linkGroups = defaultGroups, className = '', style }
 
             {/* Tagline */}
             <p style={{ fontFamily: sans, fontWeight: 500, fontSize: 14, lineHeight: '20px', color: gray300, margin: 0, width: '100%' }}>
-              Leading the charge in enterprise digital transformation, combining deep technical expertise with a relentless focus on client success.
+              Partners to build intelligent systems for enterprises , combining consulting depth and engineering across AI, data, cloud, and product to turn strategy into measurable outcomes.
             </p>
           </div>
 
