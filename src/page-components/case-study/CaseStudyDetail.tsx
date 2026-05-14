@@ -2,14 +2,14 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { Breadcrumb } from '../../components/Breadcrumb';
-import { Tag }        from '../../components/Tag';
-import { Button }     from '../../components/Button';
-import { Card }       from '../../components/Card';
-import { Stats }      from '../../components/Stats';
-import { CTABanner }  from '../../components/CTABanner';
-import { FadeUp }     from '../../components/Animate/FadeUp';
-import { useBreakpoint } from '../../ts/breakpoints';
+import { Breadcrumb } from '../../../components/Breadcrumb';
+import { Tag }        from '../../../components/Tag';
+import { Button }     from '../../../components/Button';
+import { Card }       from '../../../components/Card';
+import { Stats }      from '../../../components/Stats';
+import { CTABanner }  from '../../../components/CTABanner';
+import { FadeUp }     from '../../../components/Animate/FadeUp';
+import { useBreakpoint } from '../../../ts/breakpoints';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans  = '"General Sans", system-ui, -apple-system, sans-serif';
