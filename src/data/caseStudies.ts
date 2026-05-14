@@ -32,10 +32,18 @@ export const caseStudyData: Record<string, CaseStudyData> = {
     impactHeading: 'Faster decisions. Fewer delays. Lower risk.',
     impactDescription:
       'The unified platform replaced three legacy systems and eliminated the manual reconciliation that had been consuming trial coordinator time. Sponsors gained real-time visibility into trial status, and the compliance team reduced audit preparation time significantly.',
-    impactMetrics: [
-      { value: '40%', label: 'reduction in trial setup time across new study sites' },
-      { value: '3×', label: 'faster regulatory submission preparation vs. prior process' },
-      { value: '60%', label: 'drop in protocol deviation incidents within 6 months of go-live' },
+    impactContextLabel: 'Industry Context',
+    impactContextBody:
+      'Clinical trials can take 9–12 years to bring a drug to market, with administrative overhead accounting for a growing share of that timeline. Fragmented systems and manual coordination are consistently cited as top barriers to trial efficiency.',
+    impactCards: [
+      {
+        title: 'Commercial Impact',
+        body: 'Generated purchase interest from more than a dozen major laboratory and hospital systems, validating market-readiness in year one of the platform launch.',
+      },
+      {
+        title: 'Operational Impact',
+        body: '40% reduction in trial setup time. 3× faster regulatory submission preparation. 60% drop in protocol deviation incidents within 6 months of go-live.',
+      },
     ],
     industryStats: [
       { value: '85%', label: 'of healthcare leaders say administrative burden is limiting clinical capacity' },
