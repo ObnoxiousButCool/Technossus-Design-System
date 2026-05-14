@@ -128,6 +128,15 @@ stages:
                     artifact: nextjs-app
                     targetPath: '$(Build.SourcesDirectory)'
 
+                - script: |
+                    if [ ! -d "$(Build.SourcesDirectory)/.next" ]; then
+                      echo "##vso[task.logissue type=error].next folder not found — build artifact may be missing or incomplete."
+                      exit 1
+                    fi
+                    echo ".next folder verified."
+                    ls -1 "$(Build.SourcesDirectory)/.next"
+                  displayName: 'Verify .next folder exists'
+
                 - task: AzureStaticWebApp@0
                   displayName: 'Deploy to SWA staging environment'
                   inputs:
@@ -168,6 +177,15 @@ stages:
                   inputs:
                     artifact: nextjs-app
                     targetPath: '$(Build.SourcesDirectory)'
+
+                - script: |
+                    if [ ! -d "$(Build.SourcesDirectory)/.next" ]; then
+                      echo "##vso[task.logissue type=error].next folder not found — build artifact may be missing or incomplete."
+                      exit 1
+                    fi
+                    echo ".next folder verified."
+                    ls -1 "$(Build.SourcesDirectory)/.next"
+                  displayName: 'Verify .next folder exists'
 
                 - task: AzureStaticWebApp@0
                   displayName: 'Deploy to SWA production slot'
