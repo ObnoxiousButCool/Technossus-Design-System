@@ -429,6 +429,37 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* ── COLLABORATORS ────────────────────────────────────────────────────── */}
+      <section style={{ background: '#fff' }}>
+        <div style={{
+          maxWidth: 1440, margin: '0 auto',
+          padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', gap: 16,
+        }}>
+          <p style={{
+            fontFamily: sans, fontSize: 16, fontWeight: 500,
+            color: '#949494', textAlign: 'center',
+            lineHeight: '24px', margin: 0,
+          }}>
+            OUR COLLABORATORS
+          </p>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Image
+              src={imgCollaborators}
+              alt="Our collaborators"
+              sizes={isMobile || isTablet ? '100vw' : '860px'}
+              style={{
+                display: 'block',
+                width: '100%',
+                maxWidth: isMobile ? '100%' : isTablet ? '100%' : 860,
+                height: 'auto',
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
 
        {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
@@ -532,38 +563,6 @@ export default function Home() {
           </FadeUp>
         </div>
       </section>
-
-      {/* ── COLLABORATORS ────────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff' }}>
-        <div style={{
-          maxWidth: 1440, margin: '0 auto',
-          padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', gap: 16,
-        }}>
-          <p style={{
-            fontFamily: sans, fontSize: 16, fontWeight: 500,
-            color: '#949494', textAlign: 'center',
-            lineHeight: '24px', margin: 0,
-          }}>
-            OUR COLLABORATORS
-          </p>
-          <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Image
-              src={imgCollaborators}
-              alt="Our collaborators"
-              sizes={isMobile || isTablet ? '100vw' : '860px'}
-              style={{
-                display: 'block',
-                width: '100%',
-                maxWidth: isMobile ? '100%' : isTablet ? '100%' : 860,
-                height: 'auto',
-              }}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* ── FEATURED CASE STUDY ──────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
