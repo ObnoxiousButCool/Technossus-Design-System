@@ -105,76 +105,138 @@ export default function Home() {
   const statsImageHeight = isTablet ? 313 : 453;
 
   const cols3 = isMobile ? '1fr' : isTablet ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
+  const heroSlides = [
+    {
+      heading: 'Hit the outcomes that matter,',
+      accent: 'Every time.',
+      subheading: 'We identify what works, execute with precision, and turn effort into measurable results, faster.',
+      cta: 'Explore Solutions',
+      href: '/services',
+    },
+    {
+      heading: 'Build momentum where it counts,',
+      accent: 'Every sprint.',
+      subheading: 'Dummy carousel copy for testing: align teams, remove delivery friction, and keep progress visible from idea to impact.',
+      cta: 'See What Works',
+      href: '/services',
+    },
+    {
+      heading: 'Move from effort to evidence,',
+      accent: 'Every launch.',
+      subheading: 'Dummy carousel copy for testing: connect strategy, execution, and measurement so each release proves business value.',
+      cta: 'Start Planning',
+      href: '/contact',
+    },
+  ];
+  const carouselSlides = [...heroSlides, heroSlides[0]];
 
   return (
     <>
+      <style>{`
+        .home-hero-carousel-track {
+          animation: homeHeroSlide 18s ease-in-out infinite;
+        }
+
+        .home-hero-carousel:hover .home-hero-carousel-track {
+          animation-play-state: paused;
+        }
+
+        @keyframes homeHeroSlide {
+          0%, 20% { transform: translateX(0); }
+          28%, 45% { transform: translateX(-25%); }
+          53%, 70% { transform: translateX(-50%); }
+          78%, 100% { transform: translateX(-75%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .home-hero-carousel-track {
+            animation: none;
+          }
+        }
+      `}</style>
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
 
         {/* Hero image + headline */}
-        <div style={{
+        <div className="home-hero-carousel" style={{
           position: 'relative',
           width: '100%',
           height: isMobile ? 360 : isTablet ? 420 : 463,
           overflow: 'hidden',
         }}>
-          {/* Background photo */}
-          <Image
-            src={imgHeroBg}
-            alt=""
-            aria-hidden
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
-          {/* Dark gradient overlay */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.2) 100%)',
-          }} />
-
-          {/* Content */}
-          <div style={{
-            position: 'absolute', top: 0, left: '50%',
-            transform: 'translateX(-50%)',
-            width: '100%', maxWidth: 1440, height: '100%',
-            padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '110px 98px',
-            zIndex: 2,
-            display: 'flex', alignItems: 'flex-start',
-            boxSizing: 'border-box',
+          <div className="home-hero-carousel-track" style={{
+            display: 'flex',
+            width: `${carouselSlides.length * 100}%`,
+            height: '100%',
           }}>
-            <div style={{ maxWidth: 565, display: 'flex', flexDirection: 'column', gap: 43 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <FadeUp>
-                  <h1 style={{
-                    fontFamily: serif,
-                    fontSize: h1Size, lineHeight: h1Line,
-                    fontWeight: 500, letterSpacing: '-0.02em',
-                    color: '#fff', margin: 0,
-                  }}>
-                    Hit the outcomes that matter,{' '}
-                    <span style={{ color: red }}>Every time.</span>
-                  </h1>
-                </FadeUp>
-                <FadeUp delay={80}>
-                  <p style={{
-                    fontFamily: sans,
-                    fontSize: isMobile ? 14 : 18,
-                    fontWeight: 500, lineHeight: '24px',
-                    color: '#fff', margin: 0,
-                  }}>
-                   We identify what works, execute with precision, and turn effort into measurable results, faster.
-                  </p>
-                </FadeUp>
-              </div>
-              <FadeUp delay={120}>
-                <div>
-                  <Button variant="primary" label="Explore Solutions" href="/services" />
+            {carouselSlides.map((slide, index) => (
+              <div key={`${slide.heading}-${index}`} style={{
+                position: 'relative',
+                width: `${100 / carouselSlides.length}%`,
+                height: '100%',
+                flex: '0 0 auto',
+                overflow: 'hidden',
+              }}>
+                {/* Background photo */}
+                <Image
+                  src={imgHeroBg}
+                  alt=""
+                  aria-hidden
+                  fill
+                  priority={index === 0}
+                  sizes="100vw"
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                />
+                {/* Dark gradient overlay */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.2) 100%)',
+                }} />
+
+                {/* Content */}
+                <div style={{
+                  position: 'absolute', top: 0, left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '100%', maxWidth: 1440, height: '100%',
+                  padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '110px 98px',
+                  zIndex: 2,
+                  display: 'flex', alignItems: 'flex-start',
+                  boxSizing: 'border-box',
+                }}>
+                  <div style={{ maxWidth: 565, display: 'flex', flexDirection: 'column', gap: isMobile ? 28 : 43 }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                      <FadeUp>
+                        <h1 style={{
+                          fontFamily: serif,
+                          fontSize: h1Size, lineHeight: h1Line,
+                          fontWeight: 500, letterSpacing: 0,
+                          color: '#fff', margin: 0,
+                        }}>
+                          {slide.heading}{' '}
+                          <span style={{ color: red }}>{slide.accent}</span>
+                        </h1>
+                      </FadeUp>
+                      <FadeUp delay={80}>
+                        <p style={{
+                          fontFamily: sans,
+                          fontSize: isMobile ? 14 : 18,
+                          fontWeight: 500, lineHeight: '24px',
+                          color: '#fff', margin: 0,
+                        }}>
+                          {slide.subheading}
+                        </p>
+                      </FadeUp>
+                    </div>
+                    <FadeUp delay={120}>
+                      <div>
+                        <Button variant="primary" label={slide.cta} href={slide.href} />
+                      </div>
+                    </FadeUp>
+                  </div>
                 </div>
-              </FadeUp>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
