@@ -106,6 +106,10 @@ stages:
                     azure_static_web_apps_api_token: $(AZURE_SWA_DEPLOYMENT_TOKEN)
                     action: upload
                     app_location: '/'
+                    # Empty string tells the SWA client there is no Azure Functions
+                    # API to scan for or deploy — prevents the "Failed to deploy
+                    # Azure Functions" error when no api/ folder exists.
+                    api_location: ''
                     # Pre-built .next folder — skip rebuilding on the SWA agent
                     output_location: '.next'
                     skip_app_build: true
@@ -143,6 +147,7 @@ stages:
                     azure_static_web_apps_api_token: $(AZURE_SWA_DEPLOYMENT_TOKEN)
                     action: upload
                     app_location: '/'
+                    api_location: ''
                     output_location: '.next'
                     skip_app_build: true
                     # No deployment_environment → targets the production slot
