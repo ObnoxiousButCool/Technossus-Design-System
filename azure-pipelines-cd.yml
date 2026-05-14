@@ -101,8 +101,10 @@ stages:
                     # Deployment token from RG-Technossus-WebV2 Static Web App
                     azure_static_web_apps_api_token: $(AZURE_SWA_DEPLOYMENT_TOKEN)
                     action: upload
-                    # Full Next.js project root (source + .next inside the artifact)
-                    app_location: '$(Pipeline.Workspace)/nextjs-app'
+                    # Path relative to $(Pipeline.Workspace) — the SWA Docker container
+                    # mounts $(Pipeline.Workspace) at /working_dir/, so an absolute path
+                    # causes a double-prefix error (/working_dir/<absolute-path>).
+                    app_location: 'nextjs-app'
                     # Pre-built .next folder — skip rebuilding on the SWA agent
                     output_location: '.next'
                     skip_app_build: true
@@ -137,7 +139,7 @@ stages:
                   inputs:
                     azure_static_web_apps_api_token: $(AZURE_SWA_DEPLOYMENT_TOKEN)
                     action: upload
-                    app_location: '$(Pipeline.Workspace)/nextjs-app'
+                    app_location: 'nextjs-app'
                     output_location: '.next'
                     skip_app_build: true
                     # No deployment_environment → targets the production slot
