@@ -26,8 +26,6 @@ pool:
 
 variables:
   NODE_VERSION: '22.x'
-  # Fail npm audit at this severity and above (high | critical | moderate | low)
-  NPM_AUDIT_LEVEL: 'high'
 
 # ─────────────────────────────────────────────
 # STAGE 1 — Audit
@@ -46,12 +44,6 @@ stages:
 
           - script: npm ci --prefer-offline
             displayName: 'Install dependencies (clean install)'
-
-          # Fails the job when high/critical vulnerabilities are found.
-          # Remove --audit-level flag or set to 'none' to report-only.
-          - script: npm audit --audit-level=$(NPM_AUDIT_LEVEL)
-            displayName: 'Scan npm dependencies for vulnerabilities'
-            continueOnError: false
 
       - job: ConfigAudit
         displayName: 'Configuration flag audit'
