@@ -91,20 +91,21 @@ stages:
           runOnce:
             deploy:
               steps:
-                - download: current
-                  artifact: nextjs-app
+                # Download artifact directly into $(Build.SourcesDirectory) so the
+                # SWA Docker container (which mounts that dir at /working_dir/) can
+                # find the app at app_location: '/'.
+                - task: DownloadPipelineArtifact@2
                   displayName: 'Download build artifact'
+                  inputs:
+                    artifact: nextjs-app
+                    targetPath: '$(Build.SourcesDirectory)'
 
                 - task: AzureStaticWebApp@0
                   displayName: 'Deploy to SWA staging environment'
                   inputs:
-                    # Deployment token from RG-Technossus-WebV2 Static Web App
                     azure_static_web_apps_api_token: $(AZURE_SWA_DEPLOYMENT_TOKEN)
                     action: upload
-                    # Path relative to $(Pipeline.Workspace) — the SWA Docker container
-                    # mounts $(Pipeline.Workspace) at /working_dir/, so an absolute path
-                    # causes a double-prefix error (/working_dir/<absolute-path>).
-                    app_location: 'nextjs-app'
+                    app_location: '/'
                     # Pre-built .next folder — skip rebuilding on the SWA agent
                     output_location: '.next'
                     skip_app_build: true
@@ -130,16 +131,18 @@ stages:
           runOnce:
             deploy:
               steps:
-                - download: current
-                  artifact: nextjs-app
+                - task: DownloadPipelineArtifact@2
                   displayName: 'Download build artifact'
+                  inputs:
+                    artifact: nextjs-app
+                    targetPath: '$(Build.SourcesDirectory)'
 
                 - task: AzureStaticWebApp@0
                   displayName: 'Deploy to SWA production slot'
                   inputs:
                     azure_static_web_apps_api_token: $(AZURE_SWA_DEPLOYMENT_TOKEN)
                     action: upload
-                    app_location: 'nextjs-app'
+                    app_location: '/'
                     output_location: '.next'
                     skip_app_build: true
                     # No deployment_environment → targets the production slot
