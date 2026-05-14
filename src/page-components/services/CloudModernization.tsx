@@ -161,7 +161,7 @@ export default function CloudModernization() {
             { label: 'Cloud & Product Modernization', active: true },
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
+            <div style={{ flex: 2, display: 'flex', flexDirection: 'column', gap: 32 }}>
               <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#ADADAD', margin: 0 }}>CLOUD CONSULTING AND SUPPORT</p>
               <FadeUp>
                 <h1 style={d1()}>
