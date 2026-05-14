@@ -174,7 +174,7 @@ export default function DigitalExperience() {
             { label: 'Digital Experience Design', active: true },
           ]} />
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 32 : 60, marginTop: 40 }}>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32 }}>
+            <div style={{ flex: 2, display: 'flex', flexDirection: 'column', gap: 32 }}>
               <FadeUp>
                 <h1 style={d1()}>
                   Your users know what you built. They're just not sure{' '}
