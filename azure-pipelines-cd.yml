@@ -26,7 +26,7 @@ resources:
       # and pipeline name respectively. Azure DevOps defaults the pipeline name
       # to the repo name when you first create a pipeline.
       project: 'Technossus-WebsiteV2'
-      source: 'Technossus-WebsiteV2-Web'
+      source: 'Technossus-WebsiteV2-Web CI'
       trigger:
         branches:
           include:
@@ -36,7 +36,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  NODE_VERSION: '20.x'
+  NODE_VERSION: '22.x'
 
 # ─────────────────────────────────────────────
 # STAGE 1 — Build
@@ -61,6 +61,31 @@ stages:
 
           - script: npm run build
             displayName: 'Build Next.js application'
+            env:
+              NODE_ENV: production
+
+          # ── Smoke test ───────────────────────────────────────────────
+          # Verify the production build boots and responds before deploying.
+          - script: |
+              npm start &
+              SERVER_PID=$!
+              echo "Server PID: $SERVER_PID"
+              for i in $(seq 1 30); do
+                if curl -sf http://localhost:3000 > /dev/null 2>&1; then
+                  echo "Server is ready after ${i}s"
+                  break
+                fi
+                sleep 1
+              done
+              HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
+              kill $SERVER_PID 2>/dev/null || true
+              echo "Smoke test HTTP status: $HTTP_STATUS"
+              if [ "$HTTP_STATUS" != "200" ]; then
+                echo "##vso[task.logissue type=error]Smoke test failed — GET / returned HTTP $HTTP_STATUS"
+                exit 1
+              fi
+              echo "Smoke test passed."
+            displayName: 'Smoke test — next start (HTTP 200 check)'
             env:
               NODE_ENV: production
 
