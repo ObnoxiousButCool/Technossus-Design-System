@@ -441,8 +441,6 @@ export default function AIBusiness() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 40 : 60 }} />
-
       {/* ── THE SHIFT ── */}
       <div
         style={{
@@ -523,7 +521,7 @@ export default function AIBusiness() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr",
+                  gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
                   gap: 20,
                   flex: isMobile ? undefined : "807 1 0",
                   width: isMobile ? "100%" : undefined,
@@ -915,7 +913,7 @@ export default function AIBusiness() {
                 >
                   {card.heading}
                 </h3>
-                <div style={{ height: 2, background: red, width: 550 }} />
+                <div style={{ height: 2, background: red, width: "100%", maxWidth: 550 }} />
                 <p
                   style={{
                     fontFamily: sans,
@@ -937,23 +935,22 @@ export default function AIBusiness() {
       {/* ── CTA BANNER ── */}
       <div
         style={{
-          maxWidth: 1280,
+          maxWidth: 1440,
           margin: "0 auto",
           padding: isMobile ? "0 16px" : isTablet ? "0 32px" : "0 80px",
         }}
       >
         <CTABanner
           size="large"
-          label="START HERE"
-          heading="Bring us your toughest transformation problem."
-          body="Two days with a Technossus partner and a senior team. At no cost. Pressure-test the problem on the table the governance gap, the adoption curve, the investment that isn't landing, the strategy that needs a second read. Walk out with a clear view on whether a larger engagement would help, and what the shape of it would be."
-          primaryCta="Bring us your problem"
-          secondaryCta="Explore Solutions"
-          style={{ width: "100%", margin: 0 }}
+          label="LET'S WORK ON IT TOGETHER"
+          heading="Ready to accelerate your digital & AI journey?"
+          body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+          primaryCta="Schedule a Strategy Session →"
+          secondaryCta="Contact Us"
+          style={{ width: "100%", maxWidth: "100%", margin: 0 }}
         />
-      </div>
-
       <div style={{ height: isMobile ? 48 : 80 }} />
+      </div>
     </>
   );
 }

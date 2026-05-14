@@ -207,7 +207,7 @@ export default function QualityEngineering() {
       <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
         <Tag label="THE SHIFT" variant="dark" />
       </div>
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: dark1, position: 'relative', overflow: 'hidden', width: isMobile ? 'calc(100% - 32px)' : isTablet ? 'calc(100% - 64px)' : 'calc(100% - 160px)', maxWidth: 1280, margin: '0 auto' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
@@ -225,7 +225,7 @@ export default function QualityEngineering() {
                 ))}
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
                 { num: '85%',              desc: 'of defects that reach production were detectable earlier in the cycle, at a fraction of the cost to fix.', src: '— IBM Systems Sciences Institute' },
                 { num: '26%',              desc: 'of organizations report test automation coverage declined over two years, even as release frequency increased.', src: '— World Quality Report' },
@@ -293,7 +293,7 @@ export default function QualityEngineering() {
       <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
         <Tag label="PROOF" variant="dark" />
       </div>
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: dark1, position: 'relative', overflow: 'hidden', width: isMobile ? 'calc(100% - 32px)' : isTablet ? 'calc(100% - 64px)' : 'calc(100% - 160px)', maxWidth: 1280, margin: '0 auto' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
@@ -333,15 +333,18 @@ export default function QualityEngineering() {
       </section>
 
       {/* ── CTA BANNER ── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session →"
-        secondaryCta="Contact Us"
-      />
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px' }}>
+        <CTABanner
+          size="large"
+          label="LET'S WORK ON IT TOGETHER"
+          heading="Ready to accelerate your digital & AI journey?"
+          body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+          primaryCta="Schedule a Strategy Session →"
+          secondaryCta="Contact Us"
+          style={{ width: '100%', maxWidth: '100%', margin: 0 }}
+        />
       <div style={{ height: isMobile ? 48 : 80 }} />
+      </div>
     </>
   );
 }

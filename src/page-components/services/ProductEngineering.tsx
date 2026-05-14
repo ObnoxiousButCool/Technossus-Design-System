@@ -228,13 +228,11 @@ export default function ProductEngineering() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── THE SHIFT ── */}
       <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
         <Tag label="THE SHIFT" variant="dark" />
       </div>
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: dark1, position: 'relative', overflow: 'hidden', width: isMobile ? 'calc(100% - 32px)' : isTablet ? 'calc(100% - 64px)' : 'calc(100% - 160px)', maxWidth: 1280, margin: '0 auto' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
@@ -252,7 +250,7 @@ export default function ProductEngineering() {
                 ))}
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 20, flex: isMobile ? undefined : '0 0 440px', width: isMobile ? '100%' : undefined }}>
               {[
                 { num: 'Weeks not quarters', desc: 'From concept to working product — compressed without shortcuts.' },
                 { num: '70%',               desc: 'Of product delays are scope and discovery failures, not engineering ones — we solve for the front of the problem.' },
@@ -269,8 +267,6 @@ export default function ProductEngineering() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── SERVICE OFFERINGS ── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
@@ -284,8 +280,6 @@ export default function ProductEngineering() {
           </div>
         </div>
       </section>
-
-      <div style={{ height: isMobile ? 48 : 80 }} />
 
       {/* ── HOW WE WORK ── */}
       <section style={{ background: '#fff' }}>
@@ -319,13 +313,11 @@ export default function ProductEngineering() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── SUCCESS STORIES ── */}
       <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
         <Tag label="PROOF" variant="dark" />
       </div>
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: dark1, position: 'relative', overflow: 'hidden', width: isMobile ? 'calc(100% - 32px)' : isTablet ? 'calc(100% - 64px)' : 'calc(100% - 160px)', maxWidth: 1280, margin: '0 auto' }}>
         <CornerTL /><CornerBR />
         <div style={inner}>
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
@@ -351,8 +343,6 @@ export default function ProductEngineering() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── SOUND FAMILIAR ── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
@@ -370,32 +360,22 @@ export default function ProductEngineering() {
                 <p style={{ fontFamily: sans, fontSize: 14, lineHeight: 1.7, color: '#5C5C5C', margin: 0 }}>{card.body}</p>
               </div>
             ))}
-          </div>
-
-          {/* CTA offer block */}
-          <div style={{ background: dark1, padding: isMobile ? '32px 20px' : '48px', marginTop: 48, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <h3 style={{ fontFamily: serif, fontSize: isMobile ? 22 : 28, fontWeight: 600, color: '#fff', margin: 0 }}>Bring us your toughest Engineering problem.</h3>
-            <p style={{ fontFamily: sans, fontSize: isMobile ? 14 : 15, lineHeight: 1.7, color: '#B5B5B5', maxWidth: 640, margin: 0 }}>
-              We start with a 2-day free consulting engagement — no proposal theater, no 200-slide deck. Just your team, ours, and the real problem on the table.
-            </p>
-            <div>
-              <Button variant="primary" label="Bring us your problems →" href="#" />
-            </div>
-          </div>
-        </div>
+          </div></div>
       </section>
 
       {/* ── CTA BANNER ── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session →"
-        secondaryCta="Contact Us"
-      />
-
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px' }}>
+        <CTABanner
+          size="large"
+          label="LET'S WORK ON IT TOGETHER"
+          heading="Ready to accelerate your digital & AI journey?"
+          body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+          primaryCta="Schedule a Strategy Session →"
+          secondaryCta="Contact Us"
+          style={{ width: '100%', maxWidth: '100%', margin: 0 }}
+        />
       <div style={{ height: isMobile ? 48 : 80 }} />
+      </div>
     </>
   );
 }
