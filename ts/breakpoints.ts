@@ -98,12 +98,7 @@ function getState(width: number): BreakpointState {
 }
 
 export function useBreakpoint(): BreakpointState {
-  const [state, setState] = useState<BreakpointState>(() => {
-    if (typeof window === 'undefined') {
-      return getState(1280);
-    }
-    return getState(window.innerWidth);
-  });
+  const [state, setState] = useState<BreakpointState>(() => getState(1280));
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -116,6 +111,7 @@ export function useBreakpoint(): BreakpointState {
       });
     };
 
+    setState(getState(window.innerWidth));
     window.addEventListener('resize', handler, { passive: true });
     return () => {
       window.removeEventListener('resize', handler);
