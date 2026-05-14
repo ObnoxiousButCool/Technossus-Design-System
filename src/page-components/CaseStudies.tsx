@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { Tag } from '../../components/Tag';
 import { CTABanner } from '../../components/CTABanner';
-import { Button } from '../../components/Button';
 import { FadeUp } from '../../components/Animate/FadeUp';
 import { useBreakpoint } from '../../ts/breakpoints';
 
@@ -94,13 +93,16 @@ export default function CaseStudies() {
   }, [selectedIndustry, selectedService]);
 
   // ─── Layout helpers ────────────────────────────────────────────────────────
+  const sectionGap = isMobile ? 48 : isTablet ? 60 : 80;
+  const horizontalPadding = isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px';
+
   const inner: React.CSSProperties = {
     maxWidth: 1440,
     margin: '0 auto',
-    padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
+    padding: horizontalPadding,
   };
 
-  const heroPadding = isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px';
+  const heroPadding = isMobile ? '32px 16px 0' : isTablet ? '40px 32px 0' : '40px 80px 0';
 
   const cols3 = isMobile ? '1fr' : isTablet ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
   const cardGap = isMobile ? 24 : 48;
@@ -199,10 +201,10 @@ export default function CaseStudies() {
               </p>
             </FadeUp>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
+            {/* <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
               <Button variant="primary" label="Talk to Our Team" href="/contact" />
               <Button variant="secondary" label="Explain Our Work" href="#case-studies" />
-            </div>
+            </div> */}
           </div>
 
           {/* Right: image */}
@@ -224,7 +226,7 @@ export default function CaseStudies() {
       </section>
 
       {/* ── CASE STUDIES ──────────────────────────────────────────────────────── */}
-      <section id="case-studies" style={{ background: '#fff' }}>
+      <section id="case-studies" style={{ background: '#fff', marginTop: isMobile ? 40 : 0 }}>
         <div style={inner}>
 
           {/* Tag */}
@@ -250,9 +252,9 @@ export default function CaseStudies() {
                 justifyContent: 'center',
                 height: 48,
                 padding: '8px 24px',
-                background: (!selectedIndustry && !selectedService) ? '#1E1E1E' : 'transparent',
-                color:      (!selectedIndustry && !selectedService) ? '#fff'    : '#1E1E1E',
-                border:     (!selectedIndustry && !selectedService) ? 'none'    : '1px solid #1E1E1E',
+                background: (!selectedIndustry && !selectedService) ? red : '#fff',
+                color:      (!selectedIndustry && !selectedService) ? '#fff' : red,
+                border: `1px solid ${red}`,
                 fontFamily: sans,
                 fontWeight: 600,
                 fontSize: 14,
@@ -274,9 +276,9 @@ export default function CaseStudies() {
                   height: 48,
                   paddingLeft: 24,
                   paddingRight: 18,
-                  background: selectedIndustry ? '#1E1E1E' : 'transparent',
-                  color:      selectedIndustry ? '#fff'    : '#1E1E1E',
-                  border: '1px solid #1E1E1E',
+                  background: selectedIndustry ? red : '#fff',
+                  color:      selectedIndustry ? '#fff' : red,
+                  border: `1px solid ${red}`,
                   fontFamily: sans,
                   fontWeight: selectedIndustry ? 600 : 500,
                   fontSize: 14,
@@ -296,7 +298,7 @@ export default function CaseStudies() {
                     transform: 'rotate(90deg)',
                     display: 'block',
                     flexShrink: 0,
-                    filter: selectedIndustry ? 'brightness(0) invert(1)' : 'none',
+                    filter: selectedIndustry ? 'brightness(0) invert(1)' : 'invert(17%) sepia(97%) saturate(5234%) hue-rotate(344deg) brightness(96%) contrast(98%)',
                   }}
                 />
               </button>
@@ -333,9 +335,9 @@ export default function CaseStudies() {
                   height: 48,
                   paddingLeft: 24,
                   paddingRight: 18,
-                  background: selectedService ? '#1E1E1E' : 'transparent',
-                  color:      selectedService ? '#fff'    : '#1E1E1E',
-                  border: '1px solid #1E1E1E',
+                  background: selectedService ? red : '#fff',
+                  color:      selectedService ? '#fff' : red,
+                  border: `1px solid ${red}`,
                   fontFamily: sans,
                   fontWeight: selectedService ? 600 : 500,
                   fontSize: 14,
@@ -355,7 +357,7 @@ export default function CaseStudies() {
                     transform: 'rotate(90deg)',
                     display: 'block',
                     flexShrink: 0,
-                    filter: selectedService ? 'brightness(0) invert(1)' : 'none',
+                    filter: selectedService ? 'brightness(0) invert(1)' : 'invert(17%) sepia(97%) saturate(5234%) hue-rotate(344deg) brightness(96%) contrast(98%)',
                   }}
                 />
               </button>
@@ -450,14 +452,19 @@ export default function CaseStudies() {
       </section>
 
       {/* ── CTA BANNER ────────────────────────────────────────────────────────── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to become our next success story?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session"
-        secondaryCta="Contact Us"
-      />
+      <section style={{ marginTop: sectionGap }}>
+        <div style={inner}>
+          <CTABanner
+            size="large"
+            label="LET'S WORK ON IT TOGETHER"
+            heading="Ready to become our next success story?"
+            body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
+            primaryCta="Schedule a Strategy Session"
+            secondaryCta="Contact Us"
+            style={{ width: '100%', maxWidth: 'none' }}
+          />
+        </div>
+      </section>
 
       <div style={{ height: isMobile ? 48 : 80 }} />
     </>
@@ -498,7 +505,7 @@ function CaseStudyCard({ cs }: { cs: CaseStudy }) {
           display: 'flex',
           flexDirection: 'column',
           gap: 12,
-          padding: '24px 24px 28px',
+          padding: '24px 0px 28px',
           flex: '1 1 auto',
         }}
       >
