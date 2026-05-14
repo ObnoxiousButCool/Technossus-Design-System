@@ -210,7 +210,8 @@ export default function Home() {
             onBlurCapture={startHeroAutoplay}
             style={{
               position: 'relative',
-              width: '100%',
+              width: '100vw',
+              marginLeft: 'calc(50% - 50vw)',
               height: isMobile ? 360 : isTablet ? 420 : 463,
               overflow: 'hidden',
             }}>
@@ -294,11 +295,16 @@ export default function Home() {
           {/* ── Smart Search ── */}
           <div style={{
             background: '#010101',
+            width: '100vw',
+            marginLeft: 'calc(50% - 50vw)',
             padding: isMobile ? '24px 16px' : isTablet ? '24px 32px' : '32px 24px',
             display: 'flex', flexDirection: 'column', gap: 24,
+            boxSizing: 'border-box',
           }}>
             <div style={{
-              maxWidth: 1392, margin: '0 auto', width: '100%',
+              maxWidth: 1440, margin: '0 auto', width: '100%',
+              padding: isMobile ? 0 : isTablet ? 0 : '0 56px',
+              boxSizing: 'border-box',
               display: 'flex', flexDirection: 'column', gap: 24,
             }}>
               {/* AI Search bar */}
@@ -424,105 +430,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── COLLABORATORS ────────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff' }}>
-        <div style={{
-          maxWidth: 1440, margin: '0 auto',
-          padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', gap: 16,
-        }}>
-          <p style={{
-            fontFamily: sans, fontSize: 16, fontWeight: 500,
-            color: '#949494', textAlign: 'center',
-            lineHeight: '24px', margin: 0,
-          }}>
-            OUR COLLABORATORS
-          </p>
-          <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Image
-              src={imgCollaborators}
-              alt="Our collaborators"
-              sizes={isMobile || isTablet ? '100vw' : '860px'}
-              style={{
-                display: 'block',
-                width: '100%',
-                maxWidth: isMobile ? '100%' : isTablet ? '100%' : 860,
-                height: 'auto',
-              }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ── FEATURED CASE STUDY ──────────────────────────────────────────────── */}
-      <section style={sectionBlock('#fff')}>
-        <div style={inner}>
-          <FadeUp duration={500}><Tag label="FEATURED CASE STUDY" /></FadeUp>
-          <FadeUp delay={60}>
-            <div style={{ marginTop: 32 }}>
-              <Card
-                mode="dark"
-                type="large"
-                category="HEALTHCARE"
-                heading="Home Care Operations, Automated at Scale."
-                body="Transformed authorization, billing, and supply reorder workflows for a national home care leader, clearing manual bottlenecks across order entry and insurance while moving millions of transactions cleanly.
-$1.5M+ ANNUAL LABOR SAVINGS 
-DENIALS 11% → 9% ON $4B REVENUE"
-                image={imgCaseStudy}
-                stats={[
-                  { value: '$50M+', label: 'TOTAL COST SAVING' },
-                  { value: '20,000+', label: 'ORDERS PLACED SUCCESSFULLY' },
-                ]}
-                primaryLabel="View Case Study"
-                secondaryLabel="View All"
-                onPrimary={() => router.push('/case-studies')}
-                onSecondary={() => router.push('/case-studies')}
-              />
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ── WHAT WE DELIVER ──────────────────────────────────────────────────── */}
-      <section style={sectionBlock('#fff')}>
-        <div style={inner}>
-          <FadeUp duration={500}><Tag label="INTEGRATED CAPABILITIES" /></FadeUp>
-          <FadeUp>
-            <h2 style={{
-              fontFamily: serif,
-              fontSize: shSize, lineHeight: shLine,
-              fontWeight: 500, color: '#1E1E1E',
-              marginTop: 16, marginBottom: 0,
-            }}>
-              What we <span style={{ color: red }}>deliver.</span>
-            </h2>
-          </FadeUp>
-          <FadeUp delay={60}>
-            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
-              {[
-                { title: 'AI Led Transformation', description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.', image: imgSvcAI },
-                { title: 'Cloud & Product Modernization', description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.', image: imgSvcCloud },
-                { title: 'Data Intelligence & Analytics', description: 'Closing the gap between data and decision with conversational analytics, predictive intelligence, governance, and unstructured data.', image: imgSvcData },
-                { title: 'Digital Experience Design', description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.', image: imgSvcDigital },
-                { title: 'Product Engineering & Sustained Operations', description: 'From first prototype to scaled platform, we support discovery, integration, modernization, and continuous delivery with your team.', image: imgSvcProduct },
-                { title: 'Quality Engineering & Verification', description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.', image: imgSvcQuality },
-              ].map((card, i) => (
-                <Card
-                  key={i}
-                  mode="light"
-                  type="deliver"
-                  image={card.image}
-                  title={card.title}
-                  description={card.description}
-                />
-              ))}
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
+       {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
           <FadeUp duration={500}><Tag label="AI STUDIO" style={{marginBottom: 16}} /></FadeUp>
@@ -584,6 +492,104 @@ DENIALS 11% → 9% ON $4B REVENUE"
               onPrimary={() => router.push('/ai-studio')}
             />
           </div>
+        </div>
+      </section>
+
+       {/* ── WHAT WE DELIVER ──────────────────────────────────────────────────── */}
+      <section style={sectionBlock('#fff')}>
+        <div style={inner}>
+          <FadeUp duration={500}><Tag label="INTEGRATED CAPABILITIES" /></FadeUp>
+          <FadeUp>
+            <h2 style={{
+              fontFamily: serif,
+              fontSize: shSize, lineHeight: shLine,
+              fontWeight: 500, color: '#1E1E1E',
+              marginTop: 16, marginBottom: 0,
+            }}>
+              What we <span style={{ color: red }}>deliver.</span>
+            </h2>
+          </FadeUp>
+          <FadeUp delay={60}>
+            <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 16, marginTop: 36 }}>
+              {[
+                { title: 'AI Led Transformation', description: 'Revolutionizing enterprise workflows through custom LLM integration and proprietary cognitive automation engines designed for scale.', image: imgSvcAI },
+                { title: 'Cloud & Product Modernization', description: 'Lift, refactor, and run smarter — migrating monoliths to cloud-native architectures without sacrificing reliability.', image: imgSvcCloud },
+                { title: 'Data Intelligence & Analytics', description: 'Closing the gap between data and decision with conversational analytics, predictive intelligence, governance, and unstructured data.', image: imgSvcData },
+                { title: 'Digital Experience Design', description: 'Crafting human-centric interfaces for complex technical systems, balancing utility with an uncompromising editorial aesthetic.', image: imgSvcDigital },
+                { title: 'Product Engineering & Sustained Operations', description: 'From first prototype to scaled platform, we support discovery, integration, modernization, and continuous delivery with your team.', image: imgSvcProduct },
+                { title: 'Quality Engineering & Verification', description: 'Implementing automated testing frameworks and formal verification methods to ensure absolute reliability in high-stakes environments.', image: imgSvcQuality },
+              ].map((card, i) => (
+                <Card
+                  key={i}
+                  mode="light"
+                  type="deliver"
+                  image={card.image}
+                  title={card.title}
+                  description={card.description}
+                />
+              ))}
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ── COLLABORATORS ────────────────────────────────────────────────────── */}
+      <section style={{ background: '#fff' }}>
+        <div style={{
+          maxWidth: 1440, margin: '0 auto',
+          padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', gap: 16,
+        }}>
+          <p style={{
+            fontFamily: sans, fontSize: 16, fontWeight: 500,
+            color: '#949494', textAlign: 'center',
+            lineHeight: '24px', margin: 0,
+          }}>
+            OUR COLLABORATORS
+          </p>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Image
+              src={imgCollaborators}
+              alt="Our collaborators"
+              sizes={isMobile || isTablet ? '100vw' : '860px'}
+              style={{
+                display: 'block',
+                width: '100%',
+                maxWidth: isMobile ? '100%' : isTablet ? '100%' : 860,
+                height: 'auto',
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEATURED CASE STUDY ──────────────────────────────────────────────── */}
+      <section style={sectionBlock('#fff')}>
+        <div style={inner}>
+          <FadeUp duration={500}><Tag label="FEATURED CASE STUDY" /></FadeUp>
+          <FadeUp delay={60}>
+            <div style={{ marginTop: 32 }}>
+              <Card
+                mode="dark"
+                type="large"
+                category="HEALTHCARE"
+                heading="Home Care Operations, Automated at Scale."
+                body="Transformed authorization, billing, and supply reorder workflows for a national home care leader, clearing manual bottlenecks across order entry and insurance while moving millions of transactions cleanly.
+$1.5M+ ANNUAL LABOR SAVINGS 
+DENIALS 11% → 9% ON $4B REVENUE"
+                image={imgCaseStudy}
+                stats={[
+                  { value: '$50M+', label: 'TOTAL COST SAVING' },
+                  { value: '20,000+', label: 'ORDERS PLACED SUCCESSFULLY' },
+                ]}
+                primaryLabel="View Case Study"
+                secondaryLabel="View All"
+                onPrimary={() => router.push('/case-studies')}
+                onSecondary={() => router.push('/case-studies')}
+              />
+            </div>
+          </FadeUp>
         </div>
       </section>
 
