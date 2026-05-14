@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json.schemastore.org/design-tokens",
+  "$metadata": {
+    "source": "Figma Design System – Technossus",
+    "figmaFile": "Ck1TA25mMoYJMnI6ag9Xmh",
+    "generatedAt": "2026-05-07"
+  },
+  "color": {
+    "brand": {
+      "primary":   "#ED2939",
+      "black":     "#1E1E1E",
+      "gray":      "#616365",
+      "lightGray": "#EEEEEE"
+    },
+    "background": {
+      "black":     "#010101",
+      "darkGray1": "#1B1B1B",
+      "darkGray2": "#232323",
+      "darkGray3": "#343434",
+      "gray4":     "#F9F9F9"
+    },
+    "text": {
+      "gray100": "#FFFFFF",
+      "gray200": "#F5F5F5",
+      "gray300": "#E1E0E0",
+      "gray400": "#C6C6C7",
+      "gray500": "#ADADAD",
+      "gray600": "#949494",
+      "gray700": "#5C5C5C",
+      "gray800": "#383838",
+      "gray900": "#1E1E1E"
+    },
+    "surfaces": {
+      "card": "#F8F9FB"
+    },
+    "neutral": {
+      "600": "#7A7A7A"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "serif": "\"Roboto Serif\", Georgia, serif",
+      "sans":  "\"General Sans\", system-ui, -apple-system, sans-serif"
+    },
+    "display": {
+      "d1": { "fontFamily": "Roboto Serif", "fontWeight": 500, "fontSize": 48, "lineHeight": 52, "letterSpacing": -2 },
+      "d2": { "fontFamily": "Roboto Serif", "fontWeight": 600, "fontSize": 40, "lineHeight": 48, "letterSpacing": -1 }
+    },
+    "heading": {
+      "h1": { "fontFamily": "Roboto Serif",  "fontWeight": 500, "fontSize": 36, "lineHeight": 40, "letterSpacing": 0 },
+      "h2": { "fontFamily": "Roboto Serif",  "fontWeight": 600, "fontSize": 32, "lineHeight": 36, "letterSpacing": 0 },
+      "h3": { "fontFamily": "General Sans",  "fontWeight": 600, "fontSize": 24, "lineHeight": 32, "letterSpacing": 0 },
+      "h4": { "fontFamily": "General Sans",  "fontWeight": 600, "fontSize": 20, "lineHeight": 28, "letterSpacing": 0 }
+    },
+    "body": {
+      "b1": { "fontFamily": "General Sans", "fontWeight": 500, "fontSize": 18, "lineHeight": 24, "letterSpacing": 0 },
+      "b2": { "fontFamily": "General Sans", "fontWeight": 500, "fontSize": 16, "lineHeight": 24, "letterSpacing": 0 },
+      "b3": { "fontFamily": "General Sans", "fontWeight": 500, "fontSize": 14, "lineHeight": 20, "letterSpacing": 0 }
+    },
+    "label": {
+      "l1": { "fontFamily": "General Sans", "fontWeight": 600, "fontSize": 16, "lineHeight": 28, "letterSpacing": 0 },
+      "l2": { "fontFamily": "General Sans", "fontWeight": 600, "fontSize": 14, "lineHeight": 20, "letterSpacing": 0 }
+    }
+  },
+  "breakpoints": {
+    "xs":  { "value": 320,  "unit": "px", "description": "Mobile small" },
+    "sm":  { "value": 375,  "unit": "px", "description": "Mobile base" },
+    "md":  { "value": 430,  "unit": "px", "description": "Mobile large" },
+    "lg":  { "value": 768,  "unit": "px", "description": "Tablet portrait" },
+    "xl":  { "value": 1024, "unit": "px", "description": "Tablet landscape / small laptop" },
+    "2xl": { "value": 1280, "unit": "px", "description": "Desktop standard" },
+    "3xl": { "value": 1440, "unit": "px", "description": "Desktop wide" },
+    "4xl": { "value": 1728, "unit": "px", "description": "Large desktop" },
+    "5xl": { "value": 1920, "unit": "px", "description": "Ultra wide" }
+  },
+  "grid": {
+    "mobile":       { "columns": 4,  "margin": 16, "gutter": 16 },
+    "tablet":       { "columns": 8,  "margin": 32, "gutter": 24 },
+    "desktop":      { "columns": 12, "margin": 80, "gutter": 24, "maxWidth": 1440 },
+    "largeDesktop": { "columns": 12, "margin": 80, "gutter": 24, "maxWidth": 1728 }
+  },
+  "spacing": {
+    "0":   0,  "1":  1,  "2":  2,  "4":  4,  "8":  8,
+    "12": 12, "16": 16, "20": 20, "24": 24, "28": 28,
+    "32": 32, "36": 36, "40": 40, "44": 44, "48": 48,
+    "52": 52, "56": 56, "60": 60, "64": 64, "68": 68,
+    "72": 72, "76": 76, "80": 80, "84": 84, "88": 88,
+    "92": 92, "96": 96, "100": 100
+  }
+}

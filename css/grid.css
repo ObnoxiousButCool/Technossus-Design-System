@@ -1,0 +1,181 @@
+/* Technossus Design System – Grid & Container System
+ * 4-col mobile / 8-col tablet / 12-col desktop
+ * Mobile-first, min-width breakpoints */
+
+/* ─── Container ─────────────────────────────────────────────────────────────
+   Responsive wrapper with per-breakpoint margins and a max-width cap.        */
+.container {
+  width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+
+  /* Mobile (< 768px): 16px margin, 4 cols */
+  padding-inline: 16px;
+}
+
+@media (min-width: 768px) {
+  /* Tablet (768px – 1023px): 32px margin, 8 cols */
+  .container {
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop (1024px – 1279px): 48px margin, 12 cols */
+  .container {
+    padding-inline: 48px;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* Desktop wide (1280px – 1439px): 64px margin, 12 cols */
+  .container {
+    padding-inline: 64px;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* Desktop 1440px: 80px margin, 12 cols, max 1440px */
+  .container {
+    max-width: 1440px;
+    padding-inline: 80px;
+  }
+}
+
+@media (min-width: 1728px) {
+  /* Large desktop 1728px: 80px margin, max 1728px */
+  .container {
+    max-width: 1728px;
+    padding-inline: 80px;
+  }
+}
+
+@media (min-width: 1920px) {
+  /* Ultra wide 1920px+: stays at 1728px max, centered */
+  .container {
+    max-width: 1728px;
+  }
+}
+
+/* ─── Container variants ────────────────────────────────────────────────────*/
+.container-narrow {
+  width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding-inline: 16px;
+  max-width: 768px;
+}
+
+.container-content {
+  width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding-inline: 16px;
+  max-width: 1024px;
+}
+
+@media (min-width: 768px) {
+  .container-narrow,
+  .container-content {
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-content {
+    padding-inline: 64px;
+  }
+}
+
+/* ─── Grid system ───────────────────────────────────────────────────────────
+   CSS Grid wrapper. Children use .col-* for span control.                    */
+.grid {
+  display: grid;
+  gap: var(--grid-gutter, 16px);
+  /* Mobile: 4 columns */
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    /* Tablet: 8 columns */
+    grid-template-columns: repeat(8, 1fr);
+    gap: var(--grid-gutter-tablet, 24px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    /* Desktop: 12 columns */
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gutter-desktop, 24px);
+  }
+}
+
+/* ─── Column spans – mobile (4-col base) ───────────────────────────────────*/
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+
+/* ─── Column spans – tablet (768px, 8-col) ─────────────────────────────────*/
+@media (min-width: 768px) {
+  .col-sm-1  { grid-column: span 1; }
+  .col-sm-2  { grid-column: span 2; }
+  .col-sm-3  { grid-column: span 3; }
+  .col-sm-4  { grid-column: span 4; }
+  .col-sm-5  { grid-column: span 5; }
+  .col-sm-6  { grid-column: span 6; }
+  .col-sm-7  { grid-column: span 7; }
+  .col-sm-8  { grid-column: span 8; }
+}
+
+/* ─── Column spans – desktop (1024px, 12-col) ──────────────────────────────*/
+@media (min-width: 1024px) {
+  .col-md-1  { grid-column: span 1; }
+  .col-md-2  { grid-column: span 2; }
+  .col-md-3  { grid-column: span 3; }
+  .col-md-4  { grid-column: span 4; }
+  .col-md-5  { grid-column: span 5; }
+  .col-md-6  { grid-column: span 6; }
+  .col-md-7  { grid-column: span 7; }
+  .col-md-8  { grid-column: span 8; }
+  .col-md-9  { grid-column: span 9; }
+  .col-md-10 { grid-column: span 10; }
+  .col-md-11 { grid-column: span 11; }
+  .col-md-12 { grid-column: span 12; }
+}
+
+/* ─── Column spans – wide desktop (1440px) ──────────────────────────────────*/
+@media (min-width: 1440px) {
+  .col-lg-1  { grid-column: span 1; }
+  .col-lg-2  { grid-column: span 2; }
+  .col-lg-3  { grid-column: span 3; }
+  .col-lg-4  { grid-column: span 4; }
+  .col-lg-5  { grid-column: span 5; }
+  .col-lg-6  { grid-column: span 6; }
+  .col-lg-7  { grid-column: span 7; }
+  .col-lg-8  { grid-column: span 8; }
+  .col-lg-9  { grid-column: span 9; }
+  .col-lg-10 { grid-column: span 10; }
+  .col-lg-11 { grid-column: span 11; }
+  .col-lg-12 { grid-column: span 12; }
+}
+
+/* ─── Column offset helpers ─────────────────────────────────────────────────*/
+@media (min-width: 1024px) {
+  .col-start-1  { grid-column-start: 1; }
+  .col-start-2  { grid-column-start: 2; }
+  .col-start-3  { grid-column-start: 3; }
+  .col-start-4  { grid-column-start: 4; }
+  .col-start-5  { grid-column-start: 5; }
+  .col-start-6  { grid-column-start: 6; }
+  .col-start-7  { grid-column-start: 7; }
+}
+
+/* ─── CSS Custom Properties for grid gutter overrides ──────────────────────*/
+:root {
+  --grid-gutter:         16px;  /* mobile */
+  --grid-gutter-tablet:  24px;  /* tablet */
+  --grid-gutter-desktop: 24px;  /* desktop */
+}

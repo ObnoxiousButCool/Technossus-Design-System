@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json.schemastore.org/design-tokens",
+  "$metadata": {
+    "source": "Technossus Design System – Responsive Breakpoints",
+    "figmaFile": "Ck1TA25mMoYJMnI6ag9Xmh",
+    "generatedAt": "2026-05-08"
+  },
+  "breakpoints": {
+    "xs":   { "value": 320,  "unit": "px", "description": "Mobile small — iPhone SE, small Android" },
+    "sm":   { "value": 375,  "unit": "px", "description": "Mobile base — iPhone standard" },
+    "md":   { "value": 430,  "unit": "px", "description": "Mobile large — iPhone Pro Max, large Android" },
+    "lg":   { "value": 768,  "unit": "px", "description": "Tablet portrait — iPad Mini / Air portrait" },
+    "xl":   { "value": 1024, "unit": "px", "description": "Tablet landscape / small laptop" },
+    "2xl":  { "value": 1280, "unit": "px", "description": "Desktop standard — 13\" MacBook" },
+    "3xl":  { "value": 1440, "unit": "px", "description": "Desktop wide — 16\" MacBook / 1440p monitors" },
+    "4xl":  { "value": 1728, "unit": "px", "description": "Large desktop — 1728px wide displays" },
+    "5xl":  { "value": 1920, "unit": "px", "description": "Ultra wide — Full HD / 4K monitors" }
+  },
+  "grid": {
+    "mobile": {
+      "columns": 4,
+      "margin":  { "value": 16, "unit": "px" },
+      "gutter":  { "value": 16, "unit": "px" },
+      "maxWidth": "100%"
+    },
+    "tablet": {
+      "columns": 8,
+      "margin":  { "value": 32, "unit": "px" },
+      "gutter":  { "value": 24, "unit": "px" },
+      "maxWidth": "100%"
+    },
+    "desktop": {
+      "columns": 12,
+      "margin":  { "value": 80, "unit": "px" },
+      "gutter":  { "value": 24, "unit": "px" },
+      "maxWidth": { "value": 1440, "unit": "px" }
+    },
+    "largeDesktop": {
+      "columns": 12,
+      "margin":  { "value": 80, "unit": "px" },
+      "gutter":  { "value": 24, "unit": "px" },
+      "maxWidth": { "value": 1728, "unit": "px" }
+    }
+  }
+}
