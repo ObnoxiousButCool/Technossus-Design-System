@@ -53,6 +53,7 @@ interface CardDarkLargeProps {
   body?: string;
   stats?: StatItem[];
   image?: CardImageSource;
+  hideImageOnTablet?: boolean;
   onPrimary?: () => void;
   onSecondary?: () => void;
   primaryLabel?: string;
@@ -156,7 +157,7 @@ export type CardProps =
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export function Card(props: CardProps) {
-  const { isMobile } = useBreakpoint();
+  const { isMobile, isTablet } = useBreakpoint();
   const [isHovered, setIsHovered] = useState(false);
 
   // ── Dark / Small ─────────────────────────────────────────────────────────
@@ -299,8 +300,8 @@ export function Card(props: CardProps) {
           <div style={{ display: 'flex', gap: isMobile ? 20 : 32, alignItems: 'center', flexWrap: 'wrap' }}>
             {stats.map((stat, i) => (
               <React.Fragment key={i}>
-                {i > 0 && <div style={{ width: 1, height: 60, backgroundColor: '#7C7C7C', flexShrink: 0 }} />}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flexShrink: 0 }}>
+                {i > 0 && !isMobile && <div style={{ width: 1, height: 60, backgroundColor: '#7C7C7C', flexShrink: 0 }} />}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flexShrink: 0, width: isMobile ? '100%' : undefined }}>
                   <span style={{ fontFamily: serif, fontWeight: 600, fontSize: isMobile ? 28 : 32, lineHeight: '36px', color: red }}>{stat.value}</span>
                   <span style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 13 : 16, lineHeight: '24px', color: '#E1E0E0' }}>{stat.label}</span>
                 </div>
@@ -313,13 +314,13 @@ export function Card(props: CardProps) {
               <span style={{ fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: '#FFFFFF' }}>{props.primaryLabel ?? 'View All Case Study'}</span>
               <img alt="" src={imgArrowForward} style={{ width: 24, height: 24, display: 'block' }} />
             </button>
-            <button onClick={props.onSecondary} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 56, padding: '16px 24px', backgroundColor: 'transparent', border: `1px solid ${red}`, cursor: 'pointer', minWidth: 140 }}>
+            <button onClick={props.onSecondary} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 56, padding: '16px 24px', backgroundColor: 'transparent', border: `1px solid ${red}`, cursor: 'pointer', minWidth: isMobile ? '100%' : 140, boxSizing: 'border-box' }}>
               <span style={{ fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: red }}>{props.secondaryLabel ?? 'View All'}</span>
             </button>
           </div>
         </div>
 
-        {!isMobile && (
+        {!isMobile && !(isTablet && props.hideImageOnTablet) && (
           <div style={{ height: 400, position: 'relative', flexShrink: 0, width: 400, overflow: 'hidden' }}>
             <img alt="" src={resolveImageSrc(props.image) ?? imgPhoto2Dark} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
