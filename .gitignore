@@ -6,3 +6,4 @@ dist-server/
 *.local
 .claude/
 .vercel
+.env*.local

@@ -1,0 +1,182 @@
+# ============================================================
+# CD Pipeline — Technossus Website V2 (Web / Next.js)
+# Azure Pipelines | Azure Static Web Apps
+# Resource Group : RG-Technossus-WebV2
+#
+# Stages:
+#   1. build      — next build (production)
+#   2. staging    — deploy to SWA named preview environment (auto)
+#   3. production — deploy to SWA production slot (approval gate)
+#
+# Pre-requisites (configure once in Azure DevOps):
+#   • Pipeline secret variable  : AZURE_SWA_DEPLOYMENT_TOKEN
+#     → Azure Portal › Static Web App › Manage Deployment Token
+#   • Environment "WebV2-Staging"     (no approval needed)
+#   • Environment "WebV2-Production"  → add Approvals & Checks › Required approvers
+# ============================================================
+
+# This pipeline is triggered by a successful run of the CI pipeline on main,
+# not by direct code pushes (CI already validates the code).
+trigger: none
+
+resources:
+  pipelines:
+    - pipeline: web_ci
+      # 'project' and 'source' must exactly match the Azure DevOps project name
+      # and pipeline name respectively. Azure DevOps defaults the pipeline name
+      # to the repo name when you first create a pipeline.
+      project: 'Technossus-WebsiteV2'
+      source: 'Technossus-WebsiteV2-Web CI'
+      trigger:
+        branches:
+          include:
+            - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  NODE_VERSION: '22.x'
+
+# ─────────────────────────────────────────────
+# STAGE 1 — Build
+# ─────────────────────────────────────────────
+stages:
+  - stage: Build
+    displayName: '1 · Build (production)'
+    jobs:
+      - job: NextBuild
+        displayName: 'next build'
+        steps:
+          - checkout: self
+            fetchDepth: 1
+
+          - task: NodeTool@0
+            displayName: 'Install Node.js $(NODE_VERSION)'
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: npm ci --prefer-offline
+            displayName: 'Install dependencies (clean install)'
+
+          - script: npm i sharp
+            displayName: 'Install sharp (Next.js image optimisation)'
+
+          - script: npm run build
+            displayName: 'Build Next.js application'
+            env:
+              NODE_ENV: production
+
+          # ── Smoke test ───────────────────────────────────────────────
+          # Verify the production build boots and responds before deploying.
+          - script: |
+              npm start &
+              SERVER_PID=$!
+              echo "Server PID: $SERVER_PID"
+              for i in $(seq 1 30); do
+                if curl -sf http://localhost:3000 > /dev/null 2>&1; then
+                  echo "Server is ready after ${i}s"
+                  break
+                fi
+                sleep 1
+              done
+              HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
+              kill $SERVER_PID 2>/dev/null || true
+              echo "Smoke test HTTP status: $HTTP_STATUS"
+              if [ "$HTTP_STATUS" != "200" ]; then
+                echo "##vso[task.logissue type=error]Smoke test failed — GET / returned HTTP $HTTP_STATUS"
+                exit 1
+              fi
+              echo "Smoke test passed."
+            displayName: 'Smoke test — next start (HTTP 200 check)'
+            env:
+              NODE_ENV: production
+
+          # Publish the full workspace (source + .next) so that
+          # AzureStaticWebApp@0 can reference both the app root and
+          # the pre-built output in downstream stages.
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish build artifact'
+            inputs:
+              targetPath: '$(Build.SourcesDirectory)'
+              artifact: 'nextjs-app'
+              publishLocation: pipeline
+
+  # ─────────────────────────────────────────────
+  # STAGE 2 — Deploy to Staging
+  # ─────────────────────────────────────────────
+  - stage: DeployStaging
+    displayName: '2 · Deploy → Staging'
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - deployment: StagingDeploy
+        displayName: 'Azure Static Web Apps — staging preview'
+        # No approval gate on this environment — deploys automatically.
+        # Configure in Azure DevOps › Pipelines › Environments › WebV2-Staging.
+        environment: 'WebV2-Staging'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                # Download artifact directly into $(Build.SourcesDirectory) so the
+                # SWA Docker container (which mounts that dir at /working_dir/) can
+                # find the app at app_location: '/'.
+                - task: DownloadPipelineArtifact@2
+                  displayName: 'Download build artifact'
+                  inputs:
+                    artifact: nextjs-app
+                    targetPath: '$(Build.SourcesDirectory)'
+
+                - task: AzureStaticWebApp@0
+                  displayName: 'Deploy to SWA staging environment'
+                  inputs:
+                    azure_static_web_apps_api_token: $(AZURE_SWA_DEPLOYMENT_TOKEN)
+                    action: upload
+                    app_location: '/'
+                    # Empty string tells the SWA client there is no Azure Functions
+                    # API to scan for or deploy — prevents the "Failed to deploy
+                    # Azure Functions" error when no api/ folder exists.
+                    api_location: ''
+                    # Pre-built .next folder — skip rebuilding on the SWA agent
+                    output_location: '.next'
+                    skip_app_build: true
+                    # Named SWA preview environment (creates <hash>-staging.<domain>.azurestaticapps.net)
+                    deployment_environment: staging
+                    production_branch: main
+
+  # ─────────────────────────────────────────────
+  # STAGE 3 — Deploy to Production
+  # ─────────────────────────────────────────────
+  - stage: DeployProduction
+    displayName: '3 · Deploy → Production'
+    dependsOn: DeployStaging
+    # Only deploy to production from the main branch and after staging succeeds.
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: ProductionDeploy
+        displayName: 'Azure Static Web Apps — production'
+        # Add required approvers in Azure DevOps › Pipelines › Environments
+        # › WebV2-Production › Approvals and Checks.
+        environment: 'WebV2-Production'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: DownloadPipelineArtifact@2
+                  displayName: 'Download build artifact'
+                  inputs:
+                    artifact: nextjs-app
+                    targetPath: '$(Build.SourcesDirectory)'
+
+                - task: AzureStaticWebApp@0
+                  displayName: 'Deploy to SWA production slot'
+                  inputs:
+                    azure_static_web_apps_api_token: $(AZURE_SWA_DEPLOYMENT_TOKEN)
+                    action: upload
+                    app_location: '/'
+                    api_location: ''
+                    output_location: '.next'
+                    skip_app_build: true
+                    # No deployment_environment → targets the production slot
+                    production_branch: main
