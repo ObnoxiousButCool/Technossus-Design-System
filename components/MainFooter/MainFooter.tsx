@@ -224,7 +224,7 @@ export function MainFooter({ linkGroups = defaultGroups, className = '', style }
                   </span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingLeft: 28 }}>
-                  {['USA: Irvine, CA  (Headquarters)', 'UK: London', 'INDIA: Pune, Ludhyana'].map((loc) => (
+                  {['USA: Irvine, CA  (Headquarters)', 'UK: London', 'INDIA: Pune, Ludhiana'].map((loc) => (
                     <span key={loc} style={{ fontFamily: sans, fontWeight: 500, fontSize: 14, lineHeight: '20px', color: gray500 }}>
                       {loc}
                     </span>

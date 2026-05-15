@@ -698,8 +698,8 @@ DENIALS 11% → 9% ON $4B REVENUE"
                   {[
                     { icon: imgIconOutcome, title: 'Embedded Delivery', description: "We work as an extension of your team , your governance, your cadence, your decisions. Engineers are embedded in your delivery, not parachuted in to disappear." },
                     { icon: imgIconScale, title: 'Built to Hand Off', description: "When the engagement ends, your team owns the architecture. Capability transfers as we build — which is how we've maintained 90%+ client retention across 15+ years." },
-                    { icon: imgIconScale, title: 'Weeks, Not Quarters', description: 'AI-accelerated engineering compresses idea to evidence into weeks. Speed comes from eliminating waste, not from skipping what matters , your quality bar stays intact.' },
-                    { icon: imgIconEnhance, title: 'Consulting Meets Engineering', description: 'We own the intersection of consultative thinking and expert engineering , strategy you can act on, and systems your team can defend in front of a board.' },
+                    { icon: imgIconScale, title: 'Weeks, Not Quarters', description: 'AI-accelerated engineering compresses idea to evidence into weeks. Speed comes from eliminating waste, not from skipping what matters, your quality bar stays intact.' },
+                    { icon: imgIconEnhance, title: 'Consulting Meets Engineering', description: 'We own the intersection of consultative thinking and expert engineering, strategy you can act on, and systems your team can defend in front of a board.' },
                     { icon: imgIconScale, title: 'Outcomes That Land', description: "Investment accountability is part of delivery. What you approved is what gets built, and every decision traces back to the outcome it was meant to shape." },
                     { icon: imgIconScale, title: 'Simplify Complexity', description: 'We build architectures designed to manage massive scale and inherent technical complexity while ensuring security and adaptability for evolving needs.' },
                   ].map(card => (
