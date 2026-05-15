@@ -26,6 +26,7 @@ import imgSvcQuality from '../../assets/Website_Images/Services/Quality Eng..png
 import imgHomeFuture from '../../assets/Website_Images/Home page/home3.png';
 import imgHomeModernize from '../../assets/Website_Images/Home page/home2.png';
 import imgHomeAI from '../../assets/Website_Images/Home page/home1.png';
+import imgStatsGlobe from '../../assets/Website_Images/Home page/globe.png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -41,18 +42,16 @@ const imgHeroBg = '/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png';
 // Search bar icons
 const imgSearchAiStar = '/assets/1396fbe0e7d98149afea22065d702750dbf4a387.svg';
 const imgSearchSend = '/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg';
+const imgArrowForward = '/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
 
-// Stats section — combined globe + network arc composition
-const imgStatsComposed = '/assets/215811fe-eab7-431c-9d72-d65f9783311c.png';
+// Stats section — globe composition
+const imgStatsComposed = imgStatsGlobe;
 
 // Case Study
 const imgCaseStudy = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
 
 // What We Deliver + Insights card image
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
-
-// AI Studio medium card icon (document)
-const imgDocumentIcon = '/assets/e242e8576977e4f3d29c4be05ad738619168755a.svg';
 
 // Why Technossus card icons
 const imgIconOutcome = '/assets/ac8dbae3d6a4ef3869c92f062ba66c3ebc0095c2.svg';
@@ -146,7 +145,7 @@ export default function Home() {
       heading: 'Scale AI with Purpose,',
       accent: ' not just pilots',
       subheading: 'Move beyond experimentation to real-world implementation, delivering measurable business outcomes at scale',
-      cta: 'Start Planning',
+      cta: 'Explore solutions',
       href: '/ai-studio',
       image: imgHomeAI,
     },
@@ -159,10 +158,43 @@ export default function Home() {
       image: imgHeroBg,
     },
   ];
+  const quickPickLinks = [
+    { label: 'AI Adoption Strategy', href: '/services/ai-business-transformation' },
+    { label: 'Modernize Platforms', href: '/services/cloud-product-modernization' },
+    { label: 'Data Analytics', href: '/services/data-intelligence-analytics' },
+    { label: 'Healthcare IT', href: '/industries/healthcare' },
+    { label: 'Product Engineering', href: '/services/product-engineering' },
+  ];
+  const whatIsAiStudioItems = [
+    {
+      num: '01',
+      title: 'An Innovation Lab',
+      description: 'Explore working AI demos by industry. Watch use case videos and test ideas in a safe environment before committing a sprint to anything.',
+    },
+    {
+      num: '02',
+      title: 'Accelerators',
+      description: 'Pre-built, production-tested AI frameworks ready to plug into your stack. All the hard setup is done - just add your context and go.',
+    },
+    {
+      num: '03',
+      title: 'Collaborate',
+      description: 'A curated space for enterprise leaders, practitioners, and partners sharing what works, co-creating in sprints, and shaping how AI gets applied at scale.',
+    },
+    {
+      num: '04',
+      title: 'The Framework',
+      description: 'The TAS Delivery Framework is our structured AI SDLC - taking validated prototypes to production safely, with governance and adoption built in at every stage.',
+    },
+  ];
+  const healthcareCaseStudiesHref = '/case-studies?industry=Healthcare';
+  const caseStudiesHref = '/case-studies';
   const [heroCarouselRef, heroCarouselApi] = useEmblaCarousel({
     align: 'start',
     loop: true,
   });
+  const [selectedHeroIndex, setSelectedHeroIndex] = React.useState(0);
+  const [isHeroDragging, setIsHeroDragging] = React.useState(false);
   const heroAutoplayRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
   const reduceMotionRef = React.useRef(false);
 
@@ -206,6 +238,23 @@ export default function Home() {
     };
   }, [heroCarouselApi, startHeroAutoplay, stopHeroAutoplay]);
 
+  React.useEffect(() => {
+    if (!heroCarouselApi) return undefined;
+
+    const syncSelectedSlide = () => {
+      setSelectedHeroIndex(heroCarouselApi.selectedScrollSnap());
+    };
+
+    syncSelectedSlide();
+    heroCarouselApi.on('select', syncSelectedSlide);
+    heroCarouselApi.on('reInit', syncSelectedSlide);
+
+    return () => {
+      heroCarouselApi.off('select', syncSelectedSlide);
+      heroCarouselApi.off('reInit', syncSelectedSlide);
+    };
+  }, [heroCarouselApi]);
+
   return (
     <main style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
@@ -218,14 +267,21 @@ export default function Home() {
             role="region"
             aria-label="Featured Technossus messages"
             onMouseEnter={stopHeroAutoplay}
-            onMouseLeave={startHeroAutoplay}
+            onMouseLeave={() => {
+              setIsHeroDragging(false);
+              startHeroAutoplay();
+            }}
             onFocusCapture={stopHeroAutoplay}
             onBlurCapture={startHeroAutoplay}
+            onPointerDown={() => setIsHeroDragging(true)}
+            onPointerUp={() => setIsHeroDragging(false)}
+            onPointerCancel={() => setIsHeroDragging(false)}
             style={{
               position: 'relative',
               ...fullBleedStyle,
               height: isMobile ? 430 : isTablet ? 420 : 463,
               overflow: 'hidden',
+              cursor: isHeroDragging ? 'grabbing' : 'grab',
             }}>
             <div ref={heroCarouselRef} style={{ overflow: 'hidden', width: '100%', height: '100%' }}>
               <div className="home-hero-carousel-track" style={{
@@ -293,7 +349,32 @@ export default function Home() {
                         </div>
                         <FadeUp delay={120}>
                           <div>
-                            <Button variant="primary" label={slide.cta} href={slide.href} />
+                            <a
+                              href={slide.href}
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 8,
+                                minHeight: 48,
+                                padding: '10px 20px',
+                                background: red,
+                                color: '#fff',
+                                textDecoration: 'none',
+                                fontFamily: sans,
+                                fontSize: 16,
+                                fontWeight: 600,
+                                lineHeight: '28px',
+                                boxSizing: 'border-box',
+                              }}
+                            >
+                              <span>{slide.cta}</span>
+                              <img
+                                alt=""
+                                src={imgArrowForward}
+                                style={{ width: 24, height: 24, display: 'block', flexShrink: 0 }}
+                              />
+                            </a>
                           </div>
                         </FadeUp>
                       </div>
@@ -301,6 +382,49 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </div>
+            <div
+              aria-label="Carousel slides"
+              style={{
+                position: 'absolute',
+                left: '50%',
+                bottom: isMobile ? 16 : 0,
+                transform: 'translateX(-50%)',
+                zIndex: 4,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 10,
+                padding: '8px 10px',
+                background: 'transparent',
+              }}
+            >
+              {heroSlides.map((slide, index) => {
+                const isActive = selectedHeroIndex === index;
+
+                return (
+                  <button
+                    key={`${slide.heading}-indicator`}
+                    type="button"
+                    aria-label={`Go to slide ${index + 1}`}
+                    aria-current={isActive ? 'true' : undefined}
+                    onClick={() => {
+                      stopHeroAutoplay();
+                      heroCarouselApi?.scrollTo(index);
+                    }}
+                    style={{
+                      width: isActive ? 28 : 9,
+                      height: 9,
+                      borderRadius: 999,
+                      border: 'none',
+                      padding: 0,
+                      background: isActive ? red : 'rgba(255, 255, 255, 0.62)',
+                      cursor: 'pointer',
+                      transition: 'width 0.2s ease, background 0.2s ease',
+                    }}
+                  />
+                );
+              })}
             </div>
           </div>
 
@@ -368,15 +492,15 @@ export default function Home() {
                     justifyContent: 'center',
                     gap: 16, flexWrap: 'wrap',
                   }}>
-                    {['AI Adoption Strategy', 'Modernize Platforms', 'Data Analytics', 'Healthcare IT', 'Product Engineering'].map(chip => (
-                      <button key={chip} style={{
+                    {quickPickLinks.map((chip) => (
+                      <button key={chip.label} onClick={() => router.push(chip.href)} style={{
                         display: 'inline-flex', alignItems: 'center',
                         height: 48, padding: '0 20px', borderRadius: 37,
                         background: '#383838', border: 'none',
                         fontFamily: sans, fontSize: 16, fontWeight: 500,
                         color: '#fff', cursor: 'pointer', lineHeight: '24px',
                       }}>
-                        {chip}
+                        {chip.label}
                       </button>
                     ))}
                   </div>
@@ -390,7 +514,7 @@ export default function Home() {
       {/* ── STATS ─────────────────────────────────────────────────────────────── */}
       <section style={{ ...sectionBlock('#fff'), overflow: 'hidden' }}>
         <div style={inner}>
-          {/* <FadeUp duration={500}><Tag label="STATISTICS" /></FadeUp> */}
+          <FadeUp duration={500}><Tag label="STATISTICS" /></FadeUp>
           <FadeUp>
             <h2 style={{
               fontFamily: serif,
@@ -477,56 +601,92 @@ export default function Home() {
        {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
-          <FadeUp duration={500}><Tag label="AI STUDIO" style={{marginBottom: 16}} /></FadeUp>
+          <FadeUp duration={500}><Tag label="AI STUDIO" style={{ marginBottom: 16 }} /></FadeUp>
           <div style={{
-            backgroundColor: '#0A0A0F',
+            backgroundColor: dark2,
             padding: darkPanelPadding,
             boxSizing: 'border-box',
             overflow: 'hidden',
           }}>
-            
-
-            <FadeUp>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 36 }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: isMobile || isTablet ? 'column' : 'row',
+                gap: isMobile ? 32 : isTablet ? 36 : 52,
+                alignItems: 'flex-start',
+                padding: isMobile ? '24px 0 0' : '40px 0 0',
+                marginBottom: 36,
+              }}
+            >
+              <FadeUp style={{ flexShrink: 0, maxWidth: isMobile || isTablet ? '100%' : 560 }}>
                 <h2 style={{
                   fontFamily: serif,
-                  fontSize: shSize, lineHeight: shLine,
-                  fontWeight: 500, color: '#fff',
-                  maxWidth: 731, margin: 0,
+                  fontSize: isMobile ? 28 : 36,
+                  lineHeight: isMobile ? '36px' : '40px',
+                  fontWeight: 600,
+                  color: '#fff',
+                  margin: '0 0 24px',
                 }}>
-                  Explore, validate, and build{' '}
-                  <span style={{ color: red }}>enterprise systems with clarity</span>
+                  Explore, validate, and build 
+                  <span style={{ color: red }}> enterprise systems with clarity</span>
                 </h2>
                 <p style={{
-                  fontFamily: sans, fontSize: isMobile ? 15 : 18, fontWeight: 500,
-                  color: '#F9FAFB', lineHeight: isMobile ? '22px' : '24px', margin: 0,
+                  fontFamily: sans,
+                  fontSize: isMobile ? 15 : 16,
+                  fontWeight: 500,
+                  lineHeight: isMobile ? '22px' : '24px',
+                  color: '#E1E0E0',
+                  margin: 0,
                 }}>
-                  Test real AI systems before you commit to build. Validate outcomes, not assumptions.
+                  AI Studio is a dedicated environment to explore real use cases, test ideas, and move from prototype to production with structure and speed.
                 </p>
-              </div>
-            </FadeUp>
+                <p style={{
+                  fontFamily: sans,
+                  fontSize: isMobile ? 15 : 16,
+                  fontWeight: 500,
+                  lineHeight: isMobile ? '22px' : '24px',
+                  color: '#E1E0E0',
+                  margin: '10px 0 0',
+                }}>
+                  Built on the Technossus Delivery Framework with pre-built accelerators, it helps you create scalable, governed systems aligned with enterprise architecture.
+                </p>
+              </FadeUp>
 
-            <FadeUp delay={60}>
-              <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: isMobile ? 16 : 20, marginBottom: 36 }}>
-                {[
-                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.', ctaLabel: 'Try in AI Studio' },
-                  { category: 'FASTER PROCESSING', title: 'Automate document workflows', description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.', ctaLabel: 'Try in AI Studio' },
-                  { category: 'INTELLIGENT SEARCH', title: 'Surface insights from your data', description: 'Connect your enterprise knowledge base to conversational AI that understands context, retrieves accurately, and scales across every team without custom pipelines.', ctaLabel: 'Try in AI Studio' },
-                ].map(card => (
-                  <Card
-                    key={card.category}
-                    mode="dark"
-                    type="medium"
-                    icon={imgDocumentIcon}
-                    category={card.category}
-                    title={card.title}
-                    description={card.description}
-                    ctaLabel={card.ctaLabel}
-                    onCta={() => router.push('/ai-studio')}
-                  />
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+                  gap: isMobile ? 16 : 24,
+                  flex: isMobile || isTablet ? undefined : 1,
+                  width: isMobile || isTablet ? '100%' : undefined,
+                }}
+              >
+                {whatIsAiStudioItems.map((item, i) => (
+                  <FadeUp key={item.num} delay={i * 80}>
+                    <article
+                      style={{
+                        borderLeft: '1px solid #ADADAD',
+                        paddingLeft: isMobile ? 16 : 21,
+                        paddingRight: isMobile ? 0 : 12,
+                        paddingTop: 12,
+                        paddingBottom: 12,
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <span style={{ fontFamily: serif, fontWeight: 500, fontSize: 36, lineHeight: '40px', color: red, display: 'block', marginBottom: 12 }}>
+                        {item.num}
+                      </span>
+                      <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: '#fff', margin: '0 0 12px' }}>
+                        {item.title}
+                      </h3>
+                      <p style={{ fontFamily: sans, fontWeight: 500, fontSize: 14, lineHeight: '20px', color: '#DEDEDE', margin: 0 }}>
+                        {item.description}
+                      </p>
+                    </article>
+                  </FadeUp>
                 ))}
               </div>
-            </FadeUp>
+            </div>
 
             <CTABanner
               size="small"
@@ -599,8 +759,8 @@ DENIALS 11% → 9% ON $4B REVENUE"
                 ]}
                 primaryLabel="View Case Study"
                 secondaryLabel="View All"
-                onPrimary={() => router.push('/case-studies')}
-                onSecondary={() => router.push('/case-studies')}
+                onPrimary={() => router.push(healthcareCaseStudiesHref)}
+                onSecondary={() => router.push(caseStudiesHref)}
               />
             </div>
           </FadeUp>
@@ -671,6 +831,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
       {/* ── WHY TECHNOSSUS ───────────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
+          <FadeUp duration={500}><Tag label="INSIGHTS" style={{marginBottom: 16}} /></FadeUp>
           <div style={{ background: dark2, position: 'relative', overflow: 'hidden', width: '100%' }}>
             {!isMobile && <CornerTL />}
             {!isMobile && <CornerBR />}
@@ -698,8 +859,8 @@ DENIALS 11% → 9% ON $4B REVENUE"
                   {[
                     { icon: imgIconOutcome, title: 'Embedded Delivery', description: "We work as an extension of your team , your governance, your cadence, your decisions. Engineers are embedded in your delivery, not parachuted in to disappear." },
                     { icon: imgIconScale, title: 'Built to Hand Off', description: "When the engagement ends, your team owns the architecture. Capability transfers as we build — which is how we've maintained 90%+ client retention across 15+ years." },
-                    { icon: imgIconScale, title: 'Weeks, Not Quarters', description: 'AI-accelerated engineering compresses idea to evidence into weeks. Speed comes from eliminating waste, not from skipping what matters , your quality bar stays intact.' },
-                    { icon: imgIconEnhance, title: 'Consulting Meets Engineering', description: 'We own the intersection of consultative thinking and expert engineering , strategy you can act on, and systems your team can defend in front of a board.' },
+                    { icon: imgIconScale, title: 'Weeks, Not Quarters', description: 'AI-accelerated engineering compresses idea to evidence into weeks. Speed comes from eliminating waste, not from skipping what matters, your quality bar stays intact.' },
+                    { icon: imgIconEnhance, title: 'Consulting Meets Engineering', description: 'We own the intersection of consultative thinking and expert engineering, strategy you can act on, and systems your team can defend in front of a board.' },
                     { icon: imgIconScale, title: 'Outcomes That Land', description: "Investment accountability is part of delivery. What you approved is what gets built, and every decision traces back to the outcome it was meant to shape." },
                     { icon: imgIconScale, title: 'Simplify Complexity', description: 'We build architectures designed to manage massive scale and inherent technical complexity while ensuring security and adaptability for evolving needs.' },
                   ].map(card => (
@@ -710,6 +871,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
                       icon={<Image src={card.icon} alt="" width={28} height={28} style={{ width: 'auto', height: 28 }} />}
                       title={card.title}
                       description={card.description}
+                      style={{border:"1px solid #FFFFFF08"}}
                     />
                   ))}
                 </div>

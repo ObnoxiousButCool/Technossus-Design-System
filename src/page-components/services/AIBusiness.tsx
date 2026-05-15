@@ -1,16 +1,22 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Tag } from "../../../components/Tag";
 import { Breadcrumb } from "../../../components/Breadcrumb";
 import { Accordion } from "../../../components/Accordion";
 import { CTABanner } from "../../../components/CTABanner";
+import { ContactFormPopUp } from "../../../components/ContactFormPopUp";
 import { Button } from "../../../components/Button";
 import { FadeUp } from "../../../components/Animate/FadeUp";
 import { useBreakpoint } from "../../../ts/breakpoints";
 import type { AccordionItem } from "../../../components/Accordion";
 import { resolveImageSrc } from "../../../ts/imageSrc";
+import { getContactFormTopicForRoute } from "../../../components/CTABanner/contactFormTopics";
 import imgHero from "../../../assets/Website_Images/Services/AI Led Transformation.png";
+// import imgCollaborators from "../../../assets/Website_images 2/Logo.png";
+import imgCollaborators from "../../../assets/Website_images 2/Logo.png";
 
 const imgCardPhoto = "/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png";
 
@@ -164,18 +170,122 @@ const howCards = [
   {
     title: "Your story to the board stays defensible.",
     body: "What you approved is what gets built and you can explain every decision along the way, in the altitude your board operates at.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+      >
+        <mask
+          id="mask0_2742_3070"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="32"
+          height="32"
+        >
+          <rect width="32" height="32" fill="#D9D9D9" />
+        </mask>
+        <g mask="url(#mask0_2742_3070)">
+          <path
+            d="M12.754 20.1334L16 17.6668L19.1793 20.1078L17.959 16.1641L21.2563 13.5898H17.287L16 9.62077L14.713 13.5898H10.7437L13.9743 16.1641L12.754 20.1334ZM16 28.6411C13.1162 27.8547 10.7287 26.1572 8.83733 23.5488C6.94578 20.9403 6 18.0241 6 14.8001V7.12843L16 3.38477L26 7.12843V14.8001C26 18.0241 25.0542 20.9403 23.1627 23.5488C21.2713 26.1572 18.8838 27.8547 16 28.6411Z"
+            fill="#ED2939"
+          />
+        </g>
+      </svg>
+    ),
   },
   {
     title: "What gets built traces back to what you approved.",
     body: "No scope creep that lands on your desk at invoice time. Investment accountability is part of the delivery, not a risk we hand back.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+      >
+        <mask
+          id="mask0_2742_3086"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="32"
+          height="32"
+        >
+          <rect width="32" height="32" fill="#D9D9D9" />
+        </mask>
+        <g mask="url(#mask0_2742_3086)">
+          <path
+            d="M11.0586 27.669C9.51776 27.0041 8.17742 26.1018 7.03765 24.962C5.89787 23.8222 4.99554 22.4819 4.33065 20.941C3.66576 19.4001 3.33331 17.7538 3.33331 16.002C3.33331 14.25 3.66587 12.6077 4.33098 11.075C4.99587 9.54234 5.89831 8.20523 7.03831 7.06367C8.17831 5.92212 9.51887 5.01834 11.06 4.35234C12.6011 3.68656 14.2478 3.35367 16 3.35367C16.5675 3.35367 17.1214 3.38612 17.6616 3.45101C18.2016 3.5159 18.735 3.62445 19.2616 3.77667C18.9932 4.26223 18.7842 4.7719 18.6346 5.30567C18.4851 5.83945 18.4103 6.40412 18.4103 6.99967C18.4103 8.04456 18.6282 9.00234 19.064 9.87301C19.5 10.7439 20.0923 11.4819 20.841 12.087L14.0873 18.8613L10.3076 15.0613L8.88198 16.487L14.0873 21.6713L22.618 13.1407C22.994 13.286 23.3776 13.3971 23.769 13.474C24.1603 13.5509 24.5706 13.5893 25 13.5893C25.5955 13.5893 26.1602 13.5146 26.694 13.365C27.2278 13.2155 27.7374 13.0065 28.223 12.738C28.3752 13.2647 28.4838 13.798 28.5486 14.338C28.6135 14.8782 28.646 15.4321 28.646 15.9997C28.646 17.7519 28.3131 19.3986 27.6473 20.9397C26.9813 22.4808 26.0775 23.8213 24.936 24.9613C23.7944 26.1013 22.4573 27.0038 20.9246 27.6687C19.392 28.3338 17.7496 28.6663 15.9976 28.6663C14.2459 28.6663 12.5995 28.3339 11.0586 27.669ZM22.404 9.59734C21.6902 8.88467 21.3333 8.01934 21.3333 7.00134C21.3333 5.98312 21.6896 5.11723 22.4023 4.40367C23.115 3.6899 23.9803 3.33301 24.9983 3.33301C26.0165 3.33301 26.8824 3.68934 27.596 4.40201C28.3098 5.11467 28.6666 5.98012 28.6666 6.99834C28.6666 8.01634 28.3103 8.88212 27.5976 9.59567C26.885 10.3095 26.0195 10.6663 25.0013 10.6663C23.9833 10.6663 23.1175 10.31 22.404 9.59734Z"
+            fill="#ED2939"
+          />
+        </g>
+      </svg>
+    ),
   },
   {
     title: "Your organization moves at the pace it can absorb.",
     body: "Change management is part of the deliverable. Fast where the organization is ready, patient where it isn't, honest about which is which.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+      >
+        <mask
+          id="mask0_2742_3121"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="32"
+          height="32"
+        >
+          <rect width="32" height="32" fill="#D9D9D9" />
+        </mask>
+        <g mask="url(#mask0_2742_3121)">
+          <path
+            d="M4.33331 27.4359V9.43587H9.66665V4.10254H22.3333V14.7692H27.6666V27.4359H17.6666V22.1025H14.3333V27.4359H4.33331ZM6.33331 25.4359H9.66665V22.1025H6.33331V25.4359ZM6.33331 20.1025H9.66665V16.7692H6.33331V20.1025ZM6.33331 14.7692H9.66665V11.4359H6.33331V14.7692ZM11.6666 20.1025H15V16.7692H11.6666V20.1025ZM11.6666 14.7692H15V11.4359H11.6666V14.7692ZM11.6666 9.43587H15V6.10254H11.6666V9.43587ZM17 20.1025H20.3333V16.7692H17V20.1025ZM17 14.7692H20.3333V11.4359H17V14.7692ZM17 9.43587H20.3333V6.10254H17V9.43587ZM22.3333 25.4359H25.6666V22.1025H22.3333V25.4359ZM22.3333 20.1025H25.6666V16.7692H22.3333V20.1025Z"
+            fill="#ED2939"
+          />
+        </g>
+      </svg>
+    ),
   },
   {
     title: "We tell you when fast is the right bet.",
     body: "Our job is strategic pace, not performance theater. We'll push when the window is open, and slow you down when speed is the wrong signal to the organization.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+      >
+        <mask
+          id="mask0_2742_3105"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="32"
+          height="32"
+        >
+          <rect width="32" height="32" fill="#D9D9D9" />
+        </mask>
+        <g mask="url(#mask0_2742_3105)">
+          <path
+            d="M5.17969 28.1533V21.5253H9.16935L9.99235 15.6663H6.51302V13.6663H25.487V15.6663H22.0077L22.8307 21.5253H26.8204V28.1533H5.17969ZM9.57435 12.0767L7.74369 3.84601C8.42569 4.32467 9.09791 4.74212 9.76035 5.09834C10.4228 5.45479 11.1522 5.63301 11.9487 5.63301C12.7607 5.63301 13.5026 5.45867 14.1744 5.11001C14.8461 4.76134 15.4547 4.33567 16 3.83301C16.5454 4.33567 17.1539 4.76134 17.8257 5.11001C18.4975 5.45867 19.235 5.63301 20.0384 5.63301C20.8092 5.63301 21.5217 5.45701 22.1757 5.10501C22.8295 4.75278 23.5272 4.33312 24.269 3.84601L22.446 12.0767H9.57435Z"
+            fill="#ED2939"
+          />
+        </g>
+      </svg>
+    ),
   },
 ];
 
@@ -224,7 +334,24 @@ const painCards = [
 ];
 
 export default function AIBusiness() {
-  const { isMobile, isTablet } = useBreakpoint();
+  const { width, isMobile, isTablet } = useBreakpoint();
+  const pathname = usePathname();
+  const [formOpen, setFormOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (formOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [formOpen]);
+
+  const resolvedContactTopic =
+    getContactFormTopicForRoute(pathname) ?? "AI-Led Business Transformation";
 
   const inner = {
     maxWidth: 1440,
@@ -267,6 +394,7 @@ export default function AIBusiness() {
       ? "repeat(2, 1fr)"
       : "repeat(3, 1fr)";
   const cols2 = isMobile ? "1fr" : "repeat(2, 1fr)";
+  const stackHero = isMobile || isTablet || width < 1180;
 
   return (
     <>
@@ -293,8 +421,8 @@ export default function AIBusiness() {
           <div
             style={{
               display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              alignItems: isMobile ? "flex-start" : "center",
+              flexDirection: stackHero ? "column" : "row",
+              alignItems: stackHero ? "flex-start" : "center",
               gap: isMobile ? 32 : 60,
               marginTop: 40,
             }}
@@ -302,6 +430,8 @@ export default function AIBusiness() {
             <div
               style={{
                 flex: 2,
+                order: isTablet ? 2 : 1,
+                width: stackHero ? "100%" : undefined,
                 display: "flex",
                 flexDirection: "column",
                 gap: 32,
@@ -323,7 +453,7 @@ export default function AIBusiness() {
               <FadeUp>
                 <h1 style={d1()}>
                   The AI strategy is approved, and the teams are moving. The
-                  question is whetherthe investment is{" "}
+                  question is whether the investment is{" "}
                   <span style={{ color: red }}>actually working.</span>
                 </h1>
               </FadeUp>
@@ -350,7 +480,7 @@ export default function AIBusiness() {
                   <Button
                     variant="primary"
                     label="Bring us into the conversation"
-                    href="#"
+                    onClick={() => setFormOpen(true)}
                   />
                   <Button
                     variant="secondary"
@@ -363,19 +493,26 @@ export default function AIBusiness() {
             {!isMobile && (
               <div
                 style={{
-                  flex: 1,
+                  flex: stackHero ? "0 0 auto" : "0 0 501px",
+                  order: isTablet ? 1 : 2,
+                  width: stackHero ? "100%" : 501,
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: isTablet ? 300 : 460,
+                  justifyContent: isTablet
+                    ? "center"
+                    : stackHero
+                      ? "flex-start"
+                      : "center",
+                  minHeight: 400,
                 }}
               >
                 <img
                   src={resolveImageSrc(imgHero)}
                   alt=""
                   style={{
-                    width: "100%",
-                    height: isTablet ? 300 : 460,
+                    width: 501,
+                    maxWidth: "100%",
+                    height: 400,
                     objectFit: "cover",
                     display: "block",
                   }}
@@ -387,56 +524,46 @@ export default function AIBusiness() {
       </section>
 
       {/* ── TRUSTED BY ── */}
-      <section style={{ borderTop: "1px solid #E8E8E8" }}>
+
+      <section style={{ background: "#fff" }}>
         <div
           style={{
             maxWidth: 1440,
             margin: "0 auto",
-            padding: isMobile ? "24px 16px" : "32px 80px",
+            padding: isMobile ? "0 16px" : isTablet ? "0 32px" : "0 80px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 18,
+            gap: 16,
           }}
         >
           <p
             style={{
               fontFamily: sans,
-              fontSize: 20,
-              fontWeight: 400,
-              color: "#424242",
+              fontSize: 16,
+              fontWeight: 500,
+              color: "#949494",
+              textAlign: "center",
+              lineHeight: "24px",
+              margin: 0,
             }}
           >
             Trusted By
           </p>
           <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: isMobile ? 24 : 72,
-              flexWrap: "wrap",
-            }}
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
           >
-            {[
-              "TOYOTA FINANCIAL",
-              "GE HEALTHCARE",
-              "COMMONSPIRIT",
-              "BIO-RAD",
-              "ADAPTHEALTH",
-            ].map((name) => (
-              <span
-                key={name}
-                style={{
-                  fontFamily: sans,
-                  fontSize: 20,
-                  fontWeight: 500,
-                  color: "#424242",
-                }}
-              >
-                {name}
-              </span>
-            ))}
+            <Image
+              src={imgCollaborators}
+              alt="Our collaborators"
+              sizes={isMobile || isTablet ? "100vw" : "860px"}
+              style={{
+                display: "block",
+                width: "100%",
+                maxWidth: isMobile ? "100%" : isTablet ? "100%" : 860,
+                height: "auto",
+              }}
+            />
           </div>
         </div>
       </section>
@@ -473,8 +600,8 @@ export default function AIBusiness() {
             <div
               style={{
                 display: "flex",
-                flexDirection: isMobile ? "column" : "row",
-                gap: 48,
+                flexDirection: isMobile || isTablet ? "column" : "row",
+                gap: isMobile ? 32 : 48,
                 alignItems: "flex-start",
                 marginTop: 0,
                 flexWrap: "wrap",
@@ -482,8 +609,8 @@ export default function AIBusiness() {
             >
               <div
                 style={{
-                  flex: isMobile ? undefined : "485 1 0",
-                  minWidth: isMobile ? "100%" : 320,
+                  flex: isMobile || isTablet ? undefined : "485 1 0",
+                  minWidth: isMobile || isTablet ? "100%" : 320,
                 }}
               >
                 <h2 style={d3("#fff")}>
@@ -521,10 +648,12 @@ export default function AIBusiness() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                  gridTemplateColumns: isMobile
+                    ? "1fr"
+                    : "repeat(2, minmax(0, 1fr))",
                   gap: 20,
-                  flex: isMobile ? undefined : "807 1 0",
-                  width: isMobile ? "100%" : undefined,
+                  flex: isMobile || isTablet ? undefined : "807 1 0",
+                  width: isMobile || isTablet ? "100%" : undefined,
                 }}
               >
                 {[
@@ -570,7 +699,7 @@ export default function AIBusiness() {
                     <p
                       style={{
                         fontFamily: "General Sans",
-                        fontSize: 16,
+                        fontSize: isMobile ? 14 : 16,
                         lineHeight: 1.6,
                         color: "#fff",
                         margin: 0,
@@ -588,31 +717,33 @@ export default function AIBusiness() {
 
       {/* ── SERVICE OFFERINGS ── */}
       <section style={{ background: "#fff" }}>
-        <div style={inner}>
+        <div style={{ ...inner, paddingBottom: 0 }}>
           <Tag label="SERVICE OFFERINGS" />
           <h2 style={{ ...d3("#1E1E1E"), marginTop: 16 }}>
-            Your strategy, configured across the delivery <br />
+            Your strategy, configured across the delivery {!isMobile && <br />}
             <span style={{ color: red }}>that makes it land.</span>
           </h2>
           <div style={{ marginTop: 48 }}>
-            <Accordion items={accordionItems} defaultActiveIndex={1} />
+            <Accordion items={accordionItems} defaultActiveIndex={0} />
           </div>
         </div>
       </section>
 
       {/* ── HOW WE WORK ── */}
-      <section style={{ background: "#fff" }}>
-        <div style={{ ...inner, paddingTop: 0 }}>
+      <section style={{ background: "#fff", marginTop: 0 }}>
+        <div style={inner}>
           <div
             style={{
               display: "flex",
-              flexDirection: isMobile ? "column" : "row",
+              flexDirection: isMobile || isTablet ? "column" : "row",
               gap: isMobile ? 32 : 32,
               alignItems: "flex-start",
               flexWrap: "wrap",
             }}
           >
-            <div style={{ flex: 1, minWidth: isMobile ? "100%" : 320 }}>
+            <div
+              style={{ flex: 1, minWidth: isMobile || isTablet ? "100%" : 320 }}
+            >
               <Tag label="HOW WE WORK" />
               <h2 style={{ ...d3("#1E1E1E"), marginTop: 16 }}>
                 We don't deliver an{" "}
@@ -653,7 +784,8 @@ export default function AIBusiness() {
                 display: "grid",
                 gridTemplateColumns: cols2,
                 gap: 20,
-                minWidth: isMobile ? "100%" : 320,
+                width: "100%",
+                minWidth: isMobile || isTablet ? "100%" : 320,
               }}
             >
               {howCards.map((card) => (
@@ -661,30 +793,17 @@ export default function AIBusiness() {
                   key={card.title}
                   style={{
                     background: "#F5F5F5",
-                    padding: "28px 24px",
+                    padding: isMobile ? "24px 20px" : "28px 24px",
                     display: "flex",
                     flexDirection: "column",
                     gap: 12,
                   }}
                 >
-                  <div style={{ color: red, fontSize: 24 }}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28"
-                      height="28"
-                      viewBox="0 0 28 28"
-                      fill="none"
-                    >
-                      <path
-                        d="M3.9374 11.5452L7.23743 12.9414C7.64513 12.126 8.07975 11.338 8.54129 10.5774C9.00284 9.81685 9.5115 9.06829 10.0673 8.33174L7.86631 7.90482C7.78938 7.88559 7.71485 7.88799 7.64273 7.91203C7.57061 7.93607 7.5057 7.97694 7.44801 8.03463L3.9374 11.5452V11.5452M9.03162 14.3548L13.2922 18.5923C14.4095 18.125 15.5682 17.4789 16.7682 16.6539C17.9682 15.8289 19.1076 14.8769 20.1864 13.7981C21.8691 12.1154 23.1706 10.2822 24.0907 8.2986C25.0109 6.31495 25.4662 4.27408 25.4566 2.17598C23.3585 2.16638 21.3162 2.62167 19.3297 3.54185C17.3432 4.46204 15.5085 5.76348 13.8259 7.44617C12.747 8.52501 11.7951 9.66684 10.9701 10.8717C10.1451 12.0765 9.49893 13.2375 9.03162 14.3548V14.3548M16.2547 11.3548C15.747 10.8471 15.4932 10.2298 15.4932 9.50289C15.4932 8.77597 15.747 8.15867 16.2547 7.65098C16.7624 7.1433 17.386 6.88945 18.1254 6.88945C18.8648 6.88945 19.4884 7.1433 19.996 7.65098C20.5037 8.15867 20.7576 8.77597 20.7576 9.50289C20.7576 10.2298 20.5037 10.8471 19.996 11.3548C19.4884 11.8625 18.8648 12.1163 18.1254 12.1163C17.386 12.1163 16.7624 11.8625 16.2547 11.3548V11.3548M16.0874 23.7096L19.598 20.199C19.6557 20.1413 19.6965 20.0764 19.7206 20.0043C19.7446 19.9322 19.747 19.8576 19.7278 19.7807L19.3009 17.5797C18.5643 18.1355 17.8157 18.6403 17.0552 19.0942C16.2946 19.548 15.5066 19.9788 14.6912 20.3865L16.0874 23.7096V23.7096M27.5075 0.116417C27.8287 3.00679 27.4868 5.7462 26.482 8.33464C25.4772 10.9231 23.8239 13.3683 21.522 15.6702C21.4739 15.7182 21.4306 15.7615 21.3922 15.8C21.3537 15.8384 21.3104 15.8817 21.2623 15.9298L21.9402 19.325C22.0306 19.7769 22.0104 20.2163 21.8797 20.6432C21.7489 21.0701 21.5229 21.4442 21.2018 21.7653L15.3201 27.6326L12.5018 21.0096L6.62302 15.1308L0 12.2981L5.8442 6.43083C6.16535 6.10968 6.54323 5.88131 6.97785 5.74574C7.41246 5.61016 7.85572 5.58756 8.30764 5.67795L11.7317 6.37025C11.7797 6.32217 11.8206 6.2789 11.8543 6.24043C11.8879 6.20197 11.9288 6.1587 11.9769 6.11062C14.2788 3.80872 16.7201 2.15392 19.3008 1.14623C21.8816 0.138547 24.6172 -0.204725 27.5075 0.116417V0.116417M2.59038 19.7202C3.32114 18.9894 4.21199 18.6226 5.26294 18.6197C6.31388 18.6168 7.20473 18.9808 7.93549 19.7115C8.66625 20.4423 9.02779 21.3331 9.02009 22.3841C9.0124 23.435 8.64318 24.3259 7.91242 25.0566C7.34511 25.6239 6.41435 26.111 5.12013 26.5177C3.82592 26.9244 2.16537 27.2499 0.138483 27.4941C0.382706 25.4672 0.710585 23.8067 1.12212 22.5125C1.53366 21.2182 2.02308 20.2875 2.59038 19.7202V19.7202M4.19419 21.3153C3.92495 21.5846 3.66534 22.048 3.41534 22.7057C3.16534 23.3634 2.99515 24.0346 2.90476 24.7192C3.58938 24.6288 4.26053 24.4601 4.91822 24.2129C5.57592 23.9658 6.03938 23.7076 6.30861 23.4384C6.60861 23.1384 6.7663 22.7783 6.78169 22.3581C6.79707 21.9379 6.65476 21.5778 6.35476 21.2778C6.05476 20.9778 5.69467 20.8341 5.27447 20.8466C4.85428 20.8591 4.49419 21.0153 4.19419 21.3153V21.3153"
-                        fill="#E31B23"
-                      />
-                    </svg>
-                  </div>
+                  <div style={{ color: red, fontSize: 24 }}>{card.icon}</div>
                   <h3
                     style={{
                       fontFamily: "General Sans",
-                      fontSize: 20,
+                      fontSize: isMobile ? 18 : 20,
                       fontWeight: 600,
                       color: "#1E1E1E",
                       lineHeight: 1.4,
@@ -696,7 +815,7 @@ export default function AIBusiness() {
                   <p
                     style={{
                       fontFamily: "General Sans",
-                      fontSize: 16,
+                      fontSize: isMobile ? 14 : 16,
                       fontWeight: 500,
                       color: "#383838",
                       margin: 0,
@@ -792,7 +911,7 @@ export default function AIBusiness() {
                     alt=""
                     style={{
                       width: "100%",
-                      height: 240,
+                      height: isMobile ? 200 : 240,
                       objectFit: "cover",
                       display: "block",
                     }}
@@ -800,7 +919,7 @@ export default function AIBusiness() {
 
                   <div
                     style={{
-                      padding: "24px",
+                      padding: isMobile ? "20px" : "24px",
                       display: "flex",
                       flexDirection: "column",
                       gap: 12,
@@ -822,7 +941,7 @@ export default function AIBusiness() {
                     <h3
                       style={{
                         fontFamily: "General Sans",
-                        fontSize: 20,
+                        fontSize: isMobile ? 18 : 20,
                         fontWeight: 600,
                         color: "#fff",
                         lineHeight: 1.4,
@@ -835,7 +954,7 @@ export default function AIBusiness() {
                     <p
                       style={{
                         fontFamily: "General Sans",
-                        fontSize: 16,
+                        fontSize: isMobile ? 14 : 16,
                         lineHeight: 1.6,
                         color: "#E1E0E0",
                         flex: 1,
@@ -850,7 +969,9 @@ export default function AIBusiness() {
                       label="View Case Study"
                       href="#"
                       style={{
-                        width: "50%",
+                        width: isMobile ? "100%" : "50%",
+                        minWidth: isMobile ? undefined : 180,
+                        maxWidth: "100%",
                         fontSize: "15px",
                         fontWeight: 600,
                       }}
@@ -868,13 +989,13 @@ export default function AIBusiness() {
         <div style={inner}>
           <Tag label="SOUND FAMILIAR" />
           <h2 style={{ ...d3("#1E1E1E"), marginTop: 16 }}>
-            If any of these sound like your last project <br />
+            If any of these sound like your last project {!isMobile && <br />}
             retrospective, we <span style={{ color: red }}>should talk.</span>
           </h2>
           <p
             style={{
               fontFamily: "General Sans",
-              fontSize: 18,
+              fontSize: isMobile ? 14 : 18,
               color: "#5C5C5C",
               marginTop: 12,
             }}
@@ -895,7 +1016,7 @@ export default function AIBusiness() {
                 key={i}
                 style={{
                   background: "#F5F5F5",
-                  padding: "32px 28px",
+                  padding: isMobile ? "24px 20px" : "32px 28px",
                   display: "flex",
                   flexDirection: "column",
                   gap: 16,
@@ -904,7 +1025,7 @@ export default function AIBusiness() {
                 <h3
                   style={{
                     fontFamily: sans,
-                    fontSize: 24,
+                    fontSize: isMobile ? 18 : 24,
                     fontWeight: 600,
                     color: "#424242",
                     lineHeight: 1.4,
@@ -913,7 +1034,14 @@ export default function AIBusiness() {
                 >
                   {card.heading}
                 </h3>
-                <div style={{ height: 2, background: red, width: "100%", maxWidth: 550 }} />
+                <div
+                  style={{
+                    height: 2,
+                    background: red,
+                    width: "100%",
+                    maxWidth: 550,
+                  }}
+                />
                 <p
                   style={{
                     fontFamily: sans,
@@ -949,7 +1077,42 @@ export default function AIBusiness() {
           secondaryCta="Contact Us"
           style={{ width: "100%", maxWidth: "100%", margin: 0 }}
         />
-      <div style={{ height: isMobile ? 48 : 80 }} />
+        <div style={{ height: isMobile ? 48 : 80 }} />
+        {formOpen && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setFormOpen(false);
+            }}
+            style={{
+              position: "fixed",
+              inset: 0,
+              backgroundColor: "rgba(0,0,0,0.6)",
+              backdropFilter: "blur(4px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 9999,
+              padding: 16,
+            }}
+          >
+            <ContactFormPopUp
+              topic={resolvedContactTopic}
+              onClose={() => setFormOpen(false)}
+              onSubmit={(data) => {
+                setFormOpen(false);
+                console.log("Contact form submitted:", data);
+              }}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "90vh",
+                overflowY: "auto",
+                boxShadow: "0 24px 64px rgba(0,0,0,0.4)",
+              }}
+            />
+          </div>
+        )}
       </div>
     </>
   );
