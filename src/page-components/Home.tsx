@@ -53,9 +53,6 @@ const imgCaseStudy = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
 // What We Deliver + Insights card image
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 
-// AI Studio medium card icon (document)
-const imgDocumentIcon = '/assets/e242e8576977e4f3d29c4be05ad738619168755a.svg';
-
 // Why Technossus card icons
 const imgIconOutcome = '/assets/ac8dbae3d6a4ef3869c92f062ba66c3ebc0095c2.svg';
 const imgIconScale = '/assets/1842a7b6c6f7844a725781346897858a8c24e609.svg';
@@ -167,6 +164,28 @@ export default function Home() {
     { label: 'Data Analytics', href: '/services/data-intelligence-analytics' },
     { label: 'Healthcare IT', href: '/industries/healthcare' },
     { label: 'Product Engineering', href: '/services/product-engineering' },
+  ];
+  const whatIsAiStudioItems = [
+    {
+      num: '01',
+      title: 'An Innovation Lab',
+      description: 'Explore working AI demos by industry. Watch use case videos and test ideas in a safe environment before committing a sprint to anything.',
+    },
+    {
+      num: '02',
+      title: 'Accelerators',
+      description: 'Pre-built, production-tested AI frameworks ready to plug into your stack. All the hard setup is done - just add your context and go.',
+    },
+    {
+      num: '03',
+      title: 'Collaborate',
+      description: 'A curated space for enterprise leaders, practitioners, and partners sharing what works, co-creating in sprints, and shaping how AI gets applied at scale.',
+    },
+    {
+      num: '04',
+      title: 'The Framework',
+      description: 'The TAS Delivery Framework is our structured AI SDLC - taking validated prototypes to production safely, with governance and adoption built in at every stage.',
+    },
   ];
   const healthcareCaseStudiesHref = '/case-studies?industry=Healthcare';
   const caseStudiesHref = '/case-studies';
@@ -582,56 +601,92 @@ export default function Home() {
        {/* ── AI STUDIO ────────────────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
-          <FadeUp duration={500}><Tag label="AI STUDIO" style={{marginBottom: 16}} /></FadeUp>
+          <FadeUp duration={500}><Tag label="AI STUDIO" style={{ marginBottom: 16 }} /></FadeUp>
           <div style={{
-            backgroundColor: '#0A0A0F',
+            backgroundColor: dark2,
             padding: darkPanelPadding,
             boxSizing: 'border-box',
             overflow: 'hidden',
           }}>
-            
-
-            <FadeUp>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 36 }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: isMobile || isTablet ? 'column' : 'row',
+                gap: isMobile ? 32 : isTablet ? 36 : 52,
+                alignItems: 'flex-start',
+                padding: isMobile ? '24px 0 0' : '40px 0 0',
+                marginBottom: 36,
+              }}
+            >
+              <FadeUp style={{ flexShrink: 0, maxWidth: isMobile || isTablet ? '100%' : 560 }}>
                 <h2 style={{
                   fontFamily: serif,
-                  fontSize: shSize, lineHeight: shLine,
-                  fontWeight: 500, color: '#fff',
-                  maxWidth: 731, margin: 0,
+                  fontSize: isMobile ? 28 : 36,
+                  lineHeight: isMobile ? '36px' : '40px',
+                  fontWeight: 600,
+                  color: '#fff',
+                  margin: '0 0 24px',
                 }}>
-                  Explore, validate, and build{' '}
-                  <span style={{ color: red }}>enterprise systems with clarity</span>
+                  Explore, validate, and build 
+                  <span style={{ color: red }}> enterprise systems with clarity</span>
                 </h2>
                 <p style={{
-                  fontFamily: sans, fontSize: isMobile ? 15 : 18, fontWeight: 500,
-                  color: '#F9FAFB', lineHeight: isMobile ? '22px' : '24px', margin: 0,
+                  fontFamily: sans,
+                  fontSize: isMobile ? 15 : 16,
+                  fontWeight: 500,
+                  lineHeight: isMobile ? '22px' : '24px',
+                  color: '#E1E0E0',
+                  margin: 0,
                 }}>
-                  Test real AI systems before you commit to build. Validate outcomes, not assumptions.
+                  AI Studio is a dedicated environment to explore real use cases, test ideas, and move from prototype to production with structure and speed.
                 </p>
-              </div>
-            </FadeUp>
+                <p style={{
+                  fontFamily: sans,
+                  fontSize: isMobile ? 15 : 16,
+                  fontWeight: 500,
+                  lineHeight: isMobile ? '22px' : '24px',
+                  color: '#E1E0E0',
+                  margin: '10px 0 0',
+                }}>
+                  Built on the Technossus Delivery Framework with pre-built accelerators, it helps you create scalable, governed systems aligned with enterprise architecture.
+                </p>
+              </FadeUp>
 
-            <FadeUp delay={60}>
-              <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: isMobile ? 16 : 20, marginBottom: 36 }}>
-                {[
-                  { category: 'AGENTIC OPERATIONS', title: 'Coordinate multi-step AI workflows', description: 'Deploy agents that reason, route, and act — handling approval chains, escalations, and data handoffs without human orchestration at every step.', ctaLabel: 'Try in AI Studio' },
-                  { category: 'FASTER PROCESSING', title: 'Automate document workflows', description: 'Use advanced machine learning to automatically extract and categorize data from complex documents. Streamline pipelines and eliminate manual entry to accelerate high-volume processing.', ctaLabel: 'Try in AI Studio' },
-                  { category: 'INTELLIGENT SEARCH', title: 'Surface insights from your data', description: 'Connect your enterprise knowledge base to conversational AI that understands context, retrieves accurately, and scales across every team without custom pipelines.', ctaLabel: 'Try in AI Studio' },
-                ].map(card => (
-                  <Card
-                    key={card.category}
-                    mode="dark"
-                    type="medium"
-                    icon={imgDocumentIcon}
-                    category={card.category}
-                    title={card.title}
-                    description={card.description}
-                    ctaLabel={card.ctaLabel}
-                    onCta={() => router.push('/ai-studio')}
-                  />
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+                  gap: isMobile ? 16 : 24,
+                  flex: isMobile || isTablet ? undefined : 1,
+                  width: isMobile || isTablet ? '100%' : undefined,
+                }}
+              >
+                {whatIsAiStudioItems.map((item, i) => (
+                  <FadeUp key={item.num} delay={i * 80}>
+                    <article
+                      style={{
+                        borderLeft: '1px solid #ADADAD',
+                        paddingLeft: isMobile ? 16 : 21,
+                        paddingRight: isMobile ? 0 : 12,
+                        paddingTop: 12,
+                        paddingBottom: 12,
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <span style={{ fontFamily: serif, fontWeight: 500, fontSize: 36, lineHeight: '40px', color: red, display: 'block', marginBottom: 12 }}>
+                        {item.num}
+                      </span>
+                      <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: '#fff', margin: '0 0 12px' }}>
+                        {item.title}
+                      </h3>
+                      <p style={{ fontFamily: sans, fontWeight: 500, fontSize: 14, lineHeight: '20px', color: '#DEDEDE', margin: 0 }}>
+                        {item.description}
+                      </p>
+                    </article>
+                  </FadeUp>
                 ))}
               </div>
-            </FadeUp>
+            </div>
 
             <CTABanner
               size="small"
