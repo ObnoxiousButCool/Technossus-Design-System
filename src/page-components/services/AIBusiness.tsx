@@ -986,7 +986,7 @@ export default function AIBusiness() {
       {/* ── SOUND FAMILIAR ── */}
       <section style={{ background: "#fff" }}>
         <div style={inner}>
-          <Tag label="SOUND FAMILIAR" />
+          <Tag label="SOUND FAMILIAR ?" />
           <h2 style={{ ...d3("#1E1E1E"), marginTop: 16 }}>
             If any of these sound like your last project {!isMobile && <br />}
             retrospective, we <span style={{ color: red }}>should talk.</span>
@@ -1074,6 +1074,7 @@ export default function AIBusiness() {
           body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
           primaryCta="Schedule a Strategy Session →"
           secondaryCta="Contact Us"
+          secondaryHref="/contact"
           style={{ width: "100%", maxWidth: "100%", margin: 0 }}
         />
         <div style={{ height: isMobile ? 48 : 80 }} />

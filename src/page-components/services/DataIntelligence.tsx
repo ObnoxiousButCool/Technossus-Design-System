@@ -1044,6 +1044,7 @@ export default function DataIntelligence() {
           body="No six-month proposal. No 200-slide deck. Working intelligence, built with your team — and your data team will be stronger for the experience."
           primaryCta="Bring us your problem →"
           secondaryCta="Explore Solution"
+          secondaryHref="/contact"
           style={{ width: "100%", margin: 0 }}
         />
       </div>

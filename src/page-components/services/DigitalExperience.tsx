@@ -1028,6 +1028,7 @@ export default function DigitalExperience() {
           body="Whether you're modernizing systems, building a new product, or scaling engineering, we're ready to collaborate."
           primaryCta="Schedule a Strategy Session →"
           secondaryCta="Contact Us"
+          secondaryHref="/contact"
           style={{ width: "100%", margin: 0 }}
         />
       </div>

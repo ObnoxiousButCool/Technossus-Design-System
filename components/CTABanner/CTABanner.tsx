@@ -27,6 +27,7 @@ export interface CTABannerProps {
   secondaryCta?: string;
   onPrimary?: () => void;
   onSecondary?: () => void;
+  secondaryHref?: string;
   /**
    * When set on size="large", clicking the primary CTA opens the
    * ContactFormPopUp modal pre-filled with this topic string.
@@ -52,6 +53,7 @@ export function CTABanner({
   secondaryCta,
   onPrimary,
   onSecondary,
+  secondaryHref,
   contactFormTopic,
   ctaLabel,
   onCta,
@@ -320,29 +322,56 @@ export function CTABanner({
             </button>
 
             {secondaryCta && (
-              <button
-                onClick={onSecondary}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: 48,
-                  width: shouldCenterMobile ? "100%" : undefined,
-                  minWidth: shouldCenterMobile ? 0 : 116,
-                  padding: "12px 22px",
-                  backgroundColor: "transparent",
-                  color: red,
-                  fontFamily: sans,
-                  fontWeight: 600,
-                  fontSize: 14,
-                  lineHeight: "20px",
-                  border: `1px solid ${red}`,
-                  cursor: "pointer",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {secondaryCta}
-              </button>
+              secondaryHref ? (
+                <a
+                  href={secondaryHref}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: 48,
+                    width: shouldCenterMobile ? "100%" : undefined,
+                    minWidth: shouldCenterMobile ? 0 : 116,
+                    padding: "12px 22px",
+                    backgroundColor: "transparent",
+                    color: red,
+                    fontFamily: sans,
+                    fontWeight: 600,
+                    fontSize: 14,
+                    lineHeight: "20px",
+                    border: `1px solid ${red}`,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    textDecoration: "none",
+                  }}
+                >
+                  {secondaryCta}
+                </a>
+              ) : (
+                <button
+                  onClick={onSecondary}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: 48,
+                    width: shouldCenterMobile ? "100%" : undefined,
+                    minWidth: shouldCenterMobile ? 0 : 116,
+                    padding: "12px 22px",
+                    backgroundColor: "transparent",
+                    color: red,
+                    fontFamily: sans,
+                    fontWeight: 600,
+                    fontSize: 14,
+                    lineHeight: "20px",
+                    border: `1px solid ${red}`,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {secondaryCta}
+                </button>
+              )
             )}
           </div>
         </div>
