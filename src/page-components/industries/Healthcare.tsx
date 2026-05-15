@@ -95,16 +95,17 @@ const clampExcerpt = (text: string, lines = 2): string => {
 export default function Healthcare() {
   const { isMobile, isTablet } = useBreakpoint();
 
-  const inner = {
+  const inner: React.CSSProperties = {
     maxWidth: 1440,
     margin: '0 auto',
+    boxSizing: 'border-box',
     padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
   };
 
   const d1 = (color?: string): React.CSSProperties => ({
     fontFamily: serif,
-    fontSize: 40,
-    lineHeight: '48px',
+    fontSize: isMobile ? 26 : isTablet ? 34 : 40,
+    lineHeight: isMobile ? '34px' : isTablet ? '42px' : '48px',
     fontWeight: 500,
     margin: 0,
     color: color ?? '#1E1E1E',
@@ -128,13 +129,14 @@ export default function Healthcare() {
   };
 
   return (
-    <>
+    <main style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
         <div style={{
           maxWidth: 1440,
-          margin: '0 auto',
-          padding: isMobile
+    margin: '0 auto',
+    boxSizing: 'border-box',
+    padding: isMobile
             ? '32px 16px 48px'
             : isTablet
               ? '40px 32px 60px'
@@ -218,7 +220,7 @@ export default function Healthcare() {
 
       {/* ── TRUSTED BY ── */}
       <section style={{ borderTop: '1px solid #E8E8E8', background: '#fff' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
             {['GE HealthCare', 'CHOICE ADMINISTRATORS', 'BIO THERANOSTICS', 'COMMONSPIRIT', 'ADAPTHEALTH'].map(name => (
@@ -228,13 +230,12 @@ export default function Healthcare() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── THE SHIFT ── */}
       <div style={{
         maxWidth: 1440,
-        margin: '0 auto',
-        padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+    margin: '0 auto',
+    boxSizing: 'border-box',
+    padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
       }}>
 
         <Tag label="THE SHIFT" variant="dark" />
@@ -244,8 +245,9 @@ export default function Healthcare() {
 
           <div style={{
             maxWidth: 1440,
-            margin: '0 auto',
-            padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
+    margin: '0 auto',
+    boxSizing: 'border-box',
+    padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
           }}>
             <div style={{
               display: 'flex',
@@ -273,7 +275,7 @@ export default function Healthcare() {
                 ))}
               </div>
 
-              <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, background: '#2e2e2e' }}>
+              <div style={{ flex: 1, display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: 1, background: '#2e2e2e' }}>
                 {[
                   { title: 'Real-time care depends on real-time systems', body: 'Clinical workflows are shifting from retrospective analysis to real-time decisioning. Systems must process patient data instantly without latency or inconsistency.' },
                   { title: 'Distributed care demands connected systems', body: 'Healthcare is no longer centralized. Hospitals, remote monitoring devices, telehealth platforms, and third-party systems must work together seamlessly, but interoperability remains complex.' },
@@ -300,12 +302,13 @@ export default function Healthcare() {
           {/* BOTTOM — full-width 4-stat bar */}
           <div style={{
             maxWidth: 1440,
-            margin: '0 auto',
-            padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
+    margin: '0 auto',
+    boxSizing: 'border-box',
+    padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
           }}>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+              gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
               gap: 16,
             }}>
               {[
@@ -326,11 +329,9 @@ export default function Healthcare() {
       </div>
       {/* ── END THE SHIFT ── */}
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── HEALTHCARE OFFERINGS IMAGE ── */}
       <section style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px 48px' : isTablet ? '0 32px 60px' : '0 80px 80px' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0' }}>
           <img src={imgHealthcareOfferings} alt="Healthcare offerings" style={{ width: '100%', display: 'block' }} />
         </div>
       </section>
@@ -338,8 +339,9 @@ export default function Healthcare() {
       {/* ── PROOF ── */}
       <div style={{
         maxWidth: 1440,
-        margin: '0 auto',
-        padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px',
+    margin: '0 auto',
+    boxSizing: 'border-box',
+    padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
       }}>
         <div style={{ marginBottom: isMobile ? 12 : 16 }}>
           <Tag label="PROOF" variant="dark" />
@@ -360,7 +362,7 @@ export default function Healthcare() {
               <a href="#" style={{ fontFamily: sans, fontSize: 14, color: red, textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: cols3, gap: 20 }}>
-              <style>{`[data-excerpt-normal] p, [data-excerpt-normal] [class*="excerpt"] { font-weight: 400 !important; }`}</style>
+              <style>{`[data-excerpt-normal] p, [data-excerpt-normal] [class*='excerpt'] { font-weight: 400 !important; }`}</style>
               {featuredCards.map((card, i) => (
                 <div key={i} data-excerpt-normal>
                   <Card
@@ -381,8 +383,6 @@ export default function Healthcare() {
         </section>
       </div>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── SOLUTION ── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
@@ -398,15 +398,18 @@ export default function Healthcare() {
       </section>
 
       {/* ── CTA BANNER ── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Ready to accelerate your digital & AI journey ?"
-        body="Whether you're modernizing systems, building a new product, or scaling engineering , we're ready to collaborate."
-        primaryCta="Schedule a Strategy Session"
-        secondaryCta="Contact Us"
-      />
+      <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0' }}>
+        <CTABanner
+          size="large"
+          label="LET'S WORK ON IT TOGETHER"
+          heading="Ready to accelerate your digital & AI journey ?"
+          body="Whether you're modernizing systems, building a new product, or scaling engineering , we're ready to collaborate."
+          primaryCta="Schedule a Strategy Session"
+          secondaryCta="Contact Us"
+          style={{ width: '100%', maxWidth: '100%', margin: 0 }}
+        />
+      </div>
       <div style={{ height: isMobile ? 48 : 80 }} />
-    </>
+    </main>
   );
 }

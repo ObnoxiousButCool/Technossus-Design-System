@@ -158,9 +158,10 @@ const successCards = [
 export default function FinancialServices() {
   const { isMobile, isTablet } = useBreakpoint();
 
-  const inner = {
+  const inner: React.CSSProperties = {
     maxWidth: 1440,
     margin: '0 auto',
+    boxSizing: 'border-box',
     padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
   };
 
@@ -187,10 +188,10 @@ export default function FinancialServices() {
   const cols2 = isMobile ? '1fr' : 'repeat(2, 1fr)';
 
   return (
-    <>
+    <main style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* ── HERO ── */}
       <section style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', padding: isMobile ? '32px 16px 48px' : isTablet ? '40px 32px 60px' : '40px 80px 80px' }}>
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
             { label: 'Industries', href: '/industries' },
@@ -228,7 +229,7 @@ export default function FinancialServices() {
 
       {/* ── TRUSTED BY ── */}
       <section style={{ borderTop: '1px solid #E8E8E8', background: '#fff' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
           <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
             {['TOYOTA FINANCIAL SERVICES', 'COMMONSPIRIT', 'BIO-RAD', 'ADAPTHEALTH', 'GE HealthCare'].map(name => (
@@ -238,15 +239,13 @@ export default function FinancialServices() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── THE SHIFT ── */}
-      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0', background: '#fff' }}>
         <Tag label="THE SHIFT" variant="dark" />
       </div>
-      <section style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: dark1, position: 'relative', overflow: 'hidden', width: isMobile ? 'calc(100% - 32px)' : isTablet ? 'calc(100% - 64px)' : 'calc(100% - 160px)', maxWidth: 1280, margin: '0 auto' }}>
         <CornerTL /><CornerBR />
-        <div style={inner}>
+        <div style={{ ...inner, padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 68px' }}>
           <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 48, alignItems: 'flex-start', marginTop: 0, flexWrap: 'wrap' }}>
             <div style={{ flex: isMobile ? undefined : '0 0 380px', minWidth: isMobile ? '100%' : 280, width: isMobile ? '100%' : undefined }}>
               <h2 style={d2('#fff')}>
@@ -276,7 +275,7 @@ export default function FinancialServices() {
                   </div>
                 ))}
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 1, background: '#343434' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 1, background: '#343434' }}>
                 {[
                   { num: '70%',   desc: 'of claims processing is still manual, slowing decisioning and increasing operational costs' },
                   { num: '73%',   desc: 'of financial institutions cite APIs and third-party integrations as increasing cybersecurity risk' },
@@ -294,8 +293,6 @@ export default function FinancialServices() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── WHAT WE DO ── */}
       <section style={{ background: '#fff' }}>
         <div style={inner}>
@@ -311,11 +308,9 @@ export default function FinancialServices() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── SOLUTIONS ── */}
       <section style={{ background: '#fff' }}>
-        <div style={inner}>
+        <div style={{...inner, paddingTop: 0, paddingBottom: 0}}>
           <Tag label="SOLUTIONS" />
           <h2 style={{ ...d2(), marginTop: 16 }}>
             Proven solutions for financial services{' '}
@@ -327,15 +322,13 @@ export default function FinancialServices() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── CASE STUDIES ── */}
-      <div style={{ maxWidth: 1440, margin: '0 auto', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '0 16px' : isTablet ? '0 32px' : '0 80px', background: '#fff' }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', marginBottom: isMobile ? 12 : 16, padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0', background: '#fff' }}>
         <Tag label="CASE STUDIES" variant="dark" />
       </div>
-      <section id="proof" style={{ background: dark1, position: 'relative', overflow: 'hidden' }}>
+      <section id="proof" style={{ background: dark1, position: 'relative', overflow: 'hidden', width: isMobile ? 'calc(100% - 32px)' : isTablet ? 'calc(100% - 64px)' : 'calc(100% - 160px)', maxWidth: 1280, margin: '0 auto' }}>
         <CornerTL /><CornerBR />
-        <div style={inner}>
+        <div style={{ ...inner, padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 68px' }}>
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
             <div>
               <h1 style={d1('#fff')}>Results from the <span style={{ color: red }}>field.</span></h1>
@@ -351,11 +344,9 @@ export default function FinancialServices() {
         </div>
       </section>
 
-      <div style={{ height: isMobile ? 48 : 80 }} />
-
       {/* ── MORE STORIES ── */}
       <section style={{ background: '#fff' }}>
-        <div style={inner}>
+        <div style={{...inner, paddingBottom: 0}}>
           <Tag label="MORE FROM FINANCIAL SERVICES" />
           <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 16, marginBottom: 40 }}>
             <h1 style={d1()}>More <span style={{ color: red }}>success stories.</span></h1>
@@ -370,15 +361,18 @@ export default function FinancialServices() {
       </section>
 
       {/* ── CTA BANNER ── */}
-      <CTABanner
-        size="large"
-        label="LET'S WORK ON IT TOGETHER"
-        heading="Start with what's actually slowing you down."
-        body="Bring us the system, workflow, or decision point that isn't keeping up — we'll understand your architecture, dependencies, and data flow. Within days, you'll have a clear view of what's happening and what actually needs to change."
-        primaryCta="Explore Our Solutions →"
-        secondaryCta="Talk to a Financial Expert"
-      />
+      <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0' }}>
+        <CTABanner
+          size="large"
+          label="LET'S WORK ON IT TOGETHER"
+          heading="Start with what's actually slowing you down."
+          body="Bring us the system, workflow, or decision point that isn't keeping up — we'll understand your architecture, dependencies, and data flow. Within days, you'll have a clear view of what's happening and what actually needs to change."
+          primaryCta="Explore Our Solutions →"
+          secondaryCta="Talk to a Financial Expert"
+          style={{ width: '100%', maxWidth: '100%', margin: 0 }}
+        />
+      </div>
       <div style={{ height: isMobile ? 48 : 80 }} />
-    </>
+    </main>
   );
 }
