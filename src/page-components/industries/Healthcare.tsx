@@ -11,7 +11,9 @@ import { Card } from '../../../components/Card';
 import { useBreakpoint } from '../../../ts/breakpoints';
 import type { AccordionItem } from '../../../components/Accordion';
 import { resolveImageSrc } from '../../../ts/imageSrc';
+import Image from 'next/image';
 import imgHero from '../../../assets/Industries/Healthcare.png';
+import imgCollaborators from '../../../assets/Website_images 2/Logo.png';
 
 const imgCardPhoto = '/assets/fbbad1d37f7a4e076de4d16631dc6863c6c4444a.png';
 
@@ -83,15 +85,6 @@ const featuredCards = [
   { tags: 'HEALTHCARE • ALM & GOVERNANCE', title: 'ALM Expertise Drives Project Success', excerpt: 'Technossus established enterprise-wide ALM processes, tools, and governance frameworks to enable structured execution and coordination across systems and vendors. This improved visibility and control, reduced delivery risks, and strengthened execution confidence in a complex, large-scale transformation program.' },
 ];
 
-const clampExcerpt = (text: string, lines = 2): string => {
-  const words = text.split(' ');
-  const charsPerLine = 60;
-  const limit = charsPerLine * lines;
-  if (text.length <= limit) return text;
-  return text.slice(0, limit).trimEnd() + '…';
-};
-
-
 export default function Healthcare() {
   const { isMobile, isTablet } = useBreakpoint();
 
@@ -123,7 +116,7 @@ export default function Healthcare() {
 
   const cols3 = isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)';
   const cols2 = isMobile ? '1fr' : 'repeat(2, 1fr)';
-  const featuredCardHeight = isMobile ? 'auto' : 520;
+  const featuredCardHeight = isMobile ? 'auto' : isTablet ? 560 : 580;
   const handleCaseStudiesCta = () => {
     window.location.href = '/case-studies';
   };
@@ -134,9 +127,9 @@ export default function Healthcare() {
       <section style={{ background: '#fff' }}>
         <div style={{
           maxWidth: 1440,
-    margin: '0 auto',
-    boxSizing: 'border-box',
-    padding: isMobile
+          margin: '0 auto',
+          boxSizing: 'border-box',
+          padding: isMobile
             ? '32px 16px 48px'
             : isTablet
               ? '40px 32px 60px'
@@ -156,9 +149,6 @@ export default function Healthcare() {
           }}>
             {/* Left content */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 32, paddingRight: isMobile || isTablet ? 0 : 80 }}>
-
-              {/* Eyebrow — Tag style matching Figma */}
-              <Tag label="HEALTHCARE AND LIFE SCIENCES" variant="dark" />
 
               <FadeUp>
                 <h1 style={d1()}>
@@ -219,13 +209,33 @@ export default function Healthcare() {
       </section>
 
       {/* ── TRUSTED BY ── */}
-      <section style={{ borderTop: '1px solid #E8E8E8', background: '#fff' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', boxSizing: 'border-box', padding: isMobile ? '24px 16px' : '32px 80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
-          <p style={{ fontFamily: sans, fontSize: 13, fontWeight: 600, letterSpacing: '.12em', color: '#ADADAD', textTransform: 'uppercase' }}>Trusted By</p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: isMobile ? 24 : 72, flexWrap: 'wrap' }}>
-            {['GE HealthCare', 'CHOICE ADMINISTRATORS', 'BIO THERANOSTICS', 'COMMONSPIRIT', 'ADAPTHEALTH'].map(name => (
-              <span key={name} style={{ fontFamily: sans, fontSize: 13, fontWeight: 700, color: '#888', filter: 'grayscale(100%)', opacity: .65 }}>{name}</span>
-            ))}
+
+      <section style={{ background: '#fff' }}>
+        <div style={{
+          maxWidth: 1440, margin: '0 auto',
+          padding: isMobile ? '0 12px' : isTablet ? '0 32px' : '0 80px',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', gap: 16,
+        }}>
+          <p style={{
+            fontFamily: sans, fontSize: 16, fontWeight: 500,
+            color: '#949494', textAlign: 'center',
+            lineHeight: '24px', margin: 0,
+          }}>
+            TRUSTED BY
+          </p>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Image
+              src={imgCollaborators}
+              alt="Our collaborators"
+              sizes={isMobile || isTablet ? '100vw' : '860px'}
+              style={{
+                display: 'block',
+                width: '100%',
+                maxWidth: isMobile ? '100%' : isTablet ? '100%' : 860,
+                height: 'auto',
+              }}
+            />
           </div>
         </div>
       </section>
@@ -233,9 +243,9 @@ export default function Healthcare() {
       {/* ── THE SHIFT ── */}
       <div style={{
         maxWidth: 1440,
-    margin: '0 auto',
-    boxSizing: 'border-box',
-    padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
+        margin: '0 auto',
+        boxSizing: 'border-box',
+        padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
       }}>
 
         <Tag label="THE SHIFT" variant="dark" />
@@ -245,9 +255,9 @@ export default function Healthcare() {
 
           <div style={{
             maxWidth: 1440,
-    margin: '0 auto',
-    boxSizing: 'border-box',
-    padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
+            margin: '0 auto',
+            boxSizing: 'border-box',
+            padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
           }}>
             <div style={{
               display: 'flex',
@@ -264,8 +274,7 @@ export default function Healthcare() {
                 gap: 24,
               }}>
                 <h2 style={d2('#fff')}>
-                  Healthcare is facing a seismic shift. There is speed, but operational readiness{' '}
-                  <span style={{ color: red }}>remains uneven.</span>
+                  Healthcare is facing a seismic shift. There is speed, but operational readiness remains uneven.
                 </h2>
                 {[
                   'Patients are more digitally aware, less tolerant of friction, and quicker to switch when experiences fall short. Expectations around convenience, speed, and transparency are rising across the care journey, while systems and workflows struggle to keep pace.',
@@ -275,7 +284,7 @@ export default function Healthcare() {
                 ))}
               </div>
 
-              <div style={{ flex: 1, display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: 1, background: '#2e2e2e' }}>
+              <div style={{ flex: 1, display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: 20, alignItems: 'start' }}>
                 {[
                   { title: 'Real-time care depends on real-time systems', body: 'Clinical workflows are shifting from retrospective analysis to real-time decisioning. Systems must process patient data instantly without latency or inconsistency.' },
                   { title: 'Distributed care demands connected systems', body: 'Healthcare is no longer centralized. Hospitals, remote monitoring devices, telehealth platforms, and third-party systems must work together seamlessly, but interoperability remains complex.' },
@@ -288,23 +297,24 @@ export default function Healthcare() {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 14,
-                    minHeight: 220,
+                    height: 'fit-content',
+                    alignSelf: 'flex-start',
+                    border: '1px solid #2e2e2e',
                   }}>
-                    <h3 style={{ fontFamily: sans, fontSize: 16, fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>{card.title}</h3>
+                    <h3 style={{ fontFamily: sans, fontSize: 16, fontWeight: 600, color: '#fff', lineHeight: 1.4, margin: 0 }}>{card.title}</h3>
                     <p style={{ fontFamily: sans, fontSize: 14, lineHeight: 1.6, color: '#e1e0e0', margin: 0 }}>{card.body}</p>
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
 
           {/* BOTTOM — full-width 4-stat bar */}
           <div style={{
             maxWidth: 1440,
-    margin: '0 auto',
-    boxSizing: 'border-box',
-    padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
+            margin: '0 auto',
+            boxSizing: 'border-box',
+            padding: isMobile ? '48px 16px' : isTablet ? '60px 32px' : '80px 80px',
           }}>
             <div style={{
               display: 'grid',
@@ -317,7 +327,7 @@ export default function Healthcare() {
                 { num: '41.9%', desc: 'of physicians reported at least one symptom of burnout in 2025' },
                 { num: '60%', desc: 'of AI initiatives in healthcare fail to scale beyond pilot environments' },
               ].map((s, i) => (
-                <div key={i} style={{ background: dark1, padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 10, borderTop: `2px solid ${red}`, borderLeft: `2px solid ${red}` }}>
+                <div key={i} style={{ background: dark1, padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 10, borderTop: `1px solid ${red}`, borderLeft: `1px solid ${red}` }}>
                   <div style={{ fontFamily: serif, fontSize: isMobile ? 22 : 30, fontWeight: 600, color: red, lineHeight: 1.1 }}>{s.num}</div>
                   <p style={{ fontFamily: sans, fontSize: 13, lineHeight: 1.5, color: '#ffffff', margin: 0 }}>{s.desc}</p>
                 </div>
@@ -339,9 +349,9 @@ export default function Healthcare() {
       {/* ── PROOF ── */}
       <div style={{
         maxWidth: 1440,
-    margin: '0 auto',
-    boxSizing: 'border-box',
-    padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
+        margin: '0 auto',
+        boxSizing: 'border-box',
+        padding: isMobile ? '48px 16px 0' : isTablet ? '60px 32px 0' : '80px 80px 0',
       }}>
         <div style={{ marginBottom: isMobile ? 12 : 16 }}>
           <Tag label="PROOF" variant="dark" />
@@ -357,7 +367,7 @@ export default function Healthcare() {
             <div style={{ display: 'flex', alignItems: isMobile ? 'flex-start' : 'flex-end', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', gap: 16, marginTop: 0, marginBottom: 40 }}>
               <div>
                 <h1 style={d1('#fff')}>Featured <span style={{ color: red }}>case studies.</span></h1>
-                <p style={{ fontFamily: sans, fontSize: 15, color: '#9B9B9B', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
+                <p style={{ fontFamily: sans, fontWeight: 500, fontSize: 18, lineHeight: '24px', color: '#ffffff', marginTop: 10 }}>If any of these describe where your team is right now, we should talk.</p>
               </div>
               <a href="#" style={{ fontFamily: sans, fontSize: 14, color: red, textDecoration: 'underline', whiteSpace: 'nowrap', flexShrink: 0 }}>View All</a>
             </div>
@@ -371,7 +381,8 @@ export default function Healthcare() {
                     image={imgCardPhoto}
                     tags={card.tags}
                     title={card.title}
-                    excerpt={clampExcerpt(card.excerpt)}
+                    excerpt={card.excerpt}
+                    excerptLines={3}
                     ctaLabel="See How We Work"
                     onCta={handleCaseStudiesCta}
                     style={{ height: featuredCardHeight }}

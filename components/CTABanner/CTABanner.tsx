@@ -21,7 +21,7 @@ export type CTABannerSize = "large" | "small";
 export interface CTABannerProps {
   size?: CTABannerSize;
   label?: string;
-  heading: string;
+  heading: React.ReactNode;
   body?: string;
   primaryCta?: string;
   secondaryCta?: string;
@@ -201,6 +201,13 @@ export function CTABanner({
                 objectFit: "contain",
                 objectPosition: "right bottom",
                 display: "block",
+                fontFamily: sans,
+                fontWeight: 500,
+                fontSize: 15.82,
+                lineHeight: isMobile ? '22px' : '24px',
+                color: '#F5F5F5',
+                margin: 0,
+                width: '100%',
               }}
             />
           </div>

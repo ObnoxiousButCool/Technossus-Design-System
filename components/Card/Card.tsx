@@ -68,6 +68,7 @@ interface CardDarkInsightsProps {
   tags?: string;
   title?: string;
   excerpt?: string;
+  excerptLines?: number;
   ctaLabel?: string;
   onCta?: () => void;
   className?: string;
@@ -80,6 +81,7 @@ interface CardLightInsightsProps {
   tags?: string;
   title?: string;
   excerpt?: string;
+  excerptLines?: number;
   ctaLabel?: string;
   onCta?: () => void;
   className?: string;
@@ -333,6 +335,8 @@ export function Card(props: CardProps) {
 
   // ── Dark / Insights ──────────────────────────────────────────────────────
   if (props.mode === 'dark' && props.type === 'insights') {
+    const excerptLines = props.excerptLines ?? 3;
+
     return (
       <div
         className={props.className}
@@ -343,7 +347,12 @@ export function Card(props: CardProps) {
           flexDirection: 'column',
           alignItems: 'flex-start',
           backgroundColor: '#1E1E1E',
+          borderWidth: '0px 1px 1px 1px',
+          borderStyle: 'solid',
+          borderColor: '#5C5C5C',
           width: '100%',
+          minWidth: 0,
+          overflow: 'hidden',
           boxSizing: 'border-box',
           cursor: 'pointer',
           transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
@@ -358,21 +367,36 @@ export function Card(props: CardProps) {
           {!props.image && <img alt="" src={imgHeroPhoto} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 24, width: '100%', boxSizing: 'border-box', flex: 1 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', flex: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: 24, width: '100%', minWidth: 0, boxSizing: 'border-box', flex: 1, minHeight: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', minWidth: 0, flex: 1, minHeight: 0 }}>
             <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 14, lineHeight: '20px', color: '#ADADAD', margin: 0 }}>
               {props.tags ?? 'FINTECH • PLATFORM MODERNIZATION'}
             </p>
-            <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: '#FFFFFF', margin: 0 }}>
+            <p style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: '#FFFFFF', margin: 0, overflowWrap: 'anywhere' }}>
               {props.title ?? 'Architecting a High-Frequency Trading Engine for Global Markets'}
             </p>
-            <p style={{ fontFamily: sans, fontWeight: 500, fontSize: 16, lineHeight: '26px', color: '#E1E0E0', margin: 0 }}>
+            <p
+              style={{
+                fontFamily: sans,
+                fontWeight: 500,
+                fontSize: 16,
+                lineHeight: '26px',
+                color: '#E1E0E0',
+                margin: 0,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: excerptLines,
+                overflowWrap: 'anywhere',
+              }}
+            >
               {props.excerpt ?? 'We overhauled the legacy infrastructure of a Tier-1 financial institution, reducing latency by 40%…'}
             </p>
           </div>
 
-          <button onClick={props.onCta} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 56, width: 180, padding: '16px 24px', backgroundColor: 'transparent', border: `1px solid ${red}`, cursor: 'pointer', flexShrink: 0 }}>
-            <span style={{ fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: red, whiteSpace: 'nowrap' }}>
+          <button onClick={props.onCta} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 56, maxWidth: '100%', width: 'fit-content', padding: '16px 24px', backgroundColor: 'transparent', border: `1px solid ${red}`, cursor: 'pointer', flexShrink: 0 }}>
+            <span style={{ fontFamily: sans, fontWeight: 600, fontSize: 16, lineHeight: '28px', color: red }}>
               {props.ctaLabel ?? 'See How We Work'}
             </span>
           </button>
