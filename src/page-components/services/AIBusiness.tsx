@@ -125,8 +125,7 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: "Enterprise Generative AI",
-    subtitle:
-      "Gen-AI tools your teams actually use,because they actually help.",
+    subtitle: "Gen-AI tools your teams actually use because they help.",
     content: {
       type: "detail",
       serviceLabel: "ENTERPRISE GENERATIVE AI",
@@ -153,14 +152,14 @@ const accordionItems: AccordionItem[] = [
   },
   {
     title: "Innovation Labs & Prototyping",
-    subtitle: "See it working,before you bet the strategy on it.",
+    subtitle: "See it working, before you bet the strategy on it.",
     content: {
       type: "detail",
       serviceLabel: "INNOVATION LABS & PROTOTYPING",
       heading: "Validate the idea before scaling the investment.",
       body: [
         "Not every strategic question needs a full engagement to answer. Innovation Labs is where we build a working prototype in two weeks that tests whether an idea is worth scaling. Walk in with a question. Walk out with a validated prototype, a clear read on what works, and a defensible answer to 'should we build this?'",
-        "Every engagement starts with a two-day consulting investment at no cost — a pressure test on the problem, not a pitch.",
+        "Every engagement starts with a two-day consulting investment at no cost, a pressure test on the problem, not a pitch.",
       ],
     },
   },
@@ -485,7 +484,7 @@ export default function AIBusiness() {
                   <Button
                     variant="secondary"
                     label="See how we work"
-                    href="#"
+                    href="/case-studies"
                   />
                 </div>
               </FadeUp>

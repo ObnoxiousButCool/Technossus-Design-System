@@ -696,7 +696,7 @@ export default function CloudModernization() {
             </span>
           </h2>
           <div style={{ marginTop: 48 }}>
-            <Accordion items={accordionItems} defaultActiveIndex={1} />
+            <Accordion items={accordionItems} defaultActiveIndex={0} />
           </div>
         </div>
       </section>

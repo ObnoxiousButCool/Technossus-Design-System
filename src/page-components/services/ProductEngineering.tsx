@@ -728,7 +728,7 @@ export default function ProductEngineering() {
             <span style={{ color: red }}>we build alongside your team.</span>
           </h2>
           <div style={{ marginTop: 48 }}>
-            <Accordion items={accordionItems} defaultActiveIndex={2} />
+            <Accordion items={accordionItems} defaultActiveIndex={0} />
           </div>
         </div>
       </section>
