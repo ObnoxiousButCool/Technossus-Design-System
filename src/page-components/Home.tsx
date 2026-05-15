@@ -27,6 +27,7 @@ import imgHomeFuture from '../../assets/Website_Images/Home page/home3.png';
 import imgHomeModernize from '../../assets/Website_Images/Home page/home2.png';
 import imgHomeAI from '../../assets/Website_Images/Home page/home1.png';
 import imgStatsGlobe from '../../assets/Website_Images/Home page/globe.png';
+import imgViewInAr from '../../assets/Website_Images/Home page/view_in_ar.svg';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -168,23 +169,23 @@ export default function Home() {
   const whatIsAiStudioItems = [
     {
       num: '01',
-      title: 'An Innovation Lab',
-      description: 'Explore working AI demos by industry. Watch use case videos and test ideas in a safe environment before committing a sprint to anything.',
+      title: 'Explore real use cases',
+      description: 'Browse proven implementations and understand what works before you build.',
     },
     {
       num: '02',
-      title: 'Accelerators',
-      description: 'Pre-built, production-tested AI frameworks ready to plug into your stack. All the hard setup is done - just add your context and go.',
+      title: 'Build with accelerators',
+      description: 'Build faster using pre-configured components and production-ready accelerators.',
     },
     {
       num: '03',
-      title: 'Collaborate',
-      description: 'A curated space for enterprise leaders, practitioners, and partners sharing what works, co-creating in sprints, and shaping how AI gets applied at scale.',
+      title: 'Test and validate ideas',
+      description: 'Rapidly prototype and validate ideas in a safe environment before committing resources.',
     },
     {
       num: '04',
-      title: 'The Framework',
-      description: 'The TAS Delivery Framework is our structured AI SDLC - taking validated prototypes to production safely, with governance and adoption built in at every stage.',
+      title: 'Take it to production',
+      description: 'Move from validated ideas to production systems with governance and scale built in.',
     },
   ];
   const healthcareCaseStudiesHref = '/case-studies?industry=Healthcare';
@@ -673,9 +674,14 @@ export default function Home() {
                         boxSizing: 'border-box',
                       }}
                     >
-                      <span style={{ fontFamily: serif, fontWeight: 500, fontSize: 36, lineHeight: '40px', color: red, display: 'block', marginBottom: 12 }}>
-                        {item.num}
-                      </span>
+                      <Image
+                        src={imgViewInAr}
+                        alt=""
+                        aria-hidden
+                        width={40}
+                        height={40}
+                        style={{ display: 'block', marginBottom: 12 }}
+                      />
                       <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: '#fff', margin: '0 0 12px' }}>
                         {item.title}
                       </h3>

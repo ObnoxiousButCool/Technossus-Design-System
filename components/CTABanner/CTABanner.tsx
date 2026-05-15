@@ -207,7 +207,6 @@ export function CTABanner({
                 lineHeight: isMobile ? '22px' : '24px',
                 color: '#F5F5F5',
                 margin: 0,
-                width: '100%',
               }}
             />
           </div>
