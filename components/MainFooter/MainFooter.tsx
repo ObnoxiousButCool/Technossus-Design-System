@@ -24,7 +24,7 @@ const red     = '#ED2939';
 
 export interface FooterLinkGroup {
   heading: string;
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; color?: string }[];
 }
 
 export interface MainFooterProps {
@@ -43,7 +43,7 @@ const defaultGroups: FooterLinkGroup[] = [
       { label: 'Cloud & Product Modernization',   href: '/services/cloud-product-modernization' },
       { label: 'Digital Experience Design',       href: '/services/digital-experience-design' },
       { label: 'Quality Engineering & Verification', href: '/services/quality-engineering' },
-      { label: 'AI Studio',                       href: '/ai-studio' },
+      { label: 'AI Studio',                       href: '/ai-studio', color: red },
     ],
   },
   {
@@ -66,7 +66,7 @@ const defaultGroups: FooterLinkGroup[] = [
   },
 ];
 
-function FooterLink({ label, href }: { label: string; href: string }) {
+function FooterLink({ label, href, color }: { label: string; href: string; color?: string }) {
   const [hovered, setHovered] = useState(false);
   return (
     <a
@@ -78,7 +78,7 @@ function FooterLink({ label, href }: { label: string; href: string }) {
         fontWeight: 500,
         fontSize: 14,
         lineHeight: '20px',
-        color: hovered ? red : gray500,
+        color: hovered ? red : color ?? gray500,
         textDecoration: 'none',
         display: 'block',
         width: '100%',

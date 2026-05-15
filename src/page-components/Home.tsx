@@ -26,6 +26,7 @@ import imgSvcQuality from '../../assets/Website_Images/Services/Quality Eng..png
 import imgHomeFuture from '../../assets/Website_Images/Home page/home3.png';
 import imgHomeModernize from '../../assets/Website_Images/Home page/home2.png';
 import imgHomeAI from '../../assets/Website_Images/Home page/home1.png';
+import imgStatsGlobe from '../../assets/Website_Images/Home page/globe.png';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const sans = '"General Sans", system-ui, -apple-system, sans-serif';
@@ -41,9 +42,10 @@ const imgHeroBg = '/assets/cf9c112d09fc9f6437fa76b0e30e6382f36dc276.png';
 // Search bar icons
 const imgSearchAiStar = '/assets/1396fbe0e7d98149afea22065d702750dbf4a387.svg';
 const imgSearchSend = '/assets/d884bbc847b6fe02ec374e4281caa99cdfc0977c.svg';
+const imgArrowForward = '/assets/5ab4759937e9a9e8b7e9cb731f7784df694959c0.svg';
 
-// Stats section — combined globe + network arc composition
-const imgStatsComposed = '/assets/215811fe-eab7-431c-9d72-d65f9783311c.png';
+// Stats section — globe composition
+const imgStatsComposed = imgStatsGlobe;
 
 // Case Study
 const imgCaseStudy = '/assets/11485e6d5400122979be42e072e5eb53cb43660e.png';
@@ -146,7 +148,7 @@ export default function Home() {
       heading: 'Scale AI with Purpose,',
       accent: ' not just pilots',
       subheading: 'Move beyond experimentation to real-world implementation, delivering measurable business outcomes at scale',
-      cta: 'Start Planning',
+      cta: 'Explore solutions',
       href: '/ai-studio',
       image: imgHomeAI,
     },
@@ -159,10 +161,19 @@ export default function Home() {
       image: imgHeroBg,
     },
   ];
+  const quickPickLinks = [
+    { label: 'AI Adoption Strategy', href: '/services/ai-business-transformation' },
+    { label: 'Modernize Platforms', href: '/services/cloud-product-modernization' },
+    { label: 'Data Analytics', href: '/services/data-intelligence-analytics' },
+    { label: 'Healthcare IT', href: '/industries/healthcare' },
+    { label: 'Product Engineering', href: '/services/product-engineering' },
+  ];
   const [heroCarouselRef, heroCarouselApi] = useEmblaCarousel({
     align: 'start',
     loop: true,
   });
+  const [selectedHeroIndex, setSelectedHeroIndex] = React.useState(0);
+  const [isHeroDragging, setIsHeroDragging] = React.useState(false);
   const heroAutoplayRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
   const reduceMotionRef = React.useRef(false);
 
@@ -206,6 +217,23 @@ export default function Home() {
     };
   }, [heroCarouselApi, startHeroAutoplay, stopHeroAutoplay]);
 
+  React.useEffect(() => {
+    if (!heroCarouselApi) return undefined;
+
+    const syncSelectedSlide = () => {
+      setSelectedHeroIndex(heroCarouselApi.selectedScrollSnap());
+    };
+
+    syncSelectedSlide();
+    heroCarouselApi.on('select', syncSelectedSlide);
+    heroCarouselApi.on('reInit', syncSelectedSlide);
+
+    return () => {
+      heroCarouselApi.off('select', syncSelectedSlide);
+      heroCarouselApi.off('reInit', syncSelectedSlide);
+    };
+  }, [heroCarouselApi]);
+
   return (
     <main style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
@@ -218,14 +246,21 @@ export default function Home() {
             role="region"
             aria-label="Featured Technossus messages"
             onMouseEnter={stopHeroAutoplay}
-            onMouseLeave={startHeroAutoplay}
+            onMouseLeave={() => {
+              setIsHeroDragging(false);
+              startHeroAutoplay();
+            }}
             onFocusCapture={stopHeroAutoplay}
             onBlurCapture={startHeroAutoplay}
+            onPointerDown={() => setIsHeroDragging(true)}
+            onPointerUp={() => setIsHeroDragging(false)}
+            onPointerCancel={() => setIsHeroDragging(false)}
             style={{
               position: 'relative',
               ...fullBleedStyle,
               height: isMobile ? 430 : isTablet ? 420 : 463,
               overflow: 'hidden',
+              cursor: isHeroDragging ? 'grabbing' : 'grab',
             }}>
             <div ref={heroCarouselRef} style={{ overflow: 'hidden', width: '100%', height: '100%' }}>
               <div className="home-hero-carousel-track" style={{
@@ -293,7 +328,32 @@ export default function Home() {
                         </div>
                         <FadeUp delay={120}>
                           <div>
-                            <Button variant="primary" label={slide.cta} href={slide.href} />
+                            <a
+                              href={slide.href}
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 8,
+                                minHeight: 48,
+                                padding: '10px 20px',
+                                background: red,
+                                color: '#fff',
+                                textDecoration: 'none',
+                                fontFamily: sans,
+                                fontSize: 16,
+                                fontWeight: 600,
+                                lineHeight: '28px',
+                                boxSizing: 'border-box',
+                              }}
+                            >
+                              <span>{slide.cta}</span>
+                              <img
+                                alt=""
+                                src={imgArrowForward}
+                                style={{ width: 24, height: 24, display: 'block', flexShrink: 0 }}
+                              />
+                            </a>
                           </div>
                         </FadeUp>
                       </div>
@@ -301,6 +361,49 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </div>
+            <div
+              aria-label="Carousel slides"
+              style={{
+                position: 'absolute',
+                left: '50%',
+                bottom: isMobile ? 16 : 0,
+                transform: 'translateX(-50%)',
+                zIndex: 4,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 10,
+                padding: '8px 10px',
+                background: 'transparent',
+              }}
+            >
+              {heroSlides.map((slide, index) => {
+                const isActive = selectedHeroIndex === index;
+
+                return (
+                  <button
+                    key={`${slide.heading}-indicator`}
+                    type="button"
+                    aria-label={`Go to slide ${index + 1}`}
+                    aria-current={isActive ? 'true' : undefined}
+                    onClick={() => {
+                      stopHeroAutoplay();
+                      heroCarouselApi?.scrollTo(index);
+                    }}
+                    style={{
+                      width: isActive ? 28 : 9,
+                      height: 9,
+                      borderRadius: 999,
+                      border: 'none',
+                      padding: 0,
+                      background: isActive ? red : 'rgba(255, 255, 255, 0.62)',
+                      cursor: 'pointer',
+                      transition: 'width 0.2s ease, background 0.2s ease',
+                    }}
+                  />
+                );
+              })}
             </div>
           </div>
 
@@ -368,15 +471,15 @@ export default function Home() {
                     justifyContent: 'center',
                     gap: 16, flexWrap: 'wrap',
                   }}>
-                    {['AI Adoption Strategy', 'Modernize Platforms', 'Data Analytics', 'Healthcare IT', 'Product Engineering'].map(chip => (
-                      <button key={chip} style={{
+                    {quickPickLinks.map((chip) => (
+                      <button key={chip.label} onClick={() => router.push(chip.href)} style={{
                         display: 'inline-flex', alignItems: 'center',
                         height: 48, padding: '0 20px', borderRadius: 37,
                         background: '#383838', border: 'none',
                         fontFamily: sans, fontSize: 16, fontWeight: 500,
                         color: '#fff', cursor: 'pointer', lineHeight: '24px',
                       }}>
-                        {chip}
+                        {chip.label}
                       </button>
                     ))}
                   </div>
@@ -390,7 +493,7 @@ export default function Home() {
       {/* ── STATS ─────────────────────────────────────────────────────────────── */}
       <section style={{ ...sectionBlock('#fff'), overflow: 'hidden' }}>
         <div style={inner}>
-          {/* <FadeUp duration={500}><Tag label="STATISTICS" /></FadeUp> */}
+          <FadeUp duration={500}><Tag label="STATISTICS" /></FadeUp>
           <FadeUp>
             <h2 style={{
               fontFamily: serif,
