@@ -164,7 +164,7 @@ export function ContactFormPopUp({
             />
             <TextInputField
               label="Area of Interest"
-              placeholder="AI-Led Business Transformation"
+              placeholder="Area of Interest"
               value={form.areaOfInterest}
               onChange={(v) => setForm(f => ({ ...f, areaOfInterest: v }))}
               style={{ flex: 1 }}

@@ -33,15 +33,15 @@ const dark1 = colors.background.dark1;
 
 const accordionItems: AccordionItem[] = [
   {
-    title: 'Continuous Quality & QA Ops Engineering',
-    subtitle: 'Quality that lives in the pipeline, from design to release.',
+    title: 'Innovation Driven',
+    subtitle: 'Work with cutting-edge technologies on projects that redefine industries.',
     content: {
       type: 'detail',
       serviceLabel: 'ENGINEERING EXCELLENCE',
       heading: 'A culture built on curiosity, ownership, and continuous learning',
       body: [
-        "Objective validation matters most when the team that built the system is also the one reviewing it. Independent quality assurance brings a consistent, unbiased perspective across releases, environments, and system changes — surfacing what's easy to miss when engineers are close to the code.",
-        'We work with your product and engineering teams to design test strategies around how you actually build: your stack, release cadence, and the business-critical paths where a failure would hurt most.',
+        "Discover a culture of innovation, collaboration, and continuous growth at Technossus, where ideas are valued, ownership is encouraged, and learning never stops. We bring together passionate individuals to solve complex challenges and create meaningful impact through technology.",
+        'We’re looking for curious, driven people ready to shape the future of technology with us where your work matters, your voice is heard, and your growth is supported.',
       ],
     },
   },
@@ -51,10 +51,10 @@ const accordionItems: AccordionItem[] = [
     content: {
       type: 'detail',
       serviceLabel: 'WORK - LIFE BALANCE',
-      heading: 'A culture built on trust, flexibility, and respect for your time',
+      heading: 'Flexibility that supports both performance and personal well-being.',
       body: [
-        'We believe the best work happens when people have the space to recharge. Flexible scheduling, remote work options, and generous leave policies give our team the breathing room to do their best work.',
-        'From async-first workflows to flexible start times, we make sure our people can bring their whole selves to work every day.',
+        'At Technossus, we believe great work happens when people have the space to recharge, focus, and maintain balance outside of work. Flexible schedules and remote work options help our teams manage personal commitments without compromising collaboration or growth.',
+        'We foster a culture built on trust, ownership, and respect for personal time. Whether it’s supporting flexible work hours, encouraging time off, or creating a healthier pace of work, we aim to help our teams perform sustainably over the long term.',
       ],
     },
   },
@@ -64,10 +64,10 @@ const accordionItems: AccordionItem[] = [
     content: {
       type: 'detail',
       serviceLabel: 'GLOBAL IMPACT',
-      heading: 'A culture built on curiosity, ownership, and continuous learning',
+      heading: 'Continuous learning, mentorship, and growth opportunities built into every stage of your journey.',
       body: [
-        "Objective validation matters most when the team that built the system is also the one reviewing it. Independent quality assurance brings a consistent, unbiased perspective across releases, environments, and system changes surfacing what's easy to miss when engineers are close to the code.",
-        "We work with your product and engineering teams to design test strategies around how you actually build: your stack, release cadence, and the business-critical paths where a failure would hurt most. Coverage gets built to hold across releases, not just pass the next one.",
+        "At Technossus, growth is not limited to job titles, it is driven by continuous learning, hands-on experience, and exposure to meaningful work. We support our teams through mentorship, skill development programs, certifications, and opportunities to work across emerging technologies and industries.",
+        "With clear growth pathways and a culture of ownership, employees are encouraged to take initiative, expand their capabilities, and shape their careers based on their strengths and interests.",
       ],
     },
   },
@@ -139,15 +139,15 @@ export default function Careers() {
               <FadeUp duration={500}><Tag label="CAREERS AT TECHNOSSUS" variant="light" /></FadeUp>
               <FadeUp>
                 <p style={{ fontFamily: serif, fontWeight: 500, fontSize: heroFontSize, lineHeight: heroLineHeight, letterSpacing: '-0.96px', margin: 0 }}>
-                  <span style={{ color: '#FFFFFF' }}>Shape the </span>
-                  <span style={{ color: red }}>future of technology</span>
+                  <span style={{ color: '#FFFFFF' }}>Your Next Chapter </span>
+                  <span style={{ color: red }}>Starts Here</span>
                 </p>
               </FadeUp>
-              <FadeUp delay={80}>
+              {/* <FadeUp delay={80}>
                 <p style={{ fontFamily: sans, fontWeight: 500, fontSize: isMobile ? 15 : 18, lineHeight: '24px', color: '#FFFFFF', margin: 0 }}>
                   We're more than a company, we're a hub of innovation, collaboration, and continuous learning. If you're passionate about technology and making real impact, your next chapter starts here.
                 </p>
-              </FadeUp>
+              </FadeUp> */}
             </div>
             <FadeUp delay={120}>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -241,9 +241,9 @@ export default function Careers() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <FadeUp duration={500}><Tag label="A PLACE TO BELONG" /></FadeUp>
             <FadeUp>
-              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0, maxWidth: 844, color: dark }}>
-                Release confidence, compliance readiness, and{' '}
-                <span style={{ color: red }}>AI quality built in from the start.</span>
+              <h2 style={{ fontFamily: serif, fontWeight: 500, fontSize: h2FontSize, lineHeight: h2LineHeight, margin: 0,  color: dark }}>
+                Work alongside passionate teams crafting scalable digital solutions for some of the
+                <span style={{ color: red }}> world’s most dynamic industries</span>
               </h2>
             </FadeUp>
           </div>
