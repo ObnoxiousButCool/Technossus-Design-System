@@ -79,6 +79,16 @@ export default function CaseStudies() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const industry = params.get('industry');
+
+    if (industry && industries.includes(industry)) {
+      setSelectedIndustry(industry);
+      setSelectedService(null);
+    }
+  }, []);
+
   // Filter logic
   const filtered = caseStudies.filter(cs => {
     if (selectedIndustry && cs.industry !== selectedIndustry) return false;

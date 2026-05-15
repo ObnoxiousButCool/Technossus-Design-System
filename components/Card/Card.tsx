@@ -643,7 +643,7 @@ export function Card(props: CardProps) {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 24, width: '100%', boxSizing: 'border-box', flex: 1 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
-            <h4 style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: '#383838', margin: 0 }}>
+            <h4 style={{ fontFamily: sans, fontWeight: 600, fontSize: 20, lineHeight: '28px', color: isHovered ? red : '#383838', margin: 0, transition: 'color 0.2s ease' }}>
               {props.title ?? 'AI Led Transformation'}
             </h4>
             <p style={{ fontFamily: sans, fontWeight: 500, fontSize: 16, lineHeight: '24px', color: '#5C5C5C', margin: 0 }}>

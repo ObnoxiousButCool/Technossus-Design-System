@@ -168,6 +168,8 @@ export default function Home() {
     { label: 'Healthcare IT', href: '/industries/healthcare' },
     { label: 'Product Engineering', href: '/services/product-engineering' },
   ];
+  const healthcareCaseStudiesHref = '/case-studies?industry=Healthcare';
+  const caseStudiesHref = '/case-studies';
   const [heroCarouselRef, heroCarouselApi] = useEmblaCarousel({
     align: 'start',
     loop: true,
@@ -702,8 +704,8 @@ DENIALS 11% → 9% ON $4B REVENUE"
                 ]}
                 primaryLabel="View Case Study"
                 secondaryLabel="View All"
-                onPrimary={() => router.push('/case-studies')}
-                onSecondary={() => router.push('/case-studies')}
+                onPrimary={() => router.push(healthcareCaseStudiesHref)}
+                onSecondary={() => router.push(caseStudiesHref)}
               />
             </div>
           </FadeUp>
@@ -774,6 +776,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
       {/* ── WHY TECHNOSSUS ───────────────────────────────────────────────────── */}
       <section style={sectionBlock('#fff')}>
         <div style={inner}>
+          <FadeUp duration={500}><Tag label="INSIGHTS" style={{marginBottom: 16}} /></FadeUp>
           <div style={{ background: dark2, position: 'relative', overflow: 'hidden', width: '100%' }}>
             {!isMobile && <CornerTL />}
             {!isMobile && <CornerBR />}
@@ -813,6 +816,7 @@ DENIALS 11% → 9% ON $4B REVENUE"
                       icon={<Image src={card.icon} alt="" width={28} height={28} style={{ width: 'auto', height: 28 }} />}
                       title={card.title}
                       description={card.description}
+                      style={{border:"1px solid #FFFFFF08"}}
                     />
                   ))}
                 </div>
